@@ -5,7 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
+    as cluster_manager;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
@@ -39,7 +40,7 @@ class _MapScreenState extends State<MapScreen> {
 
   late ServicesBloc servicesBloc;
   late ServiceSingleBloc serviceSingleBloc;
-  late ClusterManager clusterManager;
+  late cluster_manager.ClusterManager clusterManager;
 
   void generateObjects(List<ServiceEntity> list) {
     print(list.length.toString() + 'serviceLenght');
@@ -108,7 +109,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     servicesBloc = ServicesBloc(GetServicesUseCase());
-    clusterManager = ClusterManager<ServiceEntity>(
+    clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
         [],
         (s) {
           setState(() {
@@ -180,12 +181,20 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ],
         child: Scaffold(
-          appBar: AppBar(elevation: 0,
-            leading: GestureDetector(onTap: (){
-              Navigator.pop(context);
-            },
-                child: Icon(Icons.arrow_back_ios_new,color: black,)),
-            title: Text('Services',style: TextStyle(color: black,fontSize: 24),),
+          appBar: AppBar(
+            elevation: 0,
+            leading: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: black,
+                )),
+            title: Text(
+              'Services',
+              style: TextStyle(color: black, fontSize: 24),
+            ),
           ),
           body: Stack(
             children: [

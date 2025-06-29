@@ -6,8 +6,8 @@ plugins {
 
 
 android {
-    compileSdkVersion 33
-    ndkVersion flutter.ndkVersion
+    compileSdkVersion 35
+    ndkVersion "27.0.12077973"
     namespace = "pits.app.com.pits_app"
 
     compileOptions {

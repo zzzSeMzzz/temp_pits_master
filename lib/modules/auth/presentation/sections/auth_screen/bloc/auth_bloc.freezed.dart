@@ -12,7 +12,7 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -65,28 +65,34 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_ChangeModeCopyWith<$Res> {
-  factory _$$_ChangeModeCopyWith(
-          _$_ChangeMode value, $Res Function(_$_ChangeMode) then) =
-      __$$_ChangeModeCopyWithImpl<$Res>;
+abstract class _$$ChangeModeImplCopyWith<$Res> {
+  factory _$$ChangeModeImplCopyWith(
+          _$ChangeModeImpl value, $Res Function(_$ChangeModeImpl) then) =
+      __$$ChangeModeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ChangeModeCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_ChangeMode>
-    implements _$$_ChangeModeCopyWith<$Res> {
-  __$$_ChangeModeCopyWithImpl(
-      _$_ChangeMode _value, $Res Function(_$_ChangeMode) _then)
+class __$$ChangeModeImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangeModeImpl>
+    implements _$$ChangeModeImplCopyWith<$Res> {
+  __$$ChangeModeImplCopyWithImpl(
+      _$ChangeModeImpl _value, $Res Function(_$ChangeModeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_ChangeMode implements _ChangeMode {
-  const _$_ChangeMode();
+class _$ChangeModeImpl implements _ChangeMode {
+  const _$ChangeModeImpl();
 
   @override
   String toString() {
@@ -94,9 +100,9 @@ class _$_ChangeMode implements _ChangeMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ChangeMode);
+        (other.runtimeType == runtimeType && other is _$ChangeModeImpl);
   }
 
   @override
@@ -160,14 +166,16 @@ class _$_ChangeMode implements _ChangeMode {
 }
 
 abstract class _ChangeMode implements AuthEvent {
-  const factory _ChangeMode() = _$_ChangeMode;
+  const factory _ChangeMode() = _$ChangeModeImpl;
 }
 
 /// @nodoc
 mixin _$AuthState {
   bool get isLoginMode => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthStateCopyWith<AuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -190,6 +198,8 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,29 +215,32 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$$_AuthStateCopyWith(
-          _$_AuthState value, $Res Function(_$_AuthState) then) =
-      __$$_AuthStateCopyWithImpl<$Res>;
+abstract class _$$AuthStateImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory _$$AuthStateImplCopyWith(
+          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
+      __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoginMode});
 }
 
 /// @nodoc
-class __$$_AuthStateCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_AuthState>
-    implements _$$_AuthStateCopyWith<$Res> {
-  __$$_AuthStateCopyWithImpl(
-      _$_AuthState _value, $Res Function(_$_AuthState) _then)
+class __$$AuthStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
+    implements _$$AuthStateImplCopyWith<$Res> {
+  __$$AuthStateImplCopyWithImpl(
+      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isLoginMode = null,
   }) {
-    return _then(_$_AuthState(
+    return _then(_$AuthStateImpl(
       isLoginMode: null == isLoginMode
           ? _value.isLoginMode
           : isLoginMode // ignore: cast_nullable_to_non_nullable
@@ -238,8 +251,8 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthState implements _AuthState {
-  const _$_AuthState({this.isLoginMode = true});
+class _$AuthStateImpl implements _AuthState {
+  const _$AuthStateImpl({this.isLoginMode = true});
 
   @override
   @JsonKey()
@@ -251,10 +264,10 @@ class _$_AuthState implements _AuthState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthState &&
+            other is _$AuthStateImpl &&
             (identical(other.isLoginMode, isLoginMode) ||
                 other.isLoginMode == isLoginMode));
   }
@@ -262,20 +275,25 @@ class _$_AuthState implements _AuthState {
   @override
   int get hashCode => Object.hash(runtimeType, isLoginMode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
-      __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
+      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({final bool isLoginMode}) = _$_AuthState;
+  const factory _AuthState({final bool isLoginMode}) = _$AuthStateImpl;
 
   @override
   bool get isLoginMode;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
