@@ -6,7 +6,6 @@ import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/globals/widgets/additional/w_scale.dart';
 import 'package:pits_app/utils/stroke_paint.dart';
 
-
 class WTextField extends StatefulWidget {
   final bool? hasBorderColor;
   final AutovalidateMode? autoValidateMode;
@@ -162,7 +161,7 @@ class _WTextFieldState extends State<WTextField>
               Text(
                 widget.title,
                 style: widget.titleTextStyle ??
-                    Theme.of(context).textTheme.bodyText1!.copyWith(
+                    Theme.of(context).textTheme.bodyLarge!.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
@@ -212,7 +211,7 @@ class _WTextFieldState extends State<WTextField>
                       },
                       focusNode: widget.focusNode ?? focusNode,
                       style: widget.textStyle ??
-                          Theme.of(context).textTheme.headline1!.copyWith(
+                          Theme.of(context).textTheme.displayLarge!.copyWith(
                               fontSize: 14, fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
                         suffix: widget.suffix != null
@@ -234,7 +233,7 @@ class _WTextFieldState extends State<WTextField>
                             : null,
                         hintText: widget.hintText,
                         hintStyle: widget.hintTextStyle ??
-                            Theme.of(context).textTheme.subtitle2!.copyWith(
+                            Theme.of(context).textTheme.titleSmall!.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -304,7 +303,7 @@ class _WTextFieldState extends State<WTextField>
                           style: widget.prefixStyle ??
                               Theme.of(context)
                                   .textTheme
-                                  .headline1!
+                                  .displayLarge!
                                   .copyWith(fontSize: 16),
                         ),
                       ),
@@ -315,24 +314,24 @@ class _WTextFieldState extends State<WTextField>
                     top: 0,
                     bottom: 0,
                     right: widget.suffixRightPosition,
-                    child: widget.hasClearButton != null &&
-                            widget.hasClearButton!
-                        ? widget.controller!.text.isNotEmpty
-                            ? GestureDetector(
-                                onTap: () {
-                                  setState(() {});
-                                  widget.controller?.clear();
-                                },
-                                child: SvgPicture.asset(AppIcons.close),
-                              )
-                            : const SizedBox()
-                        : Padding(
-                            padding: widget.suffixPadding ??
-                                const EdgeInsets.all(8.0),
-                            child: GestureDetector(
-                                onTap: widget.onTapSuffix ?? () {},
-                                child: widget.suffix ?? const SizedBox()),
-                          ),
+                    child:
+                        widget.hasClearButton != null && widget.hasClearButton!
+                            ? widget.controller!.text.isNotEmpty
+                                ? GestureDetector(
+                                    onTap: () {
+                                      setState(() {});
+                                      widget.controller?.clear();
+                                    },
+                                    child: SvgPicture.asset(AppIcons.close),
+                                  )
+                                : const SizedBox()
+                            : Padding(
+                                padding: widget.suffixPadding ??
+                                    const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                    onTap: widget.onTapSuffix ?? () {},
+                                    child: widget.suffix ?? const SizedBox()),
+                              ),
                   ),
                   Positioned(
                     top: 0,

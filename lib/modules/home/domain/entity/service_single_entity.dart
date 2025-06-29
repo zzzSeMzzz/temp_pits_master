@@ -1,17 +1,17 @@
-import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
-import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
+// import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ServiceSingleEntity {
   final String name;
   final String id;
   final double rating;
   final double latitude;
-  final String  address;
-  final String  desc;
-  final String  phone;
-  final String  status;
-  final String  categoryName;
-  final String  priceRange;
+  final String address;
+  final String desc;
+  final String phone;
+  final String status;
+  final String categoryName;
+  final String priceRange;
   final double longitude;
   final String image;
   final String cover;
@@ -31,6 +31,4 @@ class ServiceSingleEntity {
     this.priceRange = '',
     this.cover = '',
   });
-
-
 }

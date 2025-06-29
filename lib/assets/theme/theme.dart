@@ -5,7 +5,6 @@ abstract class AppTheme {
   static ThemeData theme() => ThemeData(
       scaffoldBackgroundColor: background,
       fontFamily: 'Gilroy',
-      backgroundColor: background,
       appBarTheme: const AppBarTheme(color: white),
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,

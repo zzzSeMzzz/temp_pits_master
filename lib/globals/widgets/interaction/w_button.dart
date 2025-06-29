@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/globals/widgets/additional/w_scale.dart';
 
-
 class WButton extends StatelessWidget {
   final double? width;
   final double? height;
@@ -28,7 +27,7 @@ class WButton extends StatelessWidget {
     required this.onTap,
     this.text = '',
     this.color = black,
-    this.hasError=false,
+    this.hasError = false,
     this.textColor = white,
     this.borderRadius = 12,
     this.disabledColor = disabled,
@@ -48,47 +47,49 @@ class WButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => WScaleAnimation(
-      scaleValue: scaleValue ?? 0.95,
-      onTap: () {
-        if (!(isLoading || isDisabled)) {
-          onTap();
-        }
-      },
-      isDisabled: isDisabled,
-      child: Container(
-        width: width??double.maxFinite,
-        height: height ?? 50,
-        margin: margin,
-        padding: padding ?? const EdgeInsets.only(top: 15, bottom: 14),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: isDisabled ? disabledColor : color,
-          borderRadius: BorderRadius.circular(borderRadius),
-          border: hasError?Border.all(color: red,width: 1): border,
-          boxShadow: shadow,
+        scaleValue: scaleValue ?? 0.95,
+        onTap: () {
+          if (!(isLoading || isDisabled)) {
+            onTap();
+          }
+        },
+        isDisabled: isDisabled,
+        child: Container(
+          width: width ?? double.maxFinite,
+          height: height ?? 50,
+          margin: margin,
+          padding: padding ?? const EdgeInsets.only(top: 15, bottom: 14),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: isDisabled ? disabledColor : color,
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: hasError ? Border.all(color: red, width: 1) : border,
+            boxShadow: shadow,
+          ),
+          child: isLoading
+              ? const Center(
+                  child: CupertinoActivityIndicator(
+                  color: Colors.white,
+                ))
+              : child ??
+                  Text(
+                    text,
+                    style: isDisabled
+                        ? Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            height: 1.36,
+                            color: textColor)
+                        : textStyle ??
+                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                height: 1.36,
+                                color: textColor),
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
         ),
-        child: isLoading
-            ? const Center(
-                child: CupertinoActivityIndicator(
-                color: Colors.white,
-              ))
-            : child ??
-                Text(
-                  text,
-                  style: isDisabled
-                      ? Theme.of(context)
-                          .textTheme
-                          .bodyText2!
-                          .copyWith(fontSize: 14, fontWeight: FontWeight.w700, height: 1.36, color: textColor)
-                      : textStyle ??
-                          Theme.of(context)
-                              .textTheme
-                              .headline2!
-                              .copyWith(fontWeight: FontWeight.w600, fontSize: 14, height: 1.36, color: textColor),
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
-      ),
-    );
+      );
 }
