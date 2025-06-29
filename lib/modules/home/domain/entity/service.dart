@@ -1,7 +1,7 @@
-// import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class ServiceEntity /* with ClusterItem */ {
+class ServiceEntity  with ClusterItem  {
   final String name;
   final String id;
   final double rating;
@@ -18,6 +18,6 @@ class ServiceEntity /* with ClusterItem */ {
     this.rating = 0,
   });
 
-  // @override
+  @override
   LatLng get location => LatLng(latitude, longitude);
 }

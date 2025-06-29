@@ -1,15 +1,12 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
-//     as cluster_manager;
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
+    as cluster_manager;
+import 'package:google_maps_flutter/google_maps_flutter.dart' hide Cluster;
 import 'package:pits_app/assets/colors/colors.dart';
-import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/modules/home/domain/entity/service.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
@@ -17,10 +14,8 @@ import 'package:pits_app/modules/home/domain/usecase/get_single_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/single/service_single_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/info_bottomsheet.dart';
-import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/webview_page.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/widgets/map_mark.dart';
-import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 import 'package:pits_app/utils/marker_generator.dart';
 
@@ -40,12 +35,12 @@ class _MapScreenState extends State<MapScreen> {
 
   late ServicesBloc servicesBloc;
   late ServiceSingleBloc serviceSingleBloc;
-  // late cluster_manager.ClusterManager clusterManager;
+  late cluster_manager.ClusterManager clusterManager;
 
   void generateObjects(List<ServiceEntity> list) {
-    print(list.length.toString() + 'serviceLenght');
+    debugPrint('${list.length}serviceLength');
     markers.clear();
-    MarkerGenerator(list.map((l) => MapMark()).toList(), (lis) {
+    MarkerGenerator(list.map((l) => const MapMark()).toList(), (lis) {
       mapBitmapsToMarkers(lis, iconScale: 1, list: list);
     }).generate(context);
   }
@@ -54,26 +49,26 @@ class _MapScreenState extends State<MapScreen> {
       {double? iconScale, required List<ServiceEntity> list}) async {
     final markersSmall = <Marker>[];
     bitmaps.asMap().forEach((i, bmp) async {
-      print(list[i].longitude.toString() + 'lat141');
+      debugPrint('${list[i].longitude}lat141');
       markersSmall.add(Marker(
         markerId: MarkerId(bmp.hashCode.toString()),
         onTap: () {
-          print(markers.length.toString());
+          debugPrint(markers.length.toString());
           showInfoBottomSheet(context, serviceSingleBloc);
           serviceSingleBloc
               .add(ServiceSingleEvent.getSingleService(id: list[i].id));
         },
         position: LatLng(list[i].latitude, list[i].longitude),
         icon: await BitmapDescriptor.fromAssetImage(
-            ImageConfiguration(), AppImages.wrenchLocation),
+            const ImageConfiguration(), AppImages.wrenchLocation),
       ));
     });
 
     setState(() {
       markers = markersSmall;
-      print('market lenght ${markers.length}');
+      debugPrint('market lenght ${markers.length}');
     });
-    // clusterManager.setItems(list);
+    clusterManager.setItems(list);
   }
 
   static Future<BitmapDescriptor> _getBasicClusterBitmap(int size,
@@ -109,49 +104,54 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     servicesBloc = ServicesBloc(GetServicesUseCase());
-    // Временно отключаем кластеризацию
-    // clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
-    //     [],
-    //     (s) {
-    //       setState(() {
-    //         markers = s.toList();
-    //       });
-    //     },
-    //     levels: [
-    //       1,
-    //       4.25,
-    //       6.75,
-    //       8.25,
-    //       11.5,
-    //       14.5,
-    //     ],
-    //     markerBuilder: (dynamic cluster) async {
-    //       final c = cluster as cluster_manager.Cluster<ServiceEntity>;
-    //       return c.isMultiple
-    //           ? Marker(
-    //               markerId: MarkerId(c.getId()),
-    //               position: c.location,
-    //               onTap: () {
-    //                 print(c);
-    //               },
-    //               icon: await _getBasicClusterBitmap(c.isMultiple ? 125 : 75,
-    //                   text: c.isMultiple ? c.count.toString() : null),
-    //             )
-    //           : Marker(
-    //               markerId: MarkerId(c.hashCode.toString()),
-    //               onTap: () {
-    //                 showInfoBottomSheet(context, serviceSingleBloc);
-    //                 print(c.items.length.toString());
-    //                 serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
-    //                     id: c.items.first.id));
-    //               },
-    //               position: c.location,
-    //               icon: await BitmapDescriptor.fromAssetImage(
-    //                   const ImageConfiguration(), AppImages.wrenchLocation),
-    //             );
-    //     },
-    //     stopClusteringZoom: 15.0
-    //     );
+    clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
+        [],
+        (s) {
+          setState(() {
+            markers = s.toList();
+          });
+        },
+        levels: [
+          1,
+          4.25,
+          6.75,
+          8.25,
+          11.5,
+          14.5,
+        ],
+        markerBuilder: (clusterD) async {
+          final cluster = clusterD as cluster_manager.Cluster;
+          return cluster.isMultiple
+              ? Marker(
+                  markerId: MarkerId(cluster.getId()),
+                  position: cluster.location,
+                  onTap: () {
+                    debugPrint(cluster.toString());
+                  },
+                  icon: await _getBasicClusterBitmap(
+                      cluster.isMultiple ? 125 : 75,
+                      text:
+                          cluster.isMultiple ? cluster.count.toString() : null),
+                )
+              : Marker(
+                  markerId: MarkerId(cluster.hashCode.toString()),
+                  onTap: () {
+                    showInfoBottomSheet(context, serviceSingleBloc);
+                    debugPrint(cluster.items.length.toString());
+                    serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
+                        id: (cluster.items.first as cluster_manager.Cluster).getId()));
+                  },
+                  position: cluster.location,
+                  icon: await BitmapDescriptor.fromAssetImage(
+                      const ImageConfiguration(), AppImages.wrenchLocation),
+                );
+        },
+        // Optional : Configure this if you want to change zoom levels at which the clustering precision change
+
+        // Optional : This number represents the percentage (0.2 for 20%) of latitude and longitude (in each direction) to be considered on top of the visible map bounds to render clusters. This way, clusters don't "pop out" when you cross the map.
+        stopClusteringZoom:
+            15.0 // Optional : The zoom level to stop clustering, so it's only rendering single item "clusters"
+        );
 
     serviceSingleBloc = ServiceSingleBloc(getSingle: GetServiceSingleUseCase());
 
@@ -183,21 +183,17 @@ class _MapScreenState extends State<MapScreen> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_back_ios_new,
                   color: black,
                 )),
-            title: Text(
+            title: const Text(
               'Services',
               style: TextStyle(color: black, fontSize: 24),
             ),
           ),
-          body: Stack(
+          body: const Stack(
             children: [
-              // Временно показываем только WebView
-              Positioned.fill(child: WebViewPage()),
-
-              // Закомментированная карта с кластеризацией
               // Positioned.fill(
               //     child: SafeArea(
               //   child: Container(
@@ -220,6 +216,48 @@ class _MapScreenState extends State<MapScreen> {
               //     ),
               //   ),
               // )),
+
+              Positioned.fill(child: WebViewPage()),
+
+              // Positioned(
+              //     left: 24,
+              //     right: 24,
+              //     top: 16 + MediaQuery.of(context).padding.top,
+              //     child: Container(
+              //       decoration: BoxDecoration(
+              //           color: white, borderRadius: BorderRadius.circular(4)),
+              //       padding: const EdgeInsets.symmetric(
+              //           horizontal: 16, vertical: 13),
+              //       child: Row(
+              //         children: [
+              //           Text(
+              //             'Switches to list view',
+              //             style: Theme.of(context)
+              //                 .textTheme
+              //                 .displayLarge!
+              //                 .copyWith(
+              //                     fontWeight: FontWeight.w700, fontSize: 16),
+              //           ),
+              //           const Spacer(),
+              //           GestureDetector(
+              //             behavior: HitTestBehavior.translucent,
+              //             onTap: () {
+              //               Navigator.pop(context);
+              //             },
+              //             child: SvgPicture.asset(
+              //               AppIcons.close,
+              //               width: 24,
+              //               height: 24,
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     )),
+              // Positioned(
+              //     left: 24,
+              //     right: 24,
+              //     bottom: 24 + MediaQuery.of(context).padding.bottom,
+              //     child: TypeSelector())
             ],
           ),
         ),
