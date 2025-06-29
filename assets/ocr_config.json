@@ -1,0 +1,49 @@
+
+
+{
+  "license": "ewogICJsaWNlbnNlS2V5VmVyc2lvbiIgOiAiMy4wIiwKICAiZGVidWdSZXBvcnRpbmciIDogIm9uIiwKICAibWFqb3JWZXJzaW9uIiA6ICIzNyIsCiAgIm1heERheXNOb3RSZXBvcnRlZCIgOiA1LAogICJhZHZhbmNlZEJhcmNvZGUiIDogdHJ1ZSwKICAic3VwcG9ydGVkQmFyY29kZUZvcm1hdHMiIDogWyAiQUxMIiBdLAogICJwbGF0Zm9ybSIgOiBbICJBbmRyb2lkIiwgImlPUyIsICJKUyIsICJXaW5kb3dzIiwgIldlYiIgXSwKICAic2NvcGUiIDogWyAiQUxMIiBdLAogICJzaG93V2F0ZXJtYXJrIiA6IHRydWUsCiAgInRvbGVyYW5jZURheXMiIDogMzAsCiAgInZhbGlkIiA6ICIyMDIzLTA0LTI2IiwKICAibGljZW5zZUlkIiA6IG51bGwsCiAgImlvc0lkZW50aWZpZXIiIDogWyAicGl0cyIgXSwKICAiYW5kcm9pZElkZW50aWZpZXIiIDogWyAicGl0cyIgXSwKICAid2luZG93c0lkZW50aWZpZXIiIDogWyAicGl0cyIgXSwKICAianNJZGVudGlmaWVyIiA6IFsgInBpdHMiIF0sCiAgIndlYklkZW50aWZpZXIiIDogWyAicGl0cyIgXQp9CgpzR1RGQU9qK3NvVTdGSnVjMTRDbDJRejdybmhmYWVaVDYrNFdzanh1K0Q5bDdFZ2prSkdsWHV3U0dDZFJVYjd4cXhuNGFEUHpEQUEyYStETE9vSXBHa2ZDb2pZOC9BZGNSZWxTRmh5VGN1Vlh4djFRWS9vTkNHY202MExlUnZ1S25aUkhxQnZPc3lNUUx2Znp4bGxteWVYK1VGbjZ2d20yZkFzaW03OC9hcU84QzNVOUQyZ3pUb0hLTHJMWDR4cHJOSTB5SE5HSS9GY2c2UldMdk5oNlJuVk5tZ2hHV1RIWTB3TG9IUXc3Y2VUNXlIVmU1cG45YUphZ0E0Ynkva2JUYzd5NXNYZjZKNHUyaVUrbGlwKzNlSGQ3cklhcnZ4ODNQR3R5UjIrdGczZmVLYkJwUXhvTzZkNURXWFV3SXA2NVNVZXV1em1zWkt2cXRaVnhuWitDcWc9PQ==",
+  "options": {
+    "camera": {
+      "captureResolution": "1080p",
+      "zoomGesture": true
+    },
+    "flash": {
+      "mode": "manual",
+      "alignment": "top_left"
+    },
+    "viewPlugin": {
+      "plugin": {
+        "id": "LicensePlate_ID",
+        "licensePlatePlugin": {
+        }
+      },
+      "cutoutConfig": {
+        "style": "rect",
+        "maxWidthPercent": "80%",
+        "maxHeightPercent": "80%",
+        "alignment": "top_half",
+        "width": 720,
+        "ratioFromSize": {
+          "width": 2,
+          "height": 1
+        },
+        "strokeWidth": 2,
+        "cornerRadius": 10,
+        "strokeColor": "FFFFFF",
+        "outerColor": "000000",
+        "outerAlpha": 0.3,
+        "feedbackStrokeColor": "0099FF"
+      },
+      "scanFeedback": {
+        "animationDuration": 0,
+        "style": "RECT",
+        "strokeWidth": 2,
+        "strokeColor": "0099FF",
+        "blinkOnResult": true,
+        "beepOnResult": true,
+        "vibrateOnResult": true
+      },
+      "cancelOnResult": true
+    }
+  }
+}
