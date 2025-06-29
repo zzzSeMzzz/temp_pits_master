@@ -1,16 +1,10 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_mobile_vision_2/flutter_mobile_vision_2.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/globals/widgets/interaction/w_textfield.dart';
-import 'package:pits_app/modules/home/presentation/sections/home/home_screen.dart';
 import 'package:pits_app/modules/navigation/presentation/home.dart';
 import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 
@@ -26,7 +20,7 @@ class AddCarScreen extends StatefulWidget {
 
 class _AddCarScreenState extends State<AddCarScreen> {
   // void scanWithAnyline() async {
-  Future<void> _read() async {
+ /* Future<void> _read() async {
     List<OcrText> texts = [];
     Size _scanpreviewOcr =  FlutterMobileVision.PREVIEW;
     try {
@@ -53,7 +47,10 @@ class _AddCarScreenState extends State<AddCarScreen> {
     if (!mounted) return;
 
 
-  }
+  }*/
+
+  _read() {}
+
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -63,7 +60,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
             SizedBox(
               height:(widget.isBackButton?32: 72 )+ MediaQuery.of(context).padding.top,
             ),
-          if(widget.isBackButton)  Container(margin: EdgeInsets.only(left: 16),
+          if(widget.isBackButton)  Container(margin: const EdgeInsets.only(left: 16),
             child: GestureDetector(onTap: (){
                 Navigator.pop(context);
               },
@@ -89,7 +86,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -100,7 +97,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 height: 310,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
@@ -128,14 +125,14 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   suffixIcon: AppIcons.scan,
                   onChanged: (text) {}),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             WButton(
-              margin: EdgeInsets.symmetric(horizontal: 24),
+              margin: const EdgeInsets.symmetric(horizontal: 24),
               onTap: () {
 
-                Navigator.push(context, fade(page: NavigationScreen()));
+                Navigator.push(context, fade(page: const NavigationScreen()));
               },
               borderRadius: 4,
               text: 'To plug',
