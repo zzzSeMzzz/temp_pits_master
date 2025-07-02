@@ -3,8 +3,9 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
-    as cluster_manager;
+/*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
+    as cluster_manager;*/
+import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'  as cluster_manager;
 import 'package:google_maps_flutter/google_maps_flutter.dart' hide Cluster;
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
