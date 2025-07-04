@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
-import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'  as cluster_manager;
+import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
+    as cluster_manager;
 import 'package:google_maps_flutter/google_maps_flutter.dart' hide Cluster;
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
@@ -145,7 +146,8 @@ class _MapScreenState extends State<MapScreen> {
                     showInfoBottomSheet(context, serviceSingleBloc);
                     debugPrint(cluster.items.length.toString());
                     serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
-                        id: (cluster.items.first as cluster_manager.Cluster).getId()));
+                        id: (cluster.items.first as cluster_manager.Cluster)
+                            .getId()));
                   },
                   position: cluster.location,
                   icon: await BitmapDescriptor.fromAssetImage(
@@ -203,73 +205,84 @@ class _MapScreenState extends State<MapScreen> {
               style: TextStyle(color: black, fontSize: 24),
             ),
           ),
-          body: servicesBloc.state.status == ActionStatus.inProcess ? const CircularProgressIndicator() : Stack(
-            children: [
-              Positioned.fill(
-                  child: SafeArea(
-                child:   Container(
-                  color: Colors.orange[100],
-                  child: GoogleMap(
-                    onCameraMove: clusterManager.onCameraMove,
-                    onCameraIdle: clusterManager.updateMap,
-                    onMapCreated: (controller) {
-                      _controller.complete(controller);
-                      setMylocation(controller);
-                      clusterManager.setMapId(controller.mapId);
-                    },
-                    compassEnabled: false,
-                    myLocationButtonEnabled: false,
-                    myLocationEnabled: false,
-                    markers: Set<Marker>.of(markers),
-                    zoomGesturesEnabled: true,
-                    zoomControlsEnabled: false,
-                    initialCameraPosition: _kMadrid,
-                  ),
-                ),
-              )),
-
-              //Positioned.fill(child: WebViewPage()),
-
-              Positioned(
-                  left: 24,
-                  right: 24,
-                  top: 16 + MediaQuery.of(context).padding.top,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: white, borderRadius: BorderRadius.circular(4)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 13),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Switches to list view',
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayLarge!
-                              .copyWith(
-                                  fontWeight: FontWeight.w700, fontSize: 16),
-                        ),
-                        const Spacer(),
-                        GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: SvgPicture.asset(
-                            AppIcons.close,
-                            width: 24,
-                            height: 24,
-                          ),
-                        ),
-                      ],
+          body: BlocBuilder<ServicesBloc, ServicesState>(
+            bloc: servicesBloc,
+            builder: (context, state) {
+              if (state.status == ActionStatus.inProcess) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              return Stack(
+                children: [
+                  Positioned.fill(
+                      child: SafeArea(
+                    child: Container(
+                      color: Colors.orange[100],
+                      child: GoogleMap(
+                        onCameraMove: clusterManager.onCameraMove,
+                        onCameraIdle: clusterManager.updateMap,
+                        onMapCreated: (controller) {
+                          _controller.complete(controller);
+                          setMylocation(controller);
+                          clusterManager.setMapId(controller.mapId);
+                          generateObjects(state.services);
+                        },
+                        compassEnabled: false,
+                        myLocationButtonEnabled: false,
+                        myLocationEnabled: false,
+                        markers: Set<Marker>.of(markers),
+                        zoomGesturesEnabled: true,
+                        zoomControlsEnabled: false,
+                        initialCameraPosition: _kMadrid,
+                      ),
                     ),
                   )),
-              Positioned(
-                  left: 24,
-                  right: 24,
-                  bottom: 24 + MediaQuery.of(context).padding.bottom,
-                  child: const TypeSelector())
-            ],
+
+                  //Positioned.fill(child: WebViewPage()),
+
+                  Positioned(
+                      left: 24,
+                      right: 24,
+                      top: 16 + MediaQuery.of(context).padding.top,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(4)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 13),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Switches to list view',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayLarge!
+                                  .copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16),
+                            ),
+                            const Spacer(),
+                            GestureDetector(
+                              behavior: HitTestBehavior.translucent,
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: SvgPicture.asset(
+                                AppIcons.close,
+                                width: 24,
+                                height: 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                  Positioned(
+                      left: 24,
+                      right: 24,
+                      bottom: 24 + MediaQuery.of(context).padding.bottom,
+                      child: const TypeSelector())
+                ],
+              );
+            },
           ),
         ),
       );
