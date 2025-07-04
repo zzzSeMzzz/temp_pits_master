@@ -17,12 +17,15 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   final GetServicesUseCase getServicesUseCase;
 
   ServicesBloc(this.getServicesUseCase) : super(const ServicesState()) {
-
+    print('ServicesBloc constructor');
     on<_GetServices>(_onGetServices);
 
     // Автоматический запуск загрузки сервисов при создании блока
     //add(const ServicesEvent.getServices());
-    Future.microtask(() => add(const ServicesEvent.getServices()));
+    Future.microtask(() {
+      print('Microtask: add getServices');
+      add(const ServicesEvent.getServices());
+    });
   }
 
 

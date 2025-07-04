@@ -40,12 +40,10 @@ class _MapScreenState extends State<MapScreen> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
-  late ServicesBloc servicesBloc;
-  late ServiceSingleBloc serviceSingleBloc;
   late cluster_manager.ClusterManager clusterManager;
 
   void generateObjects(List<ServiceEntity> list) {
-    debugPrint('${list.length}serviceLength');
+    debugPrint('serviceLength=${list.length}');
     markers.clear();
     MarkerGenerator(list.map((l) => const MapMark()).toList(), (lis) {
       mapBitmapsToMarkers(lis, iconScale: 1, list: list);
@@ -61,8 +59,9 @@ class _MapScreenState extends State<MapScreen> {
         markerId: MarkerId(bmp.hashCode.toString()),
         onTap: () {
           debugPrint(markers.length.toString());
-          showInfoBottomSheet(context, serviceSingleBloc);
-          serviceSingleBloc
+          showInfoBottomSheet(context, context.read<ServiceSingleBloc>());
+          context
+              .read<ServiceSingleBloc>()
               .add(ServiceSingleEvent.getSingleService(id: list[i].id));
         },
         position: LatLng(list[i].latitude, list[i].longitude),
@@ -110,7 +109,6 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   void initState() {
-    servicesBloc = ServicesBloc(GetServicesUseCase());
     clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
         [],
         (s) {
@@ -143,26 +141,20 @@ class _MapScreenState extends State<MapScreen> {
               : Marker(
                   markerId: MarkerId(cluster.hashCode.toString()),
                   onTap: () {
-                    showInfoBottomSheet(context, serviceSingleBloc);
+                    showInfoBottomSheet(
+                        context, context.read<ServiceSingleBloc>());
                     debugPrint(cluster.items.length.toString());
-                    serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
-                        id: (cluster.items.first as cluster_manager.Cluster)
-                            .getId()));
+                    context.read<ServiceSingleBloc>().add(
+                        ServiceSingleEvent.getSingleService(
+                            id: (cluster.items.first as cluster_manager.Cluster)
+                                .getId()));
                   },
                   position: cluster.location,
                   icon: await BitmapDescriptor.fromAssetImage(
                       const ImageConfiguration(), AppImages.wrenchLocation),
                 );
         },
-        // Optional : Configure this if you want to change zoom levels at which the clustering precision change
-
-        // Optional : This number represents the percentage (0.2 for 20%) of latitude and longitude (in each direction) to be considered on top of the visible map bounds to render clusters. This way, clusters don't "pop out" when you cross the map.
-        stopClusteringZoom:
-            15.0 // Optional : The zoom level to stop clustering, so it's only rendering single item "clusters"
-        );
-
-    serviceSingleBloc = ServiceSingleBloc(getSingle: GetServiceSingleUseCase());
-
+        stopClusteringZoom: 15.0);
     super.initState();
   }
 
@@ -182,11 +174,12 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
-          BlocProvider.value(
-            value: servicesBloc,
+          BlocProvider(
+            create: (_) => ServicesBloc(GetServicesUseCase()),
           ),
-          BlocProvider.value(
-            value: serviceSingleBloc,
+          BlocProvider(
+            create: (_) =>
+                ServiceSingleBloc(getSingle: GetServiceSingleUseCase()),
           ),
         ],
         child: Scaffold(
@@ -206,7 +199,6 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           body: BlocBuilder<ServicesBloc, ServicesState>(
-            bloc: servicesBloc,
             builder: (context, state) {
               if (state.status == ActionStatus.inProcess) {
                 return const Center(child: CircularProgressIndicator());
