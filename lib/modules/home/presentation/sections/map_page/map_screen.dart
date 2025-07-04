@@ -45,9 +45,9 @@ class _MapScreenState extends State<MapScreen> {
   void generateObjects(List<ServiceEntity> list) {
     debugPrint('serviceLength=${list.length}');
     markers.clear();
-    MarkerGenerator(list.map((l) => const MapMark()).toList(), (lis) {
+    /*MarkerGenerator(list.map((l) => const MapMark()).toList(), (lis) {
       mapBitmapsToMarkers(lis, iconScale: 1, list: list);
-    }).generate(context);
+    }).generate(context);*/
   }
 
   void mapBitmapsToMarkers(List<Uint8List?> bitmaps,

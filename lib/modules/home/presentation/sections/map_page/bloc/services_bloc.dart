@@ -35,9 +35,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
     final result = await getServicesUseCase('');
     if (result.isRight) {
-      debugPrint("Success get services");
+      debugPrint("Success get services ${result.right.length}");
       emit(state.copyWith(
-          status: ActionStatus.isSuccess, services: result.right.toList()));
+          status: ActionStatus.isSuccess, services: result.right));
     } else {
       debugPrint("Failure get services");
       emit(state.copyWith(status: ActionStatus.isFailure));
