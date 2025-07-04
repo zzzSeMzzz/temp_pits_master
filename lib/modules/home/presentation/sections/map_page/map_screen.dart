@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'  as cluster_manager;
@@ -15,10 +16,14 @@ import 'package:pits_app/modules/home/domain/usecase/get_single_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/single/service_single_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/info_bottomsheet.dart';
+import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/webview_page.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/widgets/map_mark.dart';
+import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 import 'package:pits_app/utils/marker_generator.dart';
+
+import '../../../../../assets/constants/app_icons.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -167,6 +172,11 @@ class _MapScreenState extends State<MapScreen> {
     ));
   }
 
+  static const CameraPosition _kMadrid = CameraPosition(
+    target: LatLng(40.416775, -3.703790),
+    zoom: 14.4746,
+  );
+
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
@@ -193,72 +203,72 @@ class _MapScreenState extends State<MapScreen> {
               style: TextStyle(color: black, fontSize: 24),
             ),
           ),
-          body: const Stack(
+          body: servicesBloc.state.status == ActionStatus.inProcess ? const CircularProgressIndicator() : Stack(
             children: [
-              // Positioned.fill(
-              //     child: SafeArea(
-              //   child: Container(
-              //     color: Colors.orange[100],
-              //     child: GoogleMap(
-              //       onCameraMove: clusterManager.onCameraMove,
-              //       onCameraIdle: clusterManager.updateMap,
-              //       onMapCreated: (controller) {
-              //         _controller.complete(controller);
-              //         setMylocation(controller);
-              //         clusterManager.setMapId(controller.mapId);
-              //       },
-              //       compassEnabled: false,
-              //       myLocationButtonEnabled: false,
-              //       myLocationEnabled: false,
-              //       markers: Set<Marker>.of(markers),
-              //       zoomGesturesEnabled: true,
-              //       initialCameraPosition:
-              //           CameraPosition(target: location, zoom: 2),
-              //     ),
-              //   ),
-              // )),
+              Positioned.fill(
+                  child: SafeArea(
+                child:   Container(
+                  color: Colors.orange[100],
+                  child: GoogleMap(
+                    onCameraMove: clusterManager.onCameraMove,
+                    onCameraIdle: clusterManager.updateMap,
+                    onMapCreated: (controller) {
+                      _controller.complete(controller);
+                      setMylocation(controller);
+                      clusterManager.setMapId(controller.mapId);
+                    },
+                    compassEnabled: false,
+                    myLocationButtonEnabled: false,
+                    myLocationEnabled: false,
+                    markers: Set<Marker>.of(markers),
+                    zoomGesturesEnabled: true,
+                    zoomControlsEnabled: false,
+                    initialCameraPosition: _kMadrid,
+                  ),
+                ),
+              )),
 
-              Positioned.fill(child: WebViewPage()),
+              //Positioned.fill(child: WebViewPage()),
 
-              // Positioned(
-              //     left: 24,
-              //     right: 24,
-              //     top: 16 + MediaQuery.of(context).padding.top,
-              //     child: Container(
-              //       decoration: BoxDecoration(
-              //           color: white, borderRadius: BorderRadius.circular(4)),
-              //       padding: const EdgeInsets.symmetric(
-              //           horizontal: 16, vertical: 13),
-              //       child: Row(
-              //         children: [
-              //           Text(
-              //             'Switches to list view',
-              //             style: Theme.of(context)
-              //                 .textTheme
-              //                 .displayLarge!
-              //                 .copyWith(
-              //                     fontWeight: FontWeight.w700, fontSize: 16),
-              //           ),
-              //           const Spacer(),
-              //           GestureDetector(
-              //             behavior: HitTestBehavior.translucent,
-              //             onTap: () {
-              //               Navigator.pop(context);
-              //             },
-              //             child: SvgPicture.asset(
-              //               AppIcons.close,
-              //               width: 24,
-              //               height: 24,
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     )),
-              // Positioned(
-              //     left: 24,
-              //     right: 24,
-              //     bottom: 24 + MediaQuery.of(context).padding.bottom,
-              //     child: TypeSelector())
+              Positioned(
+                  left: 24,
+                  right: 24,
+                  top: 16 + MediaQuery.of(context).padding.top,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: white, borderRadius: BorderRadius.circular(4)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 13),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Switches to list view',
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 16),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: SvgPicture.asset(
+                            AppIcons.close,
+                            width: 24,
+                            height: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+              Positioned(
+                  left: 24,
+                  right: 24,
+                  bottom: 24 + MediaQuery.of(context).padding.bottom,
+                  child: const TypeSelector())
             ],
           ),
         ),
