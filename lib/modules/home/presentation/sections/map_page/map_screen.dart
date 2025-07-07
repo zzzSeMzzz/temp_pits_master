@@ -2,25 +2,23 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
     as cluster_manager;*/
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
-import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/modules/home/domain/entity/service.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_single_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/single/service_single_bloc.dart';
-import 'package:pits_app/modules/home/presentation/sections/map_page/part/info_bottomsheet.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
-import 'package:pits_app/utils/marker_generator.dart';
 import '../../../../../assets/constants/app_icons.dart';
+import '../../../../../assets/constants/app_images.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -41,6 +39,7 @@ class _MapScreenState extends State<MapScreen> {
   static const int _clusterManagerMaxCount = 1;
   // Кластер, который был использован последним.
   Cluster? lastCluster;
+  BitmapDescriptor? _markerIcon;
 
   @override
   void initState() {
@@ -90,8 +89,10 @@ class _MapScreenState extends State<MapScreen> {
                 );
         },
         stopClusteringZoom: 15.0);*/
+    _loadIcon();
     super.initState();
   }
+
 
   final ClusterManager _clusterManager = ClusterManager(
     clusterManagerId:
@@ -116,6 +117,11 @@ class _MapScreenState extends State<MapScreen> {
     setState(() {
       controller = controllerParam;
     });
+  }
+
+  void _loadIcon() async {
+    _markerIcon = await BitmapDescriptor.asset(
+        const ImageConfiguration(), AppImages.wrenchLocation);
   }
 
   @override
@@ -164,7 +170,7 @@ class _MapScreenState extends State<MapScreen> {
                         myLocationButtonEnabled: false,
                         myLocationEnabled: false,
                         markers: Set<Marker>.of(state.services
-                            .map((service) => service.toMarker())),
+                            .map((service) => service.toMarker(_markerIcon))),
                         clusterManagers: {_clusterManager},
                         zoomGesturesEnabled: true,
                         zoomControlsEnabled: kDebugMode,
