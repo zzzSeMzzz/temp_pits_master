@@ -211,7 +211,7 @@ class _MapScreenState extends State<MapScreen> {
                                 Navigator.pop(context);
                               },
                               child: SvgPicture.asset(
-                                AppIcons.close,
+                                AppIcons.list,
                                 width: 24,
                                 height: 24,
                               ),
