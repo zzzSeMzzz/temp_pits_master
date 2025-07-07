@@ -37,8 +37,6 @@ class _MapScreenState extends State<MapScreen> {
 
   //late cluster_manager.ClusterManager clusterManager;
 
-
-
   late GoogleMapController controller;
   static const int _clusterManagerMaxCount = 1;
   // Кластер, который был использован последним.
@@ -46,7 +44,7 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   void initState() {
-   /* clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
+    /* clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
         [],
         (s) {
           setState(() {
@@ -95,9 +93,9 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
   }
 
-
   final ClusterManager _clusterManager = ClusterManager(
-    clusterManagerId: const ClusterManagerId("main_cm"),
+    clusterManagerId:
+        const ClusterManagerId(ServiceEntity.mainClusterManagerId),
     onClusterTap: (Cluster cluster) => {},
   );
 
@@ -113,7 +111,6 @@ class _MapScreenState extends State<MapScreen> {
     target: LatLng(40.416775, -3.703790),
     zoom: 12.4746,
   );
-
 
   void _onMapCreated(GoogleMapController controllerParam) {
     setState(() {
@@ -166,7 +163,8 @@ class _MapScreenState extends State<MapScreen> {
                         compassEnabled: false,
                         myLocationButtonEnabled: false,
                         myLocationEnabled: false,
-                        markers: Set<Marker>.of(state.services.map((service) => service.toMarker())),
+                        markers: Set<Marker>.of(state.services
+                            .map((service) => service.toMarker())),
                         clusterManagers: {_clusterManager},
                         zoomGesturesEnabled: true,
                         zoomControlsEnabled: kDebugMode,
