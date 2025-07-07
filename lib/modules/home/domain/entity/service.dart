@@ -1,8 +1,7 @@
-//import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
-import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class ServiceEntity  with ClusterItem  {
+class ServiceEntity {
   final String name;
   final String id;
   final double rating;
@@ -19,6 +18,18 @@ class ServiceEntity  with ClusterItem  {
     this.rating = 0,
   });
 
-  @override
+
+  Marker toMarker() {
+    Marker marker =  Marker(
+      markerId: MarkerId(id),
+      position: location,
+      infoWindow: InfoWindow(title: name, snippet: address),
+    );
+
+    //debugPrint('Marker ${marker.toString()}');
+    return marker;
+  }
+
+  /*@override*/
   LatLng get location => LatLng(latitude, longitude);
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pits_app/assets/theme/theme.dart';
 import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/auth/presentation/sections/splash/splash_screen.dart';
-
 import 'utils/AppScrollBehavior.dart';
 
 void main() async{

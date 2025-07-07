@@ -25,7 +25,7 @@ class ServiceModel extends ServiceEntity {
       : super(
           id: idd,
           address: address,
-          latitude: double.parse(long),
+          latitude: double.parse(lat),
           longitude: double.parse(long),
           name: '',
           rating: 0.1,
