@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,11 @@ class _MapScreenState extends State<MapScreen> {
 
   //late cluster_manager.ClusterManager clusterManager;
 
-  late GoogleMapController controller;
+  //late GoogleMapController controller;
+
+  final Completer<GoogleMapController> _controller =
+    Completer<GoogleMapController>();
+
   static const int _clusterManagerMaxCount = 1;
   // Кластер, который был использован последним.
   Cluster? lastCluster;
@@ -93,7 +98,6 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
   }
 
-
   final ClusterManager _clusterManager = ClusterManager(
     clusterManagerId:
         const ClusterManagerId(ServiceEntity.mainClusterManagerId),
@@ -110,13 +114,11 @@ class _MapScreenState extends State<MapScreen> {
 
   static const CameraPosition _kMadrid = CameraPosition(
     target: LatLng(40.416775, -3.703790),
-    zoom: 12.4746,
+    zoom: 10.4746,
   );
 
   void _onMapCreated(GoogleMapController controllerParam) {
-    setState(() {
-      controller = controllerParam;
-    });
+    _controller.complete(controllerParam);
   }
 
   void _loadIcon() async {
