@@ -30,7 +30,7 @@ class _TypeSelectorState extends State<TypeSelector> {
               borderRadius: BorderRadius.circular(4),
               color: page == index ? black : white),
           duration: const Duration(milliseconds: 200),
-          width: 96,
+          width: 126,
           child: Center(
             child: Text(
               title,

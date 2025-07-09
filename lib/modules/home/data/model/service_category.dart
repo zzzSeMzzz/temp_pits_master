@@ -18,7 +18,7 @@ class ServiceCategoryModel extends ServiceCategory {
     required this.slugD,
   }) : super(
     id: idd,
-    name: nameD,
+    name: nameD.replaceAll("&amp;", "&"),
     slug: slugD,
   );
 
