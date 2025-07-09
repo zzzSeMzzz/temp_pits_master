@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/modules/home/domain/entity/service.dart';
+import 'package:pits_app/modules/home/domain/entity/service_category.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
 import 'package:pits_app/utils/action_status.dart';
 
@@ -22,6 +23,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   ServicesBloc(this.getServicesUseCase) : super(const ServicesState()) {
     debugPrint('ServicesBloc constructor');
     on<_GetServices>(_onGetServices);
+    on<_GetServiceCategories>(_onGetServiceCategories);
 
     _loadIcon();
 
@@ -29,7 +31,8 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     //add(const ServicesEvent.getServices());
     Future.microtask(() {
       debugPrint('Microtask: add getServices');
-      add(const ServicesEvent.getServices());
+      //add(const ServicesEvent.getServices());
+      add(const ServicesEvent.getServiceCategories());
     });
   }
 
@@ -38,6 +41,24 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.wrenchLocation);
+  }
+
+  FutureOr<void> _onGetServiceCategories(ServicesEvent event, Emitter<ServicesState> emit) async {
+    debugPrint("Run get services categories");
+    emit(state.copyWith(status: ActionStatus.inProcess));
+
+    final result = await getServicesUseCase.getServiceCategories();
+    if (result.isRight) {
+      debugPrint("Success get services cat's ${result.right.length}");
+      emit(
+        state.copyWith(
+          status: ActionStatus.isSuccess,
+            serviceCategories: result.right
+      ));
+    } else {
+      debugPrint("Failure get services cat's");
+      emit(state.copyWith(status: ActionStatus.isFailure));
+    }
   }
 
   FutureOr<void> _onGetServices(

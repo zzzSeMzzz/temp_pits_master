@@ -19,32 +19,38 @@ mixin _$ServicesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getServices,
+    required TResult Function() getServiceCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getServices,
+    TResult? Function()? getServiceCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getServices,
+    TResult Function()? getServiceCategories,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetServiceCategories value) getServiceCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetServiceCategories value)? getServiceCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetServiceCategories value)? getServiceCategories,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getServices,
+    required TResult Function() getServiceCategories,
   }) {
     return getServices();
   }
@@ -121,6 +128,7 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getServices,
+    TResult? Function()? getServiceCategories,
   }) {
     return getServices?.call();
   }
@@ -129,6 +137,7 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getServices,
+    TResult Function()? getServiceCategories,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -141,6 +150,7 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetServiceCategories value) getServiceCategories,
   }) {
     return getServices(this);
   }
@@ -149,6 +159,7 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetServiceCategories value)? getServiceCategories,
   }) {
     return getServices?.call(this);
   }
@@ -157,6 +168,7 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetServiceCategories value)? getServiceCategories,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -171,7 +183,115 @@ abstract class _GetServices implements ServicesEvent {
 }
 
 /// @nodoc
+abstract class _$$GetServiceCategoriesImplCopyWith<$Res> {
+  factory _$$GetServiceCategoriesImplCopyWith(_$GetServiceCategoriesImpl value,
+          $Res Function(_$GetServiceCategoriesImpl) then) =
+      __$$GetServiceCategoriesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetServiceCategoriesImplCopyWithImpl<$Res>
+    extends _$ServicesEventCopyWithImpl<$Res, _$GetServiceCategoriesImpl>
+    implements _$$GetServiceCategoriesImplCopyWith<$Res> {
+  __$$GetServiceCategoriesImplCopyWithImpl(_$GetServiceCategoriesImpl _value,
+      $Res Function(_$GetServiceCategoriesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetServiceCategoriesImpl implements _GetServiceCategories {
+  const _$GetServiceCategoriesImpl();
+
+  @override
+  String toString() {
+    return 'ServicesEvent.getServiceCategories()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetServiceCategoriesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getServices,
+    required TResult Function() getServiceCategories,
+  }) {
+    return getServiceCategories();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getServices,
+    TResult? Function()? getServiceCategories,
+  }) {
+    return getServiceCategories?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getServices,
+    TResult Function()? getServiceCategories,
+    required TResult orElse(),
+  }) {
+    if (getServiceCategories != null) {
+      return getServiceCategories();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetServiceCategories value) getServiceCategories,
+  }) {
+    return getServiceCategories(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetServiceCategories value)? getServiceCategories,
+  }) {
+    return getServiceCategories?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetServiceCategories value)? getServiceCategories,
+    required TResult orElse(),
+  }) {
+    if (getServiceCategories != null) {
+      return getServiceCategories(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetServiceCategories implements ServicesEvent {
+  const factory _GetServiceCategories() = _$GetServiceCategoriesImpl;
+}
+
+/// @nodoc
 mixin _$ServicesState {
+  List<ServiceCategory> get serviceCategories =>
+      throw _privateConstructorUsedError;
   List<ServiceEntity> get services => throw _privateConstructorUsedError;
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
@@ -190,7 +310,10 @@ abstract class $ServicesStateCopyWith<$Res> {
       _$ServicesStateCopyWithImpl<$Res, ServicesState>;
   @useResult
   $Res call(
-      {List<ServiceEntity> services, Set<Marker> markers, ActionStatus status});
+      {List<ServiceCategory> serviceCategories,
+      List<ServiceEntity> services,
+      Set<Marker> markers,
+      ActionStatus status});
 }
 
 /// @nodoc
@@ -208,11 +331,16 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? serviceCategories = null,
     Object? services = null,
     Object? markers = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
+      serviceCategories: null == serviceCategories
+          ? _value.serviceCategories
+          : serviceCategories // ignore: cast_nullable_to_non_nullable
+              as List<ServiceCategory>,
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
@@ -238,7 +366,10 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<ServiceEntity> services, Set<Marker> markers, ActionStatus status});
+      {List<ServiceCategory> serviceCategories,
+      List<ServiceEntity> services,
+      Set<Marker> markers,
+      ActionStatus status});
 }
 
 /// @nodoc
@@ -254,11 +385,16 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? serviceCategories = null,
     Object? services = null,
     Object? markers = null,
     Object? status = null,
   }) {
     return _then(_$ServicesStateImpl(
+      serviceCategories: null == serviceCategories
+          ? _value._serviceCategories
+          : serviceCategories // ignore: cast_nullable_to_non_nullable
+              as List<ServiceCategory>,
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -279,11 +415,23 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
 
 class _$ServicesStateImpl implements _ServicesState {
   const _$ServicesStateImpl(
-      {final List<ServiceEntity> services = const [],
+      {final List<ServiceCategory> serviceCategories = const [],
+      final List<ServiceEntity> services = const [],
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure})
-      : _services = services,
+      : _serviceCategories = serviceCategories,
+        _services = services,
         _markers = markers;
+
+  final List<ServiceCategory> _serviceCategories;
+  @override
+  @JsonKey()
+  List<ServiceCategory> get serviceCategories {
+    if (_serviceCategories is EqualUnmodifiableListView)
+      return _serviceCategories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_serviceCategories);
+  }
 
   final List<ServiceEntity> _services;
   @override
@@ -309,7 +457,7 @@ class _$ServicesStateImpl implements _ServicesState {
 
   @override
   String toString() {
-    return 'ServicesState(services: $services, markers: $markers, status: $status)';
+    return 'ServicesState(serviceCategories: $serviceCategories, services: $services, markers: $markers, status: $status)';
   }
 
   @override
@@ -317,6 +465,8 @@ class _$ServicesStateImpl implements _ServicesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ServicesStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._serviceCategories, _serviceCategories) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status));
@@ -325,6 +475,7 @@ class _$ServicesStateImpl implements _ServicesState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_serviceCategories),
       const DeepCollectionEquality().hash(_services),
       const DeepCollectionEquality().hash(_markers),
       status);
@@ -340,10 +491,13 @@ class _$ServicesStateImpl implements _ServicesState {
 
 abstract class _ServicesState implements ServicesState {
   const factory _ServicesState(
-      {final List<ServiceEntity> services,
+      {final List<ServiceCategory> serviceCategories,
+      final List<ServiceEntity> services,
       final Set<Marker> markers,
       final ActionStatus status}) = _$ServicesStateImpl;
 
+  @override
+  List<ServiceCategory> get serviceCategories;
   @override
   List<ServiceEntity> get services;
   @override

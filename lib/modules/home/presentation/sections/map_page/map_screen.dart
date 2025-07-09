@@ -224,7 +224,8 @@ class _MapScreenState extends State<MapScreen> {
                       left: 24,
                       right: 24,
                       bottom: 24 + MediaQuery.of(context).padding.bottom,
-                      child: const TypeSelector())
+                      child: TypeSelector(categories: state.serviceCategories)
+                  )
                 ],
               );
             },

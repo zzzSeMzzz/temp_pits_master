@@ -1,9 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
+import 'package:pits_app/modules/home/domain/entity/service_category.dart';
+import 'package:collection/collection.dart';
 
 class TypeSelector extends StatefulWidget {
-  const TypeSelector({Key? key}) : super(key: key);
+
+  final List<ServiceCategory> categories;
+
+  const TypeSelector({Key? key, required this.categories}) : super(key: key);
 
   @override
   State<TypeSelector> createState() => _TypeSelectorState();
@@ -43,12 +47,13 @@ class _TypeSelectorState extends State<TypeSelector> {
   Widget build(BuildContext context) => Container(
         child: SingleChildScrollView(scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
+            children: /*[
               box(0, 'Tire fitting'),
               box(1, 'Car service'),
               box(2, 'Detailing'),
               box(3, 'Car wash'),
-            ],
+            ],*/
+            widget.categories.mapIndexed((index, cat) => box(index, cat.name)).toList()
           ),
         ),
       );
