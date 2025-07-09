@@ -10,7 +10,7 @@ class GetServicesUseCase extends UseCase<List<ServiceEntity>, String>{
 
   @override
   Future<Either<Failure, List<ServiceEntity>>> call(String params)async {
-    return await repo.getServices();
+    return await repo.getServices(params);
   }
 
   Future<Either<Failure, List<ServiceCategory>>> getServiceCategories() async {

@@ -30,8 +30,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     // Автоматический запуск загрузки сервисов при создании блока
     //add(const ServicesEvent.getServices());
     Future.microtask(() {
-      debugPrint('Microtask: add getServices');
-      //add(const ServicesEvent.getServices());
+      debugPrint('Microtask: add getServices categories');
       add(const ServicesEvent.getServiceCategories());
     });
   }
@@ -46,22 +45,24 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   FutureOr<void> _onGetServiceCategories(ServicesEvent event, Emitter<ServicesState> emit) async {
     debugPrint("Run get services categories");
     emit(state.copyWith(status: ActionStatus.inProcess));
-
     final result = await getServicesUseCase.getServiceCategories();
     if (result.isRight) {
       debugPrint("Success get services cat's ${result.right.length}");
+      int currentServiceCat = result.right.length>1 ? result.right.first.id : 0;
       emit(
         state.copyWith(
           status: ActionStatus.isSuccess,
-            serviceCategories: result.right
+          serviceCategories: result.right,
+          currentCatId: currentServiceCat
       ));
+      add(ServicesEvent.getServices(catId: currentServiceCat));
     } else {
       debugPrint("Failure get services cat's");
       emit(state.copyWith(status: ActionStatus.isFailure));
     }
   }
 
-  FutureOr<void> _onGetServices(
+  /*FutureOr<void> _onGetServices(
       ServicesEvent event, Emitter<ServicesState> emit) async {
     debugPrint("Run get services");
     emit(state.copyWith(status: ActionStatus.inProcess));
@@ -69,6 +70,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     final result = await getServicesUseCase('');
     if (result.isRight) {
       debugPrint("Success get services  [33m");
+      int currentCatId = 1;
       final services = result.right;
       const batchSize = 200;
       Set<Marker> allMarkers = {};
@@ -88,13 +90,14 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       debugPrint("Failure get services");
       emit(state.copyWith(status: ActionStatus.isFailure));
     }
-  }
+  }*/
 
-  /*FutureOr<void> _onGetServices(ServicesEvent event, Emitter<ServicesState> emit) async {
-    debugPrint("Run get services");
+  FutureOr<void> _onGetServices(ServicesEvent event, Emitter<ServicesState> emit) async {
+    debugPrint("Run get services from cat id ${state.currentCatId.toString()}");
+    //print(event.catId.toString());
     emit(state.copyWith(status: ActionStatus.inProcess));
 
-    final result = await getServicesUseCase('');
+    final result = await getServicesUseCase(state.currentCatId.toString());
     if (result.isRight) {
       debugPrint("Success get services ${result.right.length}");
       emit(
@@ -106,5 +109,5 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       debugPrint("Failure get services");
       emit(state.copyWith(status: ActionStatus.isFailure));
     }
-  }*/
+  }
 }

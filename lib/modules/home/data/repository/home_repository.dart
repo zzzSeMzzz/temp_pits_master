@@ -10,8 +10,8 @@ import 'package:pits_app/utils/either.dart';
 class HomeRepository {
   final client = serviceLocator<DioSettings>().dio;
 
-  Future<Either<Failure, List<ServiceModel>>> getServices() async {
-    final result = await client.get('wp-json/mo/v1/workshop');
+  Future<Either<Failure, List<ServiceModel>>> getServices(String catId) async {
+    final result = await client.get('wp-json/pits/v1/talleres-por-categoria/$catId');
     debugPrint('${result.realUri}isCalling');
     debugPrint(result.statusCode.toString());
     debugPrint(result.data);

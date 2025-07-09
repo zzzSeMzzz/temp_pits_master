@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ServicesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getServices,
+    required TResult Function(int catId) getServices,
     required TResult Function() getServiceCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getServices,
+    TResult? Function(int catId)? getServices,
     TResult? Function()? getServiceCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getServices,
+    TResult Function(int catId)? getServices,
     TResult Function()? getServiceCategories,
     required TResult orElse(),
   }) =>
@@ -82,6 +82,8 @@ abstract class _$$GetServicesImplCopyWith<$Res> {
   factory _$$GetServicesImplCopyWith(
           _$GetServicesImpl value, $Res Function(_$GetServicesImpl) then) =
       __$$GetServicesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int catId});
 }
 
 /// @nodoc
@@ -94,54 +96,80 @@ class __$$GetServicesImplCopyWithImpl<$Res>
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? catId = null,
+  }) {
+    return _then(_$GetServicesImpl(
+      catId: null == catId
+          ? _value.catId
+          : catId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetServicesImpl implements _GetServices {
-  const _$GetServicesImpl();
+  const _$GetServicesImpl({this.catId = 0});
+
+  @override
+  @JsonKey()
+  final int catId;
 
   @override
   String toString() {
-    return 'ServicesEvent.getServices()';
+    return 'ServicesEvent.getServices(catId: $catId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetServicesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetServicesImpl &&
+            (identical(other.catId, catId) || other.catId == catId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, catId);
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetServicesImplCopyWith<_$GetServicesImpl> get copyWith =>
+      __$$GetServicesImplCopyWithImpl<_$GetServicesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getServices,
+    required TResult Function(int catId) getServices,
     required TResult Function() getServiceCategories,
   }) {
-    return getServices();
+    return getServices(catId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getServices,
+    TResult? Function(int catId)? getServices,
     TResult? Function()? getServiceCategories,
   }) {
-    return getServices?.call();
+    return getServices?.call(catId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getServices,
+    TResult Function(int catId)? getServices,
     TResult Function()? getServiceCategories,
     required TResult orElse(),
   }) {
     if (getServices != null) {
-      return getServices();
+      return getServices(catId);
     }
     return orElse();
   }
@@ -179,7 +207,15 @@ class _$GetServicesImpl implements _GetServices {
 }
 
 abstract class _GetServices implements ServicesEvent {
-  const factory _GetServices() = _$GetServicesImpl;
+  const factory _GetServices({final int catId}) = _$GetServicesImpl;
+
+  int get catId;
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetServicesImplCopyWith<_$GetServicesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -224,7 +260,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getServices,
+    required TResult Function(int catId) getServices,
     required TResult Function() getServiceCategories,
   }) {
     return getServiceCategories();
@@ -233,7 +269,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getServices,
+    TResult? Function(int catId)? getServices,
     TResult? Function()? getServiceCategories,
   }) {
     return getServiceCategories?.call();
@@ -242,7 +278,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getServices,
+    TResult Function(int catId)? getServices,
     TResult Function()? getServiceCategories,
     required TResult orElse(),
   }) {
@@ -292,6 +328,7 @@ abstract class _GetServiceCategories implements ServicesEvent {
 mixin _$ServicesState {
   List<ServiceCategory> get serviceCategories =>
       throw _privateConstructorUsedError;
+  int get currentCatId => throw _privateConstructorUsedError;
   List<ServiceEntity> get services => throw _privateConstructorUsedError;
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
@@ -311,6 +348,7 @@ abstract class $ServicesStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<ServiceCategory> serviceCategories,
+      int currentCatId,
       List<ServiceEntity> services,
       Set<Marker> markers,
       ActionStatus status});
@@ -332,6 +370,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
   @override
   $Res call({
     Object? serviceCategories = null,
+    Object? currentCatId = null,
     Object? services = null,
     Object? markers = null,
     Object? status = null,
@@ -341,6 +380,10 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
           ? _value.serviceCategories
           : serviceCategories // ignore: cast_nullable_to_non_nullable
               as List<ServiceCategory>,
+      currentCatId: null == currentCatId
+          ? _value.currentCatId
+          : currentCatId // ignore: cast_nullable_to_non_nullable
+              as int,
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
@@ -367,6 +410,7 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<ServiceCategory> serviceCategories,
+      int currentCatId,
       List<ServiceEntity> services,
       Set<Marker> markers,
       ActionStatus status});
@@ -386,6 +430,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? serviceCategories = null,
+    Object? currentCatId = null,
     Object? services = null,
     Object? markers = null,
     Object? status = null,
@@ -395,6 +440,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
           ? _value._serviceCategories
           : serviceCategories // ignore: cast_nullable_to_non_nullable
               as List<ServiceCategory>,
+      currentCatId: null == currentCatId
+          ? _value.currentCatId
+          : currentCatId // ignore: cast_nullable_to_non_nullable
+              as int,
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -416,6 +465,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
 class _$ServicesStateImpl implements _ServicesState {
   const _$ServicesStateImpl(
       {final List<ServiceCategory> serviceCategories = const [],
+      this.currentCatId = 133,
       final List<ServiceEntity> services = const [],
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure})
@@ -433,6 +483,9 @@ class _$ServicesStateImpl implements _ServicesState {
     return EqualUnmodifiableListView(_serviceCategories);
   }
 
+  @override
+  @JsonKey()
+  final int currentCatId;
   final List<ServiceEntity> _services;
   @override
   @JsonKey()
@@ -457,7 +510,7 @@ class _$ServicesStateImpl implements _ServicesState {
 
   @override
   String toString() {
-    return 'ServicesState(serviceCategories: $serviceCategories, services: $services, markers: $markers, status: $status)';
+    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, services: $services, markers: $markers, status: $status)';
   }
 
   @override
@@ -467,6 +520,8 @@ class _$ServicesStateImpl implements _ServicesState {
             other is _$ServicesStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._serviceCategories, _serviceCategories) &&
+            (identical(other.currentCatId, currentCatId) ||
+                other.currentCatId == currentCatId) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status));
@@ -476,6 +531,7 @@ class _$ServicesStateImpl implements _ServicesState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_serviceCategories),
+      currentCatId,
       const DeepCollectionEquality().hash(_services),
       const DeepCollectionEquality().hash(_markers),
       status);
@@ -492,12 +548,15 @@ class _$ServicesStateImpl implements _ServicesState {
 abstract class _ServicesState implements ServicesState {
   const factory _ServicesState(
       {final List<ServiceCategory> serviceCategories,
+      final int currentCatId,
       final List<ServiceEntity> services,
       final Set<Marker> markers,
       final ActionStatus status}) = _$ServicesStateImpl;
 
   @override
   List<ServiceCategory> get serviceCategories;
+  @override
+  int get currentCatId;
   @override
   List<ServiceEntity> get services;
   @override

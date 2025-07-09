@@ -4,26 +4,28 @@ class ServiceEntity {
   static const String mainClusterManagerId = 'main_cm';
 
   final String name;
-  final String id;
-  final double rating;
+  final int id;
+  final int rating;
   final double latitude;
-  final String address;
   final double longitude;
+  final bool featured;
+  final List<int> region;
 
   ServiceEntity({
     this.longitude = 0,
     this.latitude = 0,
-    this.id = '',
+    this.id = -1,
     this.name = '',
-    this.address = '',
+    this.region = const [],
     this.rating = 0,
+    this.featured = false,
   });
 
   Marker toMarker(BitmapDescriptor? icon) {
     Marker marker = Marker(
-      markerId: MarkerId(id),
+      markerId: MarkerId(id.toString()),
       position: location,
-      infoWindow: InfoWindow(title: name, snippet: address),
+      infoWindow: InfoWindow(title: name),
       icon: icon ?? BitmapDescriptor.defaultMarker,
       clusterManagerId: const ClusterManagerId(mainClusterManagerId),
     );
