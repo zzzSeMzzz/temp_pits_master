@@ -173,6 +173,7 @@ abstract class _GetServices implements ServicesEvent {
 /// @nodoc
 mixin _$ServicesState {
   List<ServiceEntity> get services => throw _privateConstructorUsedError;
+  Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
 
   /// Create a copy of ServicesState
@@ -188,7 +189,8 @@ abstract class $ServicesStateCopyWith<$Res> {
           ServicesState value, $Res Function(ServicesState) then) =
       _$ServicesStateCopyWithImpl<$Res, ServicesState>;
   @useResult
-  $Res call({List<ServiceEntity> services, ActionStatus status});
+  $Res call(
+      {List<ServiceEntity> services, Set<Marker> markers, ActionStatus status});
 }
 
 /// @nodoc
@@ -207,6 +209,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
   @override
   $Res call({
     Object? services = null,
+    Object? markers = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -214,6 +217,10 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
               as List<ServiceEntity>,
+      markers: null == markers
+          ? _value.markers
+          : markers // ignore: cast_nullable_to_non_nullable
+              as Set<Marker>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -230,7 +237,8 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
       __$$ServicesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ServiceEntity> services, ActionStatus status});
+  $Res call(
+      {List<ServiceEntity> services, Set<Marker> markers, ActionStatus status});
 }
 
 /// @nodoc
@@ -247,6 +255,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? services = null,
+    Object? markers = null,
     Object? status = null,
   }) {
     return _then(_$ServicesStateImpl(
@@ -254,6 +263,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
               as List<ServiceEntity>,
+      markers: null == markers
+          ? _value._markers
+          : markers // ignore: cast_nullable_to_non_nullable
+              as Set<Marker>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -267,8 +280,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
 class _$ServicesStateImpl implements _ServicesState {
   const _$ServicesStateImpl(
       {final List<ServiceEntity> services = const [],
+      final Set<Marker> markers = const {},
       this.status = ActionStatus.pure})
-      : _services = services;
+      : _services = services,
+        _markers = markers;
 
   final List<ServiceEntity> _services;
   @override
@@ -279,13 +294,22 @@ class _$ServicesStateImpl implements _ServicesState {
     return EqualUnmodifiableListView(_services);
   }
 
+  final Set<Marker> _markers;
+  @override
+  @JsonKey()
+  Set<Marker> get markers {
+    if (_markers is EqualUnmodifiableSetView) return _markers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_markers);
+  }
+
   @override
   @JsonKey()
   final ActionStatus status;
 
   @override
   String toString() {
-    return 'ServicesState(services: $services, status: $status)';
+    return 'ServicesState(services: $services, markers: $markers, status: $status)';
   }
 
   @override
@@ -294,12 +318,16 @@ class _$ServicesStateImpl implements _ServicesState {
         (other.runtimeType == runtimeType &&
             other is _$ServicesStateImpl &&
             const DeepCollectionEquality().equals(other._services, _services) &&
+            const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_services), status);
+      runtimeType,
+      const DeepCollectionEquality().hash(_services),
+      const DeepCollectionEquality().hash(_markers),
+      status);
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -313,10 +341,13 @@ class _$ServicesStateImpl implements _ServicesState {
 abstract class _ServicesState implements ServicesState {
   const factory _ServicesState(
       {final List<ServiceEntity> services,
+      final Set<Marker> markers,
       final ActionStatus status}) = _$ServicesStateImpl;
 
   @override
   List<ServiceEntity> get services;
+  @override
+  Set<Marker> get markers;
   @override
   ActionStatus get status;
 

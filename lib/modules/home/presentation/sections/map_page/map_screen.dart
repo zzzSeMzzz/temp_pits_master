@@ -41,10 +41,10 @@ class _MapScreenState extends State<MapScreen> {
   final Completer<GoogleMapController> _controller =
     Completer<GoogleMapController>();
 
-  static const int _clusterManagerMaxCount = 1;
+  //static const int _clusterManagerMaxCount = 1;
   // Кластер, который был использован последним.
   Cluster? lastCluster;
-  BitmapDescriptor? _markerIcon;
+  //BitmapDescriptor? _markerIcon;
 
   @override
   void initState() {
@@ -94,7 +94,7 @@ class _MapScreenState extends State<MapScreen> {
                 );
         },
         stopClusteringZoom: 15.0);*/
-    _loadIcon();
+    //_loadIcon();
     super.initState();
   }
 
@@ -121,10 +121,10 @@ class _MapScreenState extends State<MapScreen> {
     _controller.complete(controllerParam);
   }
 
-  void _loadIcon() async {
+  /*void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.wrenchLocation);
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
@@ -171,8 +171,9 @@ class _MapScreenState extends State<MapScreen> {
                         compassEnabled: false,
                         myLocationButtonEnabled: false,
                         myLocationEnabled: false,
-                        markers: Set<Marker>.of(state.services
-                            .map((service) => service.toMarker(_markerIcon))),
+                        // markers: Set<Marker>.of(state.services
+                        //     .map((service) => service.toMarker(_markerIcon))),
+                        markers: state.markers,
                         clusterManagers: {_clusterManager},
                         zoomGesturesEnabled: true,
                         zoomControlsEnabled: kDebugMode,
