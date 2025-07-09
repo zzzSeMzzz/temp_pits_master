@@ -12,9 +12,9 @@ class HomeRepository {
 
   Future<Either<Failure, List<ServiceModel>>> getServices(String catId) async {
     final result = await client.get('wp-json/pits/v1/talleres-por-categoria/$catId');
-    debugPrint('${result.realUri}isCalling');
+    debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
-    debugPrint(result.data);
+    //debugPrint(result.data);
 
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {

@@ -51,7 +51,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       int currentServiceCat = result.right.length>1 ? result.right.first.id : 0;
       emit(
         state.copyWith(
-          status: ActionStatus.isSuccess,
+          //status: ActionStatus.isSuccess,
           serviceCategories: result.right,
           currentCatId: currentServiceCat
       ));

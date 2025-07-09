@@ -38,7 +38,7 @@ class ServiceModel extends ServiceEntity {
           latitude: double.parse(lat),
           longitude: double.parse(long),
           name: title,
-          rating: int.parse(averageRating),
+          rating: averageRating.isEmpty ? 0 : int.parse(averageRating),
           region: regions
         );
 
