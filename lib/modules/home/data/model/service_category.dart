@@ -18,4 +18,6 @@ class ServiceCategoryModel extends ServiceCategory {
     name: nameD,
   );
 
+  factory ServiceCategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$ServiceCategoryModelFromJson(json);
 }

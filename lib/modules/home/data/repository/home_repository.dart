@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:pits_app/core/data/error/failures.dart';
 import 'package:pits_app/core/data/singletons/dio.dart';
 import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/home/data/model/service.dart';
+import 'package:pits_app/modules/home/data/model/service_category.dart';
 import 'package:pits_app/modules/home/data/model/service_single.dart';
 import 'package:pits_app/utils/either.dart';
 
@@ -10,9 +12,9 @@ class HomeRepository {
 
   Future<Either<Failure, List<ServiceModel>>> getServices() async {
     final result = await client.get('wp-json/mo/v1/workshop');
-    print(result.realUri.toString()+'isCalling');
-    print(result.statusCode);
-    print(result.data);
+    debugPrint('${result.realUri}isCalling');
+    debugPrint(result.statusCode.toString());
+    debugPrint(result.data);
 
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
@@ -26,11 +28,29 @@ class HomeRepository {
     }
   }
 
+
+  Future<Either<Failure, List<ServiceCategoryModel>>> getServiceCategories() async {
+    final result = await client.get('es/wp-json/wp/v2/job_listing_category?per_page=100');
+    debugPrint('${result.realUri} isCalling');
+    debugPrint(result.statusCode.toString());
+
+
+    if (result.statusCode! >= 200 && result.statusCode! < 300) {
+      final data = (result.data as List<dynamic>)
+          .map((e) => ServiceCategoryModel.fromJson(e))
+          .toList();
+
+      return Right(data);
+    } else {
+      return Left(ServerFailure());
+    }
+  }
+
   Future<Either<Failure, ServiceSingleModel>> getServiceSingle(String id) async {
     final result = await client.get('wp-json/wp/v2/job_listing/149652');
-    print(result.realUri.toString()+'single141');
-    print(result.statusCode);
-    print(result.data);
+    debugPrint('${result.realUri}single141');
+    debugPrint(result.statusCode.toString());
+    debugPrint(result.data);
 
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
