@@ -40,8 +40,36 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
         const ImageConfiguration(), AppImages.wrenchLocation);
   }
 
+  FutureOr<void> _onGetServices(
+      ServicesEvent event, Emitter<ServicesState> emit) async {
+    debugPrint("Run get services");
+    emit(state.copyWith(status: ActionStatus.inProcess));
 
-  FutureOr<void> _onGetServices(ServicesEvent event, Emitter<ServicesState> emit) async {
+    final result = await getServicesUseCase('');
+    if (result.isRight) {
+      debugPrint("Success get services  [33m");
+      final services = result.right;
+      const batchSize = 200;
+      Set<Marker> allMarkers = {};
+      for (int i = 0; i < services.length; i += batchSize) {
+        final batch = services.skip(i).take(batchSize);
+        allMarkers
+            .addAll(batch.map((service) => service.toMarker(_markerIcon)));
+        emit(
+          state.copyWith(
+            status: ActionStatus.isSuccess,
+            markers: Set<Marker>.from(allMarkers),
+          ),
+        );
+        await Future.delayed(const Duration(milliseconds: 50));
+      }
+    } else {
+      debugPrint("Failure get services");
+      emit(state.copyWith(status: ActionStatus.isFailure));
+    }
+  }
+
+  /*FutureOr<void> _onGetServices(ServicesEvent event, Emitter<ServicesState> emit) async {
     debugPrint("Run get services");
     emit(state.copyWith(status: ActionStatus.inProcess));
 
@@ -57,5 +85,5 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       debugPrint("Failure get services");
       emit(state.copyWith(status: ActionStatus.isFailure));
     }
-  }
+  }*/
 }
