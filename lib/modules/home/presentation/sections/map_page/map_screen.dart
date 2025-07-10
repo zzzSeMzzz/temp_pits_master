@@ -37,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
   //late GoogleMapController controller;
 
   final Completer<GoogleMapController> _controller =
-    Completer<GoogleMapController>();
+      Completer<GoogleMapController>();
 
   //static const int _clusterManagerMaxCount = 1;
   // Кластер, который был использован последним.
@@ -225,11 +225,12 @@ class _MapScreenState extends State<MapScreen> {
                       bottom: 24 + MediaQuery.of(context).padding.bottom,
                       child: TypeSelector(
                         categories: state.serviceCategories,
+                        selectedCategoryId: state.currentCatId,
                         onCategoryClick: (category) => {
-                          bloc.add(ServicesEvent.getServices(catId: category.id))
+                          bloc.add(
+                              ServicesEvent.getServices(catId: category.id))
                         },
-                      )
-                  )
+                      ))
                 ],
               );
             },

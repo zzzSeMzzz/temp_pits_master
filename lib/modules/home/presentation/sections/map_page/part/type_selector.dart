@@ -5,59 +5,58 @@ import 'package:collection/collection.dart';
 
 typedef OnCategoryClick = void Function(ServiceCategory catagory);
 
-class TypeSelector extends StatefulWidget {
-
+class TypeSelector extends StatelessWidget {
   final List<ServiceCategory> categories;
+  final int? selectedCategoryId;
   final OnCategoryClick onCategoryClick;
 
-  const TypeSelector({Key? key, required this.categories, required this.onCategoryClick}) : super(key: key);
+  const TypeSelector({
+    Key? key,
+    required this.categories,
+    required this.onCategoryClick,
+    required this.selectedCategoryId,
+  }) : super(key: key);
 
-  @override
-  State<TypeSelector> createState() => _TypeSelectorState();
-}
-
-class _TypeSelectorState extends State<TypeSelector> {
-  int page = 0;
-
-  Widget box(int index, String title) {
+  Widget box(BuildContext context, int index, String title, bool isSelected,
+      VoidCallback onTap) {
     return GestureDetector(
-        onTap: () {
-          setState(() {
-            page = index;
-            widget.onCategoryClick(widget.categories[index]);
-          });
-        },
-        child: AnimatedContainer(
-          margin: const EdgeInsets.only(right: 10),
-          height: 36,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: page == index ? black : white),
-          duration: const Duration(milliseconds: 200),
-          width: 126,
-          child: Center(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color: page == index ? white : black),
-            ),
+      onTap: onTap,
+      child: AnimatedContainer(
+        margin: const EdgeInsets.only(right: 10),
+        height: 36,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            color: isSelected ? black : white),
+        duration: const Duration(milliseconds: 200),
+        width: 126,
+        child: Center(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                color: isSelected ? white : black),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) => Container(
-        child: SingleChildScrollView(scrollDirection: Axis.horizontal,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Row(
-            children: /*[
-              box(0, 'Tire fitting'),
-              box(1, 'Car service'),
-              box(2, 'Detailing'),
-              box(3, 'Car wash'),
-            ],*/
-            widget.categories.mapIndexed((index, cat) => box(index, cat.name)).toList()
+            children: categories.mapIndexed((index, cat) {
+              final isSelected = cat.id == selectedCategoryId;
+              return box(
+                context,
+                index,
+                cat.name,
+                isSelected,
+                () => onCategoryClick(cat),
+              );
+            }).toList(),
           ),
         ),
       );
