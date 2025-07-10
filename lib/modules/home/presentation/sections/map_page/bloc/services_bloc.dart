@@ -100,7 +100,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
         final result = await getServicesUseCase(catId.toString());
         if (result.isRight) {
-          debugPrint("Success get services ${result.right.length}");
+          debugPrint("Success get services length = ${result.right.length}");
           emit(
             state.copyWith(
               status: ActionStatus.isSuccess,
