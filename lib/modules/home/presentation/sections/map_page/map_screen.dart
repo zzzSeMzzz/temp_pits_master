@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +18,6 @@ import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_s
 import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 import '../../../../../assets/constants/app_icons.dart';
-import '../../../../../assets/constants/app_images.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -228,8 +226,8 @@ class _MapScreenState extends State<MapScreen> {
                       child: TypeSelector(
                         categories: state.serviceCategories,
                         onCategoryClick: (category) => {
-                          bloc.add(ServicesEvent.getServices(catId: category.id));
-                        }
+                          bloc.add(ServicesEvent.getServices(catId: category.id))
+                        },
                       )
                   )
                 ],
