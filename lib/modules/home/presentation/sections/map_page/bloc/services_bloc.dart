@@ -93,21 +93,27 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   }*/
 
   FutureOr<void> _onGetServices(ServicesEvent event, Emitter<ServicesState> emit) async {
-    debugPrint("Run get services from cat id ${state.currentCatId.toString()}");
-    //print(event.catId.toString());
-    emit(state.copyWith(status: ActionStatus.inProcess));
+    event.when(
+      getServices: (catId) async {
+        debugPrint("Run get services from cat id $catId");
+        emit(state.copyWith(status: ActionStatus.inProcess));
 
-    final result = await getServicesUseCase(state.currentCatId.toString());
-    if (result.isRight) {
-      debugPrint("Success get services ${result.right.length}");
-      emit(
-        state.copyWith(
-          status: ActionStatus.isSuccess,
-          markers: Set<Marker>.of(result.right.map((service) => service.toMarker(_markerIcon)))
-      ));
-    } else {
-      debugPrint("Failure get services");
-      emit(state.copyWith(status: ActionStatus.isFailure));
+        final result = await getServicesUseCase(catId.toString());
+        if (result.isRight) {
+          debugPrint("Success get services ${result.right.length}");
+          emit(
+            state.copyWith(
+              status: ActionStatus.isSuccess,
+              markers: Set<Marker>.of(result.right.map((service) => service.toMarker(_markerIcon)))
+          ));
+        } else {
+          debugPrint("Failure get services");
+          emit(state.copyWith(status: ActionStatus.isFailure));
+        }
+      },
+      getServiceCategories: () {
+        // Обычно сюда не попадём, но можно обработать если нужно
+      },
+      );
     }
-  }
 }
