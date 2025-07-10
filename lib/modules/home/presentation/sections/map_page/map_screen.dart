@@ -158,6 +158,7 @@ class _MapScreenState extends State<MapScreen> {
               if (state.status == ActionStatus.inProcess) {
                 return const Center(child: CircularProgressIndicator());
               }
+              ServicesBloc bloc = BlocProvider.of<ServicesBloc>(context);
               return Stack(
                 children: [
                   Positioned.fill(
@@ -224,7 +225,12 @@ class _MapScreenState extends State<MapScreen> {
                       left: 24,
                       right: 24,
                       bottom: 24 + MediaQuery.of(context).padding.bottom,
-                      child: TypeSelector(categories: state.serviceCategories)
+                      child: TypeSelector(
+                        categories: state.serviceCategories,
+                        onCategoryClick: (category) => {
+                          bloc.add(ServicesEvent.getServices(catId: category.id));
+                        }
+                      )
                   )
                 ],
               );

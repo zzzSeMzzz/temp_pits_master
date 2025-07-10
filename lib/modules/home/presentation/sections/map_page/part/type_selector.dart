@@ -3,11 +3,14 @@ import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/modules/home/domain/entity/service_category.dart';
 import 'package:collection/collection.dart';
 
+typedef OnCategoryClick = void Function(ServiceCategory catagory);
+
 class TypeSelector extends StatefulWidget {
 
   final List<ServiceCategory> categories;
+  final OnCategoryClick onCategoryClick;
 
-  const TypeSelector({Key? key, required this.categories}) : super(key: key);
+  const TypeSelector({Key? key, required this.categories, required this.onCategoryClick}) : super(key: key);
 
   @override
   State<TypeSelector> createState() => _TypeSelectorState();
@@ -21,6 +24,7 @@ class _TypeSelectorState extends State<TypeSelector> {
         onTap: () {
           setState(() {
             page = index;
+            widget.onCategoryClick(widget.categories[index]);
           });
         },
         child: AnimatedContainer(
