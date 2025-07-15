@@ -5,7 +5,7 @@ class ServiceEntity {
 
   final String name;
   final int id;
-  final int rating;
+  final double rating;
   final double latitude;
   final double longitude;
   final bool featured;

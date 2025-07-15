@@ -34,11 +34,11 @@ class ServiceModel extends ServiceEntity {
   })
       : super(
           id: idd,
-          featured: featuredd == "0" ? false : true,
-          latitude: double.parse(lat),
-          longitude: double.parse(long),
+          featured: featuredd.isEmpty || featuredd == "0" ? false : true,
+          latitude: lat.isEmpty ? 0.0 : double.parse(lat),
+          longitude: long.isEmpty ? 0.0 : double.parse(long),
           name: title,
-          rating: averageRating.isEmpty ? 0 : int.parse(averageRating),
+          rating: averageRating.isEmpty ? 0 : double.parse(averageRating),
           region: regions
         );
 

@@ -28,7 +28,7 @@ class TypeSelector extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
             color: isSelected ? black : white),
         duration: const Duration(milliseconds: 200),
-        width: 126,
+        width: 146,
         child: Center(
           child: Text(
             title,
