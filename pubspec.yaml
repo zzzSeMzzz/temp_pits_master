@@ -50,6 +50,7 @@ dependencies:
   geolocator: ^9.0.2
   equatable: ^2.0.3
   google_maps_flutter: ^2.12.3
+  google_maps_webservice: ^0.0.20-nullsafety.5
   #google_maps_cluster_manager: ^3.0.1#conflict version
   #google_maps_cluster_manager_2: ^3.2.0
   #google_maps_flutter_platform_interface: 2.12.1

@@ -104,6 +104,10 @@ class _MapScreenState extends State<MapScreen> {
   );
 
   _setMyLocation(GoogleMapController controller, ServicesBloc bloc) async {
+
+    String regionId = await getRegionId(_kMadrid.target.latitude, _kMadrid.target.longitude);
+    debugPrint("current region id = $regionId");
+
     getCurrentLocation().then((point) {
       debugPrint("current location success: ${point.toString()}");
       controller.moveCamera(CameraUpdate.newCameraPosition(

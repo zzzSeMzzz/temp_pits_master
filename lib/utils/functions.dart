@@ -1,18 +1,6 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_webservice/geocoding.dart';
 
-/*Future<Position> getCurrentLocation() async {
-  bool isPermissionGranted = await getWhetherPermissionGranted();
-  if (isPermissionGranted) {
-    try {
-      return await Geolocator.getCurrentPosition();
-    } on Exception catch (e) {
-      throw Exception('Unable to get location: ${e.toString()}');
-    }
-  } else {
-    throw Exception(
-        'Unable to get location: the location permission is not granted');
-  }
-}*/
 
 
 Future<Position> getCurrentLocation() async {
@@ -69,6 +57,28 @@ Future<bool> getWhetherPermissionGranted() async {
   }
 }
 
+
+Future<String> getRegionId(double latitude, double longitude) async {
+  final googleMapsGeocoding = GoogleMapsGeocoding(apiKey: "AIzaSyAYd7e5aw6NsShXv5vmNLzjSm-XL6f7gNg");
+  final response = await googleMapsGeocoding.searchByLocation(
+    Location(lat: latitude, lng: longitude),
+    language: 'en',
+  );
+
+  if (response.status == "OK" && response.results.isNotEmpty) {
+    // Find the administrative_area_level_1 (e.g., state, province) component
+    for (var result in response.results) {
+      for (var component in result.addressComponents) {
+        if (component.types.contains('administrative_area_level_1')) {
+          return component.shortName; // Or use long_name for full name
+        }
+      }
+    }
+    return "Region ID not found"; // Or handle the case where it's not found
+  } else {
+    return "Error fetching region ID: ${response.errorMessage}"; // Or handle the error
+  }
+}
 
 /*Future<BitmapDescriptor> getMarkerIconFromSvg() async {
   final String svgString =
