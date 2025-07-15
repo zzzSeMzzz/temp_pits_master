@@ -5,6 +5,7 @@ class ServicesState with _$ServicesState {
   const factory ServicesState({
     @Default([]) List<ServiceCategory> serviceCategories,
     @Default(133) int currentCatId,
+    LatLng? currentLocation,
     @Default([]) List<ServiceEntity> services,
     @Default({}) Set<Marker> markers,
     @Default(ActionStatus.pure) ActionStatus status,

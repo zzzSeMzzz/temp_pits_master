@@ -329,6 +329,7 @@ mixin _$ServicesState {
   List<ServiceCategory> get serviceCategories =>
       throw _privateConstructorUsedError;
   int get currentCatId => throw _privateConstructorUsedError;
+  LatLng? get currentLocation => throw _privateConstructorUsedError;
   List<ServiceEntity> get services => throw _privateConstructorUsedError;
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
@@ -349,6 +350,7 @@ abstract class $ServicesStateCopyWith<$Res> {
   $Res call(
       {List<ServiceCategory> serviceCategories,
       int currentCatId,
+      LatLng? currentLocation,
       List<ServiceEntity> services,
       Set<Marker> markers,
       ActionStatus status});
@@ -371,6 +373,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
   $Res call({
     Object? serviceCategories = null,
     Object? currentCatId = null,
+    Object? currentLocation = freezed,
     Object? services = null,
     Object? markers = null,
     Object? status = null,
@@ -384,6 +387,10 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
           ? _value.currentCatId
           : currentCatId // ignore: cast_nullable_to_non_nullable
               as int,
+      currentLocation: freezed == currentLocation
+          ? _value.currentLocation
+          : currentLocation // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
@@ -411,6 +418,7 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
   $Res call(
       {List<ServiceCategory> serviceCategories,
       int currentCatId,
+      LatLng? currentLocation,
       List<ServiceEntity> services,
       Set<Marker> markers,
       ActionStatus status});
@@ -431,6 +439,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
   $Res call({
     Object? serviceCategories = null,
     Object? currentCatId = null,
+    Object? currentLocation = freezed,
     Object? services = null,
     Object? markers = null,
     Object? status = null,
@@ -444,6 +453,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
           ? _value.currentCatId
           : currentCatId // ignore: cast_nullable_to_non_nullable
               as int,
+      currentLocation: freezed == currentLocation
+          ? _value.currentLocation
+          : currentLocation // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -466,6 +479,7 @@ class _$ServicesStateImpl implements _ServicesState {
   const _$ServicesStateImpl(
       {final List<ServiceCategory> serviceCategories = const [],
       this.currentCatId = 133,
+      this.currentLocation,
       final List<ServiceEntity> services = const [],
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure})
@@ -486,6 +500,8 @@ class _$ServicesStateImpl implements _ServicesState {
   @override
   @JsonKey()
   final int currentCatId;
+  @override
+  final LatLng? currentLocation;
   final List<ServiceEntity> _services;
   @override
   @JsonKey()
@@ -510,7 +526,7 @@ class _$ServicesStateImpl implements _ServicesState {
 
   @override
   String toString() {
-    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, services: $services, markers: $markers, status: $status)';
+    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, services: $services, markers: $markers, status: $status)';
   }
 
   @override
@@ -522,6 +538,8 @@ class _$ServicesStateImpl implements _ServicesState {
                 .equals(other._serviceCategories, _serviceCategories) &&
             (identical(other.currentCatId, currentCatId) ||
                 other.currentCatId == currentCatId) &&
+            (identical(other.currentLocation, currentLocation) ||
+                other.currentLocation == currentLocation) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status));
@@ -532,6 +550,7 @@ class _$ServicesStateImpl implements _ServicesState {
       runtimeType,
       const DeepCollectionEquality().hash(_serviceCategories),
       currentCatId,
+      currentLocation,
       const DeepCollectionEquality().hash(_services),
       const DeepCollectionEquality().hash(_markers),
       status);
@@ -549,6 +568,7 @@ abstract class _ServicesState implements ServicesState {
   const factory _ServicesState(
       {final List<ServiceCategory> serviceCategories,
       final int currentCatId,
+      final LatLng? currentLocation,
       final List<ServiceEntity> services,
       final Set<Marker> markers,
       final ActionStatus status}) = _$ServicesStateImpl;
@@ -557,6 +577,8 @@ abstract class _ServicesState implements ServicesState {
   List<ServiceCategory> get serviceCategories;
   @override
   int get currentCatId;
+  @override
+  LatLng? get currentLocation;
   @override
   List<ServiceEntity> get services;
   @override

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geolocator/geolocator.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
@@ -102,22 +103,23 @@ class _MapScreenState extends State<MapScreen> {
     onClusterTap: (Cluster cluster) => {},
   );
 
-  _setMyLocation(GoogleMapController controller) async {
-    var point = await getCurrentLocation();
+  _setMyLocation(GoogleMapController controller, ServicesBloc bloc) async {
+    getCurrentLocation().then((point) {
+      controller.moveCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(point.latitude, point.longitude), zoom: 7),
+      ));
+    }, onError: (e) {
+      debugPrint("Unable get location: ${e.toString()}");
+      bloc.add(ServicesEvent.getServices(catId: bloc.state.currentCatId));
+    }
+    );//.catchError(handleError);
 
-    controller.moveCamera(CameraUpdate.newCameraPosition(
-      CameraPosition(target: LatLng(point.latitude, point.longitude), zoom: 6),
-    ));
   }
 
   static const CameraPosition _kMadrid = CameraPosition(
     target: LatLng(40.416775, -3.703790),
     zoom: 10.4746,
   );
-
-  void _onMapCreated(GoogleMapController controllerParam) {
-    _controller.complete(controllerParam);
-  }
 
   /*void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
@@ -166,7 +168,10 @@ class _MapScreenState extends State<MapScreen> {
                       child: GoogleMap(
                         //onCameraMove: clusterManager.onCameraMove,
                         //onCameraIdle: clusterManager.updateMap,
-                        onMapCreated: _onMapCreated,
+                        onMapCreated: (controllerParam) {
+                          _controller.complete(controllerParam);
+                          _setMyLocation(controllerParam, bloc);
+                        },
                         compassEnabled: false,
                         myLocationButtonEnabled: false,
                         myLocationEnabled: false,
