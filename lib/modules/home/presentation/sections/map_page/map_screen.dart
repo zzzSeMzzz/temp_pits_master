@@ -35,7 +35,7 @@ class _MapScreenState extends State<MapScreen> {
 
   //late cluster_manager.ClusterManager clusterManager;
 
-  //late GoogleMapController controller;
+  late GoogleMapController _mapController;
 
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
@@ -105,8 +105,9 @@ class _MapScreenState extends State<MapScreen> {
 
   _setMyLocation(GoogleMapController controller, ServicesBloc bloc) async {
     getCurrentLocation().then((point) {
+      debugPrint("current location success: ${point.toString()}");
       controller.moveCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: LatLng(point.latitude, point.longitude), zoom: 7),
+        CameraPosition(target: LatLng(point.latitude, point.longitude), zoom: 12),
       ));
     }, onError: (e) {
       debugPrint("Unable get location: ${e.toString()}");
@@ -169,14 +170,14 @@ class _MapScreenState extends State<MapScreen> {
                         //onCameraMove: clusterManager.onCameraMove,
                         //onCameraIdle: clusterManager.updateMap,
                         onMapCreated: (controllerParam) {
+                          _mapController = controllerParam;
                           _controller.complete(controllerParam);
+
                           _setMyLocation(controllerParam, bloc);
                         },
                         compassEnabled: false,
                         myLocationButtonEnabled: false,
-                        myLocationEnabled: false,
-                        // markers: Set<Marker>.of(state.services
-                        //     .map((service) => service.toMarker(_markerIcon))),
+                        myLocationEnabled: true,
                         markers: state.markers,
                         clusterManagers: {_clusterManager},
                         zoomGesturesEnabled: true,
