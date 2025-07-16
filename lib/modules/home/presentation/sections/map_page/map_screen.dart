@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
@@ -19,6 +20,7 @@ import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 import '../../../../../assets/constants/app_icons.dart';
 
+// ВАЖНО: Оборачивайте MapScreen в MultiBlocProvider снаружи!
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
 
@@ -32,7 +34,7 @@ class _MapScreenState extends State<MapScreen> {
   // Кластер, который был использован последним.
   Cluster? lastCluster;
 
- /* @override
+  /* @override
   void initState() {
     super.initState();
   }*/
@@ -51,8 +53,7 @@ class _MapScreenState extends State<MapScreen> {
       debugPrint("current location success: ${point.toString()}");
       final latLng = LatLng(point.latitude, point.longitude);
       controller.moveCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(
-            target: latLng, zoom: 10),
+        CameraPosition(target: latLng, zoom: 10),
       ));
       bloc.add(ServicesEvent.setMyLocation(latLng));
     }, onError: (e) {
@@ -72,143 +73,108 @@ class _MapScreenState extends State<MapScreen> {
   }*/
 
   @override
-  Widget build(BuildContext context) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (_) => ServicesBloc(GetServicesUseCase()),
-          ),
-          BlocProvider(
-            create: (_) =>
-                ServiceSingleBloc(getSingle: GetServiceSingleUseCase()),
-          ),
-        ],
-        child: Scaffold(
-          /*appBar: AppBar(
-            elevation: 0,
-            leading: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.arrow_back_ios_new,
-                  color: black,
-                )),
-            title: const Text(
-              'Services',
-              style: TextStyle(color: black, fontSize: 24),
-            ),
-          ),*/
-          body: BlocBuilder<ServicesBloc, ServicesState>(
-            builder: (context, state) {
-              if (state.status == ActionStatus.inProcess || state.status == ActionStatus.pure) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state.status == ActionStatus.isFailure) {
-                return const Center(child: Text("Ошибка загруки данных"));
-              }
-              ServicesBloc bloc = BlocProvider.of<ServicesBloc>(context);
-              return Stack(
-                children: [
-                  Positioned.fill(
-                      child: Container(
-                        color: Colors.orange[100],
-                        child: GoogleMap(
-                          //onCameraMove: clusterManager.onCameraMove,
-                          //onCameraIdle: clusterManager.updateMap,
-                          onMapCreated: (controller) {
-                            debugPrint("onMapCreated");
-                            _mapController = controller;
-
-                            _setMyLocation(controller, bloc);
-                          },
-                          compassEnabled: false,
-                          myLocationButtonEnabled: false,
-                          myLocationEnabled: true,
-                          markers: state.markers,
-                          clusterManagers: {_clusterManager},
-                          zoomGesturesEnabled: true,
-                          zoomControlsEnabled: kDebugMode,
-                          initialCameraPosition: _kMadrid,
+  Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
+      body: BlocBuilder<ServicesBloc, ServicesState>(
+        builder: (context, state) {
+          if (state.status == ActionStatus.inProcess ||
+              state.status == ActionStatus.pure) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state.status == ActionStatus.isFailure) {
+            return const Center(child: Text("Ошибка загрузки данных"));
+          }
+          ServicesBloc bloc = BlocProvider.of<ServicesBloc>(context);
+          return Stack(
+            children: [
+              Positioned.fill(
+                child: GoogleMap(
+                  onMapCreated: (controller) {
+                    debugPrint("onMapCreated");
+                    _mapController = controller;
+                    _setMyLocation(controller, bloc);
+                  },
+                  compassEnabled: false,
+                  myLocationButtonEnabled: false,
+                  myLocationEnabled: true,
+                  markers: state.markers,
+                  clusterManagers: {_clusterManager},
+                  zoomGesturesEnabled: true,
+                  zoomControlsEnabled: kDebugMode,
+                  initialCameraPosition: _kMadrid,
+                ),
+              ),
+              // Overlay: Кнопка возврата
+              Positioned(
+                top: 4 + MediaQuery.of(context).padding.top,
+                left: 16,
+                child: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 8,
                         ),
-                      )),
-
-                  //Positioned.fill(child: WebViewPage()),
-
-                  Positioned(
-                      left: 24,
-                      right: 24,
-                      top: 16 + MediaQuery.of(context).padding.top,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.circular(4)),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 13),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Switches to list view',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge!
-                                  .copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16),
-                            ),
-                            const Spacer(),
-                            GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: SvgPicture.asset(
-                                AppIcons.list,
-                                width: 24,
-                                height: 24,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )),
-                      Positioned(
-                      left: 24,
-                      right: 24,
-                      top: 80 + MediaQuery.of(context).padding.top,
-                      child: bloc.state.currentRegion != null ? Center(
+                      ],
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: const Icon(Icons.arrow_back_ios_new, color: black),
+                  ),
+                ),
+              ),
+              // Overlay: Регион (если есть)
+              Positioned(
+                top: 80 + MediaQuery.of(context).padding.top,
+                left: 24,
+                right: 24,
+                child: state.currentRegion == null
+                    ? const SizedBox()
+                    : Center(
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(26)),
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(26),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24, vertical: 16),
                           child: Text(
-                            bloc.state.currentRegion?.name ?? "unknown region",
+                            state.currentRegion?.name ?? "",
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
                                 .copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
-                                  fontSize: 15
+                                  fontSize: 15,
                                 ),
                           ),
                         ),
-                      ) : const SizedBox()),
-                  Positioned(
-                      left: 24,
-                      right: 24,
-                      bottom: 24 + MediaQuery.of(context).padding.bottom,
-                      child: TypeSelector(
-                        categories: state.serviceCategories,
-                        selectedCategoryId: state.currentCatId,
-                        onCategoryClick: (category) => {
-                          bloc.add(
-                              ServicesEvent.getServices(catId: category.id))
-                        },
-                      ))
-                ],
-              );
-            },
-          ),
-        ),
-      );
+                      ),
+              ),
+              // Overlay: Фильтр/категории
+              Positioned(
+                left: 24,
+                right: 24,
+                bottom: 24 + MediaQuery.of(context).padding.bottom,
+                child: TypeSelector(
+                  categories: state.serviceCategories,
+                  selectedCategoryId: state.currentCatId,
+                  onCategoryClick: (category) => bloc.add(
+                    ServicesEvent.getServices(catId: category.id),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
 }
