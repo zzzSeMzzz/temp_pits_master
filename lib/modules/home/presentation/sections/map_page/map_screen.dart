@@ -49,13 +49,15 @@ class _MapScreenState extends State<MapScreen> {
 
     getCurrentLocation().then((point) {
       debugPrint("current location success: ${point.toString()}");
+      final latLng = LatLng(point.latitude, point.longitude);
       controller.moveCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-            target: LatLng(point.latitude, point.longitude), zoom: 12),
+            target: latLng, zoom: 12),
       ));
+      bloc.add(ServicesEvent.setMyLocation(latLng));
     }, onError: (e) {
       debugPrint("Unable get location: ${e.toString()}");
-      bloc.add(ServicesEvent.getServices(catId: bloc.state.currentCatId));
+      bloc.add(const ServicesEvent.setMyLocation(null));
     }); //.catchError(handleError);
   }
 

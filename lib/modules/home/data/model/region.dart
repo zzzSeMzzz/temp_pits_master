@@ -15,4 +15,9 @@ class RegionModel {
 
   factory RegionModel.fromJson(Map<String, dynamic> json) =>
       _$RegionModelFromJson(json);
+
+  @override
+  String toString() {
+    return 'RegionModel{id: $id, name: $name}';
+  }
 }

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -109,7 +108,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _GetServices) {
       final catId = event.catId;
-      debugPrint("Run get services from cat id $catId and regionId=${event.region?.id}");
+      debugPrint("ServiceBloc:: Run get services cat_id=$catId and regionId=${event.region?.id}");
       emit(state.copyWith(
         loadCarServices: true,
         currentCatId: catId,
@@ -117,7 +116,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ));
 
       String params = "?categoria=$catId";
-      if(event.region!=null) params = "$params&${event.region!.id}";
+      if(event.region!=null) params = "$params&region=${event.region!.id}";
 
       final result = await getServicesUseCase(params);
 
