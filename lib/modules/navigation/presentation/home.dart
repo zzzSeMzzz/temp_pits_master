@@ -67,22 +67,22 @@ class _NavigationScreenState extends State<NavigationScreen>
   @override
   Widget build(BuildContext context) {
     labels = [
-      NavBar(
+      const NavBar(
         title: 'Home',
         id: 0,
         icon: AppIcons.home,
       ),
-      NavBar(
+      const NavBar(
         title: 'Orders',
         id: 1,
         icon: AppIcons.navPhone,
       ),
-      NavBar(
+      const NavBar(
         title: 'Messages',
         id: 2,
         icon: AppIcons.navMessages,
       ),
-      NavBar(
+      const NavBar(
         title: 'Profile',
         id: 3,
         icon: AppIcons.user,
@@ -105,46 +105,41 @@ class _NavigationScreenState extends State<NavigationScreen>
           }
           return isFirstRouteInCurrentTab;
         },
-        child: AnnotatedRegion(
-          value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent,
-              statusBarIconBrightness: Brightness.dark,
-              statusBarBrightness: Brightness.light),
-          child: Scaffold(
-            resizeToAvoidBottomInset: true,
-            bottomNavigationBar: Container(
-              height: 70 + MediaQuery.of(context).padding.bottom,
-              decoration: BoxDecoration(
-                color: white,
-                // border: Border(
-                //     top: BorderSide(color: Theme.of(context).dividerColor)),
-                boxShadow: const [],
-              ),
-              child: TabBar(
-                enableFeedback: true,
-                onTap: (index) {},indicatorColor: Colors.transparent,
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          bottomNavigationBar: Container(
+            height: 70 + MediaQuery.of(context).padding.bottom,
+            decoration: const BoxDecoration(
+              color: white,
+              // border: Border(
+              //     top: BorderSide(color: Theme.of(context).dividerColor)),
+              boxShadow: [],
+            ),
+            child: TabBar(
+              enableFeedback: true,
+              onTap: (index) {},indicatorColor: Colors.transparent,
 
-                controller: _controller,
-                labelPadding: EdgeInsets.zero,
-                tabs: List.generate(
-                  labels.length,
-                  (index) => NavItemWidget(
-                    navBar: labels[index],
-                    currentIndex: _currentIndex,
-                  ),
+              controller: _controller,
+              labelPadding: EdgeInsets.zero,
+              tabs: List.generate(
+                labels.length,
+                (index) => NavItemWidget(
+                  navBar: labels[index],
+                  currentIndex: _currentIndex,
                 ),
               ),
             ),
-            body: TabBarView(
-              controller: _controller,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                _buildPageNavigator(NavItemEnum.home),
-                _buildPageNavigator(NavItemEnum.calls),
-                _buildPageNavigator(NavItemEnum.messages),
-                _buildPageNavigator(NavItemEnum.profile),
+          ),
+          body: TabBarView(
+            controller: _controller,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              _buildPageNavigator(NavItemEnum.home),
+              _buildPageNavigator(NavItemEnum.calls),
+              _buildPageNavigator(NavItemEnum.messages),
+              _buildPageNavigator(NavItemEnum.profile),
 
-              ],
-            ),
+            ],
           ),
         ),
       ),

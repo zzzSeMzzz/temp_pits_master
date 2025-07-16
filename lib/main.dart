@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pits_app/assets/theme/theme.dart';
 import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/auth/presentation/sections/splash/splash_screen.dart';
 import 'utils/AppScrollBehavior.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- await setupLocator();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light
+    ),
+  );
+  await setupLocator();
   runApp(const MyApp());
 }
 
@@ -18,7 +29,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Pits',
         theme: AppTheme.theme(),
-        scrollBehavior: AppScrollBehavior(),//web view page scroll. remove if need
+        scrollBehavior:
+            AppScrollBehavior(), //web view page scroll. remove if need
         home: const SplashScreen());
   }
 }
