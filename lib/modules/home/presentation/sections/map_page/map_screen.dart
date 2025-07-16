@@ -127,35 +127,50 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
               Positioned(
-                  left: 24,
-                  right: 24,
-                  top: 54 + MediaQuery.of(context).padding.top,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: white, borderRadius: BorderRadius.circular(16)),
-                    padding: const EdgeInsets.only(right: 12),
-                    child: Row(
-                      children: [
-                        SingleChildScrollView(
+                left: 24,
+                right: 24,
+                top: 54 + MediaQuery.of(context).padding.top,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: white, borderRadius: BorderRadius.circular(16)),
+                  height: 40,
+                  child: Stack(
+                    children: [
+                      // Горизонтальный скролл
+                      Positioned.fill(
+                        child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.only(
+                              right: 32), // чтобы не перекрывать стрелку
                           child: Row(
-                              children: state.allServices.map((service) => TextButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.close, color: Colors.black),
-                                label: Text(service.name,
-                                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 12,
-                                        color: Colors.black
-                                    )),
-                                iconAlignment: IconAlignment.end,
-                              )).toList()
+                            children: state.allServices
+                                .map((service) => TextButton.icon(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.close,
+                                          color: Colors.black),
+                                      label: Text(service.name,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium!
+                                              .copyWith(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 12,
+                                                  color: Colors.black)),
+                                      iconAlignment: IconAlignment.end,
+                                    ))
+                                .toList(),
                           ),
                         ),
-                        GestureDetector(
+                      ),
+                      // Стрелка справа, всегда поверх
+                      Positioned(
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        child: GestureDetector(
                           behavior: HitTestBehavior.translucent,
                           onTap: () {
-                            //todo
+                            // todo: scroll right
                           },
                           child: SvgPicture.asset(
                             AppIcons.arrowDown,
@@ -163,9 +178,11 @@ class _MapScreenState extends State<MapScreen> {
                             height: 7,
                           ),
                         ),
-                      ],
-                    ),
-                  )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               // Overlay: Регион (если есть)
               Positioned(
                 top: 110 + MediaQuery.of(context).padding.top,
@@ -199,9 +216,11 @@ class _MapScreenState extends State<MapScreen> {
                 left: 24,
                 right: 24,
                 bottom: 64 + MediaQuery.of(context).padding.bottom,
-                child: state.loadCarServices ? Container(
+                child: state.loadCarServices
+                    ? Container(
                         decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.5), borderRadius: BorderRadius.circular(4)),
+                            color: Colors.white.withValues(alpha: 0.5),
+                            borderRadius: BorderRadius.circular(4)),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 4),
                         child: Row(
@@ -212,7 +231,8 @@ class _MapScreenState extends State<MapScreen> {
                                   .textTheme
                                   .displayLarge!
                                   .copyWith(
-                                      fontWeight: FontWeight.w700, fontSize: 16),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16),
                             ),
                             const Spacer(),
                             Transform.scale(
@@ -236,8 +256,8 @@ class _MapScreenState extends State<MapScreen> {
                     ServicesEvent.getServices(
                         catId: category.id,
                         region: state.currentRegion,
-                        serviceIds: Set<int>.of(state.selectedServices.map((service) => service.id))
-                    ),
+                        serviceIds: Set<int>.of(state.selectedServices
+                            .map((service) => service.id))),
                   ),
                 ),
               ),
