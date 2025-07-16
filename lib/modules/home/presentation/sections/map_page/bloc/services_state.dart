@@ -6,9 +6,11 @@ class ServicesState with _$ServicesState {
     @Default([]) List<ServiceCategory> serviceCategories,
     @Default(133) int currentCatId,
     LatLng? currentLocation,
+    RegionModel? currentRegion,
     @Default([]) List<CarServiceEntity> services,
     @Default({}) Set<Marker> markers,
     @Default(ActionStatus.pure) ActionStatus status,
+    @Default(false) bool loadCarServices,//отдельный прогресс на загрузку сервисов по критериям
 
 })=_ServicesState;
 }

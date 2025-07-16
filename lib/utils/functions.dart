@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_webservice/geocoding.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 
@@ -58,7 +60,7 @@ Future<bool> getWhetherPermissionGranted() async {
 }
 
 
-Future<String> getRegionId(double latitude, double longitude) async {
+/*<String> getRegionId(double latitude, double longitude) async {
   final googleMapsGeocoding = GoogleMapsGeocoding(apiKey: "AIzaSyAYd7e5aw6NsShXv5vmNLzjSm-XL6f7gNg");
   final response = await googleMapsGeocoding.searchByLocation(
     Location(lat: latitude, lng: longitude),
@@ -78,6 +80,29 @@ Future<String> getRegionId(double latitude, double longitude) async {
   } else {
     return "Error fetching region ID: ${response.errorMessage}"; // Or handle the error
   }
+}*/
+
+Future<Placemark?> getInfoByLocation(LatLng latLng) async {
+  List<Placemark> placemarks = await placemarkFromCoordinates(
+    latLng.latitude,
+    latLng.longitude,
+  );
+
+  Placemark? place;
+
+  if (placemarks.isNotEmpty) {
+    place = placemarks.first;
+
+    // В зависимости от страны, название региона может быть в разных полях:
+    // Для России: administrativeArea (область, край, республика)
+    // Для других стран может быть в locality или subAdministrativeArea
+    debugPrint(
+        "placemark info: subAdministrativeArea ${place.subAdministrativeArea}, locality ${place.locality}");
+  } else {
+    debugPrint("placemark's is empty");
+  }
+
+  return place;
 }
 
 /*Future<BitmapDescriptor> getMarkerIconFromSvg() async {

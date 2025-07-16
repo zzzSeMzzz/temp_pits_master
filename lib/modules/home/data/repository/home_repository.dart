@@ -18,7 +18,6 @@ class HomeRepository {
     debugPrint(result.statusCode.toString());
     //debugPrint(result.data);
 
-
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
       final data = (result.data as List<dynamic>)
           .map((e) => CarServiceModel.fromJson(e))
@@ -35,7 +34,6 @@ class HomeRepository {
     final result = await client.get('/wp-json/wp/v2/job_listing_category?per_page=100');
     debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
-
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
       final data = (result.data as List<dynamic>)
@@ -54,7 +52,6 @@ class HomeRepository {
     debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
 
-
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
       final data = (result.data as List<dynamic>)
           .map((e) => RegionModel.fromJson(e))
@@ -70,7 +67,6 @@ class HomeRepository {
     final result = await client.get('/wp-json/pits/v1/talleres-por-servicio');
     debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
-
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
       final data = (result.data as List<dynamic>)
@@ -88,7 +84,6 @@ class HomeRepository {
     debugPrint('${result.realUri}single141');
     debugPrint(result.statusCode.toString());
     debugPrint(result.data);
-
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
       final data = ServiceSingleModel.fromJson(result.data);

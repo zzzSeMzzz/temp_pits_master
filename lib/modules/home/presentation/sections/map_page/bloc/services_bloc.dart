@@ -106,13 +106,15 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _GetServices) {
       final catId = event.catId;
-      debugPrint("Run get services from cat id $catId");
+      debugPrint("Run get services from cat id $catId and regionId=${event.region?.id}");
       emit(state.copyWith(
-        status: ActionStatus.inProcess,
+        loadCarServices: true,
         currentCatId: catId,
+        currentRegion: event.region,
       ));
 
       final result = await getServicesUseCase(catId.toString());
+
       if (result.isRight) {
         debugPrint("Success get services length =  [33m${result.right.length}");
         emit(state.copyWith(
@@ -120,12 +122,15 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
           markers: Set<Marker>.of(
               result.right.map((service) => service.toMarker(_markerIcon))),
           currentCatId: catId,
+          currentRegion: event.region
         ));
       } else {
         debugPrint("Failure get services");
         emit(state.copyWith(
+          loadCarServices: false,
           status: ActionStatus.isFailure,
           currentCatId: catId,
+          currentRegion: event.region
         ));
       }
     }

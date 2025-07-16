@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
@@ -48,23 +46,6 @@ class _MapScreenState extends State<MapScreen> {
   _setMyLocation(GoogleMapController controller, ServicesBloc bloc) async {
     /*String regionId = await getRegionId(_kMadrid.target.latitude, _kMadrid.target.longitude);
     debugPrint("current region id = $regionId");*/
-
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-      _kMadrid.target.latitude,
-      _kMadrid.target.longitude,
-    );
-
-    if (placemarks.isNotEmpty) {
-      final place = placemarks.first;
-
-      // В зависимости от страны, название региона может быть в разных полях:
-      // Для России: administrativeArea (область, край, республика)
-      // Для других стран может быть в locality или subAdministrativeArea
-      debugPrint(
-          "placemark info: subAdministrativeArea ${place.subAdministrativeArea}, locality ${place.locality}");
-    } else {
-      debugPrint("placemark's is empty");
-    }
 
     getCurrentLocation().then((point) {
       debugPrint("current location success: ${point.toString()}");
