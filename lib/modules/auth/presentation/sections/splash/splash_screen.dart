@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 40,
                 ),
                 Text(
-                  'Welcom to Pits',
+                  'Welcome to Pits',
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
