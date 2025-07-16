@@ -23,7 +23,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   final GetServicesUseCase getServicesUseCase;
 
   ServicesBloc(this.getServicesUseCase) : super(const ServicesState()) {
-    debugPrint('ServicesBloc constructor');
+    debugPrint('ServiceBloc:: constructor');
     on<_GetServices>(_onGetServices);
     on<_GetServiceCategories>(_onGetServiceCategories);
     on<_SetMyLocation>(_onSetMyLocation);
@@ -33,7 +33,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     // Автоматический запуск загрузки сервисов при создании блока
     //add(const ServicesEvent.getServices());
     Future.microtask(() {
-      debugPrint('Microtask: add getServices categories');
+      debugPrint('ServiceBloc:: Microtask: add getServices categories');
       add(const ServicesEvent.getServiceCategories());
     });
   }
@@ -48,7 +48,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
   FutureOr<void> _onGetServiceCategories(
       ServicesEvent event, Emitter<ServicesState> emit) async {
-    debugPrint("Run get services categories");
+    debugPrint("ServiceBloc:: Run get service categories");
     emit(state.copyWith(status: ActionStatus.inProcess));
 
     final categories = await getServicesUseCase.getServiceCategories();
@@ -56,10 +56,11 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
     if (categories.isRight && regions.isRight) {
       _regions = regions.right;
-      debugPrint("Success get services categories ${categories.right.length}");
-      debugPrint("Success get services regions ${regions.right.length}");
+      debugPrint("ServiceBloc:: Success get services categories ${categories.right.length}");
+      debugPrint("ServiceBloc::Success get services regions ${regions.right.length}");
       int currentServiceCat =
         categories.right.length > 1 ? categories.right.first.id : 0;
+      debugPrint("ServiceBloc:: current categoryId=$currentServiceCat");
       emit(
        state.copyWith(
           status: ActionStatus.isSuccess,
@@ -69,7 +70,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       );
       //add(ServicesEvent.getServices(catId: currentServiceCat));
     } else {
-      debugPrint("Failure get services cat's");
+      debugPrint("ServiceBloc:: Failure get services cat's");
       emit(state.copyWith(status: ActionStatus.isFailure));
     }
   }
@@ -121,7 +122,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       final result = await getServicesUseCase(params);
 
       if (result.isRight) {
-        debugPrint("Success get services length = ${result.right.length}");
+        debugPrint("ServiceBloc:: Success get services length = ${result.right.length}");
         emit(state.copyWith(
           loadCarServices: false,
           markers: Set<Marker>.of(
@@ -130,7 +131,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
           currentRegion: event.region
         ));
       } else {
-        debugPrint("Failure get services");
+        debugPrint("ServiceBloc:: Failure get services");
         emit(state.copyWith(
           loadCarServices: false,
           status: ActionStatus.isFailure,

@@ -52,7 +52,7 @@ class _MapScreenState extends State<MapScreen> {
       final latLng = LatLng(point.latitude, point.longitude);
       controller.moveCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-            target: latLng, zoom: 12),
+            target: latLng, zoom: 10),
       ));
       bloc.add(ServicesEvent.setMyLocation(latLng));
     }, onError: (e) {
@@ -114,6 +114,7 @@ class _MapScreenState extends State<MapScreen> {
                         //onCameraMove: clusterManager.onCameraMove,
                         //onCameraIdle: clusterManager.updateMap,
                         onMapCreated: (controller) {
+                          debugPrint("onMapCreated");
                           _mapController = controller;
 
                           _setMyLocation(controller, bloc);
@@ -168,15 +169,15 @@ class _MapScreenState extends State<MapScreen> {
                           ],
                         ),
                       )),
-                  bloc.state.currentRegion != null ? Positioned(
+                      Positioned(
                       left: 24,
                       right: 24,
                       top: 80 + MediaQuery.of(context).padding.top,
-                      child: Center(
+                      child: bloc.state.currentRegion != null ? Center(
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.black,
-                              borderRadius: BorderRadius.circular(16)),
+                              borderRadius: BorderRadius.circular(26)),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24, vertical: 16),
                           child: Text(
@@ -191,7 +192,7 @@ class _MapScreenState extends State<MapScreen> {
                                 ),
                           ),
                         ),
-                      )) : const SizedBox(),
+                      ) : const SizedBox()),
                   Positioned(
                       left: 24,
                       right: 24,
