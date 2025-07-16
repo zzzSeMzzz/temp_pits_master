@@ -29,74 +29,15 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  /*
-  List<Marker> markers = [];
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();*/
-
-  //late cluster_manager.ClusterManager clusterManager;
-
   late GoogleMapController _mapController;
 
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
-  //static const int _clusterManagerMaxCount = 1;
   // Кластер, который был использован последним.
   Cluster? lastCluster;
-  //BitmapDescriptor? _markerIcon;
 
-  @override
+ /* @override
   void initState() {
-    /* clusterManager = cluster_manager.ClusterManager<ServiceEntity>(
-        [],
-        (s) {
-          setState(() {
-            markers = s.toList();
-          });
-        },
-        levels: [
-          1,
-          4.25,
-          6.75,
-          8.25,
-          11.5,
-          14.5,
-        ],
-        markerBuilder: (clusterD) async {
-          final cluster = clusterD as cluster_manager.Cluster;
-          return cluster.isMultiple
-              ? Marker(
-                  markerId: MarkerId(cluster.getId()),
-                  position: cluster.location,
-                  onTap: () {
-                    debugPrint(cluster.toString());
-                  },
-                  icon: await _getBasicClusterBitmap(
-                      cluster.isMultiple ? 125 : 75,
-                      text:
-                          cluster.isMultiple ? cluster.count.toString() : null),
-                )
-              : Marker(
-                  markerId: MarkerId(cluster.hashCode.toString()),
-                  onTap: () {
-                    showInfoBottomSheet(
-                        context, context.read<ServiceSingleBloc>());
-                    debugPrint(cluster.items.length.toString());
-                    context.read<ServiceSingleBloc>().add(
-                        ServiceSingleEvent.getSingleService(
-                            id: (cluster.items.first as cluster_manager.Cluster)
-                                .getId()));
-                  },
-                  position: cluster.location,
-                  icon: await BitmapDescriptor.fromAssetImage(
-                      const ImageConfiguration(), AppImages.wrenchLocation),
-                );
-        },
-        stopClusteringZoom: 15.0);*/
-    //_loadIcon();
     super.initState();
-  }
+  }*/
 
   final ClusterManager _clusterManager = ClusterManager(
     clusterManagerId:
@@ -105,7 +46,6 @@ class _MapScreenState extends State<MapScreen> {
   );
 
   _setMyLocation(GoogleMapController controller, ServicesBloc bloc) async {
-
     /*String regionId = await getRegionId(_kMadrid.target.latitude, _kMadrid.target.longitude);
     debugPrint("current region id = $regionId");*/
 
@@ -120,7 +60,8 @@ class _MapScreenState extends State<MapScreen> {
       // В зависимости от страны, название региона может быть в разных полях:
       // Для России: administrativeArea (область, край, республика)
       // Для других стран может быть в locality или subAdministrativeArea
-      debugPrint("placemark info: subAdministrativeArea ${place.subAdministrativeArea}, locality ${place.locality}");
+      debugPrint(
+          "placemark info: subAdministrativeArea ${place.subAdministrativeArea}, locality ${place.locality}");
     } else {
       debugPrint("placemark's is empty");
     }
@@ -128,14 +69,13 @@ class _MapScreenState extends State<MapScreen> {
     getCurrentLocation().then((point) {
       debugPrint("current location success: ${point.toString()}");
       controller.moveCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: LatLng(point.latitude, point.longitude), zoom: 12),
+        CameraPosition(
+            target: LatLng(point.latitude, point.longitude), zoom: 12),
       ));
     }, onError: (e) {
       debugPrint("Unable get location: ${e.toString()}");
       bloc.add(ServicesEvent.getServices(catId: bloc.state.currentCatId));
-    }
-    );//.catchError(handleError);
-
+    }); //.catchError(handleError);
   }
 
   static const CameraPosition _kMadrid = CameraPosition(
@@ -190,11 +130,10 @@ class _MapScreenState extends State<MapScreen> {
                       child: GoogleMap(
                         //onCameraMove: clusterManager.onCameraMove,
                         //onCameraIdle: clusterManager.updateMap,
-                        onMapCreated: (controllerParam) {
-                          _mapController = controllerParam;
-                          _controller.complete(controllerParam);
+                        onMapCreated: (controller) {
+                          _mapController = controller;
 
-                          _setMyLocation(controllerParam, bloc);
+                          _setMyLocation(controller, bloc);
                         },
                         compassEnabled: false,
                         myLocationButtonEnabled: false,

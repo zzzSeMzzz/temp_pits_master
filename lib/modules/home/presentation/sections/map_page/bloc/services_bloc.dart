@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pits_app/modules/home/data/model/region.dart';
 import 'package:pits_app/modules/home/domain/entity/service.dart';
 import 'package:pits_app/modules/home/domain/entity/service_category.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
@@ -36,6 +37,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   }
 
   late BitmapDescriptor _markerIcon;
+  late List<RegionModel> _regions;
 
   void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
@@ -46,15 +48,23 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ServicesEvent event, Emitter<ServicesState> emit) async {
     debugPrint("Run get services categories");
     emit(state.copyWith(status: ActionStatus.inProcess));
-    final result = await getServicesUseCase.getServiceCategories();
-    if (result.isRight) {
-      debugPrint("Success get services cat's ${result.right.length}");
+
+    final categories = await getServicesUseCase.getServiceCategories();
+    final regions = await getServicesUseCase.getRegions();
+
+    if (categories.isRight && regions.isRight) {
+      _regions = regions.right;
+      debugPrint("Success get services categories ${categories.right.length}");
+      debugPrint("Success get services regions ${regions.right.length}");
       int currentServiceCat =
-          result.right.length > 1 ? result.right.first.id : 0;
-      emit(state.copyWith(
+        categories.right.length > 1 ? categories.right.first.id : 0;
+      emit(
+       state.copyWith(
           status: ActionStatus.isSuccess,
-          serviceCategories: result.right,
-          currentCatId: currentServiceCat));
+          serviceCategories: categories.right,
+          currentCatId: currentServiceCat
+       )
+      );
       //add(ServicesEvent.getServices(catId: currentServiceCat));
     } else {
       debugPrint("Failure get services cat's");
