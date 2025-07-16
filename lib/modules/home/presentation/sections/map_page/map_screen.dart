@@ -190,7 +190,11 @@ class _MapScreenState extends State<MapScreen> {
                   categories: state.serviceCategories,
                   selectedCategoryId: state.currentCatId,
                   onCategoryClick: (category) => bloc.add(
-                    ServicesEvent.getServices(catId: category.id),
+                    ServicesEvent.getServices(
+                        catId: category.id,
+                        region: state.currentRegion,
+                        serviceIds: Set<int>.of(state.selectedServices.map((service) => service.id))
+                    ),
                   ),
                 ),
               ),
