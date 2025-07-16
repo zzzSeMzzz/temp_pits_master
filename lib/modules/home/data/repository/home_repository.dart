@@ -3,7 +3,7 @@ import 'package:pits_app/core/data/error/failures.dart';
 import 'package:pits_app/core/data/singletons/dio.dart';
 import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/home/data/model/region.dart';
-import 'package:pits_app/modules/home/data/model/service.dart';
+import 'package:pits_app/modules/home/data/model/car_service.dart';
 import 'package:pits_app/modules/home/data/model/service_category.dart';
 import 'package:pits_app/modules/home/data/model/service_single.dart';
 import 'package:pits_app/utils/either.dart';
@@ -11,7 +11,7 @@ import 'package:pits_app/utils/either.dart';
 class HomeRepository {
   final client = serviceLocator<DioSettings>().dio;
 
-  Future<Either<Failure, List<ServiceModel>>> getServices(String catId) async {
+  Future<Either<Failure, List<CarServiceModel>>> getCarServices(String catId) async {
     final result = await client.get('wp-json/pits/v1/talleres-por-categoria/$catId');
     debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
@@ -20,7 +20,7 @@ class HomeRepository {
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
       final data = (result.data as List<dynamic>)
-          .map((e) => ServiceModel.fromJson(e))
+          .map((e) => CarServiceModel.fromJson(e))
           .toList();
 
       return Right(data);

@@ -330,7 +330,7 @@ mixin _$ServicesState {
       throw _privateConstructorUsedError;
   int get currentCatId => throw _privateConstructorUsedError;
   LatLng? get currentLocation => throw _privateConstructorUsedError;
-  List<ServiceEntity> get services => throw _privateConstructorUsedError;
+  List<CarServiceEntity> get services => throw _privateConstructorUsedError;
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
 
@@ -351,7 +351,7 @@ abstract class $ServicesStateCopyWith<$Res> {
       {List<ServiceCategory> serviceCategories,
       int currentCatId,
       LatLng? currentLocation,
-      List<ServiceEntity> services,
+      List<CarServiceEntity> services,
       Set<Marker> markers,
       ActionStatus status});
 }
@@ -394,7 +394,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<ServiceEntity>,
+              as List<CarServiceEntity>,
       markers: null == markers
           ? _value.markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -419,7 +419,7 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
       {List<ServiceCategory> serviceCategories,
       int currentCatId,
       LatLng? currentLocation,
-      List<ServiceEntity> services,
+      List<CarServiceEntity> services,
       Set<Marker> markers,
       ActionStatus status});
 }
@@ -460,7 +460,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<ServiceEntity>,
+              as List<CarServiceEntity>,
       markers: null == markers
           ? _value._markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -480,7 +480,7 @@ class _$ServicesStateImpl implements _ServicesState {
       {final List<ServiceCategory> serviceCategories = const [],
       this.currentCatId = 133,
       this.currentLocation,
-      final List<ServiceEntity> services = const [],
+      final List<CarServiceEntity> services = const [],
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure})
       : _serviceCategories = serviceCategories,
@@ -502,10 +502,10 @@ class _$ServicesStateImpl implements _ServicesState {
   final int currentCatId;
   @override
   final LatLng? currentLocation;
-  final List<ServiceEntity> _services;
+  final List<CarServiceEntity> _services;
   @override
   @JsonKey()
-  List<ServiceEntity> get services {
+  List<CarServiceEntity> get services {
     if (_services is EqualUnmodifiableListView) return _services;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_services);
@@ -569,7 +569,7 @@ abstract class _ServicesState implements ServicesState {
       {final List<ServiceCategory> serviceCategories,
       final int currentCatId,
       final LatLng? currentLocation,
-      final List<ServiceEntity> services,
+      final List<CarServiceEntity> services,
       final Set<Marker> markers,
       final ActionStatus status}) = _$ServicesStateImpl;
 
@@ -580,7 +580,7 @@ abstract class _ServicesState implements ServicesState {
   @override
   LatLng? get currentLocation;
   @override
-  List<ServiceEntity> get services;
+  List<CarServiceEntity> get services;
   @override
   Set<Marker> get markers;
   @override

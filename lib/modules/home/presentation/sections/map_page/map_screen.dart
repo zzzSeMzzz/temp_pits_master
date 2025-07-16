@@ -11,7 +11,7 @@ import 'package:geolocator/geolocator.dart';
     as cluster_manager;*/
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
-import 'package:pits_app/modules/home/domain/entity/service.dart';
+import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_single_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
@@ -41,7 +41,7 @@ class _MapScreenState extends State<MapScreen> {
 
   final ClusterManager _clusterManager = ClusterManager(
     clusterManagerId:
-        const ClusterManagerId(ServiceEntity.mainClusterManagerId),
+        const ClusterManagerId(CarServiceEntity.mainClusterManagerId),
     onClusterTap: (Cluster cluster) => {},
   );
 

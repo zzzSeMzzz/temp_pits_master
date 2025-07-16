@@ -1,6 +1,6 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class ServiceEntity {
+class CarServiceEntity {
   static const String mainClusterManagerId = 'main_cm';
 
   final String name;
@@ -11,7 +11,7 @@ class ServiceEntity {
   final bool featured;
   final List<int> region;
 
-  ServiceEntity({
+  CarServiceEntity({
     this.longitude = 0,
     this.latitude = 0,
     this.id = -1,

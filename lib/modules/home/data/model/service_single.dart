@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pits_app/modules/home/domain/entity/service.dart';
+import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/domain/entity/service_single_entity.dart';
 
 class ServiceSingleModel extends ServiceSingleEntity {

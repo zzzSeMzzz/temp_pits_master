@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/modules/home/data/model/region.dart';
-import 'package:pits_app/modules/home/domain/entity/service.dart';
+import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/domain/entity/service_category.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
 import 'package:pits_app/utils/action_status.dart';

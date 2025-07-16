@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pits_app/modules/home/domain/entity/service.dart';
-part 'service.g.dart';
+import 'package:pits_app/modules/home/domain/entity/car_service.dart';
+part 'car_service.g.dart';
 
 @JsonSerializable()
-class ServiceModel extends ServiceEntity {
+class CarServiceModel extends CarServiceEntity {
   @JsonKey(name: 'id', defaultValue: -1)
   final int idd;
   /*@JsonKey(name: 'listing_id', defaultValue: '')
@@ -23,7 +23,7 @@ class ServiceModel extends ServiceEntity {
   @JsonKey(name: 'region')
   final List<int> regions;
 
-  ServiceModel({
+  CarServiceModel({
     required this.idd,
     required this.averageRating,
     required this.lat,
@@ -42,6 +42,6 @@ class ServiceModel extends ServiceEntity {
           region: regions
         );
 
-  factory ServiceModel.fromJson(Map<String, dynamic> json) =>
+  factory CarServiceModel.fromJson(Map<String, dynamic> json) =>
       _$ServiceModelFromJson(json);
 }

@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'service.dart';
+part of 'car_service.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ServiceModel _$ServiceModelFromJson(Map<String, dynamic> json) => ServiceModel(
+CarServiceModel _$ServiceModelFromJson(Map<String, dynamic> json) => CarServiceModel(
       idd: (json['id'] as num?)?.toInt() ?? -1,
       averageRating: json['_case27_average_rating'] as String? ?? '0',
       lat: json['lat'] as String? ?? '0',
@@ -18,7 +18,7 @@ ServiceModel _$ServiceModelFromJson(Map<String, dynamic> json) => ServiceModel(
       long: json['lng'] as String? ?? '0',
     );
 
-Map<String, dynamic> _$ServiceModelToJson(ServiceModel instance) =>
+Map<String, dynamic> _$ServiceModelToJson(CarServiceModel instance) =>
     <String, dynamic>{
       'id': instance.idd,
       'lat': instance.lat,
