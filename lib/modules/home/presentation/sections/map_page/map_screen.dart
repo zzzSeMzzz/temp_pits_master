@@ -168,6 +168,30 @@ class _MapScreenState extends State<MapScreen> {
                           ],
                         ),
                       )),
+                  bloc.state.currentRegion != null ? Positioned(
+                      left: 24,
+                      right: 24,
+                      top: 80 + MediaQuery.of(context).padding.top,
+                      child: Center(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(16)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 16),
+                          child: Text(
+                            bloc.state.currentRegion?.name ?? "unknown region",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15
+                                ),
+                          ),
+                        ),
+                      )) : const SizedBox(),
                   Positioned(
                       left: 24,
                       right: 24,
