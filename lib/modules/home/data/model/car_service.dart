@@ -43,5 +43,5 @@ class CarServiceModel extends CarServiceEntity {
         );
 
   factory CarServiceModel.fromJson(Map<String, dynamic> json) =>
-      _$ServiceModelFromJson(json);
+      _$CarServiceModelFromJson(json);
 }

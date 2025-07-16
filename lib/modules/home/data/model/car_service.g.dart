@@ -6,7 +6,8 @@ part of 'car_service.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CarServiceModel _$ServiceModelFromJson(Map<String, dynamic> json) => CarServiceModel(
+CarServiceModel _$CarServiceModelFromJson(Map<String, dynamic> json) =>
+    CarServiceModel(
       idd: (json['id'] as num?)?.toInt() ?? -1,
       averageRating: json['_case27_average_rating'] as String? ?? '0',
       lat: json['lat'] as String? ?? '0',
@@ -18,7 +19,7 @@ CarServiceModel _$ServiceModelFromJson(Map<String, dynamic> json) => CarServiceM
       long: json['lng'] as String? ?? '0',
     );
 
-Map<String, dynamic> _$ServiceModelToJson(CarServiceModel instance) =>
+Map<String, dynamic> _$CarServiceModelToJson(CarServiceModel instance) =>
     <String, dynamic>{
       'id': instance.idd,
       'lat': instance.lat,
