@@ -83,7 +83,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ],
         child: Scaffold(
-          appBar: AppBar(
+          /*appBar: AppBar(
             elevation: 0,
             leading: GestureDetector(
                 onTap: () {
@@ -97,7 +97,7 @@ class _MapScreenState extends State<MapScreen> {
               'Services',
               style: TextStyle(color: black, fontSize: 24),
             ),
-          ),
+          ),*/
           body: BlocBuilder<ServicesBloc, ServicesState>(
             builder: (context, state) {
               if (state.status == ActionStatus.inProcess || state.status == ActionStatus.pure) {
