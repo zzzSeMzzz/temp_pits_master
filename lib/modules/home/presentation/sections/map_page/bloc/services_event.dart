@@ -8,4 +8,8 @@ class ServicesEvent with _$ServicesEvent {
   ) = _GetServices;
 
   const factory ServicesEvent.getServiceCategories() = _GetServiceCategories;
+
+  const factory ServicesEvent.setMyLocation(
+      LatLng? latLng
+  ) = _SetMyLocation;
 }

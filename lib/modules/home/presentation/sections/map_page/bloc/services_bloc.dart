@@ -5,12 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/modules/home/data/model/region.dart';
+import 'package:pits_app/modules/home/data/model/service.dart';
 import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/domain/entity/service_category.dart';
 import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
 import 'package:pits_app/utils/action_status.dart';
-
+import 'package:collection/collection.dart';
 import '../../../../../../assets/constants/app_images.dart';
+import '../../../../../../utils/functions.dart';
 
 part 'services_event.dart';
 
@@ -25,6 +27,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     debugPrint('ServicesBloc constructor');
     on<_GetServices>(_onGetServices);
     on<_GetServiceCategories>(_onGetServiceCategories);
+    on<_SetMyLocation>(_onSetMyLocation);
 
     _loadIcon();
 
@@ -113,12 +116,15 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
         currentRegion: event.region,
       ));
 
-      final result = await getServicesUseCase(catId.toString());
+      String params = "?categoria=$catId";
+      if(event.region!=null) params = "$params&${event.region!.id}";
+
+      final result = await getServicesUseCase(params);
 
       if (result.isRight) {
-        debugPrint("Success get services length =  [33m${result.right.length}");
+        debugPrint("Success get services length = ${result.right.length}");
         emit(state.copyWith(
-          status: ActionStatus.isSuccess,
+          loadCarServices: false,
           markers: Set<Marker>.of(
               result.right.map((service) => service.toMarker(_markerIcon))),
           currentCatId: catId,
@@ -133,6 +139,39 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
           currentRegion: event.region
         ));
       }
+    }
+  }
+
+
+
+  FutureOr<void> _onSetMyLocation(
+      ServicesEvent event, Emitter<ServicesState> emit) async {
+    if (event is _SetMyLocation) {
+      RegionModel? regionModel;
+      if(event.latLng!=null) {
+        debugPrint("ServiceBloc:: my location is  null");
+        final placemark = await getInfoByLocation(event.latLng!);
+
+        if(placemark?.locality!=null) {
+          regionModel = _regions.firstWhereOrNull((region) => region.name.contains(placemark!.locality!));
+          debugPrint("ServiceBloc:: founded region model is ${regionModel?.toString()}");
+        } else {
+          debugPrint("ServiceBloc:: placemark info by current location not found");
+        }
+      } else {
+        debugPrint("ServiceBloc:: my location is  null");
+      }
+
+      emit(state.copyWith(
+        currentRegion: regionModel,
+        currentLocation: event.latLng
+      ));
+
+      add(ServicesEvent.getServices(
+          catId: state.currentCatId,
+          region: regionModel,
+          serviceIds: Set<int>.of(state.selectedServices.map((service) => service.id))
+      ));
     }
   }
 }

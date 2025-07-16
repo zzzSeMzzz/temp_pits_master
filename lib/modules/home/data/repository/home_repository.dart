@@ -12,8 +12,9 @@ import 'package:pits_app/utils/either.dart';
 class HomeRepository {
   final client = serviceLocator<DioSettings>().dio;
 
-  Future<Either<Failure, List<CarServiceModel>>> getCarServices(String catId) async {
-    final result = await client.get('wp-json/pits/v1/talleres-por-categoria/$catId');
+  Future<Either<Failure, List<CarServiceModel>>> getCarServices(String params) async {
+    //final result = await client.get('wp-json/pits/v1/talleres-por-categoria/$catId');
+    final result = await client.get('wp-json/pits/v1/talleres-filtrados$params');
     debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
     //debugPrint(result.data);

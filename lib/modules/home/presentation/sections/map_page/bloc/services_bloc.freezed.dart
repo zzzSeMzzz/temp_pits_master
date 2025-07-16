@@ -22,6 +22,7 @@ mixin _$ServicesEvent {
             int catId, RegionModel? region, Set<int> serviceIds)
         getServices,
     required TResult Function() getServiceCategories,
+    required TResult Function(LatLng? latLng) setMyLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$ServicesEvent {
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
         getServices,
     TResult? Function()? getServiceCategories,
+    TResult? Function(LatLng? latLng)? setMyLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$ServicesEvent {
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
         getServices,
     TResult Function()? getServiceCategories,
+    TResult Function(LatLng? latLng)? setMyLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,18 +46,21 @@ mixin _$ServicesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
+    required TResult Function(_SetMyLocation value) setMyLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
+    TResult? Function(_SetMyLocation value)? setMyLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
+    TResult Function(_SetMyLocation value)? setMyLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -180,6 +186,7 @@ class _$GetServicesImpl implements _GetServices {
             int catId, RegionModel? region, Set<int> serviceIds)
         getServices,
     required TResult Function() getServiceCategories,
+    required TResult Function(LatLng? latLng) setMyLocation,
   }) {
     return getServices(catId, region, serviceIds);
   }
@@ -190,6 +197,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
         getServices,
     TResult? Function()? getServiceCategories,
+    TResult? Function(LatLng? latLng)? setMyLocation,
   }) {
     return getServices?.call(catId, region, serviceIds);
   }
@@ -200,6 +208,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
         getServices,
     TResult Function()? getServiceCategories,
+    TResult Function(LatLng? latLng)? setMyLocation,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -213,6 +222,7 @@ class _$GetServicesImpl implements _GetServices {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
+    required TResult Function(_SetMyLocation value) setMyLocation,
   }) {
     return getServices(this);
   }
@@ -222,6 +232,7 @@ class _$GetServicesImpl implements _GetServices {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
+    TResult? Function(_SetMyLocation value)? setMyLocation,
   }) {
     return getServices?.call(this);
   }
@@ -231,6 +242,7 @@ class _$GetServicesImpl implements _GetServices {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
+    TResult Function(_SetMyLocation value)? setMyLocation,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -303,6 +315,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
             int catId, RegionModel? region, Set<int> serviceIds)
         getServices,
     required TResult Function() getServiceCategories,
+    required TResult Function(LatLng? latLng) setMyLocation,
   }) {
     return getServiceCategories();
   }
@@ -313,6 +326,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
         getServices,
     TResult? Function()? getServiceCategories,
+    TResult? Function(LatLng? latLng)? setMyLocation,
   }) {
     return getServiceCategories?.call();
   }
@@ -323,6 +337,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
         getServices,
     TResult Function()? getServiceCategories,
+    TResult Function(LatLng? latLng)? setMyLocation,
     required TResult orElse(),
   }) {
     if (getServiceCategories != null) {
@@ -336,6 +351,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
+    required TResult Function(_SetMyLocation value) setMyLocation,
   }) {
     return getServiceCategories(this);
   }
@@ -345,6 +361,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
+    TResult? Function(_SetMyLocation value)? setMyLocation,
   }) {
     return getServiceCategories?.call(this);
   }
@@ -354,6 +371,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
+    TResult Function(_SetMyLocation value)? setMyLocation,
     required TResult orElse(),
   }) {
     if (getServiceCategories != null) {
@@ -368,13 +386,164 @@ abstract class _GetServiceCategories implements ServicesEvent {
 }
 
 /// @nodoc
+abstract class _$$SetMyLocationImplCopyWith<$Res> {
+  factory _$$SetMyLocationImplCopyWith(
+          _$SetMyLocationImpl value, $Res Function(_$SetMyLocationImpl) then) =
+      __$$SetMyLocationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LatLng? latLng});
+}
+
+/// @nodoc
+class __$$SetMyLocationImplCopyWithImpl<$Res>
+    extends _$ServicesEventCopyWithImpl<$Res, _$SetMyLocationImpl>
+    implements _$$SetMyLocationImplCopyWith<$Res> {
+  __$$SetMyLocationImplCopyWithImpl(
+      _$SetMyLocationImpl _value, $Res Function(_$SetMyLocationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? latLng = freezed,
+  }) {
+    return _then(_$SetMyLocationImpl(
+      freezed == latLng
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetMyLocationImpl implements _SetMyLocation {
+  const _$SetMyLocationImpl(this.latLng);
+
+  @override
+  final LatLng? latLng;
+
+  @override
+  String toString() {
+    return 'ServicesEvent.setMyLocation(latLng: $latLng)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetMyLocationImpl &&
+            (identical(other.latLng, latLng) || other.latLng == latLng));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, latLng);
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetMyLocationImplCopyWith<_$SetMyLocationImpl> get copyWith =>
+      __$$SetMyLocationImplCopyWithImpl<_$SetMyLocationImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            int catId, RegionModel? region, Set<int> serviceIds)
+        getServices,
+    required TResult Function() getServiceCategories,
+    required TResult Function(LatLng? latLng) setMyLocation,
+  }) {
+    return setMyLocation(latLng);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
+        getServices,
+    TResult? Function()? getServiceCategories,
+    TResult? Function(LatLng? latLng)? setMyLocation,
+  }) {
+    return setMyLocation?.call(latLng);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
+        getServices,
+    TResult Function()? getServiceCategories,
+    TResult Function(LatLng? latLng)? setMyLocation,
+    required TResult orElse(),
+  }) {
+    if (setMyLocation != null) {
+      return setMyLocation(latLng);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetServiceCategories value) getServiceCategories,
+    required TResult Function(_SetMyLocation value) setMyLocation,
+  }) {
+    return setMyLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetServiceCategories value)? getServiceCategories,
+    TResult? Function(_SetMyLocation value)? setMyLocation,
+  }) {
+    return setMyLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetServiceCategories value)? getServiceCategories,
+    TResult Function(_SetMyLocation value)? setMyLocation,
+    required TResult orElse(),
+  }) {
+    if (setMyLocation != null) {
+      return setMyLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetMyLocation implements ServicesEvent {
+  const factory _SetMyLocation(final LatLng? latLng) = _$SetMyLocationImpl;
+
+  LatLng? get latLng;
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetMyLocationImplCopyWith<_$SetMyLocationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ServicesState {
   List<ServiceCategory> get serviceCategories =>
       throw _privateConstructorUsedError;
   int get currentCatId => throw _privateConstructorUsedError;
   LatLng? get currentLocation => throw _privateConstructorUsedError;
   RegionModel? get currentRegion => throw _privateConstructorUsedError;
-  List<CarServiceEntity> get services => throw _privateConstructorUsedError;
+  Set<ServiceModel> get selectedServices =>
+      throw _privateConstructorUsedError; //услуги
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
   bool get loadCarServices => throw _privateConstructorUsedError;
@@ -397,7 +566,7 @@ abstract class $ServicesStateCopyWith<$Res> {
       int currentCatId,
       LatLng? currentLocation,
       RegionModel? currentRegion,
-      List<CarServiceEntity> services,
+      Set<ServiceModel> selectedServices,
       Set<Marker> markers,
       ActionStatus status,
       bool loadCarServices});
@@ -422,7 +591,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
     Object? currentCatId = null,
     Object? currentLocation = freezed,
     Object? currentRegion = freezed,
-    Object? services = null,
+    Object? selectedServices = null,
     Object? markers = null,
     Object? status = null,
     Object? loadCarServices = null,
@@ -444,10 +613,10 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
           ? _value.currentRegion
           : currentRegion // ignore: cast_nullable_to_non_nullable
               as RegionModel?,
-      services: null == services
-          ? _value.services
-          : services // ignore: cast_nullable_to_non_nullable
-              as List<CarServiceEntity>,
+      selectedServices: null == selectedServices
+          ? _value.selectedServices
+          : selectedServices // ignore: cast_nullable_to_non_nullable
+              as Set<ServiceModel>,
       markers: null == markers
           ? _value.markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -477,7 +646,7 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
       int currentCatId,
       LatLng? currentLocation,
       RegionModel? currentRegion,
-      List<CarServiceEntity> services,
+      Set<ServiceModel> selectedServices,
       Set<Marker> markers,
       ActionStatus status,
       bool loadCarServices});
@@ -500,7 +669,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
     Object? currentCatId = null,
     Object? currentLocation = freezed,
     Object? currentRegion = freezed,
-    Object? services = null,
+    Object? selectedServices = null,
     Object? markers = null,
     Object? status = null,
     Object? loadCarServices = null,
@@ -522,10 +691,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
           ? _value.currentRegion
           : currentRegion // ignore: cast_nullable_to_non_nullable
               as RegionModel?,
-      services: null == services
-          ? _value._services
-          : services // ignore: cast_nullable_to_non_nullable
-              as List<CarServiceEntity>,
+      selectedServices: null == selectedServices
+          ? _value._selectedServices
+          : selectedServices // ignore: cast_nullable_to_non_nullable
+              as Set<ServiceModel>,
       markers: null == markers
           ? _value._markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -550,12 +719,12 @@ class _$ServicesStateImpl implements _ServicesState {
       this.currentCatId = 133,
       this.currentLocation,
       this.currentRegion,
-      final List<CarServiceEntity> services = const [],
+      final Set<ServiceModel> selectedServices = const {},
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure,
       this.loadCarServices = false})
       : _serviceCategories = serviceCategories,
-        _services = services,
+        _selectedServices = selectedServices,
         _markers = markers;
 
   final List<ServiceCategory> _serviceCategories;
@@ -575,16 +744,18 @@ class _$ServicesStateImpl implements _ServicesState {
   final LatLng? currentLocation;
   @override
   final RegionModel? currentRegion;
-  final List<CarServiceEntity> _services;
+  final Set<ServiceModel> _selectedServices;
   @override
   @JsonKey()
-  List<CarServiceEntity> get services {
-    if (_services is EqualUnmodifiableListView) return _services;
+  Set<ServiceModel> get selectedServices {
+    if (_selectedServices is EqualUnmodifiableSetView) return _selectedServices;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_services);
+    return EqualUnmodifiableSetView(_selectedServices);
   }
 
+//услуги
   final Set<Marker> _markers;
+//услуги
   @override
   @JsonKey()
   Set<Marker> get markers {
@@ -602,7 +773,7 @@ class _$ServicesStateImpl implements _ServicesState {
 
   @override
   String toString() {
-    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, services: $services, markers: $markers, status: $status, loadCarServices: $loadCarServices)';
+    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, markers: $markers, status: $status, loadCarServices: $loadCarServices)';
   }
 
   @override
@@ -618,7 +789,8 @@ class _$ServicesStateImpl implements _ServicesState {
                 other.currentLocation == currentLocation) &&
             (identical(other.currentRegion, currentRegion) ||
                 other.currentRegion == currentRegion) &&
-            const DeepCollectionEquality().equals(other._services, _services) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedServices, _selectedServices) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.loadCarServices, loadCarServices) ||
@@ -632,7 +804,7 @@ class _$ServicesStateImpl implements _ServicesState {
       currentCatId,
       currentLocation,
       currentRegion,
-      const DeepCollectionEquality().hash(_services),
+      const DeepCollectionEquality().hash(_selectedServices),
       const DeepCollectionEquality().hash(_markers),
       status,
       loadCarServices);
@@ -652,7 +824,7 @@ abstract class _ServicesState implements ServicesState {
       final int currentCatId,
       final LatLng? currentLocation,
       final RegionModel? currentRegion,
-      final List<CarServiceEntity> services,
+      final Set<ServiceModel> selectedServices,
       final Set<Marker> markers,
       final ActionStatus status,
       final bool loadCarServices}) = _$ServicesStateImpl;
@@ -666,7 +838,7 @@ abstract class _ServicesState implements ServicesState {
   @override
   RegionModel? get currentRegion;
   @override
-  List<CarServiceEntity> get services;
+  Set<ServiceModel> get selectedServices; //услуги
   @override
   Set<Marker> get markers;
   @override

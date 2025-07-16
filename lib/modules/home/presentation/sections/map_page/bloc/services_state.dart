@@ -7,7 +7,7 @@ class ServicesState with _$ServicesState {
     @Default(133) int currentCatId,
     LatLng? currentLocation,
     RegionModel? currentRegion,
-    @Default([]) List<CarServiceEntity> services,
+    @Default({}) Set<ServiceModel> selectedServices,//услуги
     @Default({}) Set<Marker> markers,
     @Default(ActionStatus.pure) ActionStatus status,
     @Default(false) bool loadCarServices,//отдельный прогресс на загрузку сервисов по критериям
