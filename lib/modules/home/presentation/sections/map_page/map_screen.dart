@@ -152,11 +152,40 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                       ),
               ),
+              Positioned(
+                left: 24,
+                right: 24,
+                bottom: 64 + MediaQuery.of(context).padding.bottom,
+                child: state.loadCarServices ? Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.5), borderRadius: BorderRadius.circular(4)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 4),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Loading services...',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayLarge!
+                                  .copyWith(
+                                      fontWeight: FontWeight.w700, fontSize: 16),
+                            ),
+                            const Spacer(),
+                            Transform.scale(
+                              scale: 0.5,
+                              child: const CircularProgressIndicator(),
+                            )
+                          ],
+                        ),
+                      )
+                    : const SizedBox(),
+              ),
               // Overlay: Фильтр/категории
               Positioned(
                 left: 24,
                 right: 24,
-                bottom: 24 + MediaQuery.of(context).padding.bottom,
+                bottom: 12 + MediaQuery.of(context).padding.bottom,
                 child: TypeSelector(
                   categories: state.serviceCategories,
                   selectedCategoryId: state.currentCatId,
