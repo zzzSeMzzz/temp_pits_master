@@ -109,29 +109,27 @@ class _MapScreenState extends State<MapScreen> {
               return Stack(
                 children: [
                   Positioned.fill(
-                      child: SafeArea(
-                    child: Container(
-                      color: Colors.orange[100],
-                      child: GoogleMap(
-                        //onCameraMove: clusterManager.onCameraMove,
-                        //onCameraIdle: clusterManager.updateMap,
-                        onMapCreated: (controller) {
-                          debugPrint("onMapCreated");
-                          _mapController = controller;
+                      child: Container(
+                        color: Colors.orange[100],
+                        child: GoogleMap(
+                          //onCameraMove: clusterManager.onCameraMove,
+                          //onCameraIdle: clusterManager.updateMap,
+                          onMapCreated: (controller) {
+                            debugPrint("onMapCreated");
+                            _mapController = controller;
 
-                          _setMyLocation(controller, bloc);
-                        },
-                        compassEnabled: false,
-                        myLocationButtonEnabled: false,
-                        myLocationEnabled: true,
-                        markers: state.markers,
-                        clusterManagers: {_clusterManager},
-                        zoomGesturesEnabled: true,
-                        zoomControlsEnabled: kDebugMode,
-                        initialCameraPosition: _kMadrid,
-                      ),
-                    ),
-                  )),
+                            _setMyLocation(controller, bloc);
+                          },
+                          compassEnabled: false,
+                          myLocationButtonEnabled: false,
+                          myLocationEnabled: true,
+                          markers: state.markers,
+                          clusterManagers: {_clusterManager},
+                          zoomGesturesEnabled: true,
+                          zoomControlsEnabled: kDebugMode,
+                          initialCameraPosition: _kMadrid,
+                        ),
+                      )),
 
                   //Positioned.fill(child: WebViewPage()),
 
