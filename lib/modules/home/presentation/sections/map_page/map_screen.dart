@@ -100,8 +100,10 @@ class _MapScreenState extends State<MapScreen> {
           ),
           body: BlocBuilder<ServicesBloc, ServicesState>(
             builder: (context, state) {
-              if (state.status == ActionStatus.inProcess) {
+              if (state.status == ActionStatus.inProcess || state.status == ActionStatus.pure) {
                 return const Center(child: CircularProgressIndicator());
+              } else if (state.status == ActionStatus.isFailure) {
+                return const Center(child: Text("Ошибка загруки данных"));
               }
               ServicesBloc bloc = BlocProvider.of<ServicesBloc>(context);
               return Stack(
