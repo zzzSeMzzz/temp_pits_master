@@ -8,6 +8,7 @@ class ServicesState with _$ServicesState {
     LatLng? currentLocation,
     RegionModel? currentRegion,
     @Default({}) Set<ServiceModel> selectedServices,//услуги
+    @Default([]) List<ServiceModel> allServices,//весь список услуг
     @Default({}) Set<Marker> markers,
     @Default(ActionStatus.pure) ActionStatus status,
     @Default(false) bool loadCarServices,//отдельный прогресс на загрузку сервисов по критериям

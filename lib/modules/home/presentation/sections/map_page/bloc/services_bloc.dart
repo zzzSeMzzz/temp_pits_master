@@ -53,11 +53,13 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
     final categories = await getServicesUseCase.getServiceCategories();
     final regions = await getServicesUseCase.getRegions();
+    final allServices = await getServicesUseCase.getServices();
 
-    if (categories.isRight && regions.isRight) {
+    if (categories.isRight && regions.isRight && allServices.isRight) {
       _regions = regions.right;
-      debugPrint("ServiceBloc:: Success get services categories ${categories.right.length}");
+      debugPrint("ServiceBloc:: Success get car_services categories ${categories.right.length}");
       debugPrint("ServiceBloc::Success get services regions ${regions.right.length}");
+      debugPrint("ServiceBloc::Success get services regions ${allServices.right.length}");
       int currentServiceCat =
         categories.right.length > 1 ? categories.right.first.id : 0;
       debugPrint("ServiceBloc:: current categoryId=$currentServiceCat");
@@ -65,7 +67,8 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
        state.copyWith(
           status: ActionStatus.isSuccess,
           serviceCategories: categories.right,
-          currentCatId: currentServiceCat
+          currentCatId: currentServiceCat,
+          allServices: allServices.right
        )
       );
       //add(ServicesEvent.getServices(catId: currentServiceCat));

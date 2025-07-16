@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
@@ -13,6 +14,8 @@ import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/servic
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
+
+import '../../../../../assets/constants/app_icons.dart';
 
 // ВАЖНО: Оборачивайте MapScreen в MultiBlocProvider снаружи!
 class MapScreen extends StatefulWidget {
@@ -123,9 +126,49 @@ class _MapScreenState extends State<MapScreen> {
                   ),
                 ),
               ),
+              Positioned(
+                  left: 24,
+                  right: 24,
+                  top: 54 + MediaQuery.of(context).padding.top,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: white, borderRadius: BorderRadius.circular(16)),
+                    padding: const EdgeInsets.only(right: 12),
+                    child: Row(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                              children: state.allServices.map((service) => TextButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.close, color: Colors.black),
+                                label: Text(service.name,
+                                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 12,
+                                        color: Colors.black
+                                    )),
+                                iconAlignment: IconAlignment.end,
+                              )).toList()
+                          ),
+                        ),
+                        GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {
+                            //todo
+                          },
+                          child: SvgPicture.asset(
+                            AppIcons.arrowDown,
+                            width: 12,
+                            height: 7,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
               // Overlay: Регион (если есть)
               Positioned(
-                top: 80 + MediaQuery.of(context).padding.top,
+                top: 110 + MediaQuery.of(context).padding.top,
                 left: 24,
                 right: 24,
                 child: state.currentRegion == null

@@ -71,4 +71,5 @@ class AppIcons {
   static const String gallery = 'assets/icons/gallery.svg';
   static const String microphone = 'assets/icons/microphone.svg';
   static const String list = 'assets/icons/list.svg';
+  static const String arrowDown = 'assets/icons/ic_arrow_down.svg';
 }

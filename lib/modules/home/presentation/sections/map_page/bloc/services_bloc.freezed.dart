@@ -544,6 +544,8 @@ mixin _$ServicesState {
   RegionModel? get currentRegion => throw _privateConstructorUsedError;
   Set<ServiceModel> get selectedServices =>
       throw _privateConstructorUsedError; //услуги
+  List<ServiceModel> get allServices =>
+      throw _privateConstructorUsedError; //весь список услуг
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
   bool get loadCarServices => throw _privateConstructorUsedError;
@@ -567,6 +569,7 @@ abstract class $ServicesStateCopyWith<$Res> {
       LatLng? currentLocation,
       RegionModel? currentRegion,
       Set<ServiceModel> selectedServices,
+      List<ServiceModel> allServices,
       Set<Marker> markers,
       ActionStatus status,
       bool loadCarServices});
@@ -592,6 +595,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
     Object? currentLocation = freezed,
     Object? currentRegion = freezed,
     Object? selectedServices = null,
+    Object? allServices = null,
     Object? markers = null,
     Object? status = null,
     Object? loadCarServices = null,
@@ -617,6 +621,10 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
           ? _value.selectedServices
           : selectedServices // ignore: cast_nullable_to_non_nullable
               as Set<ServiceModel>,
+      allServices: null == allServices
+          ? _value.allServices
+          : allServices // ignore: cast_nullable_to_non_nullable
+              as List<ServiceModel>,
       markers: null == markers
           ? _value.markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -647,6 +655,7 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
       LatLng? currentLocation,
       RegionModel? currentRegion,
       Set<ServiceModel> selectedServices,
+      List<ServiceModel> allServices,
       Set<Marker> markers,
       ActionStatus status,
       bool loadCarServices});
@@ -670,6 +679,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
     Object? currentLocation = freezed,
     Object? currentRegion = freezed,
     Object? selectedServices = null,
+    Object? allServices = null,
     Object? markers = null,
     Object? status = null,
     Object? loadCarServices = null,
@@ -695,6 +705,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
           ? _value._selectedServices
           : selectedServices // ignore: cast_nullable_to_non_nullable
               as Set<ServiceModel>,
+      allServices: null == allServices
+          ? _value._allServices
+          : allServices // ignore: cast_nullable_to_non_nullable
+              as List<ServiceModel>,
       markers: null == markers
           ? _value._markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -720,11 +734,13 @@ class _$ServicesStateImpl implements _ServicesState {
       this.currentLocation,
       this.currentRegion,
       final Set<ServiceModel> selectedServices = const {},
+      final List<ServiceModel> allServices = const [],
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure,
       this.loadCarServices = false})
       : _serviceCategories = serviceCategories,
         _selectedServices = selectedServices,
+        _allServices = allServices,
         _markers = markers;
 
   final List<ServiceCategory> _serviceCategories;
@@ -754,8 +770,19 @@ class _$ServicesStateImpl implements _ServicesState {
   }
 
 //услуги
-  final Set<Marker> _markers;
+  final List<ServiceModel> _allServices;
 //услуги
+  @override
+  @JsonKey()
+  List<ServiceModel> get allServices {
+    if (_allServices is EqualUnmodifiableListView) return _allServices;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allServices);
+  }
+
+//весь список услуг
+  final Set<Marker> _markers;
+//весь список услуг
   @override
   @JsonKey()
   Set<Marker> get markers {
@@ -773,7 +800,7 @@ class _$ServicesStateImpl implements _ServicesState {
 
   @override
   String toString() {
-    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, markers: $markers, status: $status, loadCarServices: $loadCarServices)';
+    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, allServices: $allServices, markers: $markers, status: $status, loadCarServices: $loadCarServices)';
   }
 
   @override
@@ -791,6 +818,8 @@ class _$ServicesStateImpl implements _ServicesState {
                 other.currentRegion == currentRegion) &&
             const DeepCollectionEquality()
                 .equals(other._selectedServices, _selectedServices) &&
+            const DeepCollectionEquality()
+                .equals(other._allServices, _allServices) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.loadCarServices, loadCarServices) ||
@@ -805,6 +834,7 @@ class _$ServicesStateImpl implements _ServicesState {
       currentLocation,
       currentRegion,
       const DeepCollectionEquality().hash(_selectedServices),
+      const DeepCollectionEquality().hash(_allServices),
       const DeepCollectionEquality().hash(_markers),
       status,
       loadCarServices);
@@ -825,6 +855,7 @@ abstract class _ServicesState implements ServicesState {
       final LatLng? currentLocation,
       final RegionModel? currentRegion,
       final Set<ServiceModel> selectedServices,
+      final List<ServiceModel> allServices,
       final Set<Marker> markers,
       final ActionStatus status,
       final bool loadCarServices}) = _$ServicesStateImpl;
@@ -839,6 +870,8 @@ abstract class _ServicesState implements ServicesState {
   RegionModel? get currentRegion;
   @override
   Set<ServiceModel> get selectedServices; //услуги
+  @override
+  List<ServiceModel> get allServices; //весь список услуг
   @override
   Set<Marker> get markers;
   @override
