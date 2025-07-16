@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
@@ -11,14 +9,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/modules/home/domain/entity/car_service.dart';
-import 'package:pits_app/modules/home/domain/usecase/get_services.dart';
-import 'package:pits_app/modules/home/domain/usecase/get_single_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
-import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/single/service_single_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
-import '../../../../../assets/constants/app_icons.dart';
 
 // ВАЖНО: Оборачивайте MapScreen в MultiBlocProvider снаружи!
 class MapScreen extends StatefulWidget {
@@ -119,7 +113,7 @@ class _MapScreenState extends State<MapScreen> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 8,
                         ),
                       ],
