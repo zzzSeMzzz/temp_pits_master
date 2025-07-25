@@ -129,15 +129,25 @@ class __$$GetSingleServiceImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetSingleServiceImpl implements _GetSingleService {
+class _$GetSingleServiceImpl
+    with DiagnosticableTreeMixin
+    implements _GetSingleService {
   const _$GetSingleServiceImpl({required this.id});
 
   @override
   final String id;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ServiceSingleEvent.getSingleService(id: $id)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ServiceSingleEvent.getSingleService'))
+      ..add(DiagnosticsProperty('id', id));
   }
 
   @override
@@ -326,7 +336,9 @@ class __$$ServiceSingleStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ServiceSingleStateImpl implements _ServiceSingleState {
+class _$ServiceSingleStateImpl
+    with DiagnosticableTreeMixin
+    implements _ServiceSingleState {
   const _$ServiceSingleStateImpl(
       {this.serviceSingle = const ServiceSingleEntity(),
       this.actionStatus = ActionStatus.pure});
@@ -339,8 +351,17 @@ class _$ServiceSingleStateImpl implements _ServiceSingleState {
   final ActionStatus actionStatus;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ServiceSingleState(serviceSingle: $serviceSingle, actionStatus: $actionStatus)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ServiceSingleState'))
+      ..add(DiagnosticsProperty('serviceSingle', serviceSingle))
+      ..add(DiagnosticsProperty('actionStatus', actionStatus));
   }
 
   @override

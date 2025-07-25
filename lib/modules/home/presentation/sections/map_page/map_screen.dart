@@ -154,33 +154,36 @@ class _MapScreenState extends State<MapScreen> {
                     children: [
                       // Горизонтальный скролл
                       Positioned.fill(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(
-                              right: 32), // чтобы не перекрывать стрелку
-                          child: Row(
-                            children: state.allServices
-                                .map((service) => TextButton.icon(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.close,
-                                          color: Colors.black),
-                                      label: Text(service.name,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 12,
-                                                  color: Colors.black)),
-                                      iconAlignment: IconAlignment.end,
-                                    ))
-                                .toList(),
+                        child: Container(
+                          padding: const EdgeInsets.only(right: 30),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            padding: const EdgeInsets.only(
+                                right: 36), // чтобы не перекрывать стрелку
+                            child: Row(
+                              children: state.allServices
+                                  .map((service) => TextButton.icon(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.close,
+                                            color: Colors.black),
+                                        label: Text(service.name,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium!
+                                                .copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 12,
+                                                    color: Colors.black)),
+                                        iconAlignment: IconAlignment.end,
+                                      ))
+                                  .toList(),
+                            ),
                           ),
                         ),
                       ),
                       // Стрелка справа, всегда поверх
                       Positioned(
-                        right: 0,
+                        right: 12,
                         top: 0,
                         bottom: 0,
                         child: GestureDetector(

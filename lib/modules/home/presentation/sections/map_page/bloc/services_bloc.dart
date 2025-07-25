@@ -155,12 +155,12 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     if (event is _SetMyLocation) {
       RegionModel? regionModel;
       if (event.latLng != null) {
-        debugPrint("ServiceBloc:: my location is  null");
         final placemark = await getInfoByLocation(event.latLng!);
 
         if (placemark?.locality != null) {
           regionModel = _regions.firstWhereOrNull(
-              (region) => region.name.contains(placemark!.locality!));
+              (region) => region.name.contains(placemark!.locality!) || region.name.contains(placemark!.subAdministrativeArea!)
+          );
           debugPrint(
               "ServiceBloc:: founded region model is ${regionModel?.toString()}");
         } else {
