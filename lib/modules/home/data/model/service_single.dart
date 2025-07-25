@@ -42,7 +42,7 @@ class ServiceSingleModel extends ServiceSingleEntity {
     return ServiceSingleModel(
       status: json['ping_status'] as String? ?? '',
       idd: json['id'] as int? ?? 0,
-      address: json['address'] as String? ?? '',
+      address: json['address'] as String? ?? 'No address found',
       name: json['title']['rendered'] as String? ?? '',
       tagline: json['_job_tagline'] as String? ?? '',
       phone: json['_job_phone'] as String? ?? '',

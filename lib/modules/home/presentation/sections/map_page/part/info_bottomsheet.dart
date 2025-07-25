@@ -18,7 +18,7 @@ import 'package:pits_app/utils/action_status.dart';
 
 showInfoBottomSheet(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
   showModalBottomSheet(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       context: context,
       isScrollControlled: true,
       builder: (c) => BlocProvider.value(
@@ -29,79 +29,104 @@ class InfoBottomSheet extends StatelessWidget {
   const InfoBottomSheet({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        height: MediaQuery.of(context).size.height * 0.7,
+  Widget build(BuildContext context) => SizedBox(
+        height: MediaQuery.of(context).size.height * 0.6,
         child: BlocBuilder<ServiceSingleBloc, ServiceSingleState>(
           builder: (context, state) {
-            if (state.actionStatus == ActionStatus.inProcess) {
+            if (state.actionStatus == ActionStatus.inProcess || state.actionStatus == ActionStatus.pure) {
               return Container(
                 color: Colors.white,
-                child: Center(
+                child: const Center(
                   child: CupertinoActivityIndicator(),
+                ),
+              );
+            } else if (state.actionStatus == ActionStatus.isFailure) {
+              return Container(
+                color: Colors.white,
+                child: const Center(
+                  child: Text("Failed load service information"),
                 ),
               );
             } else {
               return Container(
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Stack(
                   children: [
                     Column(
                       children: [
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 16,
-                            ),
-                            GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle, color: white),
-                                padding: const EdgeInsets.all(8),
-                                child: SvgPicture.asset(
-                                  AppIcons.arrowLeft,
-                                  width: 24,
-                                  height: 24,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
                         Container(
                           padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
                           decoration: const BoxDecoration(
-                              color: white,
+                              color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(12),
                                   topRight: Radius.circular(12))),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                state.serviceSingle.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge!
-                                    .copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Text(
-                                state.serviceSingle.desc,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge!
-                                    .copyWith(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400),
+                              Row(
+                                children: [
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle, color: red),
+                                    width: 44,
+                                    height: 44,
+                                    child: state.serviceSingle.image.isNotEmpty
+                                        ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: Image.network(
+                                        state.serviceSingle.image,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ) : const SizedBox(),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        state.serviceSingle.name,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayLarge!
+                                            .copyWith(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        state.serviceSingle.address,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayLarge!
+                                            .copyWith(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
+                                  ),
+                                  const Spacer(),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        height: 12,
+                                        width: 12,
+                                        decoration:
+                                        const BoxDecoration(shape: BoxShape.circle, color: Colors.green),
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        state.serviceSingle.status,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayLarge!
+                                            .copyWith(fontWeight: FontWeight.w400, fontSize: 13),
+                                      ),
+                                    ],
+                                  )
+                                ],
                               ),
                               const SizedBox(
                                 height: 16,
@@ -129,20 +154,19 @@ class InfoBottomSheet extends StatelessWidget {
                                 thickness: 1,
                                 color: divider,
                               ),
-                              InfoRowExtra(
-                                  title: 'Address',
+                              const InfoRowExtra(
+                                  title: 'Type of work',
                                   icon: AppIcons.running,
-                                  desc: state.serviceSingle.address),
+                                  desc: 'none'),
                               const Divider(
                                 height: 1,
                                 thickness: 1,
-                                color: divider,
+                                color: textGrey,
                               ),
-                              InfoRow(
-                                  iconBoxColor: Colors.green,
-                                  title: state.serviceSingle.status,
-                                  icon: AppIcons.repairFlame,
-                                  desc: 'none'),
+                              const InfoRow(
+                                  title: 'Time',
+                                  icon: AppIcons.time,
+                                  desc: '2 days'),
                               const Divider(
                                 height: 1,
                                 thickness: 1,
@@ -154,7 +178,7 @@ class InfoBottomSheet extends StatelessWidget {
                                 color: divider,
                               ),
                               const InfoRowExtra(
-                                  title: 'Categories',
+                                  title: 'Payment type',
                                   icon: AppIcons.wallet,
                                   desc: 'none'),
                               const Divider(
@@ -170,7 +194,7 @@ class InfoBottomSheet extends StatelessWidget {
                                   Column(
                                     children: [
                                       Text(
-                                        'Range',
+                                        'Price',
                                         style: Theme.of(context)
                                             .textTheme
                                             .displayLarge!
@@ -196,25 +220,25 @@ class InfoBottomSheet extends StatelessWidget {
                                   WButton(
                                     width: 160,
                                     onTap: () {
-                                      Navigator.push(context, fade(page: PartSelectionScreen()));
+                                      Navigator.push(context, fade(page: const PartSelectionScreen()));
                                     },
                                     height: 55,
                                     borderRadius: 4,
                                     textColor: white,
-                                    text: 'Send request',
+                                    text: 'Buy',
                                   ),
                                 ],
                               ),
                               SizedBox(
                                 height:
-                                    30 + MediaQuery.of(context).padding.bottom,
+                                    MediaQuery.of(context).padding.bottom,
                               )
                             ],
                           ),
                         )
                       ],
                     ),
-                    Positioned(
+                    /*Positioned(
                         right: 20,
                         top: 0,
                         child: GestureDetector(
@@ -241,7 +265,7 @@ class InfoBottomSheet extends StatelessWidget {
                                   )
                                 : const SizedBox(),
                           ),
-                        )),
+                        )),*/
                   ],
                 ),
               );
