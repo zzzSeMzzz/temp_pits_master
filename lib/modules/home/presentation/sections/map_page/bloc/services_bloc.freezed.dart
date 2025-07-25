@@ -23,6 +23,7 @@ mixin _$ServicesEvent {
         getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng) setMyLocation,
+    required TResult Function(int serviceId) showModal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +32,7 @@ mixin _$ServicesEvent {
         getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng)? setMyLocation,
+    TResult? Function(int serviceId)? showModal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +41,7 @@ mixin _$ServicesEvent {
         getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng)? setMyLocation,
+    TResult Function(int serviceId)? showModal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ServicesEvent {
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
     required TResult Function(_SetMyLocation value) setMyLocation,
+    required TResult Function(_ShowModal value) showModal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +58,7 @@ mixin _$ServicesEvent {
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
     TResult? Function(_SetMyLocation value)? setMyLocation,
+    TResult? Function(_ShowModal value)? showModal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +66,7 @@ mixin _$ServicesEvent {
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
     TResult Function(_SetMyLocation value)? setMyLocation,
+    TResult Function(_ShowModal value)? showModal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +193,7 @@ class _$GetServicesImpl implements _GetServices {
         getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng) setMyLocation,
+    required TResult Function(int serviceId) showModal,
   }) {
     return getServices(catId, region, serviceIds);
   }
@@ -198,6 +205,7 @@ class _$GetServicesImpl implements _GetServices {
         getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng)? setMyLocation,
+    TResult? Function(int serviceId)? showModal,
   }) {
     return getServices?.call(catId, region, serviceIds);
   }
@@ -209,6 +217,7 @@ class _$GetServicesImpl implements _GetServices {
         getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng)? setMyLocation,
+    TResult Function(int serviceId)? showModal,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -223,6 +232,7 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
     required TResult Function(_SetMyLocation value) setMyLocation,
+    required TResult Function(_ShowModal value) showModal,
   }) {
     return getServices(this);
   }
@@ -233,6 +243,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
     TResult? Function(_SetMyLocation value)? setMyLocation,
+    TResult? Function(_ShowModal value)? showModal,
   }) {
     return getServices?.call(this);
   }
@@ -243,6 +254,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
     TResult Function(_SetMyLocation value)? setMyLocation,
+    TResult Function(_ShowModal value)? showModal,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -316,6 +328,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
         getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng) setMyLocation,
+    required TResult Function(int serviceId) showModal,
   }) {
     return getServiceCategories();
   }
@@ -327,6 +340,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
         getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng)? setMyLocation,
+    TResult? Function(int serviceId)? showModal,
   }) {
     return getServiceCategories?.call();
   }
@@ -338,6 +352,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
         getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng)? setMyLocation,
+    TResult Function(int serviceId)? showModal,
     required TResult orElse(),
   }) {
     if (getServiceCategories != null) {
@@ -352,6 +367,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
     required TResult Function(_SetMyLocation value) setMyLocation,
+    required TResult Function(_ShowModal value) showModal,
   }) {
     return getServiceCategories(this);
   }
@@ -362,6 +378,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
     TResult? Function(_SetMyLocation value)? setMyLocation,
+    TResult? Function(_ShowModal value)? showModal,
   }) {
     return getServiceCategories?.call(this);
   }
@@ -372,6 +389,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
     TResult Function(_SetMyLocation value)? setMyLocation,
+    TResult Function(_ShowModal value)? showModal,
     required TResult orElse(),
   }) {
     if (getServiceCategories != null) {
@@ -458,6 +476,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
         getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng) setMyLocation,
+    required TResult Function(int serviceId) showModal,
   }) {
     return setMyLocation(latLng);
   }
@@ -469,6 +488,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
         getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng)? setMyLocation,
+    TResult? Function(int serviceId)? showModal,
   }) {
     return setMyLocation?.call(latLng);
   }
@@ -480,6 +500,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
         getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng)? setMyLocation,
+    TResult Function(int serviceId)? showModal,
     required TResult orElse(),
   }) {
     if (setMyLocation != null) {
@@ -494,6 +515,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetServiceCategories value) getServiceCategories,
     required TResult Function(_SetMyLocation value) setMyLocation,
+    required TResult Function(_ShowModal value) showModal,
   }) {
     return setMyLocation(this);
   }
@@ -504,6 +526,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetServiceCategories value)? getServiceCategories,
     TResult? Function(_SetMyLocation value)? setMyLocation,
+    TResult? Function(_ShowModal value)? showModal,
   }) {
     return setMyLocation?.call(this);
   }
@@ -514,6 +537,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetServiceCategories value)? getServiceCategories,
     TResult Function(_SetMyLocation value)? setMyLocation,
+    TResult Function(_ShowModal value)? showModal,
     required TResult orElse(),
   }) {
     if (setMyLocation != null) {
@@ -536,6 +560,163 @@ abstract class _SetMyLocation implements ServicesEvent {
 }
 
 /// @nodoc
+abstract class _$$ShowModalImplCopyWith<$Res> {
+  factory _$$ShowModalImplCopyWith(
+          _$ShowModalImpl value, $Res Function(_$ShowModalImpl) then) =
+      __$$ShowModalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int serviceId});
+}
+
+/// @nodoc
+class __$$ShowModalImplCopyWithImpl<$Res>
+    extends _$ServicesEventCopyWithImpl<$Res, _$ShowModalImpl>
+    implements _$$ShowModalImplCopyWith<$Res> {
+  __$$ShowModalImplCopyWithImpl(
+      _$ShowModalImpl _value, $Res Function(_$ShowModalImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceId = null,
+  }) {
+    return _then(_$ShowModalImpl(
+      null == serviceId
+          ? _value.serviceId
+          : serviceId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowModalImpl implements _ShowModal {
+  const _$ShowModalImpl(this.serviceId);
+
+  @override
+  final int serviceId;
+
+  @override
+  String toString() {
+    return 'ServicesEvent.showModal(serviceId: $serviceId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowModalImpl &&
+            (identical(other.serviceId, serviceId) ||
+                other.serviceId == serviceId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, serviceId);
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowModalImplCopyWith<_$ShowModalImpl> get copyWith =>
+      __$$ShowModalImplCopyWithImpl<_$ShowModalImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            int catId, RegionModel? region, Set<int> serviceIds)
+        getServices,
+    required TResult Function() getServiceCategories,
+    required TResult Function(LatLng? latLng) setMyLocation,
+    required TResult Function(int serviceId) showModal,
+  }) {
+    return showModal(serviceId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
+        getServices,
+    TResult? Function()? getServiceCategories,
+    TResult? Function(LatLng? latLng)? setMyLocation,
+    TResult? Function(int serviceId)? showModal,
+  }) {
+    return showModal?.call(serviceId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
+        getServices,
+    TResult Function()? getServiceCategories,
+    TResult Function(LatLng? latLng)? setMyLocation,
+    TResult Function(int serviceId)? showModal,
+    required TResult orElse(),
+  }) {
+    if (showModal != null) {
+      return showModal(serviceId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetServiceCategories value) getServiceCategories,
+    required TResult Function(_SetMyLocation value) setMyLocation,
+    required TResult Function(_ShowModal value) showModal,
+  }) {
+    return showModal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetServiceCategories value)? getServiceCategories,
+    TResult? Function(_SetMyLocation value)? setMyLocation,
+    TResult? Function(_ShowModal value)? showModal,
+  }) {
+    return showModal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetServiceCategories value)? getServiceCategories,
+    TResult Function(_SetMyLocation value)? setMyLocation,
+    TResult Function(_ShowModal value)? showModal,
+    required TResult orElse(),
+  }) {
+    if (showModal != null) {
+      return showModal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowModal implements ServicesEvent {
+  const factory _ShowModal(final int serviceId) = _$ShowModalImpl;
+
+  int get serviceId;
+
+  /// Create a copy of ServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShowModalImplCopyWith<_$ShowModalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ServicesState {
   List<ServiceCategory> get serviceCategories =>
       throw _privateConstructorUsedError;
@@ -548,7 +729,10 @@ mixin _$ServicesState {
       throw _privateConstructorUsedError; //весь список услуг
   Set<Marker> get markers => throw _privateConstructorUsedError;
   ActionStatus get status => throw _privateConstructorUsedError;
-  bool get loadCarServices => throw _privateConstructorUsedError;
+  bool get loadCarServices =>
+      throw _privateConstructorUsedError; //отдельный прогресс на загрузку сервисов по критериям
+  bool get showModal => throw _privateConstructorUsedError;
+  int? get selectedServiceId => throw _privateConstructorUsedError;
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -572,7 +756,9 @@ abstract class $ServicesStateCopyWith<$Res> {
       List<ServiceModel> allServices,
       Set<Marker> markers,
       ActionStatus status,
-      bool loadCarServices});
+      bool loadCarServices,
+      bool showModal,
+      int? selectedServiceId});
 }
 
 /// @nodoc
@@ -599,6 +785,8 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
     Object? markers = null,
     Object? status = null,
     Object? loadCarServices = null,
+    Object? showModal = null,
+    Object? selectedServiceId = freezed,
   }) {
     return _then(_value.copyWith(
       serviceCategories: null == serviceCategories
@@ -637,6 +825,14 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
           ? _value.loadCarServices
           : loadCarServices // ignore: cast_nullable_to_non_nullable
               as bool,
+      showModal: null == showModal
+          ? _value.showModal
+          : showModal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedServiceId: freezed == selectedServiceId
+          ? _value.selectedServiceId
+          : selectedServiceId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -658,7 +854,9 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
       List<ServiceModel> allServices,
       Set<Marker> markers,
       ActionStatus status,
-      bool loadCarServices});
+      bool loadCarServices,
+      bool showModal,
+      int? selectedServiceId});
 }
 
 /// @nodoc
@@ -683,6 +881,8 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
     Object? markers = null,
     Object? status = null,
     Object? loadCarServices = null,
+    Object? showModal = null,
+    Object? selectedServiceId = freezed,
   }) {
     return _then(_$ServicesStateImpl(
       serviceCategories: null == serviceCategories
@@ -721,6 +921,14 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
           ? _value.loadCarServices
           : loadCarServices // ignore: cast_nullable_to_non_nullable
               as bool,
+      showModal: null == showModal
+          ? _value.showModal
+          : showModal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedServiceId: freezed == selectedServiceId
+          ? _value.selectedServiceId
+          : selectedServiceId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -737,7 +945,9 @@ class _$ServicesStateImpl implements _ServicesState {
       final List<ServiceModel> allServices = const [],
       final Set<Marker> markers = const {},
       this.status = ActionStatus.pure,
-      this.loadCarServices = false})
+      this.loadCarServices = false,
+      this.showModal = false,
+      this.selectedServiceId})
       : _serviceCategories = serviceCategories,
         _selectedServices = selectedServices,
         _allServices = allServices,
@@ -797,10 +1007,16 @@ class _$ServicesStateImpl implements _ServicesState {
   @override
   @JsonKey()
   final bool loadCarServices;
+//отдельный прогресс на загрузку сервисов по критериям
+  @override
+  @JsonKey()
+  final bool showModal;
+  @override
+  final int? selectedServiceId;
 
   @override
   String toString() {
-    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, allServices: $allServices, markers: $markers, status: $status, loadCarServices: $loadCarServices)';
+    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, allServices: $allServices, markers: $markers, status: $status, loadCarServices: $loadCarServices, showModal: $showModal, selectedServiceId: $selectedServiceId)';
   }
 
   @override
@@ -823,7 +1039,11 @@ class _$ServicesStateImpl implements _ServicesState {
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.loadCarServices, loadCarServices) ||
-                other.loadCarServices == loadCarServices));
+                other.loadCarServices == loadCarServices) &&
+            (identical(other.showModal, showModal) ||
+                other.showModal == showModal) &&
+            (identical(other.selectedServiceId, selectedServiceId) ||
+                other.selectedServiceId == selectedServiceId));
   }
 
   @override
@@ -837,7 +1057,9 @@ class _$ServicesStateImpl implements _ServicesState {
       const DeepCollectionEquality().hash(_allServices),
       const DeepCollectionEquality().hash(_markers),
       status,
-      loadCarServices);
+      loadCarServices,
+      showModal,
+      selectedServiceId);
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -858,7 +1080,9 @@ abstract class _ServicesState implements ServicesState {
       final List<ServiceModel> allServices,
       final Set<Marker> markers,
       final ActionStatus status,
-      final bool loadCarServices}) = _$ServicesStateImpl;
+      final bool loadCarServices,
+      final bool showModal,
+      final int? selectedServiceId}) = _$ServicesStateImpl;
 
   @override
   List<ServiceCategory> get serviceCategories;
@@ -877,7 +1101,12 @@ abstract class _ServicesState implements ServicesState {
   @override
   ActionStatus get status;
   @override
-  bool get loadCarServices;
+  bool
+      get loadCarServices; //отдельный прогресс на загрузку сервисов по критериям
+  @override
+  bool get showModal;
+  @override
+  int? get selectedServiceId;
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.

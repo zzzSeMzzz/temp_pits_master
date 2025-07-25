@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CarServiceEntity {
@@ -21,13 +23,14 @@ class CarServiceEntity {
     this.featured = false,
   });
 
-  Marker toMarker(BitmapDescriptor? icon) {
+  Marker toMarker(BitmapDescriptor? icon, VoidCallback? onTap) {
     Marker marker = Marker(
       markerId: MarkerId(id.toString()),
       position: location,
       infoWindow: InfoWindow(title: name),
       icon: icon ?? BitmapDescriptor.defaultMarker,
       clusterManagerId: const ClusterManagerId(mainClusterManagerId),
+      onTap: onTap
     );
     return marker;
   }

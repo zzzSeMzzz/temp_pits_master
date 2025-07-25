@@ -12,6 +12,7 @@ class ServicesState with _$ServicesState {
     @Default({}) Set<Marker> markers,
     @Default(ActionStatus.pure) ActionStatus status,
     @Default(false) bool loadCarServices,//отдельный прогресс на загрузку сервисов по критериям
-
+    @Default(false) bool showModal,
+    int? selectedServiceId,
 })=_ServicesState;
 }

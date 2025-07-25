@@ -11,11 +11,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
+import 'package:pits_app/modules/home/presentation/sections/map_page/part/info_bottomsheet.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 
 import '../../../../../assets/constants/app_icons.dart';
+import '../../../domain/usecase/get_single_service.dart';
+import 'bloc/single/service_single_bloc.dart';
 
 // ВАЖНО: Оборачивайте MapScreen в MultiBlocProvider снаружи!
 class MapScreen extends StatefulWidget {
@@ -31,10 +34,13 @@ class _MapScreenState extends State<MapScreen> {
   // Кластер, который был использован последним.
   Cluster? lastCluster;
 
-  /* @override
+  late ServiceSingleBloc serviceSingleBloc;
+
+   @override
   void initState() {
+    serviceSingleBloc = ServiceSingleBloc(getSingle: GetServiceSingleUseCase());
     super.initState();
-  }*/
+  }
 
   final ClusterManager _clusterManager = ClusterManager(
     clusterManagerId:
@@ -76,7 +82,17 @@ class _MapScreenState extends State<MapScreen> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
-      body: BlocBuilder<ServicesBloc, ServicesState>(
+      body: BlocConsumer<ServicesBloc, ServicesState>(
+        listener: (context, state) {
+          if (state.showModal) {
+            debugPrint("try show modal with service id = ${state.selectedServiceId}");
+            if(state.selectedServiceId!=null) {
+              showInfoBottomSheet(context, serviceSingleBloc);
+              serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
+                  id: state.selectedServiceId.toString()));
+            }
+          }
+        },
         builder: (context, state) {
           if (state.status == ActionStatus.inProcess ||
               state.status == ActionStatus.pure) {

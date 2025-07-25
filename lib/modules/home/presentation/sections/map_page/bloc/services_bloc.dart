@@ -27,6 +27,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<_GetServices>(_onGetServices);
     on<_GetServiceCategories>(_onGetServiceCategories);
     on<_SetMyLocation>(_onSetMyLocation);
+    on<_ShowModal>((event, emit) {
+      emit(state.copyWith(showModal: true, selectedServiceId: event.serviceId));
+    });
 
     _loadIcon();
 
@@ -57,20 +60,20 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
     if (categories.isRight && regions.isRight && allServices.isRight) {
       _regions = regions.right;
-      debugPrint("ServiceBloc:: Success get car_services categories ${categories.right.length}");
-      debugPrint("ServiceBloc::Success get services regions ${regions.right.length}");
-      debugPrint("ServiceBloc::Success get services regions ${allServices.right.length}");
+      debugPrint(
+          "ServiceBloc:: Success get car_services categories ${categories.right.length}");
+      debugPrint(
+          "ServiceBloc::Success get services regions ${regions.right.length}");
+      debugPrint(
+          "ServiceBloc::Success get services regions ${allServices.right.length}");
       int currentServiceCat =
-        categories.right.length > 1 ? categories.right.first.id : 0;
+          categories.right.length > 1 ? categories.right.first.id : 0;
       debugPrint("ServiceBloc:: current categoryId=$currentServiceCat");
-      emit(
-       state.copyWith(
+      emit(state.copyWith(
           status: ActionStatus.isSuccess,
           serviceCategories: categories.right,
           currentCatId: currentServiceCat,
-          allServices: allServices.right
-       )
-      );
+          allServices: allServices.right));
       //add(ServicesEvent.getServices(catId: currentServiceCat));
     } else {
       debugPrint("ServiceBloc:: Failure get services cat's");
@@ -112,7 +115,8 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _GetServices) {
       final catId = event.catId;
-      debugPrint("ServiceBloc:: Run get services cat_id=$catId and regionId=${event.region?.id}");
+      debugPrint(
+          "ServiceBloc:: Run get services cat_id=$catId and regionId=${event.region?.id}");
       emit(state.copyWith(
         loadCarServices: true,
         currentCatId: catId,
@@ -120,61 +124,61 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ));
 
       String params = "?categoria=$catId";
-      if(event.region!=null) params = "$params&region=${event.region!.id}";
+      if (event.region != null) params = "$params&region=${event.region!.id}";
 
       final result = await getServicesUseCase(params);
 
       if (result.isRight) {
-        debugPrint("ServiceBloc:: Success get services length = ${result.right.length}");
+        debugPrint(
+            "ServiceBloc:: Success get services length = ${result.right.length}");
         emit(state.copyWith(
-          loadCarServices: false,
-          markers: Set<Marker>.of(
-              result.right.map((service) => service.toMarker(_markerIcon))),
-          currentCatId: catId,
-          currentRegion: event.region
-        ));
+            loadCarServices: false,
+            markers: Set<Marker>.of(
+                result.right.map((service) => service.toMarker(_markerIcon, () {
+                      add(ServicesEvent.showModal(service.id));
+                    }))),
+            currentCatId: catId,
+            currentRegion: event.region));
       } else {
         debugPrint("ServiceBloc:: Failure get services");
         emit(state.copyWith(
-          loadCarServices: false,
-          status: ActionStatus.isFailure,
-          currentCatId: catId,
-          currentRegion: event.region
-        ));
+            loadCarServices: false,
+            status: ActionStatus.isFailure,
+            currentCatId: catId,
+            currentRegion: event.region));
       }
     }
   }
-
-
 
   FutureOr<void> _onSetMyLocation(
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _SetMyLocation) {
       RegionModel? regionModel;
-      if(event.latLng!=null) {
+      if (event.latLng != null) {
         debugPrint("ServiceBloc:: my location is  null");
         final placemark = await getInfoByLocation(event.latLng!);
 
-        if(placemark?.locality!=null) {
-          regionModel = _regions.firstWhereOrNull((region) => region.name.contains(placemark!.locality!));
-          debugPrint("ServiceBloc:: founded region model is ${regionModel?.toString()}");
+        if (placemark?.locality != null) {
+          regionModel = _regions.firstWhereOrNull(
+              (region) => region.name.contains(placemark!.locality!));
+          debugPrint(
+              "ServiceBloc:: founded region model is ${regionModel?.toString()}");
         } else {
-          debugPrint("ServiceBloc:: placemark info by current location not found");
+          debugPrint(
+              "ServiceBloc:: placemark info by current location not found");
         }
       } else {
         debugPrint("ServiceBloc:: my location is  null");
       }
 
       emit(state.copyWith(
-        currentRegion: regionModel,
-        currentLocation: event.latLng
-      ));
+          currentRegion: regionModel, currentLocation: event.latLng));
 
       add(ServicesEvent.getServices(
           catId: state.currentCatId,
           region: regionModel,
-          serviceIds: Set<int>.of(state.selectedServices.map((service) => service.id))
-      ));
+          serviceIds: Set<int>.of(
+              state.selectedServices.map((service) => service.id))));
     }
   }
 }
