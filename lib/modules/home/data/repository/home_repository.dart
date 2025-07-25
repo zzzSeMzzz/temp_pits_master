@@ -81,12 +81,20 @@ class HomeRepository {
   }
 
   Future<Either<Failure, ServiceSingleModel>> getServiceSingle(String id) async {
-    final result = await client.get('wp-json/wp/v2/job_listing/149652');
-    debugPrint('${result.realUri}single141');
+    final result = await client.get('wp-json/wp/v2/job_listing/$id');
+    debugPrint('${result.realUri} is calling');
     debugPrint(result.statusCode.toString());
-    debugPrint(result.data);
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
+
+      if (result.data is Map<String, dynamic>) {
+        final data = ServiceSingleModel.fromJson(result.data as Map<String, dynamic>);
+        return Right(data);
+      } else {
+        debugPrint('Unexpected data type: ${result.data.runtimeType}');
+        return Left(ServerFailure());
+      }
+
       final data = ServiceSingleModel.fromJson(result.data);
 
       return Right(data);
