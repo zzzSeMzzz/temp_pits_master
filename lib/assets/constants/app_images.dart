@@ -22,4 +22,6 @@ class AppImages {
   static const String testInsurer = 'assets/images/test_insurer.png';
   static const String mapTestProfile = 'assets/images/map_test_profile.png';
   static const String wrenchLocation = 'assets/images/wrench_location.png';
+  static const String serviceFtSmall = 'assets/images/service_ft_small.png';
+  static const String serviceSmall = 'assets/images/service_small.png';
 }

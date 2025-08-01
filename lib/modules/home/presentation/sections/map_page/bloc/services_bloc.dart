@@ -42,11 +42,14 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   }
 
   late BitmapDescriptor _markerIcon;
+  late BitmapDescriptor _markerIconNotFt;
   late List<RegionModel> _regions;
 
   void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
-        const ImageConfiguration(), AppImages.wrenchLocation);
+        const ImageConfiguration(), AppImages.serviceFtSmall);
+    _markerIconNotFt = await BitmapDescriptor.asset(
+        const ImageConfiguration(), AppImages.serviceSmall);
   }
 
   FutureOr<void> _onGetServiceCategories(
@@ -134,7 +137,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
         emit(state.copyWith(
             loadCarServices: false,
             markers: Set<Marker>.of(
-                result.right.map((service) => service.toMarker(_markerIcon, () {
+                result.right.map((service) => service.toMarker(service.featured ? _markerIcon : _markerIconNotFt, () {
                       add(ServicesEvent.showModal(service.id));
                     }))),
             currentCatId: catId,
