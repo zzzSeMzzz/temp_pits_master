@@ -9,7 +9,7 @@ class ServicesEvent with _$ServicesEvent {
 
   const factory ServicesEvent.getServiceCategories() = _GetServiceCategories;
 
-  const factory ServicesEvent.setMyLocation(LatLng? latLng) = _SetMyLocation;
+  const factory ServicesEvent.setMyLocation(LatLng? latLng, GoogleMapController mapController) = _SetMyLocation;
 
   const factory ServicesEvent.showModal(int serviceId) = _ShowModal;
 }

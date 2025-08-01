@@ -45,6 +45,8 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   late BitmapDescriptor _markerIconNotFt;
   late List<RegionModel> _regions;
 
+  GoogleMapController? _mapController;
+
   void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.serviceFtSmall);
@@ -157,7 +159,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _SetMyLocation) {
       RegionModel? regionModel;
-      if (event.latLng != null) {
+      /*if (event.latLng != null) {
         final placemark = await getInfoByLocation(event.latLng!);
 
         if (placemark?.locality != null) {
@@ -172,7 +174,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
         }
       } else {
         debugPrint("ServiceBloc:: my location is  null");
-      }
+      }*/
+
+      _mapController = event.mapController;
 
       emit(state.copyWith(
           currentRegion: regionModel, currentLocation: event.latLng));
@@ -183,5 +187,15 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
           serviceIds: Set<int>.of(
               state.selectedServices.map((service) => service.id))));
     }
+  }
+
+  @override
+  Future<void> close() {
+    try {
+      _mapController?.dispose();
+    } catch(e) {
+      debugPrint(e.toString());
+    }
+    return super.close();
   }
 }

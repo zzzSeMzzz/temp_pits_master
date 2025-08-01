@@ -58,10 +58,10 @@ class _MapScreenState extends State<MapScreen> {
       controller.moveCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: latLng, zoom: 10),
       ));
-      bloc.add(ServicesEvent.setMyLocation(latLng));
+      bloc.add(ServicesEvent.setMyLocation(latLng, controller));
     }, onError: (e) {
       debugPrint("Unable get location: ${e.toString()}");
-      bloc.add(const ServicesEvent.setMyLocation(null));
+      bloc.add(ServicesEvent.setMyLocation(null, controller));
     }); //.catchError(handleError);
   }
 
