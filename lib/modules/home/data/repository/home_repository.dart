@@ -32,7 +32,7 @@ class HomeRepository {
 
 
   Future<Either<Failure, List<ServiceCategoryModel>>> getServiceCategories() async {
-    final result = await client.get('/wp-json/wp/v2/job_listing_category?per_page=100');
+    final result = await client.get('/wp-json/pits/v1/categorias-talleres?per_page=100');
     debugPrint('${result.realUri} isCalling');
     debugPrint(result.statusCode.toString());
 

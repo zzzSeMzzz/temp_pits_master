@@ -9,17 +9,13 @@ class ServiceCategoryModel extends ServiceCategory {
   final int idd;
   @JsonKey(name: 'name', defaultValue: '')
   final String nameD;
-  @JsonKey(name: 'slug', defaultValue: '')
-  final String slugD;
 
   ServiceCategoryModel({
     required this.idd,
     required this.nameD,
-    required this.slugD,
   }) : super(
     id: idd,
     name: nameD.replaceAll("&amp;", "&"),
-    slug: slugD,
   );
 
   factory ServiceCategoryModel.fromJson(Map<String, dynamic> json) =>

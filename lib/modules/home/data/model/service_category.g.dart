@@ -11,7 +11,6 @@ ServiceCategoryModel _$ServiceCategoryModelFromJson(
     ServiceCategoryModel(
       idd: (json['id'] as num?)?.toInt() ?? -1,
       nameD: json['name'] as String? ?? '',
-      slugD: json['slug'] as String? ?? '',
     );
 
 Map<String, dynamic> _$ServiceCategoryModelToJson(
@@ -19,5 +18,4 @@ Map<String, dynamic> _$ServiceCategoryModelToJson(
     <String, dynamic>{
       'id': instance.idd,
       'name': instance.nameD,
-      'slug': instance.slugD,
     };
