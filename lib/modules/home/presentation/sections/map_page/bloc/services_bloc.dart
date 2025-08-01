@@ -60,26 +60,26 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     emit(state.copyWith(status: ActionStatus.inProcess));
 
     final categories = await getServicesUseCase.getServiceCategories();
-    final regions = await getServicesUseCase.getRegions();
+    //final regions = await getServicesUseCase.getRegions();
     final allServices = await getServicesUseCase.getServices();
 
-    if (categories.isRight && regions.isRight && allServices.isRight) {
-      _regions = regions.right;
+    if (categories.isRight /*&& regions.isRight*/ && allServices.isRight) {
+      //_regions = regions.right;
       debugPrint(
           "ServiceBloc:: Success get car_services categories ${categories.right.length}");
-      debugPrint(
-          "ServiceBloc::Success get services regions ${regions.right.length}");
+      //debugPrint("ServiceBloc::Success get services regions ${regions.right.length}");
       debugPrint(
           "ServiceBloc::Success get services regions ${allServices.right.length}");
       int currentServiceCat =
           categories.right.length > 1 ? categories.right.first.id : 0;
       debugPrint("ServiceBloc:: current categoryId=$currentServiceCat");
-      emit(state.copyWith(
+      emit(
+        state.copyWith(
           status: ActionStatus.isSuccess,
           serviceCategories: categories.right,
           currentCatId: currentServiceCat,
-          allServices: allServices.right));
-      //add(ServicesEvent.getServices(catId: currentServiceCat));
+          allServices: allServices.right
+      ));
     } else {
       debugPrint("ServiceBloc:: Failure get services cat's");
       emit(state.copyWith(status: ActionStatus.isFailure));
@@ -179,13 +179,16 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       _mapController = event.mapController;
 
       emit(state.copyWith(
-          currentRegion: regionModel, currentLocation: event.latLng));
+        currentRegion: regionModel, currentLocation: event.latLng
+      ));
 
-      add(ServicesEvent.getServices(
+      add(
+        ServicesEvent.getServices(
           catId: state.currentCatId,
           region: regionModel,
           serviceIds: Set<int>.of(
-              state.selectedServices.map((service) => service.id))));
+          state.selectedServices.map((service) => service.id))
+      ));
     }
   }
 

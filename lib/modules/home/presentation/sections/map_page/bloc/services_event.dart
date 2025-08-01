@@ -5,7 +5,8 @@ class ServicesEvent with _$ServicesEvent {
   const factory ServicesEvent.getServices(
       {@Default(0) int catId,
       RegionModel? region,
-      @Default({}) Set<int> serviceIds}) = _GetServices;
+      @Default({}) Set<int> serviceIds}
+  ) = _GetServices;
 
   const factory ServicesEvent.getServiceCategories() = _GetServiceCategories;
 
