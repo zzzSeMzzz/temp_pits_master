@@ -27,6 +27,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<_GetServices>(_onGetServices);
     on<_GetServiceCategories>(_onGetServiceCategories);
     on<_SetMyLocation>(_onSetMyLocation);
+    on<_MapMoved>(_onMapMoved);
     on<_ShowModal>((event, emit) {
       emit(state.copyWith(showModal: true, selectedServiceId: event.serviceId));
     });
@@ -116,6 +117,8 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     }
   }*/
 
+  final List<CarServiceEntity> _allPoints = []; // Все точки, загруженные заранее
+
   FutureOr<void> _onGetServices(
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _GetServices) {
@@ -136,14 +139,25 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       if (result.isRight) {
         debugPrint(
             "ServiceBloc:: Success get services length = ${result.right.length}");
-        emit(state.copyWith(
+        _allPoints.clear();
+        _allPoints.addAll(result.right);
+
+        /*emit(state.copyWith(
             loadCarServices: false,
             markers: Set<Marker>.of(
                 result.right.map((service) => service.toMarker(service.featured ? _markerIcon : _markerIconNotFt, () {
                       add(ServicesEvent.showModal(service.id));
                     }))),
             currentCatId: catId,
-            currentRegion: event.region));
+            currentRegion: event.region));*/
+        emit(
+          state.copyWith(
+            loadCarServices: false,
+            currentCatId: catId,
+            currentRegion: event.region
+          )
+        );
+        await _loadPointsForRegion(state.visibleRegion!, emit);
       } else {
         debugPrint("ServiceBloc:: Failure get services");
         emit(state.copyWith(
@@ -177,9 +191,10 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       }*/
 
       _mapController = event.mapController;
+      final initialPosition = await _mapController!.getVisibleRegion();
 
       emit(state.copyWith(
-        currentRegion: regionModel, currentLocation: event.latLng
+        currentRegion: regionModel, currentLocation: event.latLng, visibleRegion: initialPosition
       ));
 
       add(
@@ -192,6 +207,48 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     }
   }
 
+  Future<void> _onMapMoved(ServicesEvent event, Emitter<ServicesState> emit) async {
+    if (event is _MapMoved) {
+      await _loadPointsForRegion(event.visibleRegion, emit);
+    }
+  }
+
+  Future<void> _loadPointsForRegion(LatLngBounds region, Emitter<ServicesState> emit) async {
+    try {
+      // Фильтруем точки для видимой области
+      final visiblePoints = _getPointsFromRegion(
+        allPoints: _allPoints,
+        region: region,
+        padding: 0.1, // 10% отступ за границы видимой области
+        limit: 100, // Не более 100 точек
+      );
+
+      debugPrint("ServiceBloc:: allPoints size = ${_allPoints.length}, visible points size =${visiblePoints.length}");
+
+      // Создаем маркеры
+      final markers = await Future.wait(
+          visiblePoints.map((service) async {
+            return service.toMarker(
+                service.featured ? _markerIcon : _markerIconNotFt, () {
+              add(ServicesEvent.showModal(service.id));
+            });
+          })
+      );
+
+      emit(
+          state.copyWith(
+              loadCarServices: false,
+              markers: markers.toSet()
+          ));
+    } catch (e) {
+      emit(
+        state.copyWith(
+          loadCarServices: false,
+          status: ActionStatus.isFailure
+      ));
+    }
+  }
+
   @override
   Future<void> close() {
     try {
@@ -200,5 +257,37 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       debugPrint(e.toString());
     }
     return super.close();
+  }
+
+
+
+  List<CarServiceEntity> _getPointsFromRegion({
+    required List<CarServiceEntity> allPoints,
+    required LatLngBounds region,
+    double padding = 0.0, // Дополнительный отступ за границы видимой области
+    int? limit, // Максимальное количество точек для возврата
+  }) {
+    final southwest = region.southwest;
+    final northeast = region.northeast;
+
+    // Учитываем padding
+    final minLat = southwest.latitude - padding;
+    final maxLat = northeast.latitude + padding;
+    final minLng = southwest.longitude - padding;
+    final maxLng = northeast.longitude + padding;
+
+    var result = allPoints.where((point) {
+      return point.location.latitude >= minLat &&
+          point.location.latitude <= maxLat &&
+          point.location.longitude >= minLng &&
+          point.location.longitude <= maxLng;
+    }).toList();
+
+    // Применяем лимит, если указан
+    if (limit != null && result.length > limit) {
+      result = result.sublist(0, limit);
+    }
+
+    return result;
   }
 }

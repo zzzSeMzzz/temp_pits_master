@@ -7,7 +7,7 @@ class ServicesState with _$ServicesState {
     @Default(133) int currentCatId,
     LatLng? currentLocation,
     RegionModel? currentRegion,
-    @Default({}) Set<ServiceModel> selectedServices,//услуги
+    @Default({}) Set<ServiceModel> selectedServices,//выбранные услуги
     @Default([]) List<ServiceModel> allServices,//весь список услуг
     @Default({}) Set<Marker> markers,
     LatLngBounds? visibleRegion,

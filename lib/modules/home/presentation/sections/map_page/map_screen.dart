@@ -118,6 +118,16 @@ class _MapScreenState extends State<MapScreen> {
                   zoomGesturesEnabled: true,
                   zoomControlsEnabled: kDebugMode,
                   initialCameraPosition: _kMadrid,
+                  onCameraIdle: () async {
+                    /*final bloc = context.read<MapBloc>();
+                    final controller = bloc._mapController;
+                    if (_mapController != null) {
+                      final region = await controller.getVisibleRegion();
+                      bloc.add(MapMoved(region));
+                    }*/
+                    final region = await _mapController.getVisibleRegion();
+                    bloc.add(ServicesEvent.mapMoved(region));
+                  },
                 ),
               ),
               // Overlay: Кнопка возврата
