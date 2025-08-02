@@ -15,6 +15,7 @@ class ServiceSingleEntity {
   final double longitude;
   final String image;
   final String cover;
+  final String email;
 
   const ServiceSingleEntity({
     this.longitude = 0,
@@ -30,5 +31,6 @@ class ServiceSingleEntity {
     this.categoryName = '',
     this.priceRange = '',
     this.cover = '',
+    this.email = '',
   });
 }

@@ -6,13 +6,15 @@ class ServiceSingleModel extends ServiceSingleEntity {
   final int idd;
   final String name;
   final String address;
-
   final String tagline;
   final String phone;
   final String priceRange;
   final String status;
   final String image;
   final String cover;
+  final String email;
+  final String lat;
+  final String lon;
 
   ServiceSingleModel({
     required this.idd,
@@ -20,13 +22,17 @@ class ServiceSingleModel extends ServiceSingleEntity {
     required this.tagline,
     required this.name,
     required this.phone,
+    required this.email,
     required this.priceRange,
     required this.status,
     required this.image,
     required this.cover,
+    required this.lat,
+    required this.lon,
   }) : super(
           id: idd.toString(),
           desc: tagline,
+          email: email,
           name: name,
           address: address,
           priceRange: priceRange,
@@ -42,11 +48,14 @@ class ServiceSingleModel extends ServiceSingleEntity {
     return ServiceSingleModel(
       status: json['ping_status'] as String? ?? '',
       idd: json['id'] as int? ?? 0,
-      address: json['address'] as String? ?? 'No address found',
-      name: json['title']['rendered'] as String? ?? '',
+      address: json['direccion'] as String? ?? 'No address found',
+      name: json['nombre'] as String? ?? '',
       tagline: json['_job_tagline'] as String? ?? '',
       phone: json['_job_phone'] as String? ?? '',
-      priceRange: json['_price_range'] as String? ?? '',
+      email: json['_job_email'] as String? ?? '',
+      lat: json['lat'] as String? ?? '',
+      lon: json['lng'] as String? ?? '',
+      priceRange: json['_case27_average_rating'] as String? ?? '',
       cover: coverList.isNotEmpty ? coverList[0] as String? ?? '' : '',
       image: imageList.isNotEmpty ? imageList[0] as String? ?? '' : '',
     );

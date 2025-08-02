@@ -81,7 +81,7 @@ class HomeRepository {
   }
 
   Future<Either<Failure, ServiceSingleModel>> getServiceSingle(String id) async {
-    final result = await client.get('wp-json/wp/v2/job_listing/$id');
+    final result = await client.get('wp-json/pits/v1/taller/$id');
     debugPrint('${result.realUri} is calling');
     debugPrint(result.statusCode.toString());
 
