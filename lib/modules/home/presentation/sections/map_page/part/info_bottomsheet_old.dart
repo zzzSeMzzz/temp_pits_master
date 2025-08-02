@@ -16,17 +16,17 @@ import 'package:pits_app/modules/profile/presentation/sections/profile_service/p
 import 'package:pits_app/modules/service/presentation/sections/part_selection/part_selection_screen.dart';
 import 'package:pits_app/utils/action_status.dart';
 
-showInfoBottomSheet(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
+showInfoBottomSheetOld(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
       builder: (c) => BlocProvider.value(
-          value: serviceSingleBloc, child: const InfoBottomSheet()));
+          value: serviceSingleBloc, child: const InfoBottomSheetOld()));
 }
 
-class InfoBottomSheet extends StatelessWidget {
-  const InfoBottomSheet({Key? key}) : super(key: key);
+class InfoBottomSheetOld extends StatelessWidget {
+  const InfoBottomSheetOld({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
