@@ -46,7 +46,7 @@ class InfoBottomSheet extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Row(
+                    /*Row(
                       children: [
                         const SizedBox(
                           width: 16,
@@ -68,12 +68,12 @@ class InfoBottomSheet extends StatelessWidget {
                           ),
                         )
                       ],
-                    ),
+                    ),*/
                     const SizedBox(
-                      height: 16,
+                      height: 56,
                     ),
                     Container(
-                      padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
+                      padding: const EdgeInsets.fromLTRB(24, 56, 24, 16),
                       decoration: const BoxDecoration(
                           color: white,
                           borderRadius: BorderRadius.only(
@@ -215,7 +215,7 @@ class InfoBottomSheet extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                    right: 20,
+                    left: 20,
                     top: 0,
                     child: GestureDetector(
                       onTap: () {
@@ -233,7 +233,7 @@ class InfoBottomSheet extends StatelessWidget {
                         height: 100,
                         child: state.serviceSingle.image.isNotEmpty
                             ? ClipRRect(
-                          borderRadius: BorderRadius.circular(40),
+                          borderRadius: BorderRadius.circular(100),
                           child: Image.network(
                             state.serviceSingle.image,
                             fit: BoxFit.cover,
@@ -241,7 +241,8 @@ class InfoBottomSheet extends StatelessWidget {
                         )
                             : const SizedBox(),
                       ),
-                    )),
+                    )
+                ),
               ],
             ),
           );
