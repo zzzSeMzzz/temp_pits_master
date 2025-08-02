@@ -238,6 +238,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       emit(
           state.copyWith(
               loadCarServices: false,
+              showModal: false,
               markers: markers.toSet()
           ));
     } catch (e) {
