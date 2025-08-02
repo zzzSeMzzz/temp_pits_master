@@ -30,7 +30,7 @@ class InfoBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    height: MediaQuery.of(context).size.height * 0.8,
+    height: MediaQuery.of(context).size.height * 0.85,
     child: BlocBuilder<ServiceSingleBloc, ServiceSingleState>(
       builder: (context, state) {
         if (state.actionStatus == ActionStatus.inProcess) {
@@ -70,7 +70,7 @@ class InfoBottomSheet extends StatelessWidget {
                       ],
                     ),*/
                     const SizedBox(
-                      height: 56,
+                      height: 66,
                     ),
                     Container(
                       padding: const EdgeInsets.fromLTRB(24, 56, 24, 16),
@@ -217,30 +217,49 @@ class InfoBottomSheet extends StatelessWidget {
                 Positioned(
                     left: 20,
                     top: 0,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            fade(
-                                page: ProfileServiceScreen(
-                                  entity: state.serviceSingle,
-                                )));
-                      },
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: red),
-                        width: 100,
-                        height: 100,
-                        child: state.serviceSingle.image.isNotEmpty
-                            ? ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.network(
-                            state.serviceSingle.image,
-                            fit: BoxFit.cover,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                fade(
+                                    page: ProfileServiceScreen(
+                                      entity: state.serviceSingle,
+                                    )));
+                          },
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle, color: red),
+                            width: 100,
+                            height: 100,
+                            child: state.serviceSingle.image.isNotEmpty
+                                ? ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.network(
+                                state.serviceSingle.image,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                                : const SizedBox(),
                           ),
-                        )
-                            : const SizedBox(),
-                      ),
+                        ),
+                        Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            width: 150,
+                            child: Expanded(
+                              child: Text(state.serviceSingle.name,
+                                style: Theme.of(context).textTheme
+                                  .labelLarge!.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20,
+                                  color: Colors.black
+                                )
+                              ),
+                            )
+                        ),
+                      ],
                     )
                 ),
               ],
