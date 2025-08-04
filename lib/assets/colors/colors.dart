@@ -80,8 +80,7 @@ const panoramicViewOverlay = _cloudBurst;
 const fieldGrey = _fieldGrey;
 const darkBlue = Color(0xff29364E);
 const textGrey = Color(0xff8693A3);
-
-
+const textGreen = Color(0xff219653);
 const lightCyan = Color(0xffF3F8FF);
 
 // Main palette (http://www.color-blindness.com/color-name-hue/).
@@ -139,4 +138,4 @@ const _whiteSmokeF3 = Color(0xFFF3F3F3);
 const _cloudBurst = Color(0xFF383F50);
 const _loveRed = Color(0xFFFF0000);
 const _fieldGrey = Color(0xFFF5F7FA);
-const _textGray = Color(0xFF8693A3);
+

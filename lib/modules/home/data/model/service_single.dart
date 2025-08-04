@@ -15,6 +15,7 @@ class ServiceSingleModel extends ServiceSingleEntity {
   final String email;
   final String lat;
   final String lon;
+  final String ratting;
 
   ServiceSingleModel({
     required this.idd,
@@ -29,6 +30,7 @@ class ServiceSingleModel extends ServiceSingleEntity {
     required this.cover,
     required this.lat,
     required this.lon,
+    required this.ratting
   }) : super(
           id: idd.toString(),
           desc: tagline,
@@ -39,7 +41,7 @@ class ServiceSingleModel extends ServiceSingleEntity {
           status: status,
           phone: phone,
           image: image,
-          rating: 0.1,
+          rating: ratting.isEmpty ? 0.0 : double.parse(ratting)
         );
 
   factory ServiceSingleModel.fromJson(Map<String, dynamic> json) {
@@ -55,9 +57,11 @@ class ServiceSingleModel extends ServiceSingleEntity {
       email: json['_job_email'] as String? ?? '',
       lat: json['lat'] as String? ?? '',
       lon: json['lng'] as String? ?? '',
-      priceRange: json['_case27_average_rating'] as String? ?? '',
+      priceRange: json['_price_range'] as String? ?? '€€',
+      ratting: json['_case27_average_rating'] as String? ?? '0.0',
       cover: coverList.isNotEmpty ? coverList[0] as String? ?? '' : '',
       image: imageList.isNotEmpty ? imageList[0] as String? ?? '' : '',
+
     );
   }
 }

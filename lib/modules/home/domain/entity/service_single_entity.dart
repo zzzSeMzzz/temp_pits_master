@@ -1,5 +1,4 @@
-// import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 class ServiceSingleEntity {
   final String name;
@@ -23,7 +22,7 @@ class ServiceSingleEntity {
     this.id = '',
     this.name = '',
     this.address = '',
-    this.rating = 0,
+    this.rating = 0.0,
     this.desc = '',
     this.image = '',
     this.phone = '',

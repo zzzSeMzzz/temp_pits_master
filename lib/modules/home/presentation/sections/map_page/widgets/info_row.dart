@@ -1,18 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pits_app/assets/constants/app_icons.dart';
 
 class InfoRow extends StatelessWidget {
   final String icon;
   final String title;
-  final String desc;
+  //final String desc;
   final Color? iconBoxColor;
 
   const InfoRow(
       {required this.title,
       required this.icon,
-      required this.desc,
+      //required this.desc,
       this.iconBoxColor,
       Key? key})
       : super(key: key);
@@ -38,22 +36,16 @@ class InfoRow extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayLarge!
-                  .copyWith(fontWeight: FontWeight.w400, fontSize: 13),
-            ),
             Expanded(
-                child: Text(
-              desc,
-              textAlign: TextAlign.end,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayLarge!
-                  .copyWith(fontWeight: FontWeight.w700, fontSize: 16),
-            ))
+              child: Text(
+                title,
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontWeight: FontWeight.w400, fontSize: 13),
+              ),
+            ),
+
           ],
         ),
       );

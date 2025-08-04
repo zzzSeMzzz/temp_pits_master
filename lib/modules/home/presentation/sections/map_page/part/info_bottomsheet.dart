@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/activities_screen.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/single/service_single_bloc.dart';
@@ -18,7 +19,7 @@ import 'package:pits_app/utils/action_status.dart';
 
 showInfoBottomSheet(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
   showModalBottomSheet(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       context: context,
       isScrollControlled: true,
       builder: (c) => BlocProvider.value(
@@ -29,154 +30,105 @@ class InfoBottomSheet extends StatelessWidget {
   const InfoBottomSheet({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-    height: MediaQuery.of(context).size.height * 0.85,
+  Widget build(BuildContext context) => SizedBox(
+    height: MediaQuery.of(context).size.height * 0.9,
     child: BlocBuilder<ServiceSingleBloc, ServiceSingleState>(
       builder: (context, state) {
-        if (state.actionStatus == ActionStatus.inProcess) {
+        if (state.actionStatus == ActionStatus.inProcess || state.actionStatus == ActionStatus.pure) {
           return Container(
             color: Colors.white,
             child: const Center(
               child: CupertinoActivityIndicator(),
             ),
           );
+        } else if (state.actionStatus == ActionStatus.isFailure) {
+          return Container(
+            color: Colors.white,
+            child: const Center(
+              child: Text("Failed load service information"),
+            ),
+          );
         } else {
           return Container(
+            padding: const EdgeInsets.symmetric(vertical: 16),
             child: Stack(
               children: [
                 Column(
                   children: [
-                    /*Row(
-                      children: [
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: white),
-                            padding: const EdgeInsets.all(8),
-                            child: SvgPicture.asset(
-                              AppIcons.arrowLeft,
-                              width: 24,
-                              height: 24,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),*/
-                    const SizedBox(
-                      height: 66,
-                    ),
                     Container(
-                      padding: const EdgeInsets.fromLTRB(24, 56, 24, 16),
+                      padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
                       decoration: const BoxDecoration(
-                          color: white,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(12),
                               topRight: Radius.circular(12))),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            state.serviceSingle.name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700),
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            state.serviceSingle.desc,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400),
+                          Row(
+                            //crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      fade(
+                                          page: ProfileServiceScreen(
+                                            entity: state.serviceSingle,
+                                          )));
+                                },
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle, color: red),
+                                  width: 100,
+                                  height: 100,
+                                  child: state.serviceSingle.image.isNotEmpty
+                                      ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                    child: Image.network(
+                                      state.serviceSingle.image,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                      : const SizedBox(),
+                                ),
+                              ),
+                              Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                                  width: 150,
+                                  child: Expanded(
+                                    child: Text(state.serviceSingle.name,
+                                        style: Theme.of(context).textTheme
+                                            .labelLarge!.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 20,
+                                            color: Colors.black
+                                        )
+                                    ),
+                                  )
+                              ),
+                            ],
                           ),
                           const SizedBox(
                             height: 16,
                           ),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: divider,
-                          ),
-                          InfoRow(
-                              title: 'Phone',
-                              icon: AppIcons.phone,
-                              desc: '+${state.serviceSingle.phone}'),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: divider,
-                          ),
-                          const InfoRow(
-                              title: 'Distance',
-                              icon: AppIcons.repairFlame,
-                              desc: '6,2 km'),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: divider,
-                          ),
-                          InfoRowExtra(
-                              title: 'Address',
-                              icon: AppIcons.running,
-                              desc: state.serviceSingle.address),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: divider,
-                          ),
-                          InfoRow(
-                              iconBoxColor: Colors.green,
-                              title: state.serviceSingle.status,
-                              icon: AppIcons.repairFlame,
-                              desc: 'none'),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: divider,
-                          ),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: divider,
-                          ),
-                          const InfoRowExtra(
-                              title: 'Categories',
-                              icon: AppIcons.wallet,
-                              desc: 'none'),
-                          const Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: textGrey,
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Range',
+                                    'Price range',
                                     style: Theme.of(context)
                                         .textTheme
                                         .displayLarge!
                                         .copyWith(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 16),
+                                        fontSize: 16,
+                                      color: textGrey,
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: 4,
@@ -192,11 +144,33 @@ class InfoBottomSheet extends StatelessWidget {
                                   )
                                 ],
                               ),
+                              const SizedBox(width: 30),
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: SvgPicture.asset(
+                                        AppIcons.star,
+                                        width: 20,
+                                        height: 20,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: " ${state.serviceSingle.rating.toString()}",
+                                      style: Theme.of(context).textTheme
+                                          .displayLarge!.copyWith(
+                                        color: textGrey,
+                                        fontSize: 26
+                                      )
+                                    ),
+                                  ],
+                                ),
+                              ),
                               const Spacer(),
                               WButton(
-                                width: 160,
+                                width: 130,
                                 onTap: () {
-                                  Navigator.push(context, fade(page: PartSelectionScreen()));
+                                  Navigator.push(context, fade(page: const PartSelectionScreen()));
                                 },
                                 height: 55,
                                 borderRadius: 4,
@@ -205,62 +179,112 @@ class InfoBottomSheet extends StatelessWidget {
                               ),
                             ],
                           ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.rectangle, 
+                                color: fieldGrey, 
+                                borderRadius: BorderRadius.circular(4.0),
+                            ),
+                            child: Row(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          WidgetSpan(
+                                            child: SvgPicture.asset(
+                                              AppIcons.alarm,
+                                              width: 24,
+                                              height: 24,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                              text: " Opens in a few minutes",
+                                              style: Theme.of(context).textTheme
+                                                  .displayLarge!.copyWith(
+                                                  color: textGreen,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 18
+                                              )
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Text(
+                                        "Open hours today: 09:00 - 21:00",
+                                      style: Theme.of(context).textTheme
+                                          .displayMedium!.copyWith(
+                                          color: textGrey,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                const Spacer(),
+                                SvgPicture.asset(AppIcons.arrowDownCircle),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: fieldGrey,
+                              borderRadius: BorderRadius.circular(4.0),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                InfoRow(
+                                    title: state.serviceSingle.phone,
+                                    icon: AppIcons.phone,
+                                ),
+                                InfoRow(
+                                  title: state.serviceSingle.address,
+                                  icon: AppIcons.place,
+                                ),
+                                OutlinedButton(
+                                  onPressed: () {
+                                    // Action to perform when the button is pressed
+                                  },
+                                  style: ButtonStyle(
+                                    side: WidgetStateProperty.all(
+                                      const BorderSide(color: Colors.black, width: 1.0),
+                                    ),
+                                    shape: WidgetStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4.0),
+                                      ),
+                                    ),
+                                    // Customize padding
+                                    padding: WidgetStateProperty.all(
+                                      const EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
+                                    ),
+                                  ),
+                                  child: Text('Get Directions', style: Theme.of(context).textTheme
+                                      .displayLarge!.copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16
+                                  )),
+                                ),
+                              ],
+                            ),
+                          ),
                           SizedBox(
                             height:
-                            30 + MediaQuery.of(context).padding.bottom,
+                            MediaQuery.of(context).padding.bottom,
                           )
                         ],
                       ),
                     )
                   ],
-                ),
-                Positioned(
-                    left: 20,
-                    top: 0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                fade(
-                                    page: ProfileServiceScreen(
-                                      entity: state.serviceSingle,
-                                    )));
-                          },
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: red),
-                            width: 100,
-                            height: 100,
-                            child: state.serviceSingle.image.isNotEmpty
-                                ? ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: Image.network(
-                                state.serviceSingle.image,
-                                fit: BoxFit.cover,
-                              ),
-                            )
-                                : const SizedBox(),
-                          ),
-                        ),
-                        Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            width: 150,
-                            child: Expanded(
-                              child: Text(state.serviceSingle.name,
-                                style: Theme.of(context).textTheme
-                                  .labelLarge!.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
-                                  color: Colors.black
-                                )
-                              ),
-                            )
-                        ),
-                      ],
-                    )
                 ),
               ],
             ),

@@ -1,4 +1,7 @@
 class AppIcons {
+
+  AppIcons._();
+
   static const String close = 'assets/icons/close.svg';
   static const String doneCircle = 'assets/icons/done_circle.svg';
   static const String eyeClose = 'assets/icons/eye_close.svg';
