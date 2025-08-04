@@ -16,7 +16,7 @@ import 'package:pits_app/modules/profile/presentation/sections/profile_service/p
 import 'package:pits_app/modules/service/presentation/sections/part_selection/part_selection_screen.dart';
 import 'package:pits_app/utils/action_status.dart';
 
-showInfoBottomSheetOld(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
+/*showInfoBottomSheetOld(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -249,4 +249,4 @@ class InfoBottomSheetOld extends StatelessWidget {
       },
     ),
   );
-}
+}*/

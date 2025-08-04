@@ -42,7 +42,7 @@ class InfoRow extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontWeight: FontWeight.w400, fontSize: 13),
+                    .copyWith(fontWeight: FontWeight.w700, fontSize: 13),
               ),
             ),
 
