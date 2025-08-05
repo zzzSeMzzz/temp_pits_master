@@ -56,7 +56,7 @@ class InfoBottomSheet extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
+                    padding: const EdgeInsets.fromLTRB(24, 10, 24, 32),
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
