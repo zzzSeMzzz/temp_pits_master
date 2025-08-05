@@ -32,7 +32,7 @@ class InfoBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    height: MediaQuery.of(context).size.height * 0.86,
+    //height: MediaQuery.of(context).size.height * 0.86,
     child: BlocBuilder<ServiceSingleBloc, ServiceSingleState>(
       builder: (context, state) {
         if (state.actionStatus == ActionStatus.inProcess || state.actionStatus == ActionStatus.pure) {
@@ -53,6 +53,7 @@ class InfoBottomSheet extends StatelessWidget {
           return Stack(
             children: [
               Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
@@ -92,19 +93,16 @@ class InfoBottomSheet extends StatelessWidget {
                                     : const SizedBox(),
                               ),
                             ),
-                            Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
-                                width: 150,
-                                child: Expanded(
-                                  child: Text(state.serviceSingle.name,
-                                      style: Theme.of(context).textTheme
-                                          .labelLarge!.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 20,
-                                          color: Colors.black
-                                      )
-                                  ),
-                                )
+                            const SizedBox(width: 20),
+                            Expanded(
+                              child: Text(state.serviceSingle.name,
+                                  style: Theme.of(context).textTheme
+                                      .labelLarge!.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20,
+                                      color: Colors.black
+                                  )
+                              ),
                             ),
                           ],
                         ),
