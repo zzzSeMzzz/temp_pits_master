@@ -20,10 +20,11 @@ class CarInfoBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: MediaQuery.of(context).size.height * 0.5,
+        //height: MediaQuery.of(context).size.height * 0.5,
         padding: EdgeInsets.fromLTRB(
             24, 20, 24, 16 + MediaQuery.of(context).padding.bottom),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Stack(
               children: [

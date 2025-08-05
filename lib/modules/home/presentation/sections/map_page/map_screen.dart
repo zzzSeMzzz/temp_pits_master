@@ -56,7 +56,7 @@ class _MapScreenState extends State<MapScreen> {
       debugPrint("current location success: ${point.toString()}");
       final latLng = LatLng(point.latitude, point.longitude);
       controller.moveCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: latLng, zoom: 14.4746),
+        CameraPosition(target: latLng, zoom: _defaultZoom),
       ));
       bloc.add(ServicesEvent.setMyLocation(latLng, controller));
     }, onError: (e) {
@@ -67,8 +67,10 @@ class _MapScreenState extends State<MapScreen> {
 
   static const CameraPosition _kMadrid = CameraPosition(
     target: LatLng(40.416775, -3.703790),
-    zoom: 14.4746,
+    zoom: _defaultZoom,
   );
+  
+  static const double _defaultZoom = 12.4746;
 
   /*void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(
