@@ -6,9 +6,9 @@ part 'car_service.g.dart';
 class CarServiceModel extends CarServiceEntity {
   @JsonKey(name: 'id', defaultValue: -1)
   final int idd;
-  /*@JsonKey(name: 'listing_id', defaultValue: '')
-  final String listingId;
-  @JsonKey(name: 'address', defaultValue: '')
+  @JsonKey(name: 'ping_status', defaultValue: '')
+  final String status;
+  /*@JsonKey(name: 'address', defaultValue: '')
   final String address;*/
   @JsonKey(name: 'lat', defaultValue: '0')
   final String lat;
@@ -30,7 +30,8 @@ class CarServiceModel extends CarServiceEntity {
     required this.title,
     required this.regions,
     required this.featuredd,
-    required this.long
+    required this.long,
+    required this.status,
   })
       : super(
           id: idd,
@@ -39,7 +40,8 @@ class CarServiceModel extends CarServiceEntity {
           longitude: long.isEmpty ? 0.0 : double.parse(long),
           name: title,
           rating: averageRating.isEmpty ? 0 : double.parse(averageRating),
-          region: regions
+          region: regions,
+          status: status,
         );
 
   factory CarServiceModel.fromJson(Map<String, dynamic> json) =>

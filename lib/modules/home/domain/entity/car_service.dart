@@ -1,6 +1,6 @@
 import 'dart:ui';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 class CarServiceEntity {
   static const String mainClusterManagerId = 'main_cm';
@@ -12,6 +12,7 @@ class CarServiceEntity {
   final double longitude;
   final bool featured;
   final List<int> region;
+  final String status;
 
   CarServiceEntity({
     this.longitude = 0,
@@ -21,6 +22,7 @@ class CarServiceEntity {
     this.region = const [],
     this.rating = 0,
     this.featured = false,
+    this.status = "",
   });
 
   Marker toMarker(BitmapDescriptor? icon, VoidCallback? onTap) {

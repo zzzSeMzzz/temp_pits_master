@@ -42,17 +42,20 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     });
   }
 
-  late BitmapDescriptor _markerIcon;
+  late BitmapDescriptor _markerIconOpen;
+  late BitmapDescriptor _markerIconClosed;
   late BitmapDescriptor _markerIconNotFt;
   late List<RegionModel> _regions;
 
   GoogleMapController? _mapController;
 
   void _loadIcon() async {
-    _markerIcon = await BitmapDescriptor.asset(
-        const ImageConfiguration(), AppImages.serviceFtSmall);
+    _markerIconOpen = await BitmapDescriptor.asset(
+        const ImageConfiguration(), AppImages.serviceFtOpen);
+    _markerIconClosed= await BitmapDescriptor.asset(
+        const ImageConfiguration(), AppImages.serviceFtClosed);
     _markerIconNotFt = await BitmapDescriptor.asset(
-        const ImageConfiguration(), AppImages.serviceSmall);
+        const ImageConfiguration(), AppImages.serviceNotFt);
   }
 
   FutureOr<void> _onGetServiceCategories(
@@ -228,8 +231,16 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       // Создаем маркеры
       final markers = await Future.wait(
           visiblePoints.map((service) async {
+
+            BitmapDescriptor icon;
+            if(service.featured) {
+              icon = service.status.contains("closed") ? _markerIconClosed : _markerIconOpen;
+            } else {
+              icon = _markerIconNotFt;
+            }
+
             return service.toMarker(
-                service.featured ? _markerIcon : _markerIconNotFt, () {
+                icon, () {
               add(ServicesEvent.showModal(service.id));
             });
           })

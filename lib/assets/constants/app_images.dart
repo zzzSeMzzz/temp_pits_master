@@ -22,6 +22,7 @@ class AppImages {
   static const String testInsurer = 'assets/images/test_insurer.png';
   static const String mapTestProfile = 'assets/images/map_test_profile.png';
   static const String wrenchLocation = 'assets/images/wrench_location.png';
-  static const String serviceFtSmall = 'assets/images/service_ft_small.png';
-  static const String serviceSmall = 'assets/images/service_small.png';
+  static const String serviceNotFt = 'assets/images/marker_not_ft.png';
+  static const String serviceFtOpen = 'assets/images/marker_ft_open.png';
+  static const String serviceFtClosed = 'assets/images/marker_ft_closed.png';
 }
