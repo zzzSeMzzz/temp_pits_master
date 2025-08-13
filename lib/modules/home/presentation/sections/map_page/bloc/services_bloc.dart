@@ -219,11 +219,22 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   Future<void> _loadPointsForRegion(LatLngBounds region, Emitter<ServicesState> emit) async {
     try {
       // Фильтруем точки для видимой области
+      final zoom = await _mapController?.getZoomLevel() ?? 12.0;
+      // Чем больше зум (ближе карта), тем больше маркеров
+      final limitZ = zoom > 18 ? 30 :
+        zoom > 15 ? 60 :
+        zoom > 12 ? 120 :
+        zoom > 10 ? 200 :
+        zoom > 8 ? 250 :
+        zoom > 5 ? 300 :
+        450;
+      debugPrint("ServiceBloc:: zoom level=$zoom limitZ=$limitZ");
+
       final visiblePoints = _getPointsFromRegion(
         allPoints: _allPoints,
         region: region,
         padding: 0.1, // 10% отступ за границы видимой области
-        limit: 100, // Не более 100 точек
+        limit: limitZ, // Не более 1000 точек
       );
 
       debugPrint("ServiceBloc:: allPoints size = ${_allPoints.length}, visible points size =${visiblePoints.length}");
