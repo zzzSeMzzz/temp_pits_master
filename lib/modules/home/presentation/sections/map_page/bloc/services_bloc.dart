@@ -31,6 +31,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<_ShowModal>((event, emit) {
       emit(state.copyWith(showModal: true, selectedServiceId: event.serviceId));
     });
+    on<_UpdateSelectedServices>((event, emit) {
+      emit(state.copyWith(selectedServices: event.services));
+    });
 
     _loadIcon();
 
@@ -176,22 +179,6 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _SetMyLocation) {
       RegionModel? regionModel;
-      /*if (event.latLng != null) {
-        final placemark = await getInfoByLocation(event.latLng!);
-
-        if (placemark?.locality != null) {
-          regionModel = _regions.firstWhereOrNull(
-              (region) => region.name.contains(placemark!.locality!) || region.name.contains(placemark!.subAdministrativeArea!)
-          );
-          debugPrint(
-              "ServiceBloc:: founded region model is ${regionModel?.toString()}");
-        } else {
-          debugPrint(
-              "ServiceBloc:: placemark info by current location not found");
-        }
-      } else {
-        debugPrint("ServiceBloc:: my location is  null");
-      }*/
 
       _mapController = event.mapController;
       final initialPosition = await _mapController!.getVisibleRegion();
@@ -244,13 +231,19 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       // Фильтруем точки для видимой области
       final zoom = await _mapController?.getZoomLevel() ?? 12.0;
       // Чем больше зум (ближе карта), тем больше маркеров
-      final limitZ = zoom > 18 ? 30 :
-        zoom > 15 ? 60 :
-        zoom > 12 ? 120 :
-        zoom > 10 ? 200 :
-        zoom > 8 ? 250 :
-        zoom > 5 ? 300 :
-        450;
+      final limitZ = zoom > 18
+          ? 30
+          : zoom > 15
+              ? 60
+              : zoom > 12
+                  ? 120
+                  : zoom > 10
+                      ? 200
+                      : zoom > 8
+                          ? 250
+                          : zoom > 5
+                              ? 300
+                              : 450;
       debugPrint("ServiceBloc:: zoom level=$zoom limitZ=$limitZ");
 
       final visiblePoints = _getPointsFromRegion(

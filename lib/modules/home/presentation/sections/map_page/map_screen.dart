@@ -13,6 +13,7 @@ import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/info_bottomsheet.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
+import 'package:pits_app/modules/home/presentation/sections/map_page/widgets/services_dropdown.dart';
 import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 
@@ -36,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
 
   late ServiceSingleBloc serviceSingleBloc;
 
-   @override
+  @override
   void initState() {
     serviceSingleBloc = ServiceSingleBloc(getSingle: GetServiceSingleUseCase());
     super.initState();
@@ -69,7 +70,7 @@ class _MapScreenState extends State<MapScreen> {
     target: LatLng(40.416775, -3.703790),
     zoom: _defaultZoom,
   );
-  
+
   static const double _defaultZoom = 12.4746;
 
   /*void _loadIcon() async {
@@ -87,8 +88,9 @@ class _MapScreenState extends State<MapScreen> {
       body: BlocConsumer<ServicesBloc, ServicesState>(
         listener: (context, state) {
           if (state.showModal) {
-            debugPrint("try show modal with service id = ${state.selectedServiceId}");
-            if(state.selectedServiceId!=null) {
+            debugPrint(
+                "try show modal with service id = ${state.selectedServiceId}");
+            if (state.selectedServiceId != null) {
               showInfoBottomSheet(context, serviceSingleBloc);
               serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
                   id: state.selectedServiceId.toString()));
@@ -155,63 +157,24 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
               Positioned(
-                left: 24,
-                right: 24,
+                left: 16,
+                right: 16,
                 top: 54 + MediaQuery.of(context).padding.top,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: white, borderRadius: BorderRadius.circular(16)),
-                  height: 40,
-                  child: Stack(
-                    children: [
-                      // Горизонтальный скролл
-                      Positioned.fill(
-                        child: Container(
-                          padding: const EdgeInsets.only(right: 30),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.only(
-                                right: 36), // чтобы не перекрывать стрелку
-                            child: Row(
-                              children: state.allServices
-                                  .map((service) => TextButton.icon(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.close,
-                                            color: Colors.black),
-                                        label: Text(service.name,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium!
-                                                .copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 12,
-                                                    color: Colors.black)),
-                                        iconAlignment: IconAlignment.end,
-                                      ))
-                                  .toList(),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Стрелка справа, всегда поверх
-                      Positioned(
-                        right: 12,
-                        top: 0,
-                        bottom: 0,
-                        child: GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                          onTap: () {
-                            // todo: scroll right
-                          },
-                          child: SvgPicture.asset(
-                            AppIcons.arrowDown,
-                            width: 12,
-                            height: 7,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                child: ServicesDropdown(
+                  allServices: state.allServices,
+                  selectedServices: state.selectedServices,
+                  onServicesChanged: (selectedServices) {
+                    // Обновляем выбранные услуги в BLoC
+                    bloc.add(
+                        ServicesEvent.updateSelectedServices(selectedServices));
+                    // Перезагружаем сервисы с новыми фильтрами
+                    bloc.add(ServicesEvent.getServices(
+                      catId: state.currentCatId,
+                      region: state.currentRegion,
+                      serviceIds: Set<int>.of(
+                          selectedServices.map((service) => service.id)),
+                    ));
+                  },
                 ),
               ),
               // Overlay: Регион (если есть)
