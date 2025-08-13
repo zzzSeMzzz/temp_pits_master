@@ -45,17 +45,21 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   late BitmapDescriptor _markerIconOpen;
   late BitmapDescriptor _markerIconClosed;
   late BitmapDescriptor _markerIconNotFt;
+  late BitmapDescriptor _iconMyLocation;
   late List<RegionModel> _regions;
+  Marker? _myLocationMarker; // Добавляю поле для маркера местоположения
 
   GoogleMapController? _mapController;
 
   void _loadIcon() async {
     _markerIconOpen = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.serviceFtOpen);
-    _markerIconClosed= await BitmapDescriptor.asset(
+    _markerIconClosed = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.serviceFtClosed);
     _markerIconNotFt = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.serviceNotFt);
+    _iconMyLocation = await BitmapDescriptor.asset(
+        const ImageConfiguration(), AppImages.myLocationIcon);
   }
 
   FutureOr<void> _onGetServiceCategories(
@@ -77,13 +81,11 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       int currentServiceCat =
           categories.right.length > 1 ? categories.right.first.id : 0;
       debugPrint("ServiceBloc:: current categoryId=$currentServiceCat");
-      emit(
-        state.copyWith(
+      emit(state.copyWith(
           status: ActionStatus.isSuccess,
           serviceCategories: categories.right,
           currentCatId: currentServiceCat,
-          allServices: allServices.right
-      ));
+          allServices: allServices.right));
     } else {
       debugPrint("ServiceBloc:: Failure get services cat's");
       emit(state.copyWith(status: ActionStatus.isFailure));
@@ -120,7 +122,8 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     }
   }*/
 
-  final List<CarServiceEntity> _allPoints = []; // Все точки, загруженные заранее
+  final List<CarServiceEntity> _allPoints =
+      []; // Все точки, загруженные заранее
 
   FutureOr<void> _onGetServices(
       ServicesEvent event, Emitter<ServicesState> emit) async {
@@ -153,13 +156,10 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
                     }))),
             currentCatId: catId,
             currentRegion: event.region));*/
-        emit(
-          state.copyWith(
+        emit(state.copyWith(
             loadCarServices: false,
             currentCatId: catId,
-            currentRegion: event.region
-          )
-        );
+            currentRegion: event.region));
         await _loadPointsForRegion(state.visibleRegion!, emit);
       } else {
         debugPrint("ServiceBloc:: Failure get services");
@@ -196,27 +196,50 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       _mapController = event.mapController;
       final initialPosition = await _mapController!.getVisibleRegion();
 
-      emit(state.copyWith(
-        currentRegion: regionModel, currentLocation: event.latLng, visibleRegion: initialPosition
-      ));
+      // Создаём и сохраняем маркер местоположения
+      if (event.latLng != null) {
+        _myLocationMarker = Marker(
+          markerId: const MarkerId('my_location'),
+          position: event.latLng!,
+          icon: _iconMyLocation,
+          infoWindow: const InfoWindow(title: 'Моё местоположение'),
+        );
+      }
 
-      add(
-        ServicesEvent.getServices(
+      emit(state.copyWith(
+          currentRegion: regionModel,
+          currentLocation: event.latLng,
+          visibleRegion: initialPosition));
+
+      add(ServicesEvent.getServices(
           catId: state.currentCatId,
           region: regionModel,
           serviceIds: Set<int>.of(
-          state.selectedServices.map((service) => service.id))
-      ));
+              state.selectedServices.map((service) => service.id))));
     }
   }
 
-  Future<void> _onMapMoved(ServicesEvent event, Emitter<ServicesState> emit) async {
+  Future<void> _onMapMoved(
+      ServicesEvent event, Emitter<ServicesState> emit) async {
     if (event is _MapMoved) {
       await _loadPointsForRegion(event.visibleRegion, emit);
     }
   }
 
-  Future<void> _loadPointsForRegion(LatLngBounds region, Emitter<ServicesState> emit) async {
+  // Метод для объединения всех маркеров
+  Set<Marker> _getAllMarkers(Set<Marker> serviceMarkers) {
+    final allMarkers = <Marker>{...serviceMarkers};
+
+    // Всегда добавляем маркер местоположения
+    if (_myLocationMarker != null) {
+      allMarkers.add(_myLocationMarker!);
+    }
+
+    return allMarkers;
+  }
+
+  Future<void> _loadPointsForRegion(
+      LatLngBounds region, Emitter<ServicesState> emit) async {
     try {
       // Фильтруем точки для видимой области
       final zoom = await _mapController?.getZoomLevel() ?? 12.0;
@@ -234,41 +257,37 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
         allPoints: _allPoints,
         region: region,
         padding: 0.1, // 10% отступ за границы видимой области
-        limit: limitZ, // Не более 1000 точек
+        limit: limitZ, // Не более 100 точек
       );
 
-      debugPrint("ServiceBloc:: allPoints size = ${_allPoints.length}, visible points size =${visiblePoints.length}");
+      debugPrint(
+          "ServiceBloc:: allPoints size = ${_allPoints.length}, visible points size =${visiblePoints.length}");
 
       // Создаем маркеры
-      final markers = await Future.wait(
-          visiblePoints.map((service) async {
+      final markers = await Future.wait(visiblePoints.map((service) async {
+        BitmapDescriptor icon;
+        if (service.featured) {
+          icon = service.status.contains("closed")
+              ? _markerIconClosed
+              : _markerIconOpen;
+        } else {
+          icon = _markerIconNotFt;
+        }
 
-            BitmapDescriptor icon;
-            if(service.featured) {
-              icon = service.status.contains("closed") ? _markerIconClosed : _markerIconOpen;
-            } else {
-              icon = _markerIconNotFt;
-            }
+        return service.toMarker(icon, () {
+          add(ServicesEvent.showModal(service.id));
+        });
+      }));
 
-            return service.toMarker(
-                icon, () {
-              add(ServicesEvent.showModal(service.id));
-            });
-          })
-      );
-
-      emit(
-          state.copyWith(
-              loadCarServices: false,
-              showModal: false,
-              markers: markers.toSet()
+      emit(state.copyWith(
+          loadCarServices: false,
+          showModal: false,
+          markers: _getAllMarkers(
+              markers.toSet()) // Используем метод для объединения маркеров
           ));
     } catch (e) {
-      emit(
-        state.copyWith(
-          loadCarServices: false,
-          status: ActionStatus.isFailure
-      ));
+      emit(state.copyWith(
+          loadCarServices: false, status: ActionStatus.isFailure));
     }
   }
 
@@ -276,13 +295,11 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   Future<void> close() {
     try {
       _mapController?.dispose();
-    } catch(e) {
+    } catch (e) {
       debugPrint(e.toString());
     }
     return super.close();
   }
-
-
 
   List<CarServiceEntity> _getPointsFromRegion({
     required List<CarServiceEntity> allPoints,

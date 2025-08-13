@@ -114,7 +114,7 @@ class _MapScreenState extends State<MapScreen> {
                   },
                   compassEnabled: false,
                   myLocationButtonEnabled: false,
-                  myLocationEnabled: true,
+                  myLocationEnabled: false,
                   markers: state.markers,
                   clusterManagers: {_clusterManager},
                   zoomGesturesEnabled: true,
