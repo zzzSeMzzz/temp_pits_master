@@ -23,7 +23,7 @@ class TypeSelector extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         margin: const EdgeInsets.only(right: 10),
-        height: 36,
+        height: 46,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             color: isSelected ? black : white),

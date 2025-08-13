@@ -25,4 +25,5 @@ class AppImages {
   static const String serviceNotFt = 'assets/images/marker_not_ft.png';
   static const String serviceFtOpen = 'assets/images/marker_ft_open.png';
   static const String serviceFtClosed = 'assets/images/marker_ft_closed.png';
+  static const String clusterIcon = 'assets/images/cluster_icon.png';
 }
