@@ -21,13 +21,15 @@ class AuthField extends StatelessWidget {
   Widget build(BuildContext context) {
     return WTextField(
       isObscure: isPassword,
+      borderColor: Colors.black,
+      fillColor: fieldGrey,
       onChanged: (text) {},
       height: 50,
 
       controller: controller,
       hintText: hint,
       prefix: prefixIconPath != null
-          ? Padding(padding: EdgeInsets.all(10),
+          ? Padding(padding: const EdgeInsets.all(10),
             child: SvgPicture.asset(
                 prefixIconPath!,
                 width: 24,

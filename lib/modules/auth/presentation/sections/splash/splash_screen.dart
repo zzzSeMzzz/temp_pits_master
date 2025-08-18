@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
+import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_screen.dart';
 import 'package:pits_app/modules/auth/presentation/sections/onboarding/onboarding_screen.dart';
 import 'package:pits_app/modules/navigation/presentation/home.dart';
 
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // Navigator.push(
         //     context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
         Navigator.push(
-            context, CupertinoPageRoute(builder: (c) => const OnboardingScreen()));
+            context, CupertinoPageRoute(builder: (c) => const AuthScreen()));
       }
 
     });
