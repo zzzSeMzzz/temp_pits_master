@@ -22,56 +22,70 @@ class OnboardingItemLast extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        // Positioned(
+        //     left: 0,
+        //     right: 0,
+        //     top: 0,
+        //     child: Container(
+        //       decoration: BoxDecoration(
+        //           gradient: LinearGradient(
+        //               begin: Alignment.topCenter,
+        //               end: Alignment.bottomCenter,
+        //               colors: [
+        //             Color(0xff121212),
+        //             Color(0xff121212).withOpacity(0),
+        //           ])),
+        //       height: 340,
+        //     )),
+        // Positioned(
+        //     left: 0,
+        //     right: 0,
+        //     bottom: 0,
+        //     child: Container(
+        //       decoration: BoxDecoration(
+        //           gradient: LinearGradient(
+        //               begin: Alignment.bottomCenter,
+        //               end: Alignment.topCenter,
+        //               colors: [
+        //             Color(0xff121212),
+        //             Color(0xff121212).withOpacity(0),
+        //           ])),
+        //       height: 341,
+        //     )),
         Positioned(
             left: 0,
             right: 0,
-            top: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                    Color(0xff121212),
-                    Color(0xff121212).withOpacity(0),
-                  ])),
-              height: 340,
-            )),
-        Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                    Color(0xff121212),
-                    Color(0xff121212).withOpacity(0),
-                  ])),
-              height: 341,
-            )),
+            top: MediaQuery.of(context).size.width * 0.6,
+            child: Center(
+              child: Text(
+                title,
+                style: Theme.of(context)
+                    .textTheme
+                    .displayMedium!
+                    .copyWith(fontSize: 24),
+              ),
+            ),
+        ),
         Positioned.fill(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium!
-                  .copyWith(fontSize: 24),
-            ),
-            SizedBox(
-              height: 32,
-            ),
+            // Text(
+            //   title,
+            //   style: Theme.of(context)
+            //       .textTheme
+            //       .displayMedium!
+            //       .copyWith(fontSize: 24),
+            // ),
+            // const SizedBox(
+            //   height: 32,
+            // ),
             WButton(
               color: primaryColor,
               height: 50,
               textColor: white,
-              text: 'Start',
+              text: 'Explorar',
               onTap: onTap,
               width: MediaQuery.of(context).size.width * 0.5,
             ),

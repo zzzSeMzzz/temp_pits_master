@@ -73,7 +73,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               builder: (c) => NavigationScreen()));
                     },
                     image: AppImages.onboarding4,
-                    title: 'Start the road',
+                    title: 'Comienza tu viaje',
                   ),
                 ],
               ),
