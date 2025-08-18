@@ -29,7 +29,7 @@ class CarServiceEntity {
     Marker marker = Marker(
       markerId: MarkerId(id.toString()),
       position: location,
-      infoWindow: InfoWindow(title: name),
+      //infoWindow: InfoWindow(title: name),
       icon: icon ?? BitmapDescriptor.defaultMarker,
       clusterManagerId: const ClusterManagerId(mainClusterManagerId),
       onTap: onTap

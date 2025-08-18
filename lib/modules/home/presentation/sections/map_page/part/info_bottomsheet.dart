@@ -18,21 +18,55 @@ import 'package:pits_app/modules/service/presentation/sections/part_selection/pa
 import 'package:pits_app/utils/action_status.dart';
 
 showInfoBottomSheet(BuildContext context, ServiceSingleBloc serviceSingleBloc) {
-  showModalBottomSheet(
+ /* showModalBottomSheet(
       backgroundColor: Colors.white,
       context: context,
       isScrollControlled: true,
 
       builder: (c) => BlocProvider.value(
-          value: serviceSingleBloc, child: const InfoBottomSheet()));
+          value: serviceSingleBloc, child: const InfoBottomSheet()));*/
+
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    isScrollControlled: true, // Important for full height control
+    /*builder: (BuildContext context) {
+      return DraggableScrollableSheet(
+        initialChildSize: 0.4, // Initial height as a fraction of parent height
+        minChildSize: 0.2,    // Minimum height when collapsed
+        maxChildSize: 0.9,    // Maximum height when fully expanded
+        expand: false,        // Prevents a fullscreen overlay when not fully expanded
+        builder: (BuildContext context, ScrollController scrollController) {
+          // Your scrollable content goes here
+          return InfoBottomSheet();
+        },
+      );
+    },*/
+      builder: (c) => BlocProvider.value(
+          value: serviceSingleBloc,
+          child: DraggableScrollableSheet(
+            initialChildSize: 0.7, // Initial height as a fraction of parent height
+            minChildSize: 0.4,    // Minimum height when collapsed
+            maxChildSize: 0.95,    // Maximum height when fully expanded
+            expand: false,        // Prevents a fullscreen overlay when not fully expanded
+            builder: (BuildContext context, ScrollController scrollController) {
+              // Your scrollable content goes here
+              return InfoBottomSheet(controller: scrollController);
+            },
+          )
+      )
+  );
 }
 
 class InfoBottomSheet extends StatelessWidget {
-  const InfoBottomSheet({Key? key}) : super(key: key);
+
+  final ScrollController? controller;
+
+  const InfoBottomSheet({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    height: MediaQuery.of(context).size.height * 0.75,
+    //height: MediaQuery.of(context).size.height * 0.75,
     child: BlocBuilder<ServiceSingleBloc, ServiceSingleState>(
       builder: (context, state) {
         if (state.actionStatus == ActionStatus.inProcess || state.actionStatus == ActionStatus.pure) {
@@ -51,6 +85,7 @@ class InfoBottomSheet extends StatelessWidget {
           );
         } else {
           return SingleChildScrollView(
+            controller: controller,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
