@@ -22,13 +22,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget dotContainer(int index) {
     return AnimatedContainer(
-        margin: EdgeInsets.only(right: 4),
+        margin: const EdgeInsets.only(right: 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             color: index == page ? primaryColor : white),
         height: 5,
         width: index == page ? 32 : 16,
-        duration: Duration(milliseconds: 150));
+        duration: const Duration(milliseconds: 150));
   }
 
   @override
@@ -51,18 +51,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
                 controller: pageController,
                 children: [
-                  OnboardingItem(
+                  const OnboardingItem(
                       image: AppImages.onboarding1,
-                      title: 'The best repair',
-                      desc: 'Repair your car with Guarantee'),
-                  OnboardingItem(
+                      title: 'La mejor solución',
+                      desc: 'Tu vehículo & Mecánicos online'),
+                  const OnboardingItem(
                       image: AppImages.onboarding2,
-                      title: 'Know the price',
-                      desc: 'The best price'),
-                  OnboardingItem(
+                      title: 'Conoce el precio',
+                      desc: 'Transparencia & Seguridad'),
+                  const OnboardingItem(
                       image: AppImages.onboarding3,
-                      title: 'Be connected with your car',
-                      desc: 'Your recive the notifications from your car'),
+                      title: 'Soluciones al instante',
+                      desc: 'Conocimiento & Libertad'),
                   OnboardingItemLast(
                     onTap: () async {
                       await StorageRepository.putBool(

@@ -18,14 +18,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    var isFirst =StorageRepository.getBool('isFirst',defValue: true);
+    var isFirst = StorageRepository.getBool('isFirst', defValue: true);
     Timer(const Duration(seconds: 2), () {
       if(isFirst){
         Navigator.push(
             context, CupertinoPageRoute(builder: (c) => const OnboardingScreen()));
-      }else {
+      } else {
+        // Navigator.push(
+        //     context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
         Navigator.push(
-            context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
+            context, CupertinoPageRoute(builder: (c) => const OnboardingScreen()));
       }
 
     });
@@ -37,22 +39,22 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: primaryColor,
         body: Stack(
           children: [
-            Positioned.fill(
-                child: Column(
-              children: [
-                const Spacer(),
-                Text(
-                  'Repair your car\njust in record time',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium!
-                      .copyWith(fontSize: 16),
-                ),
-                SizedBox(
-                  height: 60 + MediaQuery.of(context).padding.bottom,
-                )
-              ],
-            )),
+            // Positioned.fill(
+            //     child: Column(
+            //   children: [
+            //     const Spacer(),
+            //     Text(
+            //       'Repair your car\njust in record time',
+            //       style: Theme.of(context)
+            //           .textTheme
+            //           .displayMedium!
+            //           .copyWith(fontSize: 16),
+            //     ),
+            //     SizedBox(
+            //       height: 60 + MediaQuery.of(context).padding.bottom,
+            //     )
+            //   ],
+            // )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -76,6 +78,14 @@ class _SplashScreenState extends State<SplashScreen> {
                       .textTheme
                       .displayMedium!
                       .copyWith(fontSize: 24),
+                ),
+                const SizedBox(height: 20,),
+                Text(
+                  'Muévete Seguro',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 16),
                 ),
               ],
             ),
