@@ -132,9 +132,10 @@ class _AddCarScreenState extends State<AddCarScreen> {
 
                 //Navigator.push(context, fade(page: const NavigationScreen()));
               },
+              svgAsset: AppIcons.plusCircle,
               borderRadius: 16,
               text: 'Conectar',
-
+              height: 56,
               textColor: white,
             ),
             SizedBox(

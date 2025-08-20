@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 border: Border.all(color: mainDark),
-                borderRadius: 4,
+                borderRadius: 16,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                       width: 10,
                     ),
                     Text(
-                      'Add car',
+                      'Añadir vehículo',
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!

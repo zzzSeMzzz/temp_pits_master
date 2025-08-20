@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/globals/widgets/additional/w_scale.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WButton extends StatelessWidget {
   final double? width;
@@ -22,6 +23,7 @@ class WButton extends StatelessWidget {
   final double? scaleValue;
   final List<BoxShadow>? shadow;
   final bool hasError;
+  final String? svgAsset;
 
   const WButton({
     required this.onTap,
@@ -42,6 +44,7 @@ class WButton extends StatelessWidget {
     this.child,
     this.scaleValue,
     this.shadow,
+    this.svgAsset,
     Key? key,
   }) : super(key: key);
 
@@ -72,24 +75,71 @@ class WButton extends StatelessWidget {
                   color: Colors.white,
                 ))
               : child ??
-                  Text(
-                    text,
-                    style: isDisabled
-                        ? Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            height: 1.36,
-                            color: textColor)
-                        : textStyle ??
-                            Theme.of(context).textTheme.displayMedium!.copyWith(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                height: 1.36,
-                                color: textColor),
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
+                  (svgAsset == null
+                      ? Text(
+                          text,
+                          style: isDisabled
+                              ? Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      height: 1.36,
+                                      color: textColor)
+                              : textStyle ??
+                                  Theme.of(context)
+                                      .textTheme
+                                      .displayMedium!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14,
+                                          height: 1.36,
+                                          color: textColor),
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        )
+                      : Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              svgAsset!,
+                              width: 18,
+                              height: 18,
+                              colorFilter:
+                                  ColorFilter.mode(textColor, BlendMode.srcIn),
+                            ),
+                            const SizedBox(width: 8),
+                            Flexible(
+                              child: Text(
+                                text,
+                                style: isDisabled
+                                    ? Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1.36,
+                                            color: textColor)
+                                    : textStyle ??
+                                        Theme.of(context)
+                                            .textTheme
+                                            .displayMedium!
+                                            .copyWith(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 14,
+                                                height: 1.36,
+                                                color: textColor),
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                            ),
+                          ],
+                        )),
         ),
       );
 }
