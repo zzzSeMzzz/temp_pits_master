@@ -22,13 +22,17 @@ class _SplashScreenState extends State<SplashScreen> {
     var isFirst = StorageRepository.getBool('isFirst', defValue: true);
     Timer(const Duration(seconds: 2), () {
       if(isFirst){
-        Navigator.push(
+        Navigator.pushReplacement(
             context, CupertinoPageRoute(builder: (c) => const OnboardingScreen()));
       } else {
-        // Navigator.push(
-        //     context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
-        Navigator.push(
-            context, CupertinoPageRoute(builder: (c) => const AuthScreen()));
+
+        if(StorageRepository.isAuth() || StorageRepository.loginAsGuest()) {
+          Navigator.push(
+              context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
+        } else {
+          Navigator.pushReplacement(
+              context, CupertinoPageRoute(builder: (c) => const AuthScreen()));
+        }
       }
 
     });

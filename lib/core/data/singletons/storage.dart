@@ -23,7 +23,16 @@ class StorageRepository {
   static String getTemporaryToken() =>
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDU3NzczLCJqdGkiOiI4OGI4ZGY1YjBlYTI0YTVjOTE2Mjc3ZTkyODE4MDRhNCIsInVzZXJfaWQiOjI1OX0.uRYeuib-RI6nNCq2RIDa1BG7hIsYCGknO6gFC9pM7OI';
 
+  static bool isAuth() {
+    return getString(accessTokenKey).isNotEmpty;
+  }
+
+  static bool loginAsGuest() {
+    return getBool(loginAsGuestKey, defValue: false);
+  }
+
   static const String accessTokenKey = "accessTokenKey";
+  static const String loginAsGuestKey = "loginAsGuest";
 
   static List<String> getList(String key, {List<String> defValue = const []}) {
     if (_preferences == null) return List.empty(growable: true);

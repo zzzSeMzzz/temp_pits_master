@@ -1,4 +1,6 @@
+import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:pits_app/assets/constants/app_constants.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
 
@@ -28,7 +30,38 @@ class DioSettings {
   // final _dio = serviceLocator<DioSettings>().dio; ///sample
   BaseOptions get dioBaseOptions => _dioBaseOptions;
 
-  Dio get dio => Dio(_dioBaseOptions);
+  late final Dio _dio;
+
+
+  DioSettings() {
+    _dio = Dio(_dioBaseOptions);
+
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = StorageRepository.getString(StorageRepository.accessTokenKey);
+        if (token.isNotEmpty) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        return handler.next(options);
+      },
+    ));
+
+    _dio.interceptors.add(
+      AwesomeDioInterceptor(
+        // Disabling headers and timeout would minimize the logging output.
+        // Optional, defaults to true
+        logRequestTimeout: false,
+        logRequestHeaders: false,
+        logResponseHeaders: false,
+
+        // Optional, defaults to the 'log' function in the 'dart:developer' package.
+        logger: debugPrint,
+      ),
+    );
+
+  }
+
+  Dio get dio => _dio;
 }
 
 
@@ -59,5 +92,35 @@ class AuthDioSettings {
   // final _dio = serviceLocator<DioSettings>().dio; ///sample
   BaseOptions get dioBaseOptions => _dioBaseOptions;
 
-  Dio get dio => Dio(_dioBaseOptions);
+  late final Dio _dio;
+
+
+  AuthDioSettings() {
+    _dio = Dio(_dioBaseOptions);
+
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = StorageRepository.getString(StorageRepository.accessTokenKey);
+        if (token.isNotEmpty) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        return handler.next(options);
+      },
+    ));
+
+    _dio.interceptors.add(
+      AwesomeDioInterceptor(
+        // Disabling headers and timeout would minimize the logging output.
+        // Optional, defaults to true
+        logRequestTimeout: false,
+        logRequestHeaders: false,
+        logResponseHeaders: false,
+
+        // Optional, defaults to the 'log' function in the 'dart:developer' package.
+        logger: debugPrint,
+      ),
+    );
+  }
+
+  Dio get dio => _dio;
 }
