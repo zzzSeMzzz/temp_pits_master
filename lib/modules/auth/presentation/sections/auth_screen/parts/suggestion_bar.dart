@@ -20,8 +20,8 @@ class AuthSuggestionBar extends StatelessWidget {
                 children: [
                   Text(
                     state.isLoginMode
-                        ? "Don't have an account?"
-                        : 'Already have an account?',
+                        ? "¿No tienes cuenta?"
+                        : '¿Ya tienes una cuenta?',
                     style: Theme.of(context).textTheme.displaySmall!.copyWith(
                           fontWeight: FontWeight.w700,
                           fontSize: 14,
@@ -31,7 +31,7 @@ class AuthSuggestionBar extends StatelessWidget {
                     width: 12,
                   ),
                   Text(
-                    state.isLoginMode ? "Sign Up" : 'Sign in',
+                    state.isLoginMode ? "Registrarse" : 'Inicia sesión',
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
                         fontWeight: FontWeight.w700,
                         fontSize: 14,

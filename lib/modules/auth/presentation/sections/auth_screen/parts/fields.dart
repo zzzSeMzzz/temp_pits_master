@@ -16,14 +16,14 @@ class AuthFields extends StatelessWidget {
             height: 32,
           ),
           const AuthField(
-            hint: 'Your username, email or phone',
+            hint: 'Nombre de usuario o correo electrónico',
             prefixIconPath: AppIcons.mail,
           ),
           const SizedBox(
             height: 8,
           ),
           const AuthField(
-            hint: 'Password',
+            hint: 'Contraseña',
             isPassword: true,
             prefixIconPath: AppIcons.lock,
           ),
@@ -34,7 +34,7 @@ class AuthFields extends StatelessWidget {
             builder: (context, state) {
               return AnimatedCrossFade(
                   firstChild: Container(),
-                  secondChild: RegisterFields(),
+                  secondChild: const RegisterFields(),
                   crossFadeState: state.isLoginMode
                       ? CrossFadeState.showFirst
                       : CrossFadeState.showSecond,

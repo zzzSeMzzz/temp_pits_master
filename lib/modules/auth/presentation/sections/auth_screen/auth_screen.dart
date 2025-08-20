@@ -36,7 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Scaffold(
             body: Container(
               margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).padding.top + 72,
+                  top: MediaQuery.of(context).padding.top + 92,
                   left: 24,
                   right: 24),
               child: Column(
@@ -47,7 +47,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       BlocBuilder<AuthBloc, AuthState>(
                         builder: (context, state) {
                           return Text(
-                            state.isLoginMode ? 'Sign In' : 'Sign Up',
+                            state.isLoginMode
+                                ? 'Iniciar sesión'
+                                : 'Registrarse',
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
@@ -66,7 +68,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              'Forgot password ?',
+                              '¿Has olvidado tu contraseña?',
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineMedium!
@@ -92,22 +94,41 @@ class _AuthScreenState extends State<AuthScreen> {
                           Navigator.push(
                               context,
                               fade(
-                                  page: AddCarScreen(
+                                  page: const AddCarScreen(
                                 isBackButton: false,
                               )));
                         },
                         color: mainDark,
-                        text: state.isLoginMode ? 'Sign In' : "Sign Up",
+                        text: state.isLoginMode
+                            ? 'Iniciar sesión'
+                            : "Registrarse",
                         textColor: white,
                       );
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 23,
                   ),
-                  SocialButtons(),
-                  Spacer(),
-                  AuthSuggestionBar(),
+                  const SocialButtons(),
+                  BlocBuilder<AuthBloc, AuthState>(
+                    builder: (context, state) {
+                      return state.isLoginMode
+                          ? Container(
+                              padding: const EdgeInsets.only(top: 60),
+                              child: Text("Acceder como invitado",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall!
+                                      .copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16,
+                                      )),
+                            )
+                          : const SizedBox.shrink();
+                    },
+                  ),
+                  const Spacer(),
+                  const AuthSuggestionBar(),
                   SizedBox(
                     height: 16 + MediaQuery.of(context).padding.bottom,
                   )

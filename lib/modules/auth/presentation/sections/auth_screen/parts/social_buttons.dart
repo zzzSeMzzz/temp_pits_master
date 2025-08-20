@@ -21,11 +21,11 @@ class SocialButtons extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              'Or sign in with',
+              'O inicia sesión con',
               style: Theme.of(context)
                   .textTheme
                   .displaySmall!
-                  .copyWith(fontWeight: FontWeight.w700, fontSize: 16),
+                  .copyWith(fontWeight: FontWeight.w400, fontSize: 16),
             ),
           ),
           Expanded(
