@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/assets/colors/colors.dart';
-import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/globals/widgets/interaction/keyboard_dismisser.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/parts/fields.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/parts/social_buttons.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/parts/suggestion_bar.dart';
-import 'package:pits_app/modules/auth/presentation/sections/auth_screen/widgets/auth_field.dart';
-import 'package:pits_app/modules/auth/presentation/sections/auth_screen/widgets/social_button.dart';
-import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
-import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -22,6 +17,13 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   late AuthBloc authBloc;
+  final GlobalKey<AuthFieldsState> _fieldsKey = GlobalKey<AuthFieldsState>();
+
+  void _showSnack(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
   @override
   void initState() {
@@ -60,7 +62,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       )
                     ],
                   ),
-                  const AuthFields(),
+                  AuthFields(key: _fieldsKey),
                   BlocBuilder<AuthBloc, AuthState>(
                     builder: (context, state) {
                       if (state.isLoginMode) {
@@ -92,16 +94,43 @@ class _AuthScreenState extends State<AuthScreen> {
                         isLoading: state.isLoading,
                         height: 50,
                         onTap: () {
-                          /*Navigator.pushReplacement(
-                              context,
-                              fade(
-                                  page: const AddCarScreen(
-                                isBackButton: false,
-                              )));*/
-                          if(state.isLoginMode) {
+                          final fields = _fieldsKey.currentState;
+                          if (fields == null) return;
 
+                          if (state.isLoginMode) {
+                            final email = fields.emailController.text.trim();
+                            final password =
+                                fields.passwordController.text.trim();
+                            if (email.isEmpty || password.isEmpty) {
+                              _showSnack('Email y contraseña son obligatorios');
+                              return;
+                            }
+                            context.read<AuthBloc>().add(AuthEvent.login(
+                                email: email, password: password));
                           } else {
-
+                            final firstname =
+                                fields.firstNameController.text.trim();
+                            final lastname =
+                                fields.lastNameController.text.trim();
+                            final email = fields.regEmailController.text.trim();
+                            final phone = fields.phoneController.text.trim();
+                            final password =
+                                fields.passwordController.text.trim();
+                            if (firstname.isEmpty ||
+                                lastname.isEmpty ||
+                                email.isEmpty ||
+                                phone.isEmpty ||
+                                password.isEmpty) {
+                              _showSnack('Todos los campos son obligatorios');
+                              return;
+                            }
+                            context.read<AuthBloc>().add(AuthEvent.register(
+                                  firstname: firstname,
+                                  lastname: lastname,
+                                  email: email,
+                                  phone: phone,
+                                  password: password,
+                                ));
                           }
                         },
                         color: mainDark,

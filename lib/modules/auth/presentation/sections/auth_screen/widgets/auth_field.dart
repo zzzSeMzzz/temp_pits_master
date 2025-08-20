@@ -8,12 +8,14 @@ class AuthField extends StatelessWidget {
   final bool? isPassword;
   final String? hint;
   final String? prefixIconPath;
+  final TextInputType? keyboardType;
 
   const AuthField(
       {this.controller,
       this.hint,
-      this.isPassword ,
+      this.isPassword,
       this.prefixIconPath,
+      this.keyboardType,
       Key? key})
       : super(key: key);
 
@@ -25,17 +27,18 @@ class AuthField extends StatelessWidget {
       fillColor: fieldGrey,
       onChanged: (text) {},
       height: 50,
-
+      keyBoardType: keyboardType,
       controller: controller,
       hintText: hint,
       prefix: prefixIconPath != null
-          ? Padding(padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset(
+          ? Padding(
+              padding: const EdgeInsets.all(10),
+              child: SvgPicture.asset(
                 prefixIconPath!,
                 width: 24,
                 height: 24,
               ),
-          )
+            )
           : null,
     );
   }
