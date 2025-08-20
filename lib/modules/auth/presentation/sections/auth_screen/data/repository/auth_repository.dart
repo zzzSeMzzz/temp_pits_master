@@ -1,3 +1,4 @@
+import 'package:pits_app/core/data/singletons/storage.dart';
 import '../../../../../../../core/data/error/failures.dart';
 import '../../../../../../../core/data/singletons/dio.dart';
 import '../../../../../../../core/data/singletons/service_locator.dart';
@@ -7,24 +8,25 @@ import '../model/auth_model.dart';
 class AuthRepository {
   final client = serviceLocator<AuthDioSettings>().dio;
 
-  Future<Either<Failure, List<AuthModel>>> auth(
-      String login, String password) async {
+  Future<Either<Failure, AuthModel>> auth(String login, String password) async {
     final result = await client
         .post('api/pits/login', data: {"email": login, "password": password});
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
-      final data = (result.data as List<dynamic>)
-          .map((e) => AuthModel.fromJson(e))
-          .toList();
+      final model = AuthModel.fromJson(result.data as Map<String, dynamic>);
 
-      return Right(data);
+      // Сохраняем токен доступа, если он есть
+      StorageRepository.putString(
+          StorageRepository.accessTokenKey, model.token);
+
+      return Right(model);
     } else {
       return Left(ServerFailure());
     }
   }
 
-  Future<Either<Failure, List<AuthModel>>> reg(String firstname,
-      String lastname, String email, String phone, String password) async {
+  Future<Either<Failure, AuthModel>> reg(String firstname, String lastname,
+      String email, String phone, String password) async {
     final result = await client.post('api/pits/register', data: {
       "firstname": firstname,
       "lastname": lastname,
@@ -34,11 +36,10 @@ class AuthRepository {
     });
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
-      final data = (result.data as List<dynamic>)
-          .map((e) => AuthModel.fromJson(e))
-          .toList();
-
-      return Right(data);
+      final model = AuthModel.fromJson(result.data as Map<String, dynamic>);
+      StorageRepository.putString(
+          StorageRepository.accessTokenKey, model.token);
+      return Right(model);
     } else {
       return Left(ServerFailure());
     }
