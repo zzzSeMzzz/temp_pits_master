@@ -46,6 +46,16 @@ abstract class Either<L, R> {
       fnR(right.value);
     }
   }
+
+  /// Folds this Either into a single value by applying
+  /// [onLeft] if it is a Left or [onRight] if it is a Right.
+  T fold<T>(T Function(L left) onLeft, T Function(R right) onRight) {
+    if (isLeft) {
+      return onLeft((this as Left<L, R>).value);
+    } else {
+      return onRight((this as Right<L, R>).value);
+    }
+  }
 }
 
 class Left<L, R> extends Either<L, R> {

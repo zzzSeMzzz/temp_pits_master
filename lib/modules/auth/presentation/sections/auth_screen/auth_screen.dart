@@ -60,7 +60,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       )
                     ],
                   ),
-                  AuthFields(),
+                  const AuthFields(),
                   BlocBuilder<AuthBloc, AuthState>(
                     builder: (context, state) {
                       if (state.isLoginMode) {
@@ -89,14 +89,20 @@ class _AuthScreenState extends State<AuthScreen> {
                   BlocBuilder<AuthBloc, AuthState>(
                     builder: (context, state) {
                       return WButton(
+                        isLoading: state.isLoading,
                         height: 50,
                         onTap: () {
-                          Navigator.push(
+                          /*Navigator.pushReplacement(
                               context,
                               fade(
                                   page: const AddCarScreen(
                                 isBackButton: false,
-                              )));
+                              )));*/
+                          if(state.isLoginMode) {
+
+                          } else {
+
+                          }
                         },
                         color: mainDark,
                         text: state.isLoginMode
