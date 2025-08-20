@@ -68,22 +68,22 @@ class _NavigationScreenState extends State<NavigationScreen>
   Widget build(BuildContext context) {
     labels = [
       const NavBar(
-        title: 'Home',
+        title: 'Inicio',
         id: 0,
-        icon: AppIcons.home,
+        icon: AppIcons.icHomeFlag,
       ),
       const NavBar(
-        title: 'Orders',
+        title: 'Casos',
         id: 1,
         icon: AppIcons.navPhone,
       ),
       const NavBar(
-        title: 'Messages',
+        title: 'Chat',
         id: 2,
         icon: AppIcons.navMessages,
       ),
       const NavBar(
-        title: 'Profile',
+        title: 'Perfil',
         id: 3,
         icon: AppIcons.user,
       ),

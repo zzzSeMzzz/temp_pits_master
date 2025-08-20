@@ -76,7 +76,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
               children: [
                 Expanded(
                   child: Text(
-                    'Connect your car\nto the service',
+                    'Conecta con tu vehículo',
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
@@ -87,21 +87,19 @@ class _AddCarScreenState extends State<AddCarScreen> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 70,
             ),
-            Container(
-              child: Image.asset(
-                AppImages.scanCar,
-                width: double.maxFinite,
-                fit: BoxFit.cover,
-                height: 310,
-              ),
+            Image.asset(
+              AppImages.scanCar,
+              width: double.maxFinite,
+              fit: BoxFit.cover,
+              height: 395,
             ),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                'Enter your vehicle number',
+                'Introduce una matrícula o VIN',
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
@@ -116,13 +114,13 @@ class _AddCarScreenState extends State<AddCarScreen> {
               child: WTextField(
                   disabledBorderColor: textGrey,
                   fillColor: white,
-                  height: 50,
+                  height: 56,
                   borderColor: textGrey,
-                  borderRadius: 4,
-                  onTapSuffix: (){
+                  borderRadius: 16,
+                  onTapSuffix: () {
                     _read();
                   },
-                  suffixIcon: AppIcons.scan,
+                  suffixIcon: AppIcons.icScan2,
                   onChanged: (text) {}),
             ),
             const SizedBox(
@@ -132,10 +130,11 @@ class _AddCarScreenState extends State<AddCarScreen> {
               margin: const EdgeInsets.symmetric(horizontal: 24),
               onTap: () {
 
-                Navigator.push(context, fade(page: const NavigationScreen()));
+                //Navigator.push(context, fade(page: const NavigationScreen()));
               },
-              borderRadius: 4,
-              text: 'To plug',
+              borderRadius: 16,
+              text: 'Conectar',
+
               textColor: white,
             ),
             SizedBox(
