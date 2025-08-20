@@ -27,4 +27,5 @@ class AppImages {
   static const String serviceFtClosed = 'assets/images/marker_ft_closed.png';
   static const String clusterIcon = 'assets/images/cluster_icon.png';
   static const String myLocationIcon = 'assets/images/marker_my_location.png';
+  static const String alarmButton = 'assets/images/alarm_button.png';
 }

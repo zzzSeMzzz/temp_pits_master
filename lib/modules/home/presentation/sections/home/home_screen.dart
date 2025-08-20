@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
+import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
@@ -78,16 +79,32 @@ class HomeScreen extends StatelessWidget {
               ),
               const MapButton(),
               const SizedBox(
-                height: 24,
+                height: 8,
               ),
-              WButton(
-                onTap: () {
-                  Navigator.push(context, fade(page: PartSelectionScreen()));
-                },
-                height: 55,
-                borderRadius: 4,
-                textColor: white,
-                text: 'Make a request',
+              SizedBox(
+                height: 100,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: WButton(
+                        onTap: () {
+                          Navigator.push(context, fade(page: const PartSelectionScreen()));
+                        },
+                        height: 55,
+                        svgAsset: AppIcons.plusCircle,
+                        borderRadius: 16,
+                        textColor: white,
+                        text: 'Solicitar Reparación',
+                      ),
+                    ),
+                    Image.asset(
+                      AppImages.alarmButton,
+                      fit: BoxFit.fill,
+                      width: 96,
+                      height: 96,
+                    )
+                  ],
+                ),
               )
             ],
           ),
