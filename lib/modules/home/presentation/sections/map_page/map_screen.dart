@@ -18,6 +18,7 @@ import 'package:pits_app/utils/action_status.dart';
 import 'package:pits_app/utils/functions.dart';
 
 import '../../../../../assets/constants/app_icons.dart';
+import '../../../../../assets/constants/app_images.dart';
 import '../../../domain/usecase/get_single_service.dart';
 import 'bloc/single/service_single_bloc.dart';
 
@@ -239,6 +240,38 @@ class _MapScreenState extends State<MapScreen> {
                     : const SizedBox(),
               ),
               // Overlay: Фильтр/категории
+              Positioned(
+                right: 1,
+                bottom: 54 + MediaQuery.of(context).padding.bottom,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: CircleAvatar(
+                        radius: 30, // Adjust the size of the circle
+                        backgroundColor: Colors.white.withValues(alpha: 0.9), // Example with 50% opacity
+                        child: IconButton(
+                          icon: SvgPicture.asset(AppIcons.myLocation),
+                          color: Colors.black,
+                          iconSize: 24,
+                          onPressed: () {
+                            _setMyLocation(_mapController, bloc);
+                          },
+                        ),
+                      ),
+                    ),
+                    Image.asset(
+                      AppImages.alarmButton,
+                      fit: BoxFit.fill,
+                      width: 82,
+                      height: 82,
+                    )
+                  ],
+                ),
+              ),
+
               Positioned(
                 left: 24,
                 right: 24,
