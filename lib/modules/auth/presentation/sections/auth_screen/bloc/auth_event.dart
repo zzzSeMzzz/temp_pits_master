@@ -12,4 +12,5 @@ class AuthEvent with _$AuthEvent {
     required String phone,
     required String password,
   }) = _Register;
+  const factory AuthEvent.clearError() = _ClearError;
 }

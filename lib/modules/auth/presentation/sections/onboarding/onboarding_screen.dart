@@ -70,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (c) => NavigationScreen()));
+                              builder: (c) => const AuthScreen()));
                     },
                     image: AppImages.onboarding4,
                     title: 'Comienza tu viaje',

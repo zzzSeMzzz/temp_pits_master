@@ -23,6 +23,7 @@ mixin _$AuthEvent {
     required TResult Function(String firstname, String lastname, String email,
             String phone, String password)
         register,
+    required TResult Function() clearError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AuthEvent {
     TResult? Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult? Function()? clearError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AuthEvent {
     TResult Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult Function()? clearError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +52,7 @@ mixin _$AuthEvent {
     required TResult Function(_ChangeMode value) changeMode,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
+    required TResult Function(_ClearError value) clearError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$AuthEvent {
     TResult? Function(_ChangeMode value)? changeMode,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
+    TResult? Function(_ClearError value)? clearError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$AuthEvent {
     TResult Function(_ChangeMode value)? changeMode,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
+    TResult Function(_ClearError value)? clearError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +140,7 @@ class _$ChangeModeImpl implements _ChangeMode {
     required TResult Function(String firstname, String lastname, String email,
             String phone, String password)
         register,
+    required TResult Function() clearError,
   }) {
     return changeMode();
   }
@@ -146,6 +153,7 @@ class _$ChangeModeImpl implements _ChangeMode {
     TResult? Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult? Function()? clearError,
   }) {
     return changeMode?.call();
   }
@@ -158,6 +166,7 @@ class _$ChangeModeImpl implements _ChangeMode {
     TResult Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult Function()? clearError,
     required TResult orElse(),
   }) {
     if (changeMode != null) {
@@ -172,6 +181,7 @@ class _$ChangeModeImpl implements _ChangeMode {
     required TResult Function(_ChangeMode value) changeMode,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
+    required TResult Function(_ClearError value) clearError,
   }) {
     return changeMode(this);
   }
@@ -182,6 +192,7 @@ class _$ChangeModeImpl implements _ChangeMode {
     TResult? Function(_ChangeMode value)? changeMode,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
+    TResult? Function(_ClearError value)? clearError,
   }) {
     return changeMode?.call(this);
   }
@@ -192,6 +203,7 @@ class _$ChangeModeImpl implements _ChangeMode {
     TResult Function(_ChangeMode value)? changeMode,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
+    TResult Function(_ClearError value)? clearError,
     required TResult orElse(),
   }) {
     if (changeMode != null) {
@@ -287,6 +299,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(String firstname, String lastname, String email,
             String phone, String password)
         register,
+    required TResult Function() clearError,
   }) {
     return login(email, password);
   }
@@ -299,6 +312,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult? Function()? clearError,
   }) {
     return login?.call(email, password);
   }
@@ -311,6 +325,7 @@ class _$LoginImpl implements _Login {
     TResult Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult Function()? clearError,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -325,6 +340,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(_ChangeMode value) changeMode,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
+    required TResult Function(_ClearError value) clearError,
   }) {
     return login(this);
   }
@@ -335,6 +351,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(_ChangeMode value)? changeMode,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
+    TResult? Function(_ClearError value)? clearError,
   }) {
     return login?.call(this);
   }
@@ -345,6 +362,7 @@ class _$LoginImpl implements _Login {
     TResult Function(_ChangeMode value)? changeMode,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
+    TResult Function(_ClearError value)? clearError,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -488,6 +506,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(String firstname, String lastname, String email,
             String phone, String password)
         register,
+    required TResult Function() clearError,
   }) {
     return register(firstname, lastname, email, phone, password);
   }
@@ -500,6 +519,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult? Function()? clearError,
   }) {
     return register?.call(firstname, lastname, email, phone, password);
   }
@@ -512,6 +532,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(String firstname, String lastname, String email,
             String phone, String password)?
         register,
+    TResult Function()? clearError,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -526,6 +547,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_ChangeMode value) changeMode,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
+    required TResult Function(_ClearError value) clearError,
   }) {
     return register(this);
   }
@@ -536,6 +558,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_ChangeMode value)? changeMode,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
+    TResult? Function(_ClearError value)? clearError,
   }) {
     return register?.call(this);
   }
@@ -546,6 +569,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(_ChangeMode value)? changeMode,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
+    TResult Function(_ClearError value)? clearError,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -577,10 +601,134 @@ abstract class _Register implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$ClearErrorImplCopyWith<$Res> {
+  factory _$$ClearErrorImplCopyWith(
+          _$ClearErrorImpl value, $Res Function(_$ClearErrorImpl) then) =
+      __$$ClearErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearErrorImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ClearErrorImpl>
+    implements _$$ClearErrorImplCopyWith<$Res> {
+  __$$ClearErrorImplCopyWithImpl(
+      _$ClearErrorImpl _value, $Res Function(_$ClearErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearErrorImpl implements _ClearError {
+  const _$ClearErrorImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.clearError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() changeMode,
+    required TResult Function(String email, String password) login,
+    required TResult Function(String firstname, String lastname, String email,
+            String phone, String password)
+        register,
+    required TResult Function() clearError,
+  }) {
+    return clearError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? changeMode,
+    TResult? Function(String email, String password)? login,
+    TResult? Function(String firstname, String lastname, String email,
+            String phone, String password)?
+        register,
+    TResult? Function()? clearError,
+  }) {
+    return clearError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? changeMode,
+    TResult Function(String email, String password)? login,
+    TResult Function(String firstname, String lastname, String email,
+            String phone, String password)?
+        register,
+    TResult Function()? clearError,
+    required TResult orElse(),
+  }) {
+    if (clearError != null) {
+      return clearError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeMode value) changeMode,
+    required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
+    required TResult Function(_ClearError value) clearError,
+  }) {
+    return clearError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeMode value)? changeMode,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_ClearError value)? clearError,
+  }) {
+    return clearError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeMode value)? changeMode,
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_ClearError value)? clearError,
+    required TResult orElse(),
+  }) {
+    if (clearError != null) {
+      return clearError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearError implements AuthEvent {
+  const factory _ClearError() = _$ClearErrorImpl;
+}
+
+/// @nodoc
 mixin _$AuthState {
   bool get isLoginMode => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isSuccess => throw _privateConstructorUsedError;
+  String get errorText => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -594,7 +742,8 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({bool isLoginMode, bool isLoading, bool isSuccess});
+  $Res call(
+      {bool isLoginMode, bool isLoading, bool isSuccess, String errorText});
 }
 
 /// @nodoc
@@ -615,6 +764,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? isLoginMode = null,
     Object? isLoading = null,
     Object? isSuccess = null,
+    Object? errorText = null,
   }) {
     return _then(_value.copyWith(
       isLoginMode: null == isLoginMode
@@ -629,6 +779,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorText: null == errorText
+          ? _value.errorText
+          : errorText // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -641,7 +795,8 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoginMode, bool isLoading, bool isSuccess});
+  $Res call(
+      {bool isLoginMode, bool isLoading, bool isSuccess, String errorText});
 }
 
 /// @nodoc
@@ -660,6 +815,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? isLoginMode = null,
     Object? isLoading = null,
     Object? isSuccess = null,
+    Object? errorText = null,
   }) {
     return _then(_$AuthStateImpl(
       isLoginMode: null == isLoginMode
@@ -674,6 +830,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorText: null == errorText
+          ? _value.errorText
+          : errorText // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -684,7 +844,8 @@ class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
       {this.isLoginMode = true,
       this.isLoading = false,
-      this.isSuccess = false});
+      this.isSuccess = false,
+      this.errorText = ''});
 
   @override
   @JsonKey()
@@ -695,10 +856,13 @@ class _$AuthStateImpl implements _AuthState {
   @override
   @JsonKey()
   final bool isSuccess;
+  @override
+  @JsonKey()
+  final String errorText;
 
   @override
   String toString() {
-    return 'AuthState(isLoginMode: $isLoginMode, isLoading: $isLoading, isSuccess: $isSuccess)';
+    return 'AuthState(isLoginMode: $isLoginMode, isLoading: $isLoading, isSuccess: $isSuccess, errorText: $errorText)';
   }
 
   @override
@@ -711,12 +875,14 @@ class _$AuthStateImpl implements _AuthState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess));
+                other.isSuccess == isSuccess) &&
+            (identical(other.errorText, errorText) ||
+                other.errorText == errorText));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, isLoginMode, isLoading, isSuccess);
+      Object.hash(runtimeType, isLoginMode, isLoading, isSuccess, errorText);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -731,7 +897,8 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {final bool isLoginMode,
       final bool isLoading,
-      final bool isSuccess}) = _$AuthStateImpl;
+      final bool isSuccess,
+      final String errorText}) = _$AuthStateImpl;
 
   @override
   bool get isLoginMode;
@@ -739,6 +906,8 @@ abstract class _AuthState implements AuthState {
   bool get isLoading;
   @override
   bool get isSuccess;
+  @override
+  String get errorText;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

@@ -6,5 +6,6 @@ class AuthState with _$AuthState {
     @Default(true) bool isLoginMode,
     @Default(false) bool isLoading,
     @Default(false) bool isSuccess,
+    @Default('') String errorText,
   }) = _AuthState;
 }
