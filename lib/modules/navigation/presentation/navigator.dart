@@ -28,19 +28,19 @@ class _TabNavigatorState extends State<TabNavigator>
     switch (widget.tabItem) {
       case NavItemEnum.home:
         return {
-          TabNavigatorRoutes.root: (context) => HomeScreen(),
+          TabNavigatorRoutes.root: (context) => const HomeScreen(),
         };
       case NavItemEnum.calls:
         return {
-          TabNavigatorRoutes.root: (context) => ActivitiesScreen(),
+          TabNavigatorRoutes.root: (context) => const ActivitiesScreen(),
         };
       case NavItemEnum.messages:
         return {
-          TabNavigatorRoutes.root: (context) => ChatScreen(),
+          TabNavigatorRoutes.root: (context) => const ChatScreen(),
         };
       case NavItemEnum.profile:
         return {
-          TabNavigatorRoutes.root: (context) => ProfileScreen(),
+          TabNavigatorRoutes.root: (context) => const ProfileScreen(),
         };
 
       default:

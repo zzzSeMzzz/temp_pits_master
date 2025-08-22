@@ -75,8 +75,10 @@ class AppIcons {
   static const String microphone = 'assets/icons/microphone.svg';
   static const String list = 'assets/icons/list.svg';
   static const String arrowDown = 'assets/icons/ic_arrow_down.svg';
-  static const String icHomeFlag = 'assets/icons/ic_home_flag.svg';
   static const String icScan2 = 'assets/icons/ic_scan_2.svg';
   static const String myLocation = 'assets/icons/ic_my_location.svg';
   static const String icAlarmButton = 'assets/icons/ic_alarm_button.svg';
+
+  static const String icHomeTabActive = 'assets/icons/ic_tab_home_active.svg';
+  static const String icHomeTabInactive = 'assets/icons/ic_tab_home_inactive.svg';
 }

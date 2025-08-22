@@ -70,7 +70,8 @@ class _NavigationScreenState extends State<NavigationScreen>
       const NavBar(
         title: 'Inicio',
         id: 0,
-        icon: AppIcons.icHomeFlag,
+        icon: AppIcons.icHomeTabActive,
+        inactiveIcon: AppIcons.icHomeTabInactive,
       ),
       const NavBar(
         title: 'Casos',
