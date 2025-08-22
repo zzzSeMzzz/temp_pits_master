@@ -60,6 +60,12 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     _markerIconClosed = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.serviceFtClosed);
     _markerIconNotFt = await BitmapDescriptor.asset(
+        const ImageConfiguration(size: Size(64, 69)), AppImages.serviceNotFt);
+    /*_markerIconNotFt = await BitmapDescriptor.asset(
+      const ImageConfiguration(size: Size(64, 70)),*/
+      'assets/images/service_not_ft2.png',
+    );
+    _markerIconNotFt = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.serviceNotFt);
     _iconMyLocation = await BitmapDescriptor.asset(
         const ImageConfiguration(), AppImages.myLocationIcon);

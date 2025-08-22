@@ -97,8 +97,8 @@ class HomeScreen extends StatelessWidget {
                         text: 'Solicitar Reparación',
                       ),
                     ),
-                    Image.asset(
-                      AppImages.alarmButton,
+                    SvgPicture.asset(
+                      AppIcons.icAlarmButton,
                       fit: BoxFit.fill,
                       width: 96,
                       height: 96,

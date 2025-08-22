@@ -78,4 +78,5 @@ class AppIcons {
   static const String icHomeFlag = 'assets/icons/ic_home_flag.svg';
   static const String icScan2 = 'assets/icons/ic_scan_2.svg';
   static const String myLocation = 'assets/icons/ic_my_location.svg';
+  static const String icAlarmButton = 'assets/icons/ic_alarm_button.svg';
 }
