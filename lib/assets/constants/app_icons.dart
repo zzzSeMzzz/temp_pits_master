@@ -81,4 +81,18 @@ class AppIcons {
 
   static const String icHomeTabActive = 'assets/icons/ic_tab_home_active.svg';
   static const String icHomeTabInactive = 'assets/icons/ic_tab_home_inactive.svg';
+
+  //alarm buttom
+  static const String icBrakeFailure = 'assets/icons/ic_brake_failure.svg';
+  static const String icCheckDiagnostic = 'assets/icons/ic_check_diagnostic.svg';
+  static const String icCheckEngine = 'assets/icons/ic_check_engine.svg';
+  static const String icCheckFuses = 'assets/icons/ic_check_fuses.svg';
+  static const String icHotEngine = 'assets/icons/ic_hot_engine.svg';
+  static const String icLowOil = 'assets/icons/ic_low_oil.svg';
+  static const String icNoFuel = 'assets/icons/ic_no_fuel.svg';
+  static const String icNoWater = 'assets/icons/ic_no_water.svg';
+  static const String icOtherRepair = 'assets/icons/ic_other_repair.svg';
+  static const String icTurboFailure = 'assets/icons/ic_turbo_failure.svg';
+  static const String icWheelChains = 'assets/icons/ic_wheel_chains.svg';
+  static const String icWheelPuncture = 'assets/icons/ic_wheel_puncture.svg';
 }
