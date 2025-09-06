@@ -7,15 +7,12 @@ part of 'service_category.dart';
 // **************************************************************************
 
 ServiceCategoryModel _$ServiceCategoryModelFromJson(
-        Map<String, dynamic> json) =>
-    ServiceCategoryModel(
-      idd: (json['id'] as num?)?.toInt() ?? -1,
-      nameD: json['name'] as String? ?? '',
-    );
+  Map<String, dynamic> json,
+) => ServiceCategoryModel(
+  idd: (json['id'] as num?)?.toInt() ?? -1,
+  nameD: json['name'] as String? ?? '',
+);
 
 Map<String, dynamic> _$ServiceCategoryModelToJson(
-        ServiceCategoryModel instance) =>
-    <String, dynamic>{
-      'id': instance.idd,
-      'name': instance.nameD,
-    };
+  ServiceCategoryModel instance,
+) => <String, dynamic>{'id': instance.idd, 'name': instance.nameD};

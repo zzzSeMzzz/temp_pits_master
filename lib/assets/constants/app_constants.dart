@@ -10,10 +10,10 @@ class AppConstants {
   //todo переместить в виджет bottomsheet, сделать final
   static const alarmProblems = {
      "Pinchazo" : AppIcons.icWheelPuncture,
-     "Perdida de llaves" : AppIcons.icWheelPuncture,//lost key
-     "Error al repostar" : AppIcons.icWheelPuncture,// Refueling error
+     "Perdida de llaves" : AppIcons.icLostKey,
+     "Error al repostar" : AppIcons.icErrorFueling,
      "Sin gasolina" : AppIcons.icNoFuel,
-     "Sin batería" : AppIcons.icWheelPuncture,//No battery
+     "Sin batería" : AppIcons.icLowBattery,
      "Fallo frenos" : AppIcons.icBrakeFailure,
      "Sin agua en el motor" : AppIcons.icNoWater,
      "Sin cadenas" : AppIcons.icWheelChains,

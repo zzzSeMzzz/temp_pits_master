@@ -95,4 +95,7 @@ class AppIcons {
   static const String icTurboFailure = 'assets/icons/ic_turbo_failure.svg';
   static const String icWheelChains = 'assets/icons/ic_wheel_chains.svg';
   static const String icWheelPuncture = 'assets/icons/ic_wheel_puncture.svg';
+  static const String icLostKey = 'assets/icons/ic_lost_ket.svg';
+  static const String icLowBattery = 'assets/icons/ic_low_battery.svg';
+  static const String icErrorFueling = 'assets/icons/ic_error_fueling.svg';
 }

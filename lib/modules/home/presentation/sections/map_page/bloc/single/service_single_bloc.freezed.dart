@@ -12,7 +12,8 @@ part of 'service_single_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ServiceSingleEvent {
@@ -20,35 +21,29 @@ mixin _$ServiceSingleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getSingleService,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getSingleService,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getSingleService,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetSingleService value) getSingleService,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetSingleService value)? getSingleService,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetSingleService value)? getSingleService,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of ServiceSingleEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -60,8 +55,9 @@ mixin _$ServiceSingleEvent {
 /// @nodoc
 abstract class $ServiceSingleEventCopyWith<$Res> {
   factory $ServiceSingleEventCopyWith(
-          ServiceSingleEvent value, $Res Function(ServiceSingleEvent) then) =
-      _$ServiceSingleEventCopyWithImpl<$Res, ServiceSingleEvent>;
+    ServiceSingleEvent value,
+    $Res Function(ServiceSingleEvent) then,
+  ) = _$ServiceSingleEventCopyWithImpl<$Res, ServiceSingleEvent>;
   @useResult
   $Res call({String id});
 }
@@ -80,24 +76,26 @@ class _$ServiceSingleEventCopyWithImpl<$Res, $Val extends ServiceSingleEvent>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? id = null}) {
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$GetSingleServiceImplCopyWith<$Res>
     implements $ServiceSingleEventCopyWith<$Res> {
-  factory _$$GetSingleServiceImplCopyWith(_$GetSingleServiceImpl value,
-          $Res Function(_$GetSingleServiceImpl) then) =
-      __$$GetSingleServiceImplCopyWithImpl<$Res>;
+  factory _$$GetSingleServiceImplCopyWith(
+    _$GetSingleServiceImpl value,
+    $Res Function(_$GetSingleServiceImpl) then,
+  ) = __$$GetSingleServiceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id});
@@ -107,23 +105,24 @@ abstract class _$$GetSingleServiceImplCopyWith<$Res>
 class __$$GetSingleServiceImplCopyWithImpl<$Res>
     extends _$ServiceSingleEventCopyWithImpl<$Res, _$GetSingleServiceImpl>
     implements _$$GetSingleServiceImplCopyWith<$Res> {
-  __$$GetSingleServiceImplCopyWithImpl(_$GetSingleServiceImpl _value,
-      $Res Function(_$GetSingleServiceImpl) _then)
-      : super(_value, _then);
+  __$$GetSingleServiceImplCopyWithImpl(
+    _$GetSingleServiceImpl _value,
+    $Res Function(_$GetSingleServiceImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServiceSingleEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$GetSingleServiceImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? id = null}) {
+    return _then(
+      _$GetSingleServiceImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -168,7 +167,9 @@ class _$GetSingleServiceImpl
   @pragma('vm:prefer-inline')
   _$$GetSingleServiceImplCopyWith<_$GetSingleServiceImpl> get copyWith =>
       __$$GetSingleServiceImplCopyWithImpl<_$GetSingleServiceImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -257,8 +258,9 @@ mixin _$ServiceSingleState {
 /// @nodoc
 abstract class $ServiceSingleStateCopyWith<$Res> {
   factory $ServiceSingleStateCopyWith(
-          ServiceSingleState value, $Res Function(ServiceSingleState) then) =
-      _$ServiceSingleStateCopyWithImpl<$Res, ServiceSingleState>;
+    ServiceSingleState value,
+    $Res Function(ServiceSingleState) then,
+  ) = _$ServiceSingleStateCopyWithImpl<$Res, ServiceSingleState>;
   @useResult
   $Res call({ServiceSingleEntity serviceSingle, ActionStatus actionStatus});
 }
@@ -277,29 +279,30 @@ class _$ServiceSingleStateCopyWithImpl<$Res, $Val extends ServiceSingleState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? serviceSingle = null,
-    Object? actionStatus = null,
-  }) {
-    return _then(_value.copyWith(
-      serviceSingle: null == serviceSingle
-          ? _value.serviceSingle
-          : serviceSingle // ignore: cast_nullable_to_non_nullable
-              as ServiceSingleEntity,
-      actionStatus: null == actionStatus
-          ? _value.actionStatus
-          : actionStatus // ignore: cast_nullable_to_non_nullable
-              as ActionStatus,
-    ) as $Val);
+  $Res call({Object? serviceSingle = null, Object? actionStatus = null}) {
+    return _then(
+      _value.copyWith(
+            serviceSingle: null == serviceSingle
+                ? _value.serviceSingle
+                : serviceSingle // ignore: cast_nullable_to_non_nullable
+                      as ServiceSingleEntity,
+            actionStatus: null == actionStatus
+                ? _value.actionStatus
+                : actionStatus // ignore: cast_nullable_to_non_nullable
+                      as ActionStatus,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ServiceSingleStateImplCopyWith<$Res>
     implements $ServiceSingleStateCopyWith<$Res> {
-  factory _$$ServiceSingleStateImplCopyWith(_$ServiceSingleStateImpl value,
-          $Res Function(_$ServiceSingleStateImpl) then) =
-      __$$ServiceSingleStateImplCopyWithImpl<$Res>;
+  factory _$$ServiceSingleStateImplCopyWith(
+    _$ServiceSingleStateImpl value,
+    $Res Function(_$ServiceSingleStateImpl) then,
+  ) = __$$ServiceSingleStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ServiceSingleEntity serviceSingle, ActionStatus actionStatus});
@@ -309,28 +312,28 @@ abstract class _$$ServiceSingleStateImplCopyWith<$Res>
 class __$$ServiceSingleStateImplCopyWithImpl<$Res>
     extends _$ServiceSingleStateCopyWithImpl<$Res, _$ServiceSingleStateImpl>
     implements _$$ServiceSingleStateImplCopyWith<$Res> {
-  __$$ServiceSingleStateImplCopyWithImpl(_$ServiceSingleStateImpl _value,
-      $Res Function(_$ServiceSingleStateImpl) _then)
-      : super(_value, _then);
+  __$$ServiceSingleStateImplCopyWithImpl(
+    _$ServiceSingleStateImpl _value,
+    $Res Function(_$ServiceSingleStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServiceSingleState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? serviceSingle = null,
-    Object? actionStatus = null,
-  }) {
-    return _then(_$ServiceSingleStateImpl(
-      serviceSingle: null == serviceSingle
-          ? _value.serviceSingle
-          : serviceSingle // ignore: cast_nullable_to_non_nullable
-              as ServiceSingleEntity,
-      actionStatus: null == actionStatus
-          ? _value.actionStatus
-          : actionStatus // ignore: cast_nullable_to_non_nullable
-              as ActionStatus,
-    ));
+  $Res call({Object? serviceSingle = null, Object? actionStatus = null}) {
+    return _then(
+      _$ServiceSingleStateImpl(
+        serviceSingle: null == serviceSingle
+            ? _value.serviceSingle
+            : serviceSingle // ignore: cast_nullable_to_non_nullable
+                  as ServiceSingleEntity,
+        actionStatus: null == actionStatus
+            ? _value.actionStatus
+            : actionStatus // ignore: cast_nullable_to_non_nullable
+                  as ActionStatus,
+      ),
+    );
   }
 }
 
@@ -339,9 +342,10 @@ class __$$ServiceSingleStateImplCopyWithImpl<$Res>
 class _$ServiceSingleStateImpl
     with DiagnosticableTreeMixin
     implements _ServiceSingleState {
-  const _$ServiceSingleStateImpl(
-      {this.serviceSingle = const ServiceSingleEntity(),
-      this.actionStatus = ActionStatus.pure});
+  const _$ServiceSingleStateImpl({
+    this.serviceSingle = const ServiceSingleEntity(),
+    this.actionStatus = ActionStatus.pure,
+  });
 
   @override
   @JsonKey()
@@ -385,13 +389,16 @@ class _$ServiceSingleStateImpl
   @pragma('vm:prefer-inline')
   _$$ServiceSingleStateImplCopyWith<_$ServiceSingleStateImpl> get copyWith =>
       __$$ServiceSingleStateImplCopyWithImpl<_$ServiceSingleStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ServiceSingleState implements ServiceSingleState {
-  const factory _ServiceSingleState(
-      {final ServiceSingleEntity serviceSingle,
-      final ActionStatus actionStatus}) = _$ServiceSingleStateImpl;
+  const factory _ServiceSingleState({
+    final ServiceSingleEntity serviceSingle,
+    final ActionStatus actionStatus,
+  }) = _$ServiceSingleStateImpl;
 
   @override
   ServiceSingleEntity get serviceSingle;

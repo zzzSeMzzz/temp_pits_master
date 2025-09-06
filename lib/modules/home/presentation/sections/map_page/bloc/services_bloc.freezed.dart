@@ -12,49 +12,50 @@ part of 'services_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ServicesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
-  }) =>
-      throw _privateConstructorUsedError;
+    updateSelectedServices,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetServices value) getServices,
@@ -63,9 +64,8 @@ mixin _$ServicesEvent {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
-  }) =>
-      throw _privateConstructorUsedError;
+    updateSelectedServices,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetServices value)? getServices,
@@ -74,8 +74,7 @@ mixin _$ServicesEvent {
     TResult? Function(_ShowModal value)? showModal,
     TResult? Function(_MapMoved value)? mapMoved,
     TResult? Function(_UpdateSelectedServices value)? updateSelectedServices,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetServices value)? getServices,
@@ -85,15 +84,15 @@ mixin _$ServicesEvent {
     TResult Function(_MapMoved value)? mapMoved,
     TResult Function(_UpdateSelectedServices value)? updateSelectedServices,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ServicesEventCopyWith<$Res> {
   factory $ServicesEventCopyWith(
-          ServicesEvent value, $Res Function(ServicesEvent) then) =
-      _$ServicesEventCopyWithImpl<$Res, ServicesEvent>;
+    ServicesEvent value,
+    $Res Function(ServicesEvent) then,
+  ) = _$ServicesEventCopyWithImpl<$Res, ServicesEvent>;
 }
 
 /// @nodoc
@@ -113,8 +112,9 @@ class _$ServicesEventCopyWithImpl<$Res, $Val extends ServicesEvent>
 /// @nodoc
 abstract class _$$GetServicesImplCopyWith<$Res> {
   factory _$$GetServicesImplCopyWith(
-          _$GetServicesImpl value, $Res Function(_$GetServicesImpl) then) =
-      __$$GetServicesImplCopyWithImpl<$Res>;
+    _$GetServicesImpl value,
+    $Res Function(_$GetServicesImpl) then,
+  ) = __$$GetServicesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int catId, RegionModel? region, Set<int> serviceIds});
 }
@@ -124,8 +124,9 @@ class __$$GetServicesImplCopyWithImpl<$Res>
     extends _$ServicesEventCopyWithImpl<$Res, _$GetServicesImpl>
     implements _$$GetServicesImplCopyWith<$Res> {
   __$$GetServicesImplCopyWithImpl(
-      _$GetServicesImpl _value, $Res Function(_$GetServicesImpl) _then)
-      : super(_value, _then);
+    _$GetServicesImpl _value,
+    $Res Function(_$GetServicesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -136,29 +137,33 @@ class __$$GetServicesImplCopyWithImpl<$Res>
     Object? region = freezed,
     Object? serviceIds = null,
   }) {
-    return _then(_$GetServicesImpl(
-      catId: null == catId
-          ? _value.catId
-          : catId // ignore: cast_nullable_to_non_nullable
-              as int,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as RegionModel?,
-      serviceIds: null == serviceIds
-          ? _value._serviceIds
-          : serviceIds // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
-    ));
+    return _then(
+      _$GetServicesImpl(
+        catId: null == catId
+            ? _value.catId
+            : catId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        region: freezed == region
+            ? _value.region
+            : region // ignore: cast_nullable_to_non_nullable
+                  as RegionModel?,
+        serviceIds: null == serviceIds
+            ? _value._serviceIds
+            : serviceIds // ignore: cast_nullable_to_non_nullable
+                  as Set<int>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$GetServicesImpl implements _GetServices {
-  const _$GetServicesImpl(
-      {this.catId = 0, this.region, final Set<int> serviceIds = const {}})
-      : _serviceIds = serviceIds;
+  const _$GetServicesImpl({
+    this.catId = 0,
+    this.region,
+    final Set<int> serviceIds = const {},
+  }) : _serviceIds = serviceIds;
 
   @override
   @JsonKey()
@@ -186,13 +191,19 @@ class _$GetServicesImpl implements _GetServices {
             other is _$GetServicesImpl &&
             (identical(other.catId, catId) || other.catId == catId) &&
             (identical(other.region, region) || other.region == region) &&
-            const DeepCollectionEquality()
-                .equals(other._serviceIds, _serviceIds));
+            const DeepCollectionEquality().equals(
+              other._serviceIds,
+              _serviceIds,
+            ));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, catId, region,
-      const DeepCollectionEquality().hash(_serviceIds));
+  int get hashCode => Object.hash(
+    runtimeType,
+    catId,
+    region,
+    const DeepCollectionEquality().hash(_serviceIds),
+  );
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -206,15 +217,18 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return getServices(catId, region, serviceIds);
   }
@@ -223,10 +237,10 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -238,10 +252,10 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -262,7 +276,7 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return getServices(this);
   }
@@ -299,10 +313,11 @@ class _$GetServicesImpl implements _GetServices {
 }
 
 abstract class _GetServices implements ServicesEvent {
-  const factory _GetServices(
-      {final int catId,
-      final RegionModel? region,
-      final Set<int> serviceIds}) = _$GetServicesImpl;
+  const factory _GetServices({
+    final int catId,
+    final RegionModel? region,
+    final Set<int> serviceIds,
+  }) = _$GetServicesImpl;
 
   int get catId;
   RegionModel? get region;
@@ -317,18 +332,20 @@ abstract class _GetServices implements ServicesEvent {
 
 /// @nodoc
 abstract class _$$GetServiceCategoriesImplCopyWith<$Res> {
-  factory _$$GetServiceCategoriesImplCopyWith(_$GetServiceCategoriesImpl value,
-          $Res Function(_$GetServiceCategoriesImpl) then) =
-      __$$GetServiceCategoriesImplCopyWithImpl<$Res>;
+  factory _$$GetServiceCategoriesImplCopyWith(
+    _$GetServiceCategoriesImpl value,
+    $Res Function(_$GetServiceCategoriesImpl) then,
+  ) = __$$GetServiceCategoriesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$GetServiceCategoriesImplCopyWithImpl<$Res>
     extends _$ServicesEventCopyWithImpl<$Res, _$GetServiceCategoriesImpl>
     implements _$$GetServiceCategoriesImplCopyWith<$Res> {
-  __$$GetServiceCategoriesImplCopyWithImpl(_$GetServiceCategoriesImpl _value,
-      $Res Function(_$GetServiceCategoriesImpl) _then)
-      : super(_value, _then);
+  __$$GetServiceCategoriesImplCopyWithImpl(
+    _$GetServiceCategoriesImpl _value,
+    $Res Function(_$GetServiceCategoriesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -358,15 +375,18 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return getServiceCategories();
   }
@@ -375,10 +395,10 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -390,10 +410,10 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -414,7 +434,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return getServiceCategories(this);
   }
@@ -457,8 +477,9 @@ abstract class _GetServiceCategories implements ServicesEvent {
 /// @nodoc
 abstract class _$$SetMyLocationImplCopyWith<$Res> {
   factory _$$SetMyLocationImplCopyWith(
-          _$SetMyLocationImpl value, $Res Function(_$SetMyLocationImpl) then) =
-      __$$SetMyLocationImplCopyWithImpl<$Res>;
+    _$SetMyLocationImpl value,
+    $Res Function(_$SetMyLocationImpl) then,
+  ) = __$$SetMyLocationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({LatLng? latLng, GoogleMapController mapController});
 }
@@ -468,27 +489,27 @@ class __$$SetMyLocationImplCopyWithImpl<$Res>
     extends _$ServicesEventCopyWithImpl<$Res, _$SetMyLocationImpl>
     implements _$$SetMyLocationImplCopyWith<$Res> {
   __$$SetMyLocationImplCopyWithImpl(
-      _$SetMyLocationImpl _value, $Res Function(_$SetMyLocationImpl) _then)
-      : super(_value, _then);
+    _$SetMyLocationImpl _value,
+    $Res Function(_$SetMyLocationImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? latLng = freezed,
-    Object? mapController = null,
-  }) {
-    return _then(_$SetMyLocationImpl(
-      freezed == latLng
-          ? _value.latLng
-          : latLng // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
-      null == mapController
-          ? _value.mapController
-          : mapController // ignore: cast_nullable_to_non_nullable
-              as GoogleMapController,
-    ));
+  $Res call({Object? latLng = freezed, Object? mapController = null}) {
+    return _then(
+      _$SetMyLocationImpl(
+        freezed == latLng
+            ? _value.latLng
+            : latLng // ignore: cast_nullable_to_non_nullable
+                  as LatLng?,
+        null == mapController
+            ? _value.mapController
+            : mapController // ignore: cast_nullable_to_non_nullable
+                  as GoogleMapController,
+      ),
+    );
   }
 }
 
@@ -532,15 +553,18 @@ class _$SetMyLocationImpl implements _SetMyLocation {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return setMyLocation(latLng, mapController);
   }
@@ -549,10 +573,10 @@ class _$SetMyLocationImpl implements _SetMyLocation {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -564,10 +588,10 @@ class _$SetMyLocationImpl implements _SetMyLocation {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -588,7 +612,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return setMyLocation(this);
   }
@@ -626,8 +650,9 @@ class _$SetMyLocationImpl implements _SetMyLocation {
 
 abstract class _SetMyLocation implements ServicesEvent {
   const factory _SetMyLocation(
-          final LatLng? latLng, final GoogleMapController mapController) =
-      _$SetMyLocationImpl;
+    final LatLng? latLng,
+    final GoogleMapController mapController,
+  ) = _$SetMyLocationImpl;
 
   LatLng? get latLng;
   GoogleMapController get mapController;
@@ -642,8 +667,9 @@ abstract class _SetMyLocation implements ServicesEvent {
 /// @nodoc
 abstract class _$$ShowModalImplCopyWith<$Res> {
   factory _$$ShowModalImplCopyWith(
-          _$ShowModalImpl value, $Res Function(_$ShowModalImpl) then) =
-      __$$ShowModalImplCopyWithImpl<$Res>;
+    _$ShowModalImpl value,
+    $Res Function(_$ShowModalImpl) then,
+  ) = __$$ShowModalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int serviceId});
 }
@@ -653,22 +679,23 @@ class __$$ShowModalImplCopyWithImpl<$Res>
     extends _$ServicesEventCopyWithImpl<$Res, _$ShowModalImpl>
     implements _$$ShowModalImplCopyWith<$Res> {
   __$$ShowModalImplCopyWithImpl(
-      _$ShowModalImpl _value, $Res Function(_$ShowModalImpl) _then)
-      : super(_value, _then);
+    _$ShowModalImpl _value,
+    $Res Function(_$ShowModalImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? serviceId = null,
-  }) {
-    return _then(_$ShowModalImpl(
-      null == serviceId
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? serviceId = null}) {
+    return _then(
+      _$ShowModalImpl(
+        null == serviceId
+            ? _value.serviceId
+            : serviceId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -709,15 +736,18 @@ class _$ShowModalImpl implements _ShowModal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return showModal(serviceId);
   }
@@ -726,10 +756,10 @@ class _$ShowModalImpl implements _ShowModal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -741,10 +771,10 @@ class _$ShowModalImpl implements _ShowModal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -765,7 +795,7 @@ class _$ShowModalImpl implements _ShowModal {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return showModal(this);
   }
@@ -816,8 +846,9 @@ abstract class _ShowModal implements ServicesEvent {
 /// @nodoc
 abstract class _$$MapMovedImplCopyWith<$Res> {
   factory _$$MapMovedImplCopyWith(
-          _$MapMovedImpl value, $Res Function(_$MapMovedImpl) then) =
-      __$$MapMovedImplCopyWithImpl<$Res>;
+    _$MapMovedImpl value,
+    $Res Function(_$MapMovedImpl) then,
+  ) = __$$MapMovedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({LatLngBounds visibleRegion});
 }
@@ -827,22 +858,23 @@ class __$$MapMovedImplCopyWithImpl<$Res>
     extends _$ServicesEventCopyWithImpl<$Res, _$MapMovedImpl>
     implements _$$MapMovedImplCopyWith<$Res> {
   __$$MapMovedImplCopyWithImpl(
-      _$MapMovedImpl _value, $Res Function(_$MapMovedImpl) _then)
-      : super(_value, _then);
+    _$MapMovedImpl _value,
+    $Res Function(_$MapMovedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? visibleRegion = null,
-  }) {
-    return _then(_$MapMovedImpl(
-      null == visibleRegion
-          ? _value.visibleRegion
-          : visibleRegion // ignore: cast_nullable_to_non_nullable
-              as LatLngBounds,
-    ));
+  $Res call({Object? visibleRegion = null}) {
+    return _then(
+      _$MapMovedImpl(
+        null == visibleRegion
+            ? _value.visibleRegion
+            : visibleRegion // ignore: cast_nullable_to_non_nullable
+                  as LatLngBounds,
+      ),
+    );
   }
 }
 
@@ -883,15 +915,18 @@ class _$MapMovedImpl implements _MapMoved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return mapMoved(visibleRegion);
   }
@@ -900,10 +935,10 @@ class _$MapMovedImpl implements _MapMoved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -915,10 +950,10 @@ class _$MapMovedImpl implements _MapMoved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -939,7 +974,7 @@ class _$MapMovedImpl implements _MapMoved {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return mapMoved(this);
   }
@@ -990,9 +1025,9 @@ abstract class _MapMoved implements ServicesEvent {
 /// @nodoc
 abstract class _$$UpdateSelectedServicesImplCopyWith<$Res> {
   factory _$$UpdateSelectedServicesImplCopyWith(
-          _$UpdateSelectedServicesImpl value,
-          $Res Function(_$UpdateSelectedServicesImpl) then) =
-      __$$UpdateSelectedServicesImplCopyWithImpl<$Res>;
+    _$UpdateSelectedServicesImpl value,
+    $Res Function(_$UpdateSelectedServicesImpl) then,
+  ) = __$$UpdateSelectedServicesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Set<ServiceModel> services});
 }
@@ -1002,23 +1037,23 @@ class __$$UpdateSelectedServicesImplCopyWithImpl<$Res>
     extends _$ServicesEventCopyWithImpl<$Res, _$UpdateSelectedServicesImpl>
     implements _$$UpdateSelectedServicesImplCopyWith<$Res> {
   __$$UpdateSelectedServicesImplCopyWithImpl(
-      _$UpdateSelectedServicesImpl _value,
-      $Res Function(_$UpdateSelectedServicesImpl) _then)
-      : super(_value, _then);
+    _$UpdateSelectedServicesImpl _value,
+    $Res Function(_$UpdateSelectedServicesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? services = null,
-  }) {
-    return _then(_$UpdateSelectedServicesImpl(
-      null == services
-          ? _value._services
-          : services // ignore: cast_nullable_to_non_nullable
-              as Set<ServiceModel>,
-    ));
+  $Res call({Object? services = null}) {
+    return _then(
+      _$UpdateSelectedServicesImpl(
+        null == services
+            ? _value._services
+            : services // ignore: cast_nullable_to_non_nullable
+                  as Set<ServiceModel>,
+      ),
+    );
   }
 }
 
@@ -1026,7 +1061,7 @@ class __$$UpdateSelectedServicesImplCopyWithImpl<$Res>
 
 class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
   const _$UpdateSelectedServicesImpl(final Set<ServiceModel> services)
-      : _services = services;
+    : _services = services;
 
   final Set<ServiceModel> _services;
   @override
@@ -1059,22 +1094,28 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateSelectedServicesImplCopyWith<_$UpdateSelectedServicesImpl>
-      get copyWith => __$$UpdateSelectedServicesImplCopyWithImpl<
-          _$UpdateSelectedServicesImpl>(this, _$identity);
+  get copyWith =>
+      __$$UpdateSelectedServicesImplCopyWithImpl<_$UpdateSelectedServicesImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            int catId, RegionModel? region, Set<int> serviceIds)
-        getServices,
+      int catId,
+      RegionModel? region,
+      Set<int> serviceIds,
+    )
+    getServices,
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
-        setMyLocation,
+    setMyLocation,
     required TResult Function(int serviceId) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return updateSelectedServices(services);
   }
@@ -1083,10 +1124,10 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult? Function(int serviceId)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -1098,10 +1139,10 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int catId, RegionModel? region, Set<int> serviceIds)?
-        getServices,
+    getServices,
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
-        setMyLocation,
+    setMyLocation,
     TResult Function(int serviceId)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
@@ -1122,7 +1163,7 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
     required TResult Function(_ShowModal value) showModal,
     required TResult Function(_MapMoved value) mapMoved,
     required TResult Function(_UpdateSelectedServices value)
-        updateSelectedServices,
+    updateSelectedServices,
   }) {
     return updateSelectedServices(this);
   }
@@ -1168,7 +1209,7 @@ abstract class _UpdateSelectedServices implements ServicesEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateSelectedServicesImplCopyWith<_$UpdateSelectedServicesImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1200,22 +1241,24 @@ mixin _$ServicesState {
 /// @nodoc
 abstract class $ServicesStateCopyWith<$Res> {
   factory $ServicesStateCopyWith(
-          ServicesState value, $Res Function(ServicesState) then) =
-      _$ServicesStateCopyWithImpl<$Res, ServicesState>;
+    ServicesState value,
+    $Res Function(ServicesState) then,
+  ) = _$ServicesStateCopyWithImpl<$Res, ServicesState>;
   @useResult
-  $Res call(
-      {List<ServiceCategory> serviceCategories,
-      int currentCatId,
-      LatLng? currentLocation,
-      RegionModel? currentRegion,
-      Set<ServiceModel> selectedServices,
-      List<ServiceModel> allServices,
-      Set<Marker> markers,
-      LatLngBounds? visibleRegion,
-      ActionStatus status,
-      bool loadCarServices,
-      bool showModal,
-      int? selectedServiceId});
+  $Res call({
+    List<ServiceCategory> serviceCategories,
+    int currentCatId,
+    LatLng? currentLocation,
+    RegionModel? currentRegion,
+    Set<ServiceModel> selectedServices,
+    List<ServiceModel> allServices,
+    Set<Marker> markers,
+    LatLngBounds? visibleRegion,
+    ActionStatus status,
+    bool loadCarServices,
+    bool showModal,
+    int? selectedServiceId,
+  });
 }
 
 /// @nodoc
@@ -1246,56 +1289,59 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
     Object? showModal = null,
     Object? selectedServiceId = freezed,
   }) {
-    return _then(_value.copyWith(
-      serviceCategories: null == serviceCategories
-          ? _value.serviceCategories
-          : serviceCategories // ignore: cast_nullable_to_non_nullable
-              as List<ServiceCategory>,
-      currentCatId: null == currentCatId
-          ? _value.currentCatId
-          : currentCatId // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentLocation: freezed == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
-      currentRegion: freezed == currentRegion
-          ? _value.currentRegion
-          : currentRegion // ignore: cast_nullable_to_non_nullable
-              as RegionModel?,
-      selectedServices: null == selectedServices
-          ? _value.selectedServices
-          : selectedServices // ignore: cast_nullable_to_non_nullable
-              as Set<ServiceModel>,
-      allServices: null == allServices
-          ? _value.allServices
-          : allServices // ignore: cast_nullable_to_non_nullable
-              as List<ServiceModel>,
-      markers: null == markers
-          ? _value.markers
-          : markers // ignore: cast_nullable_to_non_nullable
-              as Set<Marker>,
-      visibleRegion: freezed == visibleRegion
-          ? _value.visibleRegion
-          : visibleRegion // ignore: cast_nullable_to_non_nullable
-              as LatLngBounds?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ActionStatus,
-      loadCarServices: null == loadCarServices
-          ? _value.loadCarServices
-          : loadCarServices // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showModal: null == showModal
-          ? _value.showModal
-          : showModal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      selectedServiceId: freezed == selectedServiceId
-          ? _value.selectedServiceId
-          : selectedServiceId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            serviceCategories: null == serviceCategories
+                ? _value.serviceCategories
+                : serviceCategories // ignore: cast_nullable_to_non_nullable
+                      as List<ServiceCategory>,
+            currentCatId: null == currentCatId
+                ? _value.currentCatId
+                : currentCatId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            currentLocation: freezed == currentLocation
+                ? _value.currentLocation
+                : currentLocation // ignore: cast_nullable_to_non_nullable
+                      as LatLng?,
+            currentRegion: freezed == currentRegion
+                ? _value.currentRegion
+                : currentRegion // ignore: cast_nullable_to_non_nullable
+                      as RegionModel?,
+            selectedServices: null == selectedServices
+                ? _value.selectedServices
+                : selectedServices // ignore: cast_nullable_to_non_nullable
+                      as Set<ServiceModel>,
+            allServices: null == allServices
+                ? _value.allServices
+                : allServices // ignore: cast_nullable_to_non_nullable
+                      as List<ServiceModel>,
+            markers: null == markers
+                ? _value.markers
+                : markers // ignore: cast_nullable_to_non_nullable
+                      as Set<Marker>,
+            visibleRegion: freezed == visibleRegion
+                ? _value.visibleRegion
+                : visibleRegion // ignore: cast_nullable_to_non_nullable
+                      as LatLngBounds?,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as ActionStatus,
+            loadCarServices: null == loadCarServices
+                ? _value.loadCarServices
+                : loadCarServices // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            showModal: null == showModal
+                ? _value.showModal
+                : showModal // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            selectedServiceId: freezed == selectedServiceId
+                ? _value.selectedServiceId
+                : selectedServiceId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -1303,23 +1349,25 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
 abstract class _$$ServicesStateImplCopyWith<$Res>
     implements $ServicesStateCopyWith<$Res> {
   factory _$$ServicesStateImplCopyWith(
-          _$ServicesStateImpl value, $Res Function(_$ServicesStateImpl) then) =
-      __$$ServicesStateImplCopyWithImpl<$Res>;
+    _$ServicesStateImpl value,
+    $Res Function(_$ServicesStateImpl) then,
+  ) = __$$ServicesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<ServiceCategory> serviceCategories,
-      int currentCatId,
-      LatLng? currentLocation,
-      RegionModel? currentRegion,
-      Set<ServiceModel> selectedServices,
-      List<ServiceModel> allServices,
-      Set<Marker> markers,
-      LatLngBounds? visibleRegion,
-      ActionStatus status,
-      bool loadCarServices,
-      bool showModal,
-      int? selectedServiceId});
+  $Res call({
+    List<ServiceCategory> serviceCategories,
+    int currentCatId,
+    LatLng? currentLocation,
+    RegionModel? currentRegion,
+    Set<ServiceModel> selectedServices,
+    List<ServiceModel> allServices,
+    Set<Marker> markers,
+    LatLngBounds? visibleRegion,
+    ActionStatus status,
+    bool loadCarServices,
+    bool showModal,
+    int? selectedServiceId,
+  });
 }
 
 /// @nodoc
@@ -1327,8 +1375,9 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
     extends _$ServicesStateCopyWithImpl<$Res, _$ServicesStateImpl>
     implements _$$ServicesStateImplCopyWith<$Res> {
   __$$ServicesStateImplCopyWithImpl(
-      _$ServicesStateImpl _value, $Res Function(_$ServicesStateImpl) _then)
-      : super(_value, _then);
+    _$ServicesStateImpl _value,
+    $Res Function(_$ServicesStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -1348,79 +1397,81 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
     Object? showModal = null,
     Object? selectedServiceId = freezed,
   }) {
-    return _then(_$ServicesStateImpl(
-      serviceCategories: null == serviceCategories
-          ? _value._serviceCategories
-          : serviceCategories // ignore: cast_nullable_to_non_nullable
-              as List<ServiceCategory>,
-      currentCatId: null == currentCatId
-          ? _value.currentCatId
-          : currentCatId // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentLocation: freezed == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
-      currentRegion: freezed == currentRegion
-          ? _value.currentRegion
-          : currentRegion // ignore: cast_nullable_to_non_nullable
-              as RegionModel?,
-      selectedServices: null == selectedServices
-          ? _value._selectedServices
-          : selectedServices // ignore: cast_nullable_to_non_nullable
-              as Set<ServiceModel>,
-      allServices: null == allServices
-          ? _value._allServices
-          : allServices // ignore: cast_nullable_to_non_nullable
-              as List<ServiceModel>,
-      markers: null == markers
-          ? _value._markers
-          : markers // ignore: cast_nullable_to_non_nullable
-              as Set<Marker>,
-      visibleRegion: freezed == visibleRegion
-          ? _value.visibleRegion
-          : visibleRegion // ignore: cast_nullable_to_non_nullable
-              as LatLngBounds?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ActionStatus,
-      loadCarServices: null == loadCarServices
-          ? _value.loadCarServices
-          : loadCarServices // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showModal: null == showModal
-          ? _value.showModal
-          : showModal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      selectedServiceId: freezed == selectedServiceId
-          ? _value.selectedServiceId
-          : selectedServiceId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$ServicesStateImpl(
+        serviceCategories: null == serviceCategories
+            ? _value._serviceCategories
+            : serviceCategories // ignore: cast_nullable_to_non_nullable
+                  as List<ServiceCategory>,
+        currentCatId: null == currentCatId
+            ? _value.currentCatId
+            : currentCatId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        currentLocation: freezed == currentLocation
+            ? _value.currentLocation
+            : currentLocation // ignore: cast_nullable_to_non_nullable
+                  as LatLng?,
+        currentRegion: freezed == currentRegion
+            ? _value.currentRegion
+            : currentRegion // ignore: cast_nullable_to_non_nullable
+                  as RegionModel?,
+        selectedServices: null == selectedServices
+            ? _value._selectedServices
+            : selectedServices // ignore: cast_nullable_to_non_nullable
+                  as Set<ServiceModel>,
+        allServices: null == allServices
+            ? _value._allServices
+            : allServices // ignore: cast_nullable_to_non_nullable
+                  as List<ServiceModel>,
+        markers: null == markers
+            ? _value._markers
+            : markers // ignore: cast_nullable_to_non_nullable
+                  as Set<Marker>,
+        visibleRegion: freezed == visibleRegion
+            ? _value.visibleRegion
+            : visibleRegion // ignore: cast_nullable_to_non_nullable
+                  as LatLngBounds?,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as ActionStatus,
+        loadCarServices: null == loadCarServices
+            ? _value.loadCarServices
+            : loadCarServices // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        showModal: null == showModal
+            ? _value.showModal
+            : showModal // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        selectedServiceId: freezed == selectedServiceId
+            ? _value.selectedServiceId
+            : selectedServiceId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ServicesStateImpl implements _ServicesState {
-  const _$ServicesStateImpl(
-      {final List<ServiceCategory> serviceCategories = const [],
-      this.currentCatId = 133,
-      this.currentLocation,
-      this.currentRegion,
-      final Set<ServiceModel> selectedServices = const {},
-      final List<ServiceModel> allServices = const [],
-      final Set<Marker> markers = const {},
-      this.visibleRegion,
-      this.status = ActionStatus.pure,
-      this.loadCarServices = false,
-      this.showModal = false,
-      this.selectedServiceId})
-      : _serviceCategories = serviceCategories,
-        _selectedServices = selectedServices,
-        _allServices = allServices,
-        _markers = markers;
+  const _$ServicesStateImpl({
+    final List<ServiceCategory> serviceCategories = const [],
+    this.currentCatId = 133,
+    this.currentLocation,
+    this.currentRegion,
+    final Set<ServiceModel> selectedServices = const {},
+    final List<ServiceModel> allServices = const [],
+    final Set<Marker> markers = const {},
+    this.visibleRegion,
+    this.status = ActionStatus.pure,
+    this.loadCarServices = false,
+    this.showModal = false,
+    this.selectedServiceId,
+  }) : _serviceCategories = serviceCategories,
+       _selectedServices = selectedServices,
+       _allServices = allServices,
+       _markers = markers;
 
   final List<ServiceCategory> _serviceCategories;
   @override
@@ -1448,9 +1499,9 @@ class _$ServicesStateImpl implements _ServicesState {
     return EqualUnmodifiableSetView(_selectedServices);
   }
 
-//выбранные услуги
+  //выбранные услуги
   final List<ServiceModel> _allServices;
-//выбранные услуги
+  //выбранные услуги
   @override
   @JsonKey()
   List<ServiceModel> get allServices {
@@ -1459,9 +1510,9 @@ class _$ServicesStateImpl implements _ServicesState {
     return EqualUnmodifiableListView(_allServices);
   }
 
-//весь список услуг
+  //весь список услуг
   final Set<Marker> _markers;
-//весь список услуг
+  //весь список услуг
   @override
   @JsonKey()
   Set<Marker> get markers {
@@ -1478,7 +1529,7 @@ class _$ServicesStateImpl implements _ServicesState {
   @override
   @JsonKey()
   final bool loadCarServices;
-//отдельный прогресс на загрузку сервисов по критериям
+  //отдельный прогресс на загрузку сервисов по критериям
   @override
   @JsonKey()
   final bool showModal;
@@ -1495,18 +1546,24 @@ class _$ServicesStateImpl implements _ServicesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ServicesStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other._serviceCategories, _serviceCategories) &&
+            const DeepCollectionEquality().equals(
+              other._serviceCategories,
+              _serviceCategories,
+            ) &&
             (identical(other.currentCatId, currentCatId) ||
                 other.currentCatId == currentCatId) &&
             (identical(other.currentLocation, currentLocation) ||
                 other.currentLocation == currentLocation) &&
             (identical(other.currentRegion, currentRegion) ||
                 other.currentRegion == currentRegion) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedServices, _selectedServices) &&
-            const DeepCollectionEquality()
-                .equals(other._allServices, _allServices) &&
+            const DeepCollectionEquality().equals(
+              other._selectedServices,
+              _selectedServices,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._allServices,
+              _allServices,
+            ) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.visibleRegion, visibleRegion) ||
                 other.visibleRegion == visibleRegion) &&
@@ -1521,19 +1578,20 @@ class _$ServicesStateImpl implements _ServicesState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_serviceCategories),
-      currentCatId,
-      currentLocation,
-      currentRegion,
-      const DeepCollectionEquality().hash(_selectedServices),
-      const DeepCollectionEquality().hash(_allServices),
-      const DeepCollectionEquality().hash(_markers),
-      visibleRegion,
-      status,
-      loadCarServices,
-      showModal,
-      selectedServiceId);
+    runtimeType,
+    const DeepCollectionEquality().hash(_serviceCategories),
+    currentCatId,
+    currentLocation,
+    currentRegion,
+    const DeepCollectionEquality().hash(_selectedServices),
+    const DeepCollectionEquality().hash(_allServices),
+    const DeepCollectionEquality().hash(_markers),
+    visibleRegion,
+    status,
+    loadCarServices,
+    showModal,
+    selectedServiceId,
+  );
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -1545,19 +1603,20 @@ class _$ServicesStateImpl implements _ServicesState {
 }
 
 abstract class _ServicesState implements ServicesState {
-  const factory _ServicesState(
-      {final List<ServiceCategory> serviceCategories,
-      final int currentCatId,
-      final LatLng? currentLocation,
-      final RegionModel? currentRegion,
-      final Set<ServiceModel> selectedServices,
-      final List<ServiceModel> allServices,
-      final Set<Marker> markers,
-      final LatLngBounds? visibleRegion,
-      final ActionStatus status,
-      final bool loadCarServices,
-      final bool showModal,
-      final int? selectedServiceId}) = _$ServicesStateImpl;
+  const factory _ServicesState({
+    final List<ServiceCategory> serviceCategories,
+    final int currentCatId,
+    final LatLng? currentLocation,
+    final RegionModel? currentRegion,
+    final Set<ServiceModel> selectedServices,
+    final List<ServiceModel> allServices,
+    final Set<Marker> markers,
+    final LatLngBounds? visibleRegion,
+    final ActionStatus status,
+    final bool loadCarServices,
+    final bool showModal,
+    final int? selectedServiceId,
+  }) = _$ServicesStateImpl;
 
   @override
   List<ServiceCategory> get serviceCategories;
@@ -1578,8 +1637,7 @@ abstract class _ServicesState implements ServicesState {
   @override
   ActionStatus get status;
   @override
-  bool
-      get loadCarServices; //отдельный прогресс на загрузку сервисов по критериям
+  bool get loadCarServices; //отдельный прогресс на загрузку сервисов по критериям
   @override
   bool get showModal;
   @override
