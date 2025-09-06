@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pits_app/modules/alarm/data/repository/alarm_repository.dart';
 import '../../../../../../core/data/error/failures.dart';
 import 'alarm_event.dart';
@@ -11,21 +10,23 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
 
   final AlarmRepository _repository = AlarmRepository();
 
-  AlarmBloc() : super(const AlarmState()) {
+  AlarmBloc() : super(AlarmState()) {
 
-    on<_SednAlarm>((event, emit) async {
-      //emit(state.copyWith(isLoading: true, isSuccess: false, errorText: ''));
-      final result = await _repository.sendAlarm(null);
-      result.fold(
-        (failure) {
-          final message = failure is ServerFailure && failure.message.isNotEmpty
-              ? failure.message
-              : 'Unknown error';
-         /* emit(state.copyWith(
-              isLoading: false, isSuccess: false, errorText: message));*/
-        },
-        (model) {
-          //emit(state.copyWith(isLoading: false, isSuccess: true, errorText: ''));
+    on<AlarmEvent>((event, emit) async {
+      await event.map(
+        sendAlarm: (event) async {
+          final result = await _repository.sendAlarm(event.model);
+          result.fold(
+                (failure) {
+              final message = failure is ServerFailure && failure.message.isNotEmpty
+                  ? failure.message
+                  : 'Unknown error';
+              // emit error state
+            },
+                (model) {
+              // emit success state
+            },
+          );
         },
       );
     });

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_rentacar/core/extensions.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_bloc.dart';
-import 'package:provider/provider.dart';
 
-import 'comment_view_model.dart';
+import '../bloc/alarm_state.dart';
+
 
 
 
@@ -14,7 +13,7 @@ showAlarmBottomSheet(BuildContext context, Function(String) onEnterValue) {
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
-        return CommentScreen(onEnterValue: onEnterValue);
+        return AlarmScreen(onEnterValue: onEnterValue);
       }
   );
 }
