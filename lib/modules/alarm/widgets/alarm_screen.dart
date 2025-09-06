@@ -19,6 +19,7 @@ showAlarmBottomSheet(BuildContext context) {
           create: (context) => AlarmBloc(),
           child: const AlarmScreen(),
         );
+      }
   );
 }
 
