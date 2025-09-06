@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
@@ -14,6 +15,7 @@ import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_inf
 import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 import 'package:pits_app/modules/service/presentation/sections/part_selection/part_selection_screen.dart';
 
+import '../../../../alarm/widgets/alarm_screen.dart';
 import '../../../domain/usecase/get_services.dart';
 import '../map_page/bloc/services_bloc.dart';
 
@@ -102,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                       width: 96,
                       height: 96,
-                    )
+                    ).onTap(() => showAlarmBottomSheet(context))
                   ],
                 ),
               )
