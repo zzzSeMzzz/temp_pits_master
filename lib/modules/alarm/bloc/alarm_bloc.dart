@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pits_app/modules/alarm/data/repository/alarm_repository.dart';
 import '../../../../../../core/data/error/failures.dart';
-import '../widgets/alarm_event.dart';
+import 'alarm_event.dart';
 import 'alarm_state.dart';
 
 //part 'alarm_bloc.freezed.dart';
