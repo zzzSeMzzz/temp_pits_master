@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AlarmState {
   AlarmModel get alarmModel => throw _privateConstructorUsedError;
+  ApiResponse<dynamic> get responseState => throw _privateConstructorUsedError;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,7 @@ abstract class $AlarmStateCopyWith<$Res> {
     $Res Function(AlarmState) then,
   ) = _$AlarmStateCopyWithImpl<$Res, AlarmState>;
   @useResult
-  $Res call({AlarmModel alarmModel});
+  $Res call({AlarmModel alarmModel, ApiResponse<dynamic> responseState});
 }
 
 /// @nodoc
@@ -50,13 +51,17 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? alarmModel = null}) {
+  $Res call({Object? alarmModel = null, Object? responseState = null}) {
     return _then(
       _value.copyWith(
             alarmModel: null == alarmModel
                 ? _value.alarmModel
                 : alarmModel // ignore: cast_nullable_to_non_nullable
                       as AlarmModel,
+            responseState: null == responseState
+                ? _value.responseState
+                : responseState // ignore: cast_nullable_to_non_nullable
+                      as ApiResponse<dynamic>,
           )
           as $Val,
     );
@@ -72,7 +77,7 @@ abstract class _$$AlarmStateImplCopyWith<$Res>
   ) = __$$AlarmStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AlarmModel alarmModel});
+  $Res call({AlarmModel alarmModel, ApiResponse<dynamic> responseState});
 }
 
 /// @nodoc
@@ -88,13 +93,17 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? alarmModel = null}) {
+  $Res call({Object? alarmModel = null, Object? responseState = null}) {
     return _then(
       _$AlarmStateImpl(
         alarmModel: null == alarmModel
             ? _value.alarmModel
             : alarmModel // ignore: cast_nullable_to_non_nullable
                   as AlarmModel,
+        responseState: null == responseState
+            ? _value.responseState
+            : responseState // ignore: cast_nullable_to_non_nullable
+                  as ApiResponse<dynamic>,
       ),
     );
   }
@@ -103,15 +112,21 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AlarmStateImpl implements _AlarmState {
-  _$AlarmStateImpl({this.alarmModel = const AlarmModel(carStart: true)});
+  _$AlarmStateImpl({
+    this.alarmModel = const AlarmModel(carStart: true),
+    this.responseState = const Init(),
+  });
 
   @override
   @JsonKey()
   final AlarmModel alarmModel;
+  @override
+  @JsonKey()
+  final ApiResponse<dynamic> responseState;
 
   @override
   String toString() {
-    return 'AlarmState(alarmModel: $alarmModel)';
+    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState)';
   }
 
   @override
@@ -120,11 +135,13 @@ class _$AlarmStateImpl implements _AlarmState {
         (other.runtimeType == runtimeType &&
             other is _$AlarmStateImpl &&
             (identical(other.alarmModel, alarmModel) ||
-                other.alarmModel == alarmModel));
+                other.alarmModel == alarmModel) &&
+            (identical(other.responseState, responseState) ||
+                other.responseState == responseState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, alarmModel);
+  int get hashCode => Object.hash(runtimeType, alarmModel, responseState);
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.
@@ -136,10 +153,15 @@ class _$AlarmStateImpl implements _AlarmState {
 }
 
 abstract class _AlarmState implements AlarmState {
-  factory _AlarmState({final AlarmModel alarmModel}) = _$AlarmStateImpl;
+  factory _AlarmState({
+    final AlarmModel alarmModel,
+    final ApiResponse<dynamic> responseState,
+  }) = _$AlarmStateImpl;
 
   @override
   AlarmModel get alarmModel;
+  @override
+  ApiResponse<dynamic> get responseState;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.

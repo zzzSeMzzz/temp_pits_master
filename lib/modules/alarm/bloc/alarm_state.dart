@@ -7,6 +7,7 @@ part 'alarm_state.freezed.dart';
 @freezed
 class AlarmState with _$AlarmState {
    factory AlarmState({
-    @Default(AlarmModel(carStart: true)) AlarmModel alarmModel
+    @Default(AlarmModel(carStart: true)) AlarmModel alarmModel,
+    @Default(Init()) ApiResponse<dynamic> responseState,
   }) = _AlarmState;
 }
