@@ -17,14 +17,18 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
         sendAlarm: (event) async {
           final result = await _repository.sendAlarm(event.model);
           result.fold(
-                (failure) {
-              final message = failure is ServerFailure && failure.message.isNotEmpty
+            (failure) {
+              final message = failure is ServerFailure &&
+                  failure.message.isNotEmpty
                   ? failure.message
                   : 'Unknown error';
-              // emit error state
+              /*emit(state.copyWith(
+                  isLoading: false, isSuccess: false, errorText: message));*/
             },
-                (model) {
-              // emit success state
+            (model) {
+              /*emit(
+                  state.copyWith(
+                      isLoading: false, isSuccess: true, errorText: ''));*/
             },
           );
         },
