@@ -19,6 +19,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AlarmState {
   AlarmModel get alarmModel => throw _privateConstructorUsedError;
   ApiResponse<dynamic> get responseState => throw _privateConstructorUsedError;
+  String? get selectedAlarm => throw _privateConstructorUsedError;
+  bool get isStartEngine => throw _privateConstructorUsedError;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +36,12 @@ abstract class $AlarmStateCopyWith<$Res> {
     $Res Function(AlarmState) then,
   ) = _$AlarmStateCopyWithImpl<$Res, AlarmState>;
   @useResult
-  $Res call({AlarmModel alarmModel, ApiResponse<dynamic> responseState});
+  $Res call({
+    AlarmModel alarmModel,
+    ApiResponse<dynamic> responseState,
+    String? selectedAlarm,
+    bool isStartEngine,
+  });
 }
 
 /// @nodoc
@@ -51,7 +58,12 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? alarmModel = null, Object? responseState = null}) {
+  $Res call({
+    Object? alarmModel = null,
+    Object? responseState = null,
+    Object? selectedAlarm = freezed,
+    Object? isStartEngine = null,
+  }) {
     return _then(
       _value.copyWith(
             alarmModel: null == alarmModel
@@ -62,6 +74,14 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
                 ? _value.responseState
                 : responseState // ignore: cast_nullable_to_non_nullable
                       as ApiResponse<dynamic>,
+            selectedAlarm: freezed == selectedAlarm
+                ? _value.selectedAlarm
+                : selectedAlarm // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            isStartEngine: null == isStartEngine
+                ? _value.isStartEngine
+                : isStartEngine // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -77,7 +97,12 @@ abstract class _$$AlarmStateImplCopyWith<$Res>
   ) = __$$AlarmStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AlarmModel alarmModel, ApiResponse<dynamic> responseState});
+  $Res call({
+    AlarmModel alarmModel,
+    ApiResponse<dynamic> responseState,
+    String? selectedAlarm,
+    bool isStartEngine,
+  });
 }
 
 /// @nodoc
@@ -93,7 +118,12 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? alarmModel = null, Object? responseState = null}) {
+  $Res call({
+    Object? alarmModel = null,
+    Object? responseState = null,
+    Object? selectedAlarm = freezed,
+    Object? isStartEngine = null,
+  }) {
     return _then(
       _$AlarmStateImpl(
         alarmModel: null == alarmModel
@@ -104,6 +134,14 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
             ? _value.responseState
             : responseState // ignore: cast_nullable_to_non_nullable
                   as ApiResponse<dynamic>,
+        selectedAlarm: freezed == selectedAlarm
+            ? _value.selectedAlarm
+            : selectedAlarm // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isStartEngine: null == isStartEngine
+            ? _value.isStartEngine
+            : isStartEngine // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -115,6 +153,8 @@ class _$AlarmStateImpl implements _AlarmState {
   _$AlarmStateImpl({
     this.alarmModel = const AlarmModel(carStart: true),
     this.responseState = const Init(),
+    this.selectedAlarm,
+    this.isStartEngine = true,
   });
 
   @override
@@ -123,10 +163,15 @@ class _$AlarmStateImpl implements _AlarmState {
   @override
   @JsonKey()
   final ApiResponse<dynamic> responseState;
+  @override
+  final String? selectedAlarm;
+  @override
+  @JsonKey()
+  final bool isStartEngine;
 
   @override
   String toString() {
-    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState)';
+    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState, selectedAlarm: $selectedAlarm, isStartEngine: $isStartEngine)';
   }
 
   @override
@@ -137,11 +182,21 @@ class _$AlarmStateImpl implements _AlarmState {
             (identical(other.alarmModel, alarmModel) ||
                 other.alarmModel == alarmModel) &&
             (identical(other.responseState, responseState) ||
-                other.responseState == responseState));
+                other.responseState == responseState) &&
+            (identical(other.selectedAlarm, selectedAlarm) ||
+                other.selectedAlarm == selectedAlarm) &&
+            (identical(other.isStartEngine, isStartEngine) ||
+                other.isStartEngine == isStartEngine));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, alarmModel, responseState);
+  int get hashCode => Object.hash(
+    runtimeType,
+    alarmModel,
+    responseState,
+    selectedAlarm,
+    isStartEngine,
+  );
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.
@@ -156,12 +211,18 @@ abstract class _AlarmState implements AlarmState {
   factory _AlarmState({
     final AlarmModel alarmModel,
     final ApiResponse<dynamic> responseState,
+    final String? selectedAlarm,
+    final bool isStartEngine,
   }) = _$AlarmStateImpl;
 
   @override
   AlarmModel get alarmModel;
   @override
   ApiResponse<dynamic> get responseState;
+  @override
+  String? get selectedAlarm;
+  @override
+  bool get isStartEngine;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.

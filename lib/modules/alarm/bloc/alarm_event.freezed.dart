@@ -17,39 +17,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AlarmEvent {
-  AlarmModel get model => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
-
-  /// Create a copy of AlarmEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AlarmEventCopyWith<AlarmEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -58,8 +63,6 @@ abstract class $AlarmEventCopyWith<$Res> {
     AlarmEvent value,
     $Res Function(AlarmEvent) then,
   ) = _$AlarmEventCopyWithImpl<$Res, AlarmEvent>;
-  @useResult
-  $Res call({AlarmModel model});
 }
 
 /// @nodoc
@@ -74,29 +77,14 @@ class _$AlarmEventCopyWithImpl<$Res, $Val extends AlarmEvent>
 
   /// Create a copy of AlarmEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? model = null}) {
-    return _then(
-      _value.copyWith(
-            model: null == model
-                ? _value.model
-                : model // ignore: cast_nullable_to_non_nullable
-                      as AlarmModel,
-          )
-          as $Val,
-    );
-  }
 }
 
 /// @nodoc
-abstract class _$$SendAlarmImplCopyWith<$Res>
-    implements $AlarmEventCopyWith<$Res> {
+abstract class _$$SendAlarmImplCopyWith<$Res> {
   factory _$$SendAlarmImplCopyWith(
     _$SendAlarmImpl value,
     $Res Function(_$SendAlarmImpl) then,
   ) = __$$SendAlarmImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({AlarmModel model});
 }
@@ -162,6 +150,8 @@ class _$SendAlarmImpl implements _SendAlarm {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
   }) {
     return sendAlarm(model);
   }
@@ -170,6 +160,8 @@ class _$SendAlarmImpl implements _SendAlarm {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
   }) {
     return sendAlarm?.call(model);
   }
@@ -178,6 +170,8 @@ class _$SendAlarmImpl implements _SendAlarm {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
     required TResult orElse(),
   }) {
     if (sendAlarm != null) {
@@ -190,6 +184,8 @@ class _$SendAlarmImpl implements _SendAlarm {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
   }) {
     return sendAlarm(this);
   }
@@ -198,6 +194,8 @@ class _$SendAlarmImpl implements _SendAlarm {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
   }) {
     return sendAlarm?.call(this);
   }
@@ -206,6 +204,8 @@ class _$SendAlarmImpl implements _SendAlarm {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
     required TResult orElse(),
   }) {
     if (sendAlarm != null) {
@@ -218,13 +218,310 @@ class _$SendAlarmImpl implements _SendAlarm {
 abstract class _SendAlarm implements AlarmEvent {
   const factory _SendAlarm(final AlarmModel model) = _$SendAlarmImpl;
 
-  @override
   AlarmModel get model;
 
   /// Create a copy of AlarmEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendAlarmImplCopyWith<_$SendAlarmImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectAlarmImplCopyWith<$Res> {
+  factory _$$SelectAlarmImplCopyWith(
+    _$SelectAlarmImpl value,
+    $Res Function(_$SelectAlarmImpl) then,
+  ) = __$$SelectAlarmImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String alarm});
+}
+
+/// @nodoc
+class __$$SelectAlarmImplCopyWithImpl<$Res>
+    extends _$AlarmEventCopyWithImpl<$Res, _$SelectAlarmImpl>
+    implements _$$SelectAlarmImplCopyWith<$Res> {
+  __$$SelectAlarmImplCopyWithImpl(
+    _$SelectAlarmImpl _value,
+    $Res Function(_$SelectAlarmImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? alarm = null}) {
+    return _then(
+      _$SelectAlarmImpl(
+        null == alarm
+            ? _value.alarm
+            : alarm // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SelectAlarmImpl implements _SelectAlarm {
+  const _$SelectAlarmImpl(this.alarm);
+
+  @override
+  final String alarm;
+
+  @override
+  String toString() {
+    return 'AlarmEvent.selectAlarm(alarm: $alarm)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectAlarmImpl &&
+            (identical(other.alarm, alarm) || other.alarm == alarm));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, alarm);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectAlarmImplCopyWith<_$SelectAlarmImpl> get copyWith =>
+      __$$SelectAlarmImplCopyWithImpl<_$SelectAlarmImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
+  }) {
+    return selectAlarm(alarm);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
+  }) {
+    return selectAlarm?.call(alarm);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
+    required TResult orElse(),
+  }) {
+    if (selectAlarm != null) {
+      return selectAlarm(alarm);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
+  }) {
+    return selectAlarm(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
+  }) {
+    return selectAlarm?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
+    required TResult orElse(),
+  }) {
+    if (selectAlarm != null) {
+      return selectAlarm(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectAlarm implements AlarmEvent {
+  const factory _SelectAlarm(final String alarm) = _$SelectAlarmImpl;
+
+  String get alarm;
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectAlarmImplCopyWith<_$SelectAlarmImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetStartEngineImplCopyWith<$Res> {
+  factory _$$SetStartEngineImplCopyWith(
+    _$SetStartEngineImpl value,
+    $Res Function(_$SetStartEngineImpl) then,
+  ) = __$$SetStartEngineImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isStart});
+}
+
+/// @nodoc
+class __$$SetStartEngineImplCopyWithImpl<$Res>
+    extends _$AlarmEventCopyWithImpl<$Res, _$SetStartEngineImpl>
+    implements _$$SetStartEngineImplCopyWith<$Res> {
+  __$$SetStartEngineImplCopyWithImpl(
+    _$SetStartEngineImpl _value,
+    $Res Function(_$SetStartEngineImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? isStart = null}) {
+    return _then(
+      _$SetStartEngineImpl(
+        null == isStart
+            ? _value.isStart
+            : isStart // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SetStartEngineImpl implements _SetStartEngine {
+  const _$SetStartEngineImpl(this.isStart);
+
+  @override
+  final bool isStart;
+
+  @override
+  String toString() {
+    return 'AlarmEvent.setStartEngine(isStart: $isStart)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetStartEngineImpl &&
+            (identical(other.isStart, isStart) || other.isStart == isStart));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isStart);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetStartEngineImplCopyWith<_$SetStartEngineImpl> get copyWith =>
+      __$$SetStartEngineImplCopyWithImpl<_$SetStartEngineImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
+  }) {
+    return setStartEngine(isStart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
+  }) {
+    return setStartEngine?.call(isStart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
+    required TResult orElse(),
+  }) {
+    if (setStartEngine != null) {
+      return setStartEngine(isStart);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
+  }) {
+    return setStartEngine(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
+  }) {
+    return setStartEngine?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
+    required TResult orElse(),
+  }) {
+    if (setStartEngine != null) {
+      return setStartEngine(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetStartEngine implements AlarmEvent {
+  const factory _SetStartEngine(final bool isStart) = _$SetStartEngineImpl;
+
+  bool get isStart;
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetStartEngineImplCopyWith<_$SetStartEngineImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

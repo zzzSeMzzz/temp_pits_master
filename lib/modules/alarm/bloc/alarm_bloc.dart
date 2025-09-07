@@ -11,7 +11,6 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
   final AlarmRepository _repository = AlarmRepository();
 
   AlarmBloc() : super(AlarmState()) {
-
     on<AlarmEvent>((event, emit) async {
       await event.map(
         sendAlarm: (event) async {
@@ -32,9 +31,13 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
             },
           );
         },
+        selectAlarm: (event) async {
+          emit(state.copyWith(selectedAlarm: event.alarm));
+        },
+        setStartEngine: (event) async {
+          emit(state.copyWith(isStartEngine: event.isStart));
+        },
       );
     });
-
-
   }
 }
