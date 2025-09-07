@@ -45,7 +45,7 @@ class ProblemType extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ],
-      ).onTap(onSelectAlarm(name)),
+      ).onTap(() => onSelectAlarm(name)),
     );
   }
 }

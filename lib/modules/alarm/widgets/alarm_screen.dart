@@ -136,11 +136,9 @@ Widget _buildAlarms(Map<String, String> items, AlarmBloc bloc) {
     scrollDirection: Axis.horizontal,
     itemCount: items.length,
     itemBuilder: (context, index) {
-      //final vm = Provider.of<FilterViewModel>(context);
       final entry = entries[index];
-      //final selected = vm.isCarTypeSelected(item.name);
       return Container(
-        width: 76, // Ширина каждого элемента
+        width: 76,
         margin: const EdgeInsets.all(8),
         child: ProblemType(
             name: entry.key,
