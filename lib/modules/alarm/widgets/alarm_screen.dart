@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/core/data/extensions.dart';
@@ -36,12 +37,37 @@ class AlarmScreen extends StatefulWidget {
 }
 
 class _AlarmScreenState extends State<AlarmScreen> {
-  final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
-    _controller.dispose();
+    _scrollController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (_scrollController.hasClients) {
+      final double currentOffset = _scrollController.offset;
+      final double maxExtent = _scrollController.position.maxScrollExtent;
+      final int itemCount = _alarmProblems.length;
+
+      if (maxExtent > 0 && itemCount > 0) {
+        // Правильный расчет: определяем, какой элемент сейчас в центре/виден
+        const double itemWidth = 76 + 16; // width + margin (8+8)
+        final int visibleItemIndex = (currentOffset / itemWidth).round();
+
+        // Ограничиваем индекс в пределах количества dots (4 dots = 4 страницы)
+        final int pageIndex = (visibleItemIndex / 4).clamp(0, 3).toInt();
+
+        widget.bloc.add(AlarmEvent.setPage(pageIndex));
+      }
+    }
   }
 
 
@@ -62,6 +88,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
     "Fusibles " : AppIcons.icCheckFuses,
     "Otro " : AppIcons.icOtherRepair,
   };
+
 
 
   @override
@@ -112,9 +139,15 @@ class _AlarmScreenState extends State<AlarmScreen> {
                               ),
                               const SizedBox(height: 10),
                               SizedBox(height: 140,
-                                child: _buildAlarms(_alarmProblems, widget.bloc),
+                                child: _buildAlarms(_alarmProblems, widget.bloc, _scrollController),
                               ),
                              //SizedBox(height: 100,)
+                              Center(
+                                child: DotsIndicator(
+                                  dotsCount: 4,
+                                  position: state.currentPage.toDouble(),
+                                ),
+                              )
                             ],
                           ),
                         )
@@ -130,11 +163,12 @@ class _AlarmScreenState extends State<AlarmScreen> {
 }
 
 
-Widget _buildAlarms(Map<String, String> items, AlarmBloc bloc) {
+Widget _buildAlarms(Map<String, String> items, AlarmBloc bloc, ScrollController controller) {
   final entries = items.entries.toList();
   return ListView.builder(
     scrollDirection: Axis.horizontal,
     itemCount: items.length,
+    controller: controller,
     itemBuilder: (context, index) {
       final entry = entries[index];
       return Container(

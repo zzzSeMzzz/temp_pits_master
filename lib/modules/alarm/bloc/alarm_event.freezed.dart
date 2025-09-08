@@ -22,18 +22,21 @@ mixin _$AlarmEvent {
     required TResult Function(AlarmModel model) sendAlarm,
     required TResult Function(String alarm) selectAlarm,
     required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AlarmModel model)? sendAlarm,
     TResult? Function(String alarm)? selectAlarm,
     TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AlarmModel model)? sendAlarm,
     TResult Function(String alarm)? selectAlarm,
     TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,18 +44,21 @@ mixin _$AlarmEvent {
     required TResult Function(_SendAlarm value) sendAlarm,
     required TResult Function(_SelectAlarm value) selectAlarm,
     required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendAlarm value)? sendAlarm,
     TResult? Function(_SelectAlarm value)? selectAlarm,
     TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendAlarm value)? sendAlarm,
     TResult Function(_SelectAlarm value)? selectAlarm,
     TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -152,6 +158,7 @@ class _$SendAlarmImpl implements _SendAlarm {
     required TResult Function(AlarmModel model) sendAlarm,
     required TResult Function(String alarm) selectAlarm,
     required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
   }) {
     return sendAlarm(model);
   }
@@ -162,6 +169,7 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult? Function(AlarmModel model)? sendAlarm,
     TResult? Function(String alarm)? selectAlarm,
     TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
   }) {
     return sendAlarm?.call(model);
   }
@@ -172,6 +180,7 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult Function(AlarmModel model)? sendAlarm,
     TResult Function(String alarm)? selectAlarm,
     TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
     required TResult orElse(),
   }) {
     if (sendAlarm != null) {
@@ -186,6 +195,7 @@ class _$SendAlarmImpl implements _SendAlarm {
     required TResult Function(_SendAlarm value) sendAlarm,
     required TResult Function(_SelectAlarm value) selectAlarm,
     required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
   }) {
     return sendAlarm(this);
   }
@@ -196,6 +206,7 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult? Function(_SendAlarm value)? sendAlarm,
     TResult? Function(_SelectAlarm value)? selectAlarm,
     TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
   }) {
     return sendAlarm?.call(this);
   }
@@ -206,6 +217,7 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult Function(_SendAlarm value)? sendAlarm,
     TResult Function(_SelectAlarm value)? selectAlarm,
     TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
     required TResult orElse(),
   }) {
     if (sendAlarm != null) {
@@ -300,6 +312,7 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     required TResult Function(AlarmModel model) sendAlarm,
     required TResult Function(String alarm) selectAlarm,
     required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
   }) {
     return selectAlarm(alarm);
   }
@@ -310,6 +323,7 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult? Function(AlarmModel model)? sendAlarm,
     TResult? Function(String alarm)? selectAlarm,
     TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
   }) {
     return selectAlarm?.call(alarm);
   }
@@ -320,6 +334,7 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult Function(AlarmModel model)? sendAlarm,
     TResult Function(String alarm)? selectAlarm,
     TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
     required TResult orElse(),
   }) {
     if (selectAlarm != null) {
@@ -334,6 +349,7 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     required TResult Function(_SendAlarm value) sendAlarm,
     required TResult Function(_SelectAlarm value) selectAlarm,
     required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
   }) {
     return selectAlarm(this);
   }
@@ -344,6 +360,7 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult? Function(_SendAlarm value)? sendAlarm,
     TResult? Function(_SelectAlarm value)? selectAlarm,
     TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
   }) {
     return selectAlarm?.call(this);
   }
@@ -354,6 +371,7 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult Function(_SendAlarm value)? sendAlarm,
     TResult Function(_SelectAlarm value)? selectAlarm,
     TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
     required TResult orElse(),
   }) {
     if (selectAlarm != null) {
@@ -451,6 +469,7 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     required TResult Function(AlarmModel model) sendAlarm,
     required TResult Function(String alarm) selectAlarm,
     required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
   }) {
     return setStartEngine(isStart);
   }
@@ -461,6 +480,7 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult? Function(AlarmModel model)? sendAlarm,
     TResult? Function(String alarm)? selectAlarm,
     TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
   }) {
     return setStartEngine?.call(isStart);
   }
@@ -471,6 +491,7 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult Function(AlarmModel model)? sendAlarm,
     TResult Function(String alarm)? selectAlarm,
     TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
     required TResult orElse(),
   }) {
     if (setStartEngine != null) {
@@ -485,6 +506,7 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     required TResult Function(_SendAlarm value) sendAlarm,
     required TResult Function(_SelectAlarm value) selectAlarm,
     required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
   }) {
     return setStartEngine(this);
   }
@@ -495,6 +517,7 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult? Function(_SendAlarm value)? sendAlarm,
     TResult? Function(_SelectAlarm value)? selectAlarm,
     TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
   }) {
     return setStartEngine?.call(this);
   }
@@ -505,6 +528,7 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult Function(_SendAlarm value)? sendAlarm,
     TResult Function(_SelectAlarm value)? selectAlarm,
     TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
     required TResult orElse(),
   }) {
     if (setStartEngine != null) {
@@ -523,5 +547,160 @@ abstract class _SetStartEngine implements AlarmEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetStartEngineImplCopyWith<_$SetStartEngineImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetPageImplCopyWith<$Res> {
+  factory _$$SetPageImplCopyWith(
+    _$SetPageImpl value,
+    $Res Function(_$SetPageImpl) then,
+  ) = __$$SetPageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int pageIndex});
+}
+
+/// @nodoc
+class __$$SetPageImplCopyWithImpl<$Res>
+    extends _$AlarmEventCopyWithImpl<$Res, _$SetPageImpl>
+    implements _$$SetPageImplCopyWith<$Res> {
+  __$$SetPageImplCopyWithImpl(
+    _$SetPageImpl _value,
+    $Res Function(_$SetPageImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? pageIndex = null}) {
+    return _then(
+      _$SetPageImpl(
+        null == pageIndex
+            ? _value.pageIndex
+            : pageIndex // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SetPageImpl implements _SetPage {
+  const _$SetPageImpl(this.pageIndex);
+
+  @override
+  final int pageIndex;
+
+  @override
+  String toString() {
+    return 'AlarmEvent.setPage(pageIndex: $pageIndex)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetPageImpl &&
+            (identical(other.pageIndex, pageIndex) ||
+                other.pageIndex == pageIndex));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pageIndex);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetPageImplCopyWith<_$SetPageImpl> get copyWith =>
+      __$$SetPageImplCopyWithImpl<_$SetPageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
+  }) {
+    return setPage(pageIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
+  }) {
+    return setPage?.call(pageIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
+    required TResult orElse(),
+  }) {
+    if (setPage != null) {
+      return setPage(pageIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
+  }) {
+    return setPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
+  }) {
+    return setPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
+    required TResult orElse(),
+  }) {
+    if (setPage != null) {
+      return setPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetPage implements AlarmEvent {
+  const factory _SetPage(final int pageIndex) = _$SetPageImpl;
+
+  int get pageIndex;
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetPageImplCopyWith<_$SetPageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

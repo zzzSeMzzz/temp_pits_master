@@ -21,6 +21,7 @@ mixin _$AlarmState {
   ApiResponse<dynamic> get responseState => throw _privateConstructorUsedError;
   String? get selectedAlarm => throw _privateConstructorUsedError;
   bool get isStartEngine => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,6 +42,7 @@ abstract class $AlarmStateCopyWith<$Res> {
     ApiResponse<dynamic> responseState,
     String? selectedAlarm,
     bool isStartEngine,
+    int currentPage,
   });
 }
 
@@ -63,6 +65,7 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
     Object? responseState = null,
     Object? selectedAlarm = freezed,
     Object? isStartEngine = null,
+    Object? currentPage = null,
   }) {
     return _then(
       _value.copyWith(
@@ -82,6 +85,10 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
                 ? _value.isStartEngine
                 : isStartEngine // ignore: cast_nullable_to_non_nullable
                       as bool,
+            currentPage: null == currentPage
+                ? _value.currentPage
+                : currentPage // ignore: cast_nullable_to_non_nullable
+                      as int,
           )
           as $Val,
     );
@@ -102,6 +109,7 @@ abstract class _$$AlarmStateImplCopyWith<$Res>
     ApiResponse<dynamic> responseState,
     String? selectedAlarm,
     bool isStartEngine,
+    int currentPage,
   });
 }
 
@@ -123,6 +131,7 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
     Object? responseState = null,
     Object? selectedAlarm = freezed,
     Object? isStartEngine = null,
+    Object? currentPage = null,
   }) {
     return _then(
       _$AlarmStateImpl(
@@ -142,6 +151,10 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
             ? _value.isStartEngine
             : isStartEngine // ignore: cast_nullable_to_non_nullable
                   as bool,
+        currentPage: null == currentPage
+            ? _value.currentPage
+            : currentPage // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -155,6 +168,7 @@ class _$AlarmStateImpl implements _AlarmState {
     this.responseState = const Init(),
     this.selectedAlarm,
     this.isStartEngine = true,
+    this.currentPage = 0,
   });
 
   @override
@@ -168,10 +182,13 @@ class _$AlarmStateImpl implements _AlarmState {
   @override
   @JsonKey()
   final bool isStartEngine;
+  @override
+  @JsonKey()
+  final int currentPage;
 
   @override
   String toString() {
-    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState, selectedAlarm: $selectedAlarm, isStartEngine: $isStartEngine)';
+    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState, selectedAlarm: $selectedAlarm, isStartEngine: $isStartEngine, currentPage: $currentPage)';
   }
 
   @override
@@ -186,7 +203,9 @@ class _$AlarmStateImpl implements _AlarmState {
             (identical(other.selectedAlarm, selectedAlarm) ||
                 other.selectedAlarm == selectedAlarm) &&
             (identical(other.isStartEngine, isStartEngine) ||
-                other.isStartEngine == isStartEngine));
+                other.isStartEngine == isStartEngine) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage));
   }
 
   @override
@@ -196,6 +215,7 @@ class _$AlarmStateImpl implements _AlarmState {
     responseState,
     selectedAlarm,
     isStartEngine,
+    currentPage,
   );
 
   /// Create a copy of AlarmState
@@ -213,6 +233,7 @@ abstract class _AlarmState implements AlarmState {
     final ApiResponse<dynamic> responseState,
     final String? selectedAlarm,
     final bool isStartEngine,
+    final int currentPage,
   }) = _$AlarmStateImpl;
 
   @override
@@ -223,6 +244,8 @@ abstract class _AlarmState implements AlarmState {
   String? get selectedAlarm;
   @override
   bool get isStartEngine;
+  @override
+  int get currentPage;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.

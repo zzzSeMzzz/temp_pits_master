@@ -9,6 +9,7 @@ class AlarmState with _$AlarmState {
     @Default(AlarmModel(carStart: true)) AlarmModel alarmModel,
     @Default(Init()) ApiResponse<dynamic> responseState,
     String? selectedAlarm,
-     @Default(true) bool isStartEngine,
+    @Default(true) bool isStartEngine,
+    @Default(0) int currentPage,
   }) = _AlarmState;
 }

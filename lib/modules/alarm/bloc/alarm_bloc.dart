@@ -37,6 +37,9 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
         setStartEngine: (event) async {
           emit(state.copyWith(isStartEngine: event.isStart));
         },
+        setPage: (event) async {
+          emit(state.copyWith(currentPage: event.pageIndex));
+        },
       );
     });
   }

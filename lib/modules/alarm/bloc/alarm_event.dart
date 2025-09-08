@@ -7,4 +7,5 @@ class AlarmEvent with _$AlarmEvent {
   const factory AlarmEvent.sendAlarm(AlarmModel model) = _SendAlarm;
   const factory AlarmEvent.selectAlarm(String alarm) = _SelectAlarm;
   const factory AlarmEvent.setStartEngine(bool isStart) = _SetStartEngine;
+  const factory AlarmEvent.setPage(int pageIndex) = _SetPage;
 }
