@@ -112,7 +112,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
             child: Container(
               width: double.infinity,
               decoration: const BoxDecoration(
-                color: Colors.red,
+                color: Colors.black12,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(12),
                   topRight: Radius.circular(12),
@@ -233,8 +233,8 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                 TextField(
                                   controller: _controller,
                                   keyboardType: TextInputType.text,
-                                  minLines: 4,
-                                  maxLines: 6,
+                                  minLines: 1,
+                                  maxLines: 1,
                                   //focusNode: focusNode,
                                   autofocus: true,
                                   decoration: const InputDecoration(
@@ -245,6 +245,11 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                 WButton(
                                   isLoading: false,//state.isLoading,
                                   height: 72,
+                                  textStyle: context.textTheme.displayLarge!.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                    color: Colors.white
+                                  ),
                                   svgAsset: AppIcons.icSend,
                                   onTap: () {},
                                   color: primaryColor,
