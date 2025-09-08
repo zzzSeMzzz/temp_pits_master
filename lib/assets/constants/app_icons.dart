@@ -78,6 +78,7 @@ class AppIcons {
   static const String icScan2 = 'assets/icons/ic_scan_2.svg';
   static const String myLocation = 'assets/icons/ic_my_location.svg';
   static const String icAlarmButton = 'assets/icons/ic_alarm_button.svg';
+  static const String icSend = 'assets/icons/ic_send.svg';
 
   static const String icHomeTabActive = 'assets/icons/ic_tab_home_active.svg';
   static const String icHomeTabInactive = 'assets/icons/ic_tab_home_inactive.svg';

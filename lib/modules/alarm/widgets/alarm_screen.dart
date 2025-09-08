@@ -232,7 +232,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                               children: [
                                 TextField(
                                   controller: _controller,
-                                  keyboardType: TextInputType.multiline,
+                                  keyboardType: TextInputType.text,
                                   minLines: 4,
                                   maxLines: 6,
                                   //focusNode: focusNode,
@@ -241,10 +241,11 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                     hintText: 'Explain us more (optionale)',
                                   ),
                                 ),
+                                const SizedBox(height: 12),
                                 WButton(
                                   isLoading: false,//state.isLoading,
                                   height: 72,
-
+                                  svgAsset: AppIcons.icSend,
                                   onTap: () {},
                                   color: primaryColor,
                                   text: "Submit an emergency request",
