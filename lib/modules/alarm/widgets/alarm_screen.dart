@@ -9,6 +9,7 @@ import 'package:pits_app/modules/alarm/widgets/selected%20box.dart';
 
 import '../../../assets/colors/colors.dart';
 import '../../../assets/constants/app_icons.dart';
+import '../../../globals/widgets/interaction/w_button.dart';
 import '../bloc/alarm_state.dart';
 
 
@@ -40,10 +41,12 @@ class AlarmScreen extends StatefulWidget {
 
 class _AlarmScreenState extends State<AlarmScreen> {
   final ScrollController _scrollController = ScrollController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -215,6 +218,42 @@ class _AlarmScreenState extends State<AlarmScreen> {
                         )
                     ),
                     const SizedBox(height: 16),
+                    Container(
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                TextField(
+                                  controller: _controller,
+                                  keyboardType: TextInputType.multiline,
+                                  minLines: 4,
+                                  maxLines: 6,
+                                  //focusNode: focusNode,
+                                  autofocus: true,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Explain us more (optionale)',
+                                  ),
+                                ),
+                                WButton(
+                                  isLoading: false,//state.isLoading,
+                                  height: 72,
+
+                                  onTap: () {},
+                                  color: primaryColor,
+                                  text: "Submit an emergency request",
+                                  textColor: white,
+                                )
+                              ],
+                            )
+                        )
+                    ),
                   ],
                 ),
               ),
