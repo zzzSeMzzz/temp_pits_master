@@ -45,6 +45,8 @@ class _AlarmScreenState extends State<AlarmScreen> {
     super.dispose();
   }
 
+  final int _totalPages = 4;
+
   @override
   void initState() {
     super.initState();
@@ -54,19 +56,23 @@ class _AlarmScreenState extends State<AlarmScreen> {
   void _onScroll() {
     if (_scrollController.hasClients) {
       final double currentOffset = _scrollController.offset;
-      final double maxExtent = _scrollController.position.maxScrollExtent;
-      final int itemCount = _alarmProblems.length;
+      final double maxScrollExtent = _scrollController.position.maxScrollExtent;
 
-      if (maxExtent > 0 && itemCount > 0) {
-        // Правильный расчет: определяем, какой элемент сейчас в центре/виден
-        const double itemWidth = 76 + 16; // width + margin (8+8)
-        final int visibleItemIndex = (currentOffset / itemWidth).round();
+      // Рассчитываем ширину одной "страницы" прокрутки
+      final double pageWidth = maxScrollExtent / (totalPages - 1);
 
-        // Ограничиваем индекс в пределах количества dots (4 dots = 4 страницы)
-        final int pageIndex = (visibleItemIndex / 4).clamp(0, 3).toInt();
+      // Определяем текущую страницу
+      int currentPage = (currentOffset / pageWidth).round();
 
-        widget.bloc.add(AlarmEvent.setPage(pageIndex));
+      // Гарантируем, что последняя страница активируется
+      if (currentOffset >= maxScrollExtent - pageWidth / 2) {
+        currentPage = _totalPages - 1;
       }
+
+      // Ограничиваем диапазон
+      currentPage = currentPage.clamp(0, _totalPages - 1);
+
+      widget.bloc.add(AlarmEvent.setPage(currentPage));
     }
   }
 
@@ -144,7 +150,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                              //SizedBox(height: 100,)
                               Center(
                                 child: DotsIndicator(
-                                  dotsCount: 4,
+                                  dotsCount: _totalPages,
                                   position: state.currentPage.toDouble(),
                                 ),
                               )
