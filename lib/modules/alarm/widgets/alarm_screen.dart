@@ -5,6 +5,7 @@ import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_bloc.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_event.dart';
 import 'package:pits_app/modules/alarm/widgets/problem_type.dart';
+import 'package:pits_app/modules/alarm/widgets/selected%20box.dart';
 
 import '../../../assets/colors/colors.dart';
 import '../../../assets/constants/app_icons.dart';
@@ -170,7 +171,50 @@ class _AlarmScreenState extends State<AlarmScreen> {
                             ],
                           ),
                         )
-                    )
+                    ),
+                    const SizedBox(height: 16,),
+                    Container(
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            children: [
+                              Text("Does the\ncar start?",
+                                  style: context.textTheme.displayLarge!.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20
+                                  )
+                              ),
+                              const Spacer(),
+                              SelectedBox(
+                                onTap: () => {
+                                  widget.bloc.add(const AlarmEvent.setStartEngine(true))
+                                },
+                                isSelected: state.isStartEngine,
+                                title: "Yes",
+                                width: 73,
+                                height: 56,
+                              ),
+                              SelectedBox(
+                                onTap: () => {
+                                  widget.bloc.add(const AlarmEvent.setStartEngine(false))
+                                },
+                                isSelected: !state.isStartEngine,
+                                title: "No",
+                                width: 73,
+                                height: 56,
+                              ),
+                            ],
+                          )
+                        )
+                    ),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
