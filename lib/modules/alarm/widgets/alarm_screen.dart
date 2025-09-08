@@ -17,7 +17,7 @@ import '../bloc/alarm_state.dart';
 
 showAlarmBottomSheet(BuildContext context) {
   showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -109,159 +109,149 @@ class _AlarmScreenState extends State<AlarmScreen> {
         listener: (context, state) {},
         builder: (context, state) {
           return SafeArea(
-            child: Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.black12,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                           Radius.circular(12),
-                          ),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                         Radius.circular(12),
                         ),
-                        child: Padding(
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("What happen?",
+                                style: context.textTheme.displayLarge!.copyWith(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700)
+                            ),
+                            const SizedBox(height: 8),
+                            Text("Select the type of emergency",
+                                style: context.textTheme.displayLarge!.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14
+                                )
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(height: 120,
+                              child: _buildAlarms(_alarmProblems, widget.bloc, _scrollController),
+                            ),
+                           //SizedBox(height: 100,)
+                            Center(
+                              child: DotsIndicator(
+                                dotsCount: _totalPages,
+                                position: state.currentPage.toDouble(),
+                                decorator: const DotsDecorator(
+                                  size: Size.square(6.0),
+                                  activeSize: Size.square(8.0),
+                                  shape: CircleBorder(
+                                    side: BorderSide(color: textGrey, width: 1),
+                                  ),
+                                  activeShape: CircleBorder(
+                                    side: BorderSide(color: Colors.black, width: 2.0),
+                                  ),
+                                  color: Colors.transparent, // делаем основной цвет прозрачным
+                                  activeColor: Colors.transparent,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                  ),
+                  const SizedBox(height: 16,),
+                  Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          children: [
+                            Text("Does the\ncar start?",
+                                style: context.textTheme.displayLarge!.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 20
+                                )
+                            ),
+                            const Spacer(),
+                            SelectedBox(
+                              onTap: () => {
+                                widget.bloc.add(const AlarmEvent.setStartEngine(true))
+                              },
+                              isSelected: state.isStartEngine,
+                              title: "Yes",
+                              width: 73,
+                              height: 56,
+                            ),
+                            SelectedBox(
+                              onTap: () => {
+                                widget.bloc.add(const AlarmEvent.setStartEngine(false))
+                              },
+                              isSelected: !state.isStartEngine,
+                              title: "No",
+                              width: 73,
+                              height: 56,
+                            ),
+                          ],
+                        )
+                      )
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
+                      child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("What happen?",
-                                  style: context.textTheme.displayLarge!.copyWith(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700)
-                              ),
-                              const SizedBox(height: 8),
-                              Text("Select the type of emergency",
-                                  style: context.textTheme.displayLarge!.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14
-                                  )
-                              ),
-                              const SizedBox(height: 10),
-                              SizedBox(height: 120,
-                                child: _buildAlarms(_alarmProblems, widget.bloc, _scrollController),
-                              ),
-                             //SizedBox(height: 100,)
-                              Center(
-                                child: DotsIndicator(
-                                  dotsCount: _totalPages,
-                                  position: state.currentPage.toDouble(),
-                                  decorator: const DotsDecorator(
-                                    size: Size.square(6.0),
-                                    activeSize: Size.square(8.0),
-                                    shape: CircleBorder(
-                                      side: BorderSide(color: textGrey, width: 1),
-                                    ),
-                                    activeShape: CircleBorder(
-                                      side: BorderSide(color: Colors.black, width: 2.0),
-                                    ),
-                                    color: Colors.transparent, // делаем основной цвет прозрачным
-                                    activeColor: Colors.transparent,
-                                  ),
+                              TextField(
+                                controller: _controller,
+                                keyboardType: TextInputType.text,
+                                minLines: 1,
+                                maxLines: 1,
+                                //focusNode: focusNode,
+                                autofocus: true,
+                                decoration: const InputDecoration(
+                                  hintText: 'Explain us more (optionale)',
                                 ),
+                              ),
+                              const SizedBox(height: 12),
+                              WButton(
+                                isLoading: false,//state.isLoading,
+                                height: 72,
+                                textStyle: context.textTheme.displayLarge!.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                  color: Colors.white
+                                ),
+                                svgAsset: AppIcons.icSend,
+                                onTap: () {},
+                                color: primaryColor,
+                                text: "Submit an emergency request",
+                                textColor: white,
                               )
                             ],
-                          ),
-                        )
-                    ),
-                    const SizedBox(height: 16,),
-                    Container(
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              Text("Does the\ncar start?",
-                                  style: context.textTheme.displayLarge!.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 20
-                                  )
-                              ),
-                              const Spacer(),
-                              SelectedBox(
-                                onTap: () => {
-                                  widget.bloc.add(const AlarmEvent.setStartEngine(true))
-                                },
-                                isSelected: state.isStartEngine,
-                                title: "Yes",
-                                width: 73,
-                                height: 56,
-                              ),
-                              SelectedBox(
-                                onTap: () => {
-                                  widget.bloc.add(const AlarmEvent.setStartEngine(false))
-                                },
-                                isSelected: !state.isStartEngine,
-                                title: "No",
-                                width: 73,
-                                height: 56,
-                              ),
-                            ],
                           )
-                        )
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              children: [
-                                TextField(
-                                  controller: _controller,
-                                  keyboardType: TextInputType.text,
-                                  minLines: 1,
-                                  maxLines: 1,
-                                  //focusNode: focusNode,
-                                  autofocus: true,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Explain us more (optionale)',
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
-                                WButton(
-                                  isLoading: false,//state.isLoading,
-                                  height: 72,
-                                  textStyle: context.textTheme.displayLarge!.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
-                                    color: Colors.white
-                                  ),
-                                  svgAsset: AppIcons.icSend,
-                                  onTap: () {},
-                                  color: primaryColor,
-                                  text: "Submit an emergency request",
-                                  textColor: white,
-                                )
-                              ],
-                            )
-                        )
-                    ),
-                  ],
-                ),
+                      )
+                  ),
+                ],
               ),
             ),
           );
