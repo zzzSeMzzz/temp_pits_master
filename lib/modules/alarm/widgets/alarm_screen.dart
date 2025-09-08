@@ -6,6 +6,7 @@ import 'package:pits_app/modules/alarm/bloc/alarm_bloc.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_event.dart';
 import 'package:pits_app/modules/alarm/widgets/problem_type.dart';
 
+import '../../../assets/colors/colors.dart';
 import '../../../assets/constants/app_icons.dart';
 import '../bloc/alarm_state.dart';
 
@@ -59,7 +60,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
       final double maxScrollExtent = _scrollController.position.maxScrollExtent;
 
       // Рассчитываем ширину одной "страницы" прокрутки
-      final double pageWidth = maxScrollExtent / (totalPages - 1);
+      final double pageWidth = maxScrollExtent / (_totalPages - 1);
 
       // Определяем текущую страницу
       int currentPage = (currentOffset / pageWidth).round();
@@ -144,7 +145,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                   )
                               ),
                               const SizedBox(height: 10),
-                              SizedBox(height: 140,
+                              SizedBox(height: 120,
                                 child: _buildAlarms(_alarmProblems, widget.bloc, _scrollController),
                               ),
                              //SizedBox(height: 100,)
@@ -152,6 +153,18 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                 child: DotsIndicator(
                                   dotsCount: _totalPages,
                                   position: state.currentPage.toDouble(),
+                                  decorator: const DotsDecorator(
+                                    size: Size.square(6.0),
+                                    activeSize: Size.square(8.0),
+                                    shape: CircleBorder(
+                                      side: BorderSide(color: textGrey, width: 1),
+                                    ),
+                                    activeShape: CircleBorder(
+                                      side: BorderSide(color: Colors.black, width: 2.0),
+                                    ),
+                                    color: Colors.transparent, // делаем основной цвет прозрачным
+                                    activeColor: Colors.transparent,
+                                  ),
                                 ),
                               )
                             ],
