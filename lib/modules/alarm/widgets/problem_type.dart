@@ -23,6 +23,13 @@ class ProblemType extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
+      //color: isSelected ? Colors.white : fieldGrey,
+      decoration: BoxDecoration(
+        color: !isSelected ? Colors.white : fieldGrey,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(4),
+        ),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,

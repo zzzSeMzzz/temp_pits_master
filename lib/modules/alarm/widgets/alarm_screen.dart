@@ -21,19 +21,16 @@ showAlarmBottomSheet(BuildContext context) {
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
-        final bloc = AlarmBloc();
         return BlocProvider(
-          create: (context) => bloc,
-          child: AlarmScreen(bloc: bloc),
+          create: (context) => AlarmBloc(),
+          child: const AlarmScreen(),
         );
       }
   );
 }
 
 class AlarmScreen extends StatefulWidget {
-  const AlarmScreen({super.key, required this.bloc});
-
-  final AlarmBloc bloc;
+  const AlarmScreen({super.key});
 
   @override
   State<AlarmScreen> createState() => _AlarmScreenState();
@@ -51,10 +48,12 @@ class _AlarmScreenState extends State<AlarmScreen> {
   }
 
   final int _totalPages = 4;
+  late final AlarmBloc _bloc;
 
   @override
   void initState() {
     super.initState();
+    _bloc = context.read<AlarmBloc>();
     _scrollController.addListener(_onScroll);
   }
 
@@ -77,7 +76,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
       // Ограничиваем диапазон
       currentPage = currentPage.clamp(0, _totalPages - 1);
 
-      widget.bloc.add(AlarmEvent.setPage(currentPage));
+      _bloc.add(AlarmEvent.setPage(currentPage));
     }
   }
 
@@ -104,9 +103,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    return BlocConsumer<AlarmBloc, AlarmState>(
-        listener: (context, state) {},
+    return BlocBuilder<AlarmBloc, AlarmState>(
         builder: (context, state) {
           return SafeArea(
             child: Padding(
@@ -141,7 +138,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                             ),
                             const SizedBox(height: 10),
                             SizedBox(height: 120,
-                              child: _buildAlarms(_alarmProblems, widget.bloc, _scrollController),
+                              child: _buildAlarms(_alarmProblems, _bloc, _scrollController),
                             ),
                            //SizedBox(height: 100,)
                             Center(
@@ -188,7 +185,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                             const Spacer(),
                             SelectedBox(
                               onTap: () => {
-                                widget.bloc.add(const AlarmEvent.setStartEngine(true))
+                                _bloc.add(const AlarmEvent.setStartEngine(true))
                               },
                               isSelected: state.isStartEngine,
                               title: "Yes",
@@ -197,7 +194,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                             ),
                             SelectedBox(
                               onTap: () => {
-                                widget.bloc.add(const AlarmEvent.setStartEngine(false))
+                                _bloc.add(const AlarmEvent.setStartEngine(false))
                               },
                               isSelected: !state.isStartEngine,
                               title: "No",
@@ -227,7 +224,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                 minLines: 1,
                                 maxLines: 1,
                                 //focusNode: focusNode,
-                                autofocus: true,
+                                autofocus: false,
                                 decoration: const InputDecoration(
                                   hintText: 'Explain us more (optionale)',
                                 ),
