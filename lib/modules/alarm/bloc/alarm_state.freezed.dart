@@ -22,6 +22,7 @@ mixin _$AlarmState {
   String? get selectedAlarm => throw _privateConstructorUsedError;
   bool get isStartEngine => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
+  LatLng? get currentPosition => throw _privateConstructorUsedError;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.
@@ -43,6 +44,7 @@ abstract class $AlarmStateCopyWith<$Res> {
     String? selectedAlarm,
     bool isStartEngine,
     int currentPage,
+    LatLng? currentPosition,
   });
 }
 
@@ -66,6 +68,7 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
     Object? selectedAlarm = freezed,
     Object? isStartEngine = null,
     Object? currentPage = null,
+    Object? currentPosition = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -89,6 +92,10 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
                 ? _value.currentPage
                 : currentPage // ignore: cast_nullable_to_non_nullable
                       as int,
+            currentPosition: freezed == currentPosition
+                ? _value.currentPosition
+                : currentPosition // ignore: cast_nullable_to_non_nullable
+                      as LatLng?,
           )
           as $Val,
     );
@@ -110,6 +117,7 @@ abstract class _$$AlarmStateImplCopyWith<$Res>
     String? selectedAlarm,
     bool isStartEngine,
     int currentPage,
+    LatLng? currentPosition,
   });
 }
 
@@ -132,6 +140,7 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
     Object? selectedAlarm = freezed,
     Object? isStartEngine = null,
     Object? currentPage = null,
+    Object? currentPosition = freezed,
   }) {
     return _then(
       _$AlarmStateImpl(
@@ -155,6 +164,10 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
             ? _value.currentPage
             : currentPage // ignore: cast_nullable_to_non_nullable
                   as int,
+        currentPosition: freezed == currentPosition
+            ? _value.currentPosition
+            : currentPosition // ignore: cast_nullable_to_non_nullable
+                  as LatLng?,
       ),
     );
   }
@@ -169,6 +182,7 @@ class _$AlarmStateImpl implements _AlarmState {
     this.selectedAlarm,
     this.isStartEngine = true,
     this.currentPage = 0,
+    this.currentPosition,
   });
 
   @override
@@ -185,10 +199,12 @@ class _$AlarmStateImpl implements _AlarmState {
   @override
   @JsonKey()
   final int currentPage;
+  @override
+  final LatLng? currentPosition;
 
   @override
   String toString() {
-    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState, selectedAlarm: $selectedAlarm, isStartEngine: $isStartEngine, currentPage: $currentPage)';
+    return 'AlarmState(alarmModel: $alarmModel, responseState: $responseState, selectedAlarm: $selectedAlarm, isStartEngine: $isStartEngine, currentPage: $currentPage, currentPosition: $currentPosition)';
   }
 
   @override
@@ -205,7 +221,9 @@ class _$AlarmStateImpl implements _AlarmState {
             (identical(other.isStartEngine, isStartEngine) ||
                 other.isStartEngine == isStartEngine) &&
             (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage));
+                other.currentPage == currentPage) &&
+            (identical(other.currentPosition, currentPosition) ||
+                other.currentPosition == currentPosition));
   }
 
   @override
@@ -216,6 +234,7 @@ class _$AlarmStateImpl implements _AlarmState {
     selectedAlarm,
     isStartEngine,
     currentPage,
+    currentPosition,
   );
 
   /// Create a copy of AlarmState
@@ -234,6 +253,7 @@ abstract class _AlarmState implements AlarmState {
     final String? selectedAlarm,
     final bool isStartEngine,
     final int currentPage,
+    final LatLng? currentPosition,
   }) = _$AlarmStateImpl;
 
   @override
@@ -246,6 +266,8 @@ abstract class _AlarmState implements AlarmState {
   bool get isStartEngine;
   @override
   int get currentPage;
+  @override
+  LatLng? get currentPosition;
 
   /// Create a copy of AlarmState
   /// with the given fields replaced by the non-null parameter values.

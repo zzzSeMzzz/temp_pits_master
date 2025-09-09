@@ -10,6 +10,7 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
 
   final AlarmRepository _repository = AlarmRepository();
 
+
   AlarmBloc() : super(AlarmState()) {
     on<AlarmEvent>((event, emit) async {
       await event.map(
@@ -39,6 +40,9 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
         },
         setPage: (event) async {
           emit(state.copyWith(currentPage: event.pageIndex));
+        },
+        setCurrentPosition: (event) async {
+          emit(state.copyWith(currentPosition: event.position));
         },
       );
     });

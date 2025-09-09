@@ -1,9 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_bloc.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_event.dart';
+import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/alarm/widgets/problem_type.dart';
 import 'package:pits_app/modules/alarm/widgets/selected%20box.dart';
 
@@ -99,6 +102,57 @@ class _AlarmScreenState extends State<AlarmScreen> {
     "Otro " : AppIcons.icOtherRepair,
   };
 
+
+  void _showSnack(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          content: Text(
+            message,
+            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),
+          )),
+    );
+  }
+
+  Future<bool> _ensureLocationPermission() async {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      _showSnack('Location services are disabled');
+      return false;
+    }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        _showSnack('Location permission denied');
+        return false;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      _showSnack('Location permission permanently denied');
+      return false;
+    }
+
+    return true;
+  }
+
+  Future<Position?> _getCurrentPosition() async {
+    try {
+      final hasPermission = await _ensureLocationPermission();
+      if (!hasPermission) return null;
+      return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+    } catch (e) {
+      debugPrint('Error getting location: $e');
+      if (mounted) {
+        _showSnack('Failed to get location');
+      }
+      return null;
+    }
+  }
 
 
   @override
@@ -227,19 +281,50 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                 autofocus: false,
                                 decoration: const InputDecoration(
                                   hintText: 'Explain us more (optionale)',
+                                  hintStyle: TextStyle(color: Colors.black, fontSize: 16), // Set hint color to black
+                                  //border: OutlineInputBorder(), // Optional: Add a border
                                 ),
                               ),
                               const SizedBox(height: 12),
                               WButton(
                                 isLoading: false,//state.isLoading,
-                                height: 72,
+                                height: 64,
                                 textStyle: context.textTheme.displayLarge!.copyWith(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16,
                                   color: Colors.white
                                 ),
                                 svgAsset: AppIcons.icSend,
-                                onTap: () {},
+                                onTap: () async {
+                                  if(state.selectedAlarm==null) {
+                                    _showSnack("Select emergency");
+                                    return;
+                                  }
+                                  String formattedDateTime = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+                                  AlarmModel alarm;
+                                  if(state.currentPosition==null) {
+                                    final pos = await _getCurrentPosition();
+                                    if(pos==null) return;
+                                    alarm = AlarmModel(
+                                      carStart: state.isStartEngine,
+                                      emergency: state.selectedAlarm!,
+                                      notes: _controller.text,
+                                      timestamp: formattedDateTime,
+                                      lat: pos.latitude,
+                                      lon: pos.longitude,
+                                    );
+                                  } else {
+                                    alarm = AlarmModel(
+                                      carStart: state.isStartEngine,
+                                      emergency: state.selectedAlarm!,
+                                      notes: _controller.text,
+                                      timestamp: formattedDateTime,
+                                      lat: state.currentPosition!.latitude,
+                                      lon: state.currentPosition!.longitude,
+                                    );
+                                  }
+                                  _bloc.add(AlarmEvent.sendAlarm(alarm));
+                                },
                                 color: primaryColor,
                                 text: "Submit an emergency request",
                                 textColor: white,
