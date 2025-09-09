@@ -24,6 +24,8 @@ mixin _$AlarmEvent {
     required TResult Function(bool isStart) setStartEngine,
     required TResult Function(int pageIndex) setPage,
     required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -32,6 +34,8 @@ mixin _$AlarmEvent {
     TResult? Function(bool isStart)? setStartEngine,
     TResult? Function(int pageIndex)? setPage,
     TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -40,6 +44,8 @@ mixin _$AlarmEvent {
     TResult Function(bool isStart)? setStartEngine,
     TResult Function(int pageIndex)? setPage,
     TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +55,8 @@ mixin _$AlarmEvent {
     required TResult Function(_SetStartEngine value) setStartEngine,
     required TResult Function(_SetPage value) setPage,
     required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -57,6 +65,8 @@ mixin _$AlarmEvent {
     TResult? Function(_SetStartEngine value)? setStartEngine,
     TResult? Function(_SetPage value)? setPage,
     TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -65,6 +75,8 @@ mixin _$AlarmEvent {
     TResult Function(_SetStartEngine value)? setStartEngine,
     TResult Function(_SetPage value)? setPage,
     TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -166,6 +178,8 @@ class _$SendAlarmImpl implements _SendAlarm {
     required TResult Function(bool isStart) setStartEngine,
     required TResult Function(int pageIndex) setPage,
     required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
   }) {
     return sendAlarm(model);
   }
@@ -178,6 +192,8 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult? Function(bool isStart)? setStartEngine,
     TResult? Function(int pageIndex)? setPage,
     TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
   }) {
     return sendAlarm?.call(model);
   }
@@ -190,6 +206,8 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult Function(bool isStart)? setStartEngine,
     TResult Function(int pageIndex)? setPage,
     TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
     required TResult orElse(),
   }) {
     if (sendAlarm != null) {
@@ -206,6 +224,8 @@ class _$SendAlarmImpl implements _SendAlarm {
     required TResult Function(_SetStartEngine value) setStartEngine,
     required TResult Function(_SetPage value) setPage,
     required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return sendAlarm(this);
   }
@@ -218,6 +238,8 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult? Function(_SetStartEngine value)? setStartEngine,
     TResult? Function(_SetPage value)? setPage,
     TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return sendAlarm?.call(this);
   }
@@ -230,6 +252,8 @@ class _$SendAlarmImpl implements _SendAlarm {
     TResult Function(_SetStartEngine value)? setStartEngine,
     TResult Function(_SetPage value)? setPage,
     TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (sendAlarm != null) {
@@ -326,6 +350,8 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     required TResult Function(bool isStart) setStartEngine,
     required TResult Function(int pageIndex) setPage,
     required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
   }) {
     return selectAlarm(alarm);
   }
@@ -338,6 +364,8 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult? Function(bool isStart)? setStartEngine,
     TResult? Function(int pageIndex)? setPage,
     TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
   }) {
     return selectAlarm?.call(alarm);
   }
@@ -350,6 +378,8 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult Function(bool isStart)? setStartEngine,
     TResult Function(int pageIndex)? setPage,
     TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
     required TResult orElse(),
   }) {
     if (selectAlarm != null) {
@@ -366,6 +396,8 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     required TResult Function(_SetStartEngine value) setStartEngine,
     required TResult Function(_SetPage value) setPage,
     required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return selectAlarm(this);
   }
@@ -378,6 +410,8 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult? Function(_SetStartEngine value)? setStartEngine,
     TResult? Function(_SetPage value)? setPage,
     TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return selectAlarm?.call(this);
   }
@@ -390,6 +424,8 @@ class _$SelectAlarmImpl implements _SelectAlarm {
     TResult Function(_SetStartEngine value)? setStartEngine,
     TResult Function(_SetPage value)? setPage,
     TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (selectAlarm != null) {
@@ -489,6 +525,8 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     required TResult Function(bool isStart) setStartEngine,
     required TResult Function(int pageIndex) setPage,
     required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
   }) {
     return setStartEngine(isStart);
   }
@@ -501,6 +539,8 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult? Function(bool isStart)? setStartEngine,
     TResult? Function(int pageIndex)? setPage,
     TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
   }) {
     return setStartEngine?.call(isStart);
   }
@@ -513,6 +553,8 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult Function(bool isStart)? setStartEngine,
     TResult Function(int pageIndex)? setPage,
     TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
     required TResult orElse(),
   }) {
     if (setStartEngine != null) {
@@ -529,6 +571,8 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     required TResult Function(_SetStartEngine value) setStartEngine,
     required TResult Function(_SetPage value) setPage,
     required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return setStartEngine(this);
   }
@@ -541,6 +585,8 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult? Function(_SetStartEngine value)? setStartEngine,
     TResult? Function(_SetPage value)? setPage,
     TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return setStartEngine?.call(this);
   }
@@ -553,6 +599,8 @@ class _$SetStartEngineImpl implements _SetStartEngine {
     TResult Function(_SetStartEngine value)? setStartEngine,
     TResult Function(_SetPage value)? setPage,
     TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (setStartEngine != null) {
@@ -650,6 +698,8 @@ class _$SetPageImpl implements _SetPage {
     required TResult Function(bool isStart) setStartEngine,
     required TResult Function(int pageIndex) setPage,
     required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
   }) {
     return setPage(pageIndex);
   }
@@ -662,6 +712,8 @@ class _$SetPageImpl implements _SetPage {
     TResult? Function(bool isStart)? setStartEngine,
     TResult? Function(int pageIndex)? setPage,
     TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
   }) {
     return setPage?.call(pageIndex);
   }
@@ -674,6 +726,8 @@ class _$SetPageImpl implements _SetPage {
     TResult Function(bool isStart)? setStartEngine,
     TResult Function(int pageIndex)? setPage,
     TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
     required TResult orElse(),
   }) {
     if (setPage != null) {
@@ -690,6 +744,8 @@ class _$SetPageImpl implements _SetPage {
     required TResult Function(_SetStartEngine value) setStartEngine,
     required TResult Function(_SetPage value) setPage,
     required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return setPage(this);
   }
@@ -702,6 +758,8 @@ class _$SetPageImpl implements _SetPage {
     TResult? Function(_SetStartEngine value)? setStartEngine,
     TResult? Function(_SetPage value)? setPage,
     TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return setPage?.call(this);
   }
@@ -714,6 +772,8 @@ class _$SetPageImpl implements _SetPage {
     TResult Function(_SetStartEngine value)? setStartEngine,
     TResult Function(_SetPage value)? setPage,
     TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (setPage != null) {
@@ -814,6 +874,8 @@ class _$SetCurrentPositionImpl implements _SetCurrentPosition {
     required TResult Function(bool isStart) setStartEngine,
     required TResult Function(int pageIndex) setPage,
     required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
   }) {
     return setCurrentPosition(position);
   }
@@ -826,6 +888,8 @@ class _$SetCurrentPositionImpl implements _SetCurrentPosition {
     TResult? Function(bool isStart)? setStartEngine,
     TResult? Function(int pageIndex)? setPage,
     TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
   }) {
     return setCurrentPosition?.call(position);
   }
@@ -838,6 +902,8 @@ class _$SetCurrentPositionImpl implements _SetCurrentPosition {
     TResult Function(bool isStart)? setStartEngine,
     TResult Function(int pageIndex)? setPage,
     TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
     required TResult orElse(),
   }) {
     if (setCurrentPosition != null) {
@@ -854,6 +920,8 @@ class _$SetCurrentPositionImpl implements _SetCurrentPosition {
     required TResult Function(_SetStartEngine value) setStartEngine,
     required TResult Function(_SetPage value) setPage,
     required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return setCurrentPosition(this);
   }
@@ -866,6 +934,8 @@ class _$SetCurrentPositionImpl implements _SetCurrentPosition {
     TResult? Function(_SetStartEngine value)? setStartEngine,
     TResult? Function(_SetPage value)? setPage,
     TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return setCurrentPosition?.call(this);
   }
@@ -878,6 +948,8 @@ class _$SetCurrentPositionImpl implements _SetCurrentPosition {
     TResult Function(_SetStartEngine value)? setStartEngine,
     TResult Function(_SetPage value)? setPage,
     TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (setCurrentPosition != null) {
@@ -898,4 +970,278 @@ abstract class _SetCurrentPosition implements AlarmEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetCurrentPositionImplCopyWith<_$SetCurrentPositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetStateImplCopyWith<$Res> {
+  factory _$$ResetStateImplCopyWith(
+    _$ResetStateImpl value,
+    $Res Function(_$ResetStateImpl) then,
+  ) = __$$ResetStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetStateImplCopyWithImpl<$Res>
+    extends _$AlarmEventCopyWithImpl<$Res, _$ResetStateImpl>
+    implements _$$ResetStateImplCopyWith<$Res> {
+  __$$ResetStateImplCopyWithImpl(
+    _$ResetStateImpl _value,
+    $Res Function(_$ResetStateImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetStateImpl implements _ResetState {
+  const _$ResetStateImpl();
+
+  @override
+  String toString() {
+    return 'AlarmEvent.resetState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
+    required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
+  }) {
+    return resetState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
+    TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
+  }) {
+    return resetState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
+    TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
+    required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
+  }) {
+    return resetState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
+    TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
+  }) {
+    return resetState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
+    TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetState implements AlarmEvent {
+  const factory _ResetState() = _$ResetStateImpl;
+}
+
+/// @nodoc
+abstract class _$$SetLoadingImplCopyWith<$Res> {
+  factory _$$SetLoadingImplCopyWith(
+    _$SetLoadingImpl value,
+    $Res Function(_$SetLoadingImpl) then,
+  ) = __$$SetLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SetLoadingImplCopyWithImpl<$Res>
+    extends _$AlarmEventCopyWithImpl<$Res, _$SetLoadingImpl>
+    implements _$$SetLoadingImplCopyWith<$Res> {
+  __$$SetLoadingImplCopyWithImpl(
+    _$SetLoadingImpl _value,
+    $Res Function(_$SetLoadingImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SetLoadingImpl implements _SetLoading {
+  const _$SetLoadingImpl();
+
+  @override
+  String toString() {
+    return 'AlarmEvent.setLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SetLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AlarmModel model) sendAlarm,
+    required TResult Function(String alarm) selectAlarm,
+    required TResult Function(bool isStart) setStartEngine,
+    required TResult Function(int pageIndex) setPage,
+    required TResult Function(LatLng position) setCurrentPosition,
+    required TResult Function() resetState,
+    required TResult Function() setLoading,
+  }) {
+    return setLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AlarmModel model)? sendAlarm,
+    TResult? Function(String alarm)? selectAlarm,
+    TResult? Function(bool isStart)? setStartEngine,
+    TResult? Function(int pageIndex)? setPage,
+    TResult? Function(LatLng position)? setCurrentPosition,
+    TResult? Function()? resetState,
+    TResult? Function()? setLoading,
+  }) {
+    return setLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AlarmModel model)? sendAlarm,
+    TResult Function(String alarm)? selectAlarm,
+    TResult Function(bool isStart)? setStartEngine,
+    TResult Function(int pageIndex)? setPage,
+    TResult Function(LatLng position)? setCurrentPosition,
+    TResult Function()? resetState,
+    TResult Function()? setLoading,
+    required TResult orElse(),
+  }) {
+    if (setLoading != null) {
+      return setLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAlarm value) sendAlarm,
+    required TResult Function(_SelectAlarm value) selectAlarm,
+    required TResult Function(_SetStartEngine value) setStartEngine,
+    required TResult Function(_SetPage value) setPage,
+    required TResult Function(_SetCurrentPosition value) setCurrentPosition,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SetLoading value) setLoading,
+  }) {
+    return setLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAlarm value)? sendAlarm,
+    TResult? Function(_SelectAlarm value)? selectAlarm,
+    TResult? Function(_SetStartEngine value)? setStartEngine,
+    TResult? Function(_SetPage value)? setPage,
+    TResult? Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SetLoading value)? setLoading,
+  }) {
+    return setLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAlarm value)? sendAlarm,
+    TResult Function(_SelectAlarm value)? selectAlarm,
+    TResult Function(_SetStartEngine value)? setStartEngine,
+    TResult Function(_SetPage value)? setPage,
+    TResult Function(_SetCurrentPosition value)? setCurrentPosition,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SetLoading value)? setLoading,
+    required TResult orElse(),
+  }) {
+    if (setLoading != null) {
+      return setLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetLoading implements AlarmEvent {
+  const factory _SetLoading() = _$SetLoadingImpl;
 }

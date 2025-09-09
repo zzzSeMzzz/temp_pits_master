@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                       width: 96,
                       height: 96,
-                    ).onTap(() => showAlarmBottomSheet(context))
+                    ).onTap(() => showAlarmBottomSheet(context, null))
                   ],
                 ),
               )

@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:pits_app/core/data/network/api_response.dart';
 import 'package:pits_app/modules/alarm/data/repository/alarm_repository.dart';
 import '../../../../../../core/data/error/failures.dart';
 import 'alarm_event.dart';
 import 'alarm_state.dart';
-
-//part 'alarm_bloc.freezed.dart';
 
 class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
 
@@ -15,6 +14,7 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
     on<AlarmEvent>((event, emit) async {
       await event.map(
         sendAlarm: (event) async {
+          emit(state.copyWith(responseState: const Loading()));
           final result = await _repository.sendAlarm(event.model);
           result.fold(
             (failure) {
@@ -22,13 +22,10 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
                   failure.message.isNotEmpty
                   ? failure.message
                   : 'Unknown error';
-              /*emit(state.copyWith(
-                  isLoading: false, isSuccess: false, errorText: message));*/
+              emit(state.copyWith(responseState: Error(message)));
             },
             (model) {
-              /*emit(
-                  state.copyWith(
-                      isLoading: false, isSuccess: true, errorText: ''));*/
+              emit(state.copyWith(responseState: Success(model)));
             },
           );
         },
@@ -43,6 +40,12 @@ class AlarmBloc extends Bloc<AlarmEvent, AlarmState> {
         },
         setCurrentPosition: (event) async {
           emit(state.copyWith(currentPosition: event.position));
+        },
+        resetState: (event) async {
+          emit(state.copyWith(responseState: const Init()));
+        },
+        setLoading: (event) async {
+          emit(state.copyWith(responseState: const Loading()));
         },
       );
     });

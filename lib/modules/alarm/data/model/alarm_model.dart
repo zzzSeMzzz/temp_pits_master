@@ -30,4 +30,6 @@ class AlarmModel {
 
   factory AlarmModel.fromJson(Map<String, dynamic> json) =>
       _$AlarmModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AlarmModelToJson(this);
 }
