@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:pits_app/core/data/extensions.dart';
+import 'package:pits_app/core/data/model/base_response.dart';
 import 'package:pits_app/core/data/network/api_response.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_bloc.dart';
 import 'package:pits_app/modules/alarm/bloc/alarm_event.dart';
@@ -169,10 +170,12 @@ class _AlarmScreenState extends State<AlarmScreen> {
     return BlocConsumer<AlarmBloc, AlarmState>(
         listener: (context, state) {
           final rState = state.responseState;
-          if (rState is Success<dynamic>) {
+          if (rState is Success<BaseResponse>) {
+            final message = rState.data.message ?? "Emergency request sent successfully!";
             Navigator.of(context).pop();
-            _showSnack("Emergency request sent successfully!");
-          } else if (rState is Error<dynamic>) {
+            _showSnack(message);
+          } else if (rState is Error<BaseResponse>) {
+          } else if (rState is Error<BaseResponse>) {
             _showSnack(rState.errorMessage);
             _bloc.add(const AlarmEvent.resetState());
           }
@@ -307,7 +310,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                 ),
                                 const SizedBox(height: 12),
                                 WButton(
-                                  isLoading: state.responseState is Loading<dynamic>,
+                                  isLoading: state.responseState is Loading<BaseResponse>,
                                   height: 64,
                                   textStyle: context.textTheme.displayLarge!.copyWith(
                                       fontWeight: FontWeight.w600,

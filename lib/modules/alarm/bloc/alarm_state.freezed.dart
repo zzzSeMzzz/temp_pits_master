@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AlarmState {
   AlarmModel get alarmModel => throw _privateConstructorUsedError;
-  ApiResponse<dynamic> get responseState => throw _privateConstructorUsedError;
+  ApiResponse<BaseResponse> get responseState =>
+      throw _privateConstructorUsedError;
   String? get selectedAlarm => throw _privateConstructorUsedError;
   bool get isStartEngine => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
@@ -40,7 +41,7 @@ abstract class $AlarmStateCopyWith<$Res> {
   @useResult
   $Res call({
     AlarmModel alarmModel,
-    ApiResponse<dynamic> responseState,
+    ApiResponse<BaseResponse> responseState,
     String? selectedAlarm,
     bool isStartEngine,
     int currentPage,
@@ -79,7 +80,7 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
             responseState: null == responseState
                 ? _value.responseState
                 : responseState // ignore: cast_nullable_to_non_nullable
-                      as ApiResponse<dynamic>,
+                      as ApiResponse<BaseResponse>,
             selectedAlarm: freezed == selectedAlarm
                 ? _value.selectedAlarm
                 : selectedAlarm // ignore: cast_nullable_to_non_nullable
@@ -113,7 +114,7 @@ abstract class _$$AlarmStateImplCopyWith<$Res>
   @useResult
   $Res call({
     AlarmModel alarmModel,
-    ApiResponse<dynamic> responseState,
+    ApiResponse<BaseResponse> responseState,
     String? selectedAlarm,
     bool isStartEngine,
     int currentPage,
@@ -151,7 +152,7 @@ class __$$AlarmStateImplCopyWithImpl<$Res>
         responseState: null == responseState
             ? _value.responseState
             : responseState // ignore: cast_nullable_to_non_nullable
-                  as ApiResponse<dynamic>,
+                  as ApiResponse<BaseResponse>,
         selectedAlarm: freezed == selectedAlarm
             ? _value.selectedAlarm
             : selectedAlarm // ignore: cast_nullable_to_non_nullable
@@ -190,7 +191,7 @@ class _$AlarmStateImpl implements _AlarmState {
   final AlarmModel alarmModel;
   @override
   @JsonKey()
-  final ApiResponse<dynamic> responseState;
+  final ApiResponse<BaseResponse> responseState;
   @override
   final String? selectedAlarm;
   @override
@@ -249,7 +250,7 @@ class _$AlarmStateImpl implements _AlarmState {
 abstract class _AlarmState implements AlarmState {
   factory _AlarmState({
     final AlarmModel alarmModel,
-    final ApiResponse<dynamic> responseState,
+    final ApiResponse<BaseResponse> responseState,
     final String? selectedAlarm,
     final bool isStartEngine,
     final int currentPage,
@@ -259,7 +260,7 @@ abstract class _AlarmState implements AlarmState {
   @override
   AlarmModel get alarmModel;
   @override
-  ApiResponse<dynamic> get responseState;
+  ApiResponse<BaseResponse> get responseState;
   @override
   String? get selectedAlarm;
   @override
