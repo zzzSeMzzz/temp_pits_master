@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pits_app/modules/alarm/bloc/alarm_event.dart';
 import '../data/model/photo_model.dart';
 import 'add_car_event.dart';
 import 'add_car_state.dart';
