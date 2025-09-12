@@ -5,8 +5,6 @@ import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/globals/widgets/interaction/w_textfield.dart';
-import 'package:pits_app/modules/navigation/presentation/home.dart';
-import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 
 class AddCarScreen extends StatefulWidget {
   final bool isBackButton;
@@ -19,37 +17,7 @@ class AddCarScreen extends StatefulWidget {
 }
 
 class _AddCarScreenState extends State<AddCarScreen> {
-  // void scanWithAnyline() async {
- /* Future<void> _read() async {
-    List<OcrText> texts = [];
-    Size _scanpreviewOcr =  FlutterMobileVision.PREVIEW;
-    try {
-      texts = await FlutterMobileVision.read(
-        flash: false,
-        autoFocus: true,
-        multiple: true,
-        waitTap: true,
-        //OPTIONAL: close camera after tap, even if there are no detection.
-        //Camera would usually stay on, until there is a valid detection
-        forceCloseCameraOnTap: true,
-        //OPTIONAL: path to save image to. leave empty if you do not want to save the image
-        imagePath: '', //'path/to/file.jpg'
-        showText: true,
-        preview:  FlutterMobileVision.PREVIEW,
-        scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
-        camera:  FlutterMobileVision.CAMERA_FRONT,
-        fps: 20,
-      );
-    } on Exception {
-      texts.add(OcrText('Failed to recognize text.'));
-    }
 
-    if (!mounted) return;
-
-
-  }*/
-
-  _read() {}
 
 
   @override
@@ -117,9 +85,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   height: 56,
                   borderColor: textGrey,
                   borderRadius: 16,
-                  onTapSuffix: () {
-                    _read();
-                  },
+                  onTapSuffix: () {},
                   suffixIcon: AppIcons.icScan2,
                   onChanged: (text) {}),
             ),
