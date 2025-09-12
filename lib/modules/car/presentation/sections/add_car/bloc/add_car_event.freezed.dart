@@ -20,21 +20,21 @@ mixin _$AddCarEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ImageSource source) photoPickerRequested,
-    required TResult Function(PickerType pickerType) onPhotoSelected,
+    required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ImageSource source)? photoPickerRequested,
-    TResult? Function(PickerType pickerType)? onPhotoSelected,
+    TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ImageSource source)? photoPickerRequested,
-    TResult Function(PickerType pickerType)? onPhotoSelected,
+    TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     required TResult orElse(),
@@ -160,7 +160,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ImageSource source) photoPickerRequested,
-    required TResult Function(PickerType pickerType) onPhotoSelected,
+    required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
   }) {
@@ -171,7 +171,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ImageSource source)? photoPickerRequested,
-    TResult? Function(PickerType pickerType)? onPhotoSelected,
+    TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
   }) {
@@ -182,7 +182,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ImageSource source)? photoPickerRequested,
-    TResult Function(PickerType pickerType)? onPhotoSelected,
+    TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     required TResult orElse(),
@@ -251,7 +251,7 @@ abstract class _$$OnPhotoSelectedImplCopyWith<$Res> {
     $Res Function(_$OnPhotoSelectedImpl) then,
   ) = __$$OnPhotoSelectedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PickerType pickerType});
+  $Res call({ImageSource source});
 }
 
 /// @nodoc
@@ -267,13 +267,13 @@ class __$$OnPhotoSelectedImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? pickerType = null}) {
+  $Res call({Object? source = null}) {
     return _then(
       _$OnPhotoSelectedImpl(
-        null == pickerType
-            ? _value.pickerType
-            : pickerType // ignore: cast_nullable_to_non_nullable
-                  as PickerType,
+        null == source
+            ? _value.source
+            : source // ignore: cast_nullable_to_non_nullable
+                  as ImageSource,
       ),
     );
   }
@@ -282,14 +282,14 @@ class __$$OnPhotoSelectedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
-  const _$OnPhotoSelectedImpl(this.pickerType);
+  const _$OnPhotoSelectedImpl(this.source);
 
   @override
-  final PickerType pickerType;
+  final ImageSource source;
 
   @override
   String toString() {
-    return 'AddCarEvent.onPhotoSelected(pickerType: $pickerType)';
+    return 'AddCarEvent.onPhotoSelected(source: $source)';
   }
 
   @override
@@ -297,12 +297,11 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnPhotoSelectedImpl &&
-            (identical(other.pickerType, pickerType) ||
-                other.pickerType == pickerType));
+            (identical(other.source, source) || other.source == source));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pickerType);
+  int get hashCode => Object.hash(runtimeType, source);
 
   /// Create a copy of AddCarEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -319,35 +318,35 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ImageSource source) photoPickerRequested,
-    required TResult Function(PickerType pickerType) onPhotoSelected,
+    required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
   }) {
-    return onPhotoSelected(pickerType);
+    return onPhotoSelected(source);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ImageSource source)? photoPickerRequested,
-    TResult? Function(PickerType pickerType)? onPhotoSelected,
+    TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
   }) {
-    return onPhotoSelected?.call(pickerType);
+    return onPhotoSelected?.call(source);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ImageSource source)? photoPickerRequested,
-    TResult Function(PickerType pickerType)? onPhotoSelected,
+    TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
-      return onPhotoSelected(pickerType);
+      return onPhotoSelected(source);
     }
     return orElse();
   }
@@ -391,10 +390,10 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
 }
 
 abstract class _OnPhotoSelected implements AddCarEvent {
-  const factory _OnPhotoSelected(final PickerType pickerType) =
+  const factory _OnPhotoSelected(final ImageSource source) =
       _$OnPhotoSelectedImpl;
 
-  PickerType get pickerType;
+  ImageSource get source;
 
   /// Create a copy of AddCarEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -448,7 +447,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ImageSource source) photoPickerRequested,
-    required TResult Function(PickerType pickerType) onPhotoSelected,
+    required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
   }) {
@@ -459,7 +458,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ImageSource source)? photoPickerRequested,
-    TResult? Function(PickerType pickerType)? onPhotoSelected,
+    TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
   }) {
@@ -470,7 +469,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ImageSource source)? photoPickerRequested,
-    TResult Function(PickerType pickerType)? onPhotoSelected,
+    TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     required TResult orElse(),
@@ -567,7 +566,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ImageSource source) photoPickerRequested,
-    required TResult Function(PickerType pickerType) onPhotoSelected,
+    required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
   }) {
@@ -578,7 +577,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ImageSource source)? photoPickerRequested,
-    TResult? Function(PickerType pickerType)? onPhotoSelected,
+    TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
   }) {
@@ -589,7 +588,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ImageSource source)? photoPickerRequested,
-    TResult Function(PickerType pickerType)? onPhotoSelected,
+    TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     required TResult orElse(),
