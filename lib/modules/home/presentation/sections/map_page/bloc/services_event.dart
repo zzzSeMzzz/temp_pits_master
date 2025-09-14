@@ -12,7 +12,7 @@ class ServicesEvent with _$ServicesEvent {
   const factory ServicesEvent.setMyLocation(
       LatLng? latLng, GoogleMapController mapController) = _SetMyLocation;
 
-  const factory ServicesEvent.showModal(int serviceId) = _ShowModal;
+  const factory ServicesEvent.showModal(int serviceId, LatLng position) = _ShowModal;
 
   const factory ServicesEvent.mapMoved(LatLngBounds visibleRegion) = _MapMoved;
 

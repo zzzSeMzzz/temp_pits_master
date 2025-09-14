@@ -15,5 +15,6 @@ class ServicesState with _$ServicesState {
     @Default(false) bool loadCarServices,//отдельный прогресс на загрузку сервисов по критериям
     @Default(false) bool showModal,
     int? selectedServiceId,
+    LatLng? selectedServicePosition,
 })=_ServicesState;
 }

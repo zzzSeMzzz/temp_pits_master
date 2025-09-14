@@ -28,7 +28,7 @@ mixin _$ServicesEvent {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
@@ -40,7 +40,7 @@ mixin _$ServicesEvent {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ mixin _$ServicesEvent {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
@@ -225,7 +225,7 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
@@ -241,7 +241,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) {
@@ -256,7 +256,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
@@ -383,7 +383,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
@@ -399,7 +399,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) {
@@ -414,7 +414,7 @@ class _$GetServiceCategoriesImpl implements _GetServiceCategories {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
@@ -561,7 +561,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
@@ -577,7 +577,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) {
@@ -592,7 +592,7 @@ class _$SetMyLocationImpl implements _SetMyLocation {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
@@ -671,7 +671,7 @@ abstract class _$$ShowModalImplCopyWith<$Res> {
     $Res Function(_$ShowModalImpl) then,
   ) = __$$ShowModalImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int serviceId});
+  $Res call({int serviceId, LatLng position});
 }
 
 /// @nodoc
@@ -687,13 +687,17 @@ class __$$ShowModalImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? serviceId = null}) {
+  $Res call({Object? serviceId = null, Object? position = null}) {
     return _then(
       _$ShowModalImpl(
         null == serviceId
             ? _value.serviceId
             : serviceId // ignore: cast_nullable_to_non_nullable
                   as int,
+        null == position
+            ? _value.position
+            : position // ignore: cast_nullable_to_non_nullable
+                  as LatLng,
       ),
     );
   }
@@ -702,14 +706,16 @@ class __$$ShowModalImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShowModalImpl implements _ShowModal {
-  const _$ShowModalImpl(this.serviceId);
+  const _$ShowModalImpl(this.serviceId, this.position);
 
   @override
   final int serviceId;
+  @override
+  final LatLng position;
 
   @override
   String toString() {
-    return 'ServicesEvent.showModal(serviceId: $serviceId)';
+    return 'ServicesEvent.showModal(serviceId: $serviceId, position: $position)';
   }
 
   @override
@@ -718,11 +724,13 @@ class _$ShowModalImpl implements _ShowModal {
         (other.runtimeType == runtimeType &&
             other is _$ShowModalImpl &&
             (identical(other.serviceId, serviceId) ||
-                other.serviceId == serviceId));
+                other.serviceId == serviceId) &&
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, serviceId);
+  int get hashCode => Object.hash(runtimeType, serviceId, position);
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -744,12 +752,12 @@ class _$ShowModalImpl implements _ShowModal {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
   }) {
-    return showModal(serviceId);
+    return showModal(serviceId, position);
   }
 
   @override
@@ -760,11 +768,11 @@ class _$ShowModalImpl implements _ShowModal {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) {
-    return showModal?.call(serviceId);
+    return showModal?.call(serviceId, position);
   }
 
   @override
@@ -775,13 +783,13 @@ class _$ShowModalImpl implements _ShowModal {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
   }) {
     if (showModal != null) {
-      return showModal(serviceId);
+      return showModal(serviceId, position);
     }
     return orElse();
   }
@@ -832,9 +840,11 @@ class _$ShowModalImpl implements _ShowModal {
 }
 
 abstract class _ShowModal implements ServicesEvent {
-  const factory _ShowModal(final int serviceId) = _$ShowModalImpl;
+  const factory _ShowModal(final int serviceId, final LatLng position) =
+      _$ShowModalImpl;
 
   int get serviceId;
+  LatLng get position;
 
   /// Create a copy of ServicesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -923,7 +933,7 @@ class _$MapMovedImpl implements _MapMoved {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
@@ -939,7 +949,7 @@ class _$MapMovedImpl implements _MapMoved {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) {
@@ -954,7 +964,7 @@ class _$MapMovedImpl implements _MapMoved {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
@@ -1112,7 +1122,7 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
     required TResult Function() getServiceCategories,
     required TResult Function(LatLng? latLng, GoogleMapController mapController)
     setMyLocation,
-    required TResult Function(int serviceId) showModal,
+    required TResult Function(int serviceId, LatLng position) showModal,
     required TResult Function(LatLngBounds visibleRegion) mapMoved,
     required TResult Function(Set<ServiceModel> services)
     updateSelectedServices,
@@ -1128,7 +1138,7 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
     TResult? Function()? getServiceCategories,
     TResult? Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult? Function(int serviceId)? showModal,
+    TResult? Function(int serviceId, LatLng position)? showModal,
     TResult? Function(LatLngBounds visibleRegion)? mapMoved,
     TResult? Function(Set<ServiceModel> services)? updateSelectedServices,
   }) {
@@ -1143,7 +1153,7 @@ class _$UpdateSelectedServicesImpl implements _UpdateSelectedServices {
     TResult Function()? getServiceCategories,
     TResult Function(LatLng? latLng, GoogleMapController mapController)?
     setMyLocation,
-    TResult Function(int serviceId)? showModal,
+    TResult Function(int serviceId, LatLng position)? showModal,
     TResult Function(LatLngBounds visibleRegion)? mapMoved,
     TResult Function(Set<ServiceModel> services)? updateSelectedServices,
     required TResult orElse(),
@@ -1230,6 +1240,7 @@ mixin _$ServicesState {
       throw _privateConstructorUsedError; //отдельный прогресс на загрузку сервисов по критериям
   bool get showModal => throw _privateConstructorUsedError;
   int? get selectedServiceId => throw _privateConstructorUsedError;
+  LatLng? get selectedServicePosition => throw _privateConstructorUsedError;
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -1258,6 +1269,7 @@ abstract class $ServicesStateCopyWith<$Res> {
     bool loadCarServices,
     bool showModal,
     int? selectedServiceId,
+    LatLng? selectedServicePosition,
   });
 }
 
@@ -1288,6 +1300,7 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
     Object? loadCarServices = null,
     Object? showModal = null,
     Object? selectedServiceId = freezed,
+    Object? selectedServicePosition = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -1339,6 +1352,10 @@ class _$ServicesStateCopyWithImpl<$Res, $Val extends ServicesState>
                 ? _value.selectedServiceId
                 : selectedServiceId // ignore: cast_nullable_to_non_nullable
                       as int?,
+            selectedServicePosition: freezed == selectedServicePosition
+                ? _value.selectedServicePosition
+                : selectedServicePosition // ignore: cast_nullable_to_non_nullable
+                      as LatLng?,
           )
           as $Val,
     );
@@ -1367,6 +1384,7 @@ abstract class _$$ServicesStateImplCopyWith<$Res>
     bool loadCarServices,
     bool showModal,
     int? selectedServiceId,
+    LatLng? selectedServicePosition,
   });
 }
 
@@ -1396,6 +1414,7 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
     Object? loadCarServices = null,
     Object? showModal = null,
     Object? selectedServiceId = freezed,
+    Object? selectedServicePosition = freezed,
   }) {
     return _then(
       _$ServicesStateImpl(
@@ -1447,6 +1466,10 @@ class __$$ServicesStateImplCopyWithImpl<$Res>
             ? _value.selectedServiceId
             : selectedServiceId // ignore: cast_nullable_to_non_nullable
                   as int?,
+        selectedServicePosition: freezed == selectedServicePosition
+            ? _value.selectedServicePosition
+            : selectedServicePosition // ignore: cast_nullable_to_non_nullable
+                  as LatLng?,
       ),
     );
   }
@@ -1468,6 +1491,7 @@ class _$ServicesStateImpl implements _ServicesState {
     this.loadCarServices = false,
     this.showModal = false,
     this.selectedServiceId,
+    this.selectedServicePosition,
   }) : _serviceCategories = serviceCategories,
        _selectedServices = selectedServices,
        _allServices = allServices,
@@ -1535,10 +1559,12 @@ class _$ServicesStateImpl implements _ServicesState {
   final bool showModal;
   @override
   final int? selectedServiceId;
+  @override
+  final LatLng? selectedServicePosition;
 
   @override
   String toString() {
-    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, allServices: $allServices, markers: $markers, visibleRegion: $visibleRegion, status: $status, loadCarServices: $loadCarServices, showModal: $showModal, selectedServiceId: $selectedServiceId)';
+    return 'ServicesState(serviceCategories: $serviceCategories, currentCatId: $currentCatId, currentLocation: $currentLocation, currentRegion: $currentRegion, selectedServices: $selectedServices, allServices: $allServices, markers: $markers, visibleRegion: $visibleRegion, status: $status, loadCarServices: $loadCarServices, showModal: $showModal, selectedServiceId: $selectedServiceId, selectedServicePosition: $selectedServicePosition)';
   }
 
   @override
@@ -1573,7 +1599,12 @@ class _$ServicesStateImpl implements _ServicesState {
             (identical(other.showModal, showModal) ||
                 other.showModal == showModal) &&
             (identical(other.selectedServiceId, selectedServiceId) ||
-                other.selectedServiceId == selectedServiceId));
+                other.selectedServiceId == selectedServiceId) &&
+            (identical(
+                  other.selectedServicePosition,
+                  selectedServicePosition,
+                ) ||
+                other.selectedServicePosition == selectedServicePosition));
   }
 
   @override
@@ -1591,6 +1622,7 @@ class _$ServicesStateImpl implements _ServicesState {
     loadCarServices,
     showModal,
     selectedServiceId,
+    selectedServicePosition,
   );
 
   /// Create a copy of ServicesState
@@ -1616,6 +1648,7 @@ abstract class _ServicesState implements ServicesState {
     final bool loadCarServices,
     final bool showModal,
     final int? selectedServiceId,
+    final LatLng? selectedServicePosition,
   }) = _$ServicesStateImpl;
 
   @override
@@ -1642,6 +1675,8 @@ abstract class _ServicesState implements ServicesState {
   bool get showModal;
   @override
   int? get selectedServiceId;
+  @override
+  LatLng? get selectedServicePosition;
 
   /// Create a copy of ServicesState
   /// with the given fields replaced by the non-null parameter values.

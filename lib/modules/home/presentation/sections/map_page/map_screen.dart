@@ -23,6 +23,7 @@ import '../../../../../assets/constants/app_icons.dart';
 import '../../../../../assets/constants/app_images.dart';
 import '../../../domain/usecase/get_single_service.dart';
 import 'bloc/single/service_single_bloc.dart';
+import 'part/info_window.dart';
 
 // ВАЖНО: Оборачивайте MapScreen в MultiBlocProvider снаружи!
 class MapScreen extends StatefulWidget {
@@ -81,6 +82,43 @@ class _MapScreenState extends State<MapScreen> {
         const ImageConfiguration(), AppImages.wrenchLocation);
   }*/
 
+  OverlayEntry? _infoWindowOverlay;
+
+  void _hideInfoWindow() {
+    if (_infoWindowOverlay != null) {
+      _infoWindowOverlay!.remove();
+      _infoWindowOverlay = null;
+    }
+  }
+
+  void _showInfoWindow(LatLng? point, ServiceSingleBloc bloc) {
+    debugPrint("_showInfoWindow: point=$point");
+    // Скрываем предыдущее окно
+    _hideInfoWindow();
+    if(point==null) return;
+    // Получаем позицию для отображения
+    _mapController.getScreenCoordinate(point).then((screenPosition) {
+      debugPrint("_showInfoWindow: x=${screenPosition.x} y=${screenPosition.y}");
+      setState(() {
+        // Создаем overlay
+        _infoWindowOverlay = OverlayEntry(
+          builder: (context) => Positioned(
+            left: screenPosition.x.toDouble() - 150, // Центрируем
+            top: screenPosition.y.toDouble() - 200,  // Смещаем выше маркера
+            child: Material(
+              elevation: 8,
+              borderRadius: BorderRadius.circular(10),
+              child: ServiceInfoWindow(serviceSingleBloc: bloc)
+            ),
+          ),
+        );
+
+        // Добавляем overlay
+        Overlay.of(context).insert(_infoWindowOverlay!);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
@@ -94,7 +132,8 @@ class _MapScreenState extends State<MapScreen> {
             debugPrint(
                 "try show modal with service id = ${state.selectedServiceId}");
             if (state.selectedServiceId != null) {
-              showInfoBottomSheet(context, serviceSingleBloc);
+              //showInfoBottomSheet(context, serviceSingleBloc);
+              _showInfoWindow(state.selectedServicePosition, serviceSingleBloc);
               serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
                   id: state.selectedServiceId.toString()));
             }

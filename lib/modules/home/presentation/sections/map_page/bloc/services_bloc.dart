@@ -29,7 +29,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<_SetMyLocation>(_onSetMyLocation);
     on<_MapMoved>(_onMapMoved);
     on<_ShowModal>((event, emit) {
-      emit(state.copyWith(showModal: true, selectedServiceId: event.serviceId));
+      emit(state.copyWith(showModal: true, selectedServiceId: event.serviceId, selectedServicePosition: event.position));
     });
     on<_UpdateSelectedServices>((event, emit) {
       emit(state.copyWith(selectedServices: event.services));
@@ -272,7 +272,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
         }
 
         return service.toMarker(icon, () {
-          add(ServicesEvent.showModal(service.id));
+          add(ServicesEvent.showModal(service.id, service.location));
         });
       }));
 
