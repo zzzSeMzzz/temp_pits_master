@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pits_app/assets/constants/app_images.dart';
-import '../../../../../../assets/colors/colors.dart';
+import 'package:pits_app/assets/colors/colors.dart';
 import '../../../../../../assets/constants/app_icons.dart';
 import '../../../../../../utils/action_status.dart';
 import '../bloc/single/service_single_bloc.dart';
@@ -36,7 +35,7 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
               if (state.actionStatus == ActionStatus.inProcess ||
                   state.actionStatus == ActionStatus.pure) {
                 return Container(
-                  color: Colors.white,
+
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -47,7 +46,6 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                 );
               } else if (state.actionStatus == ActionStatus.isFailure) {
                 return Container(
-                  color: Colors.white,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -59,7 +57,7 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
               } else {
                 return Container(
                   decoration: BoxDecoration(
-                    color: Colors.blueGrey[200],
+                    color: primaryColor,
                     // Background color if image is transparent or not covering fully
                     borderRadius: BorderRadius.circular(10),
                     // Optional: rounded corners
@@ -118,7 +116,9 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                                     fontWeight: FontWeight.w700,
                                     fontSize: 18,
                                     color: const Color(0XFF04FF00)
-                                )
+                                ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             )
                           ],
                         ),
