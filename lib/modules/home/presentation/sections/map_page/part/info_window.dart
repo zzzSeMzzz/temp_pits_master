@@ -37,6 +37,10 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                   state.actionStatus == ActionStatus.pure) {
                 return Container(
                   color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: const Center(
                     child: CupertinoActivityIndicator(),
                   ),
@@ -44,6 +48,10 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
               } else if (state.actionStatus == ActionStatus.isFailure) {
                 return Container(
                   color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: const Center(
                     child: Text("Failed load service information"),
                   ),
