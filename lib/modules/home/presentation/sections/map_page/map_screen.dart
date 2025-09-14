@@ -91,14 +91,34 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
+  Future<void> moveCameraWithXOffset(LatLng targetPoint, double xOffsetPixels) async {
+
+    // 1. Get the screen coordinate of the target point
+    ScreenCoordinate screenCoordinate = await _mapController.getScreenCoordinate(targetPoint);
+
+    // 2. Apply the X-offset to the screen coordinate
+    ScreenCoordinate newScreenCoordinate = ScreenCoordinate(
+      x: screenCoordinate.x + xOffsetPixels.toInt(),
+      y: screenCoordinate.y, // Y-coordinate remains the same
+    );
+
+    // 3. Convert the new screen coordinate back to LatLng
+    LatLng newTargetLatLng = await _mapController.getLatLng(newScreenCoordinate);
+
+    // 4. Move the camera to the new target LatLng
+    _mapController.animateCamera(CameraUpdate.newLatLng(newTargetLatLng), duration: const Duration(milliseconds: 300));
+  }
+
   void _showInfoWindow(LatLng? point, ServiceSingleBloc bloc) {
     debugPrint("_showInfoWindow: point=$point");
-
     // Проверяем, что карта инициализирована и точка не null
     if (point == null) {
       debugPrint("Map controller not ready or point is null");
       return;
     }
+
+    moveCameraWithXOffset(point, 180);
+
 
     // Скрываем предыдущее окно
     _hideInfoWindow();
@@ -109,21 +129,34 @@ class _MapScreenState extends State<MapScreen> {
 
       if (!mounted) return;
 
-      // Получаем размеры экрана
+      // Получаем размеры экрана и учитываем padding
       final mediaQuery = MediaQuery.of(context);
       final screenWidth = mediaQuery.size.width;
       final screenHeight = mediaQuery.size.height;
+      final paddingTop = mediaQuery.padding.top;
+      final paddingBottom = mediaQuery.padding.bottom;
 
-      // Рассчитываем позицию с учетом центра окна
 
+      // Позиционируем окно над маркером
       double left = screenPosition.x.toDouble() - (ServiceInfoWindow.infoWidth / 2);
-      double top = screenPosition.y.toDouble() - ServiceInfoWindow.infoHeight - 20; // Смещаем выше маркера
+      //double top = screenPosition.y.toDouble() - windowHeight - 40; // Отступ сверху
+      double top = screenPosition.y - ServiceInfoWindow.infoHeight - 40;
+      debugPrint("_showInfoWindow: top=$top left=$left");
 
-      // Ограничиваем позицию в пределах экрана
-      left = left.clamp(0, screenWidth - ServiceInfoWindow.infoWidth);
-      top = top.clamp(0, screenHeight - ServiceInfoWindow.infoHeight);
+      // Корректируем позицию, если окно выходит за границы экрана
+      if (left < 0) {
+        left = 8; // Минимальный отступ от левого края
+      } else if (left + ServiceInfoWindow.infoWidth > screenWidth) {
+        left = screenWidth - ServiceInfoWindow.infoWidth - 8; // Минимальный отступ от правого края
+      }
 
-      // Проверяем, что виджет все еще mounted
+      if (top < paddingTop) {
+        // Если не помещается сверху, показываем снизу от маркера
+        top = screenPosition.y.toDouble() + 40;
+      } else if (top + ServiceInfoWindow.infoHeight > screenHeight - paddingBottom) {
+        // Если не помещается снизу, показываем сверху с максимальным отступом
+        top = paddingTop + 8;
+      }
 
 
       setState(() {
@@ -131,7 +164,7 @@ class _MapScreenState extends State<MapScreen> {
         _infoWindowOverlay = OverlayEntry(
           builder: (context) => Positioned(
             left: left,
-            top: top,
+            top: 300,
             child: Material(
               elevation: 8,
               borderRadius: BorderRadius.circular(10),
