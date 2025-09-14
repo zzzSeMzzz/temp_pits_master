@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
+import '../../../../../../assets/colors/colors.dart';
+import '../../../../../../assets/constants/app_icons.dart';
 import '../../../../../../utils/action_status.dart';
 import '../bloc/single/service_single_bloc.dart';
+import '../widgets/info_row.dart';
 
 
 
@@ -58,10 +62,76 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      Text("data")
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              state.serviceSingle.priceRange,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayLarge!
+                                  .copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontSize: 18
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  WidgetSpan(
+                                    child: SvgPicture.asset(
+                                      AppIcons.star,
+                                      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                      width: 20,
+                                      height: 20,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                      text: " ${state.serviceSingle.rating.toString()}",
+                                      style: Theme.of(context).textTheme
+                                          .displayLarge!.copyWith(
+                                          color: Colors.white,
+                                          fontSize: 18
+                                      )
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const Spacer(),
+                            Text(state.serviceSingle.name,
+                                style: Theme.of(context).textTheme
+                                    .labelLarge!.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18,
+                                    color: const Color(0XFF04FF00)
+                                )
+                            )
+                          ],
+                        ),
+//                        const Spacer(),
+                      const Spacer(),
+                        Text("А тут что написать?",
+                          style: Theme.of(context).textTheme
+                              .displayLarge!.copyWith(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              color: Colors.white)),
+                        InfoRow(
+                          title: state.serviceSingle.phone,
+                          icon: AppIcons.phone,
+                        ),
+                        InfoRow(
+                          title: state.serviceSingle.address,
+                          icon: AppIcons.place,
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }

@@ -17,7 +17,7 @@ class InfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
+        margin: const EdgeInsets.symmetric(vertical: 4),
         child: Row(
           children: [
             if (iconBoxColor != null)
@@ -32,6 +32,7 @@ class InfoRow extends StatelessWidget {
                 icon,
                 width: 24,
                 height: 24,
+                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
               ),
             const SizedBox(
               width: 10,
@@ -42,7 +43,8 @@ class InfoRow extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontWeight: FontWeight.w700, fontSize: 13),
+                    .copyWith(fontWeight: FontWeight.w700, fontSize: 12, color: Colors.white),
+                softWrap: true,
               ),
             ),
 
