@@ -62,7 +62,7 @@ dependencies:
   intl: ^0.18.0
   image_picker: ^1.2.0
   permission_handler: ^12.0.1
-
+  jumping_dot: ^0.0.7
   #flutter_mobile_vision_2: ^0.1.15 #зменить бибилотек на другую
 
 

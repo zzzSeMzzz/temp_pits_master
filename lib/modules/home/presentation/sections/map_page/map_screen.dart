@@ -8,12 +8,12 @@ import 'package:flutter_svg/svg.dart';
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
     as cluster_manager;*/
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jumping_dot/jumping_dot.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/alarm/widgets/alarm_screen.dart';
 import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
-import 'package:pits_app/modules/home/presentation/sections/map_page/part/info_bottomsheet.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/part/type_selector.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/widgets/services_dropdown.dart';
 import 'package:pits_app/utils/action_status.dart';
@@ -262,9 +262,9 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
               Positioned(
-                left: 16,
+                left: 66,
                 right: 16,
-                top: 54 + MediaQuery.of(context).padding.top,
+                top: 0 + MediaQuery.of(context).padding.top,
                 child: ServicesDropdown(
                   allServices: state.allServices,
                   selectedServices: state.selectedServices,
@@ -314,34 +314,42 @@ class _MapScreenState extends State<MapScreen> {
               Positioned(
                 left: 24,
                 right: 24,
-                bottom: 64 + MediaQuery.of(context).padding.bottom,
+                top: 64 + MediaQuery.of(context).padding.top,
                 child: state.loadCarServices
-                    ? Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.5),
-                            borderRadius: BorderRadius.circular(4)),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 4),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Loading services...',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge!
-                                  .copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16),
-                            ),
-                            const Spacer(),
-                            Transform.scale(
-                              scale: 0.5,
-                              child: const CircularProgressIndicator(),
-                            )
-                          ],
-                        ),
-                      )
-                    : const SizedBox(),
+                    ? Center(
+                      child: Container(
+                          width: 76,
+                          height: 46,
+                          decoration: BoxDecoration(
+                              color: Colors.white,//.withValues(alpha: 0.5),
+                              borderRadius: BorderRadius.circular(12)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 4),
+                          child: /*Row(
+                            children: [
+                              Text(
+                                'Loading services...',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16),
+                              ),
+                              const Spacer(),
+                              Transform.scale(
+                                scale: 0.5,
+                                child: const CircularProgressIndicator(),
+                              )
+                            ],
+                          ),*/
+                          JumpingDots(
+                            color: Colors.black,
+                            radius: 9,
+                            numberOfDots: 3,
+                          )
+                    )
+              ) : const SizedBox(),
               ),
               // Overlay: Фильтр/категории
               Positioned(
