@@ -21,6 +21,7 @@ import 'package:pits_app/utils/functions.dart';
 
 import '../../../../../assets/constants/app_icons.dart';
 import '../../../../../assets/constants/app_images.dart';
+import '../../../../../base/custom_aler_dialog.dart';
 import '../../../domain/usecase/get_single_service.dart';
 import 'bloc/single/service_single_bloc.dart';
 import 'part/info_window.dart';
@@ -244,7 +245,18 @@ class _MapScreenState extends State<MapScreen> {
                 top: 4 + MediaQuery.of(context).padding.top,
                 left: 16,
                 child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => showCustomAlertDialog(
+                    context,
+                    "¿Quieres salir?",
+                    "¡Todos los filtros y servicios se descartarán!",
+                    () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    () {
+                      Navigator.pop(context);
+                    }
+                  ),//Navigator.pop(context),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,

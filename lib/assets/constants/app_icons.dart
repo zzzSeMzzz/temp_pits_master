@@ -99,4 +99,5 @@ class AppIcons {
   static const String icLostKey = 'assets/icons/ic_lost_ket.svg';
   static const String icLowBattery = 'assets/icons/ic_low_battery.svg';
   static const String icErrorFueling = 'assets/icons/ic_error_fueling.svg';
+  static const String icDlgQuestion = 'assets/icons/ic_dlg_question.svg';
 }
