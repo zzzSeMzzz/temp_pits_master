@@ -12,6 +12,9 @@ class ServiceInfoWindow extends StatefulWidget {
 
   final ServiceSingleBloc serviceSingleBloc;
 
+  static const infoWidth = 220.0;
+  static const infoHeight = 164.0;
+
   @override
   State<ServiceInfoWindow> createState() => _ServiceInfoWindowState();
 }
@@ -20,8 +23,8 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 220,
-      height: 164,
+      width: ServiceInfoWindow.infoWidth,
+      height: ServiceInfoWindow.infoHeight,
       child: BlocProvider.value(
         value: widget.serviceSingleBloc,
         child: BlocBuilder<ServiceSingleBloc, ServiceSingleState> (

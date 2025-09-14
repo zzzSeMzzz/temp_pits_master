@@ -93,22 +93,49 @@ class _MapScreenState extends State<MapScreen> {
 
   void _showInfoWindow(LatLng? point, ServiceSingleBloc bloc) {
     debugPrint("_showInfoWindow: point=$point");
+
+    // Проверяем, что карта инициализирована и точка не null
+    if (point == null) {
+      debugPrint("Map controller not ready or point is null");
+      return;
+    }
+
     // Скрываем предыдущее окно
     _hideInfoWindow();
-    if(point==null) return;
+
     // Получаем позицию для отображения
     _mapController.getScreenCoordinate(point).then((screenPosition) {
       debugPrint("_showInfoWindow: x=${screenPosition.x} y=${screenPosition.y}");
+
+      if (!mounted) return;
+
+      // Получаем размеры экрана
+      final mediaQuery = MediaQuery.of(context);
+      final screenWidth = mediaQuery.size.width;
+      final screenHeight = mediaQuery.size.height;
+
+      // Рассчитываем позицию с учетом центра окна
+
+      double left = screenPosition.x.toDouble() - (ServiceInfoWindow.infoWidth / 2);
+      double top = screenPosition.y.toDouble() - ServiceInfoWindow.infoHeight - 20; // Смещаем выше маркера
+
+      // Ограничиваем позицию в пределах экрана
+      left = left.clamp(0, screenWidth - ServiceInfoWindow.infoWidth);
+      top = top.clamp(0, screenHeight - ServiceInfoWindow.infoHeight);
+
+      // Проверяем, что виджет все еще mounted
+
+
       setState(() {
         // Создаем overlay
         _infoWindowOverlay = OverlayEntry(
           builder: (context) => Positioned(
-            left: screenPosition.x.toDouble() - 150, // Центрируем
-            top: screenPosition.y.toDouble() - 200,  // Смещаем выше маркера
+            left: left,
+            top: top,
             child: Material(
               elevation: 8,
               borderRadius: BorderRadius.circular(10),
-              child: ServiceInfoWindow(serviceSingleBloc: bloc)
+              child: ServiceInfoWindow(serviceSingleBloc: bloc),
             ),
           ),
         );
@@ -116,6 +143,8 @@ class _MapScreenState extends State<MapScreen> {
         // Добавляем overlay
         Overlay.of(context).insert(_infoWindowOverlay!);
       });
+    }).catchError((error) {
+      debugPrint("Error getting screen coordinate: $error");
     });
   }
 
@@ -159,6 +188,7 @@ class _MapScreenState extends State<MapScreen> {
                   compassEnabled: false,
                   myLocationButtonEnabled: false,
                   myLocationEnabled: false,
+                  onTap: (position) => _hideInfoWindow(),
                   markers: state.markers,
                   clusterManagers: {_clusterManager},
                   zoomGesturesEnabled: true,
