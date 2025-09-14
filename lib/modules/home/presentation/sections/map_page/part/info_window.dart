@@ -116,12 +116,15 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                         ),
 //                        const Spacer(),
                       const Spacer(),
-                        Text("А тут что написать?",
+                        Text(state.serviceSingle.desc,
                           style: Theme.of(context).textTheme
                               .displayLarge!.copyWith(
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
-                              color: Colors.white)),
+                              color: Colors.white),
+                          overflow: TextOverflow.ellipsis, // Добавлено свойство ellipsis
+                          maxLines: 1,
+                        ),
                         InfoRow(
                           title: state.serviceSingle.phone,
                           icon: AppIcons.phone,
