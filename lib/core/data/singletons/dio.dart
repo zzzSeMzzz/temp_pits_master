@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pits_app/assets/constants/app_constants.dart';
+import 'package:pits_app/core/data/network/base_api_service.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
+
+import '../network/api_exceptions.dart';
 
 class DioSettings {
   BaseOptions _dioBaseOptions = BaseOptions(
@@ -66,7 +71,7 @@ class DioSettings {
 
 
 
-class AuthDioSettings {
+class ApiSecondDioSettings extends BaseApiServices {
   BaseOptions _dioBaseOptions = BaseOptions(
     baseUrl: AppConstants.BASE_URL_AUTH,
     connectTimeout: const Duration(seconds: 35),
@@ -95,7 +100,7 @@ class AuthDioSettings {
   late final Dio _dio;
 
 
-  AuthDioSettings() {
+  ApiSecondDioSettings() {
     _dio = Dio(_dioBaseOptions);
 
     _dio.interceptors.add(InterceptorsWrapper(
@@ -123,4 +128,102 @@ class AuthDioSettings {
   }
 
   Dio get dio => _dio;
+
+
+  @override
+  Future getGetApiResponse(
+      String url, {
+        Map<String, dynamic>? queryParameters,
+        CancelToken? cancelToken
+      }
+      ) async {
+    dynamic responseJson;
+    try {
+      final response = await _dio.get(
+          url,
+          queryParameters: queryParameters,
+          cancelToken: cancelToken
+      );
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    }
+
+    return responseJson;
+  }
+
+  String _getMessageFromResponse(DioException ex) {
+    String? message;
+    final data = ex.response?.data;
+    if(data != null) {
+      try {
+        if (data is Map<String, dynamic>) {
+          final err = data['error'];
+          if (err is String && err.isNotEmpty) {
+            message = err;
+          }
+        }
+      } catch (e) {
+        message = ex.message;
+      }
+    } else {
+      message = ex.message;
+    }
+    return message ?? "Unknown server exeption";
+  }
+
+  @override
+  Future getPostApiResponse(
+      String url,
+      dynamic data,
+      {
+        Map<String, dynamic>? queryParameters,
+        CancelToken? cancelToken
+      }
+      ) async {
+    //Map<String,String> header = {'Content-Type':'application/json'};
+    dynamic responseJson;
+    try {
+      Response response = await _dio.post(
+          url,
+          data: data,
+          queryParameters: queryParameters,
+          cancelToken: cancelToken
+      );
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    } on DioException catch (e) {
+      debugPrint("DIO exception");
+
+      throw Exception(_getMessageFromResponse(e));
+    }
+
+    return responseJson;
+  }
+
+  dynamic returnResponse(Response response) {
+    switch (response.statusCode) {
+      case 200:
+      case 201:
+      case 202:
+      case 203:
+      case 204:
+      case 205:
+      case 206:
+      /*dynamic responseJson = jsonDecode(response.data);
+        debugPrint("success_json: $responseJson");*/
+        return response.data;
+      case 400:
+        throw BadRequestException(response.data);
+    //case 500:
+      case 401:
+        throw UnauthorizedException(response.data);
+      default:
+        throw /*FetchDataException(
+            'Error accrued while communicating with server with status code ${response.statusCode}');*/
+        FetchDataException(response.data);
+    }
+  }
+
 }

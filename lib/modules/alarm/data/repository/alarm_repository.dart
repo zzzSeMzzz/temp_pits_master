@@ -8,7 +8,7 @@ import '../../../../../../../utils/either.dart';
 
 
 class AlarmRepository extends BaseRepository {
-  final client = serviceLocator<AuthDioSettings>().dio;
+  final client = serviceLocator<ApiSecondDioSettings>().dio;
 
   Future<Either<Failure, BaseResponse>> sendAlarm(AlarmModel alarmModel) async {
     final result = await client.post(

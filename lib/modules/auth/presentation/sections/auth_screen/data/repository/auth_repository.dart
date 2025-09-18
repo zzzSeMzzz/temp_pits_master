@@ -7,7 +7,7 @@ import '../../../../../../../utils/either.dart';
 import '../model/auth_model.dart';
 
 class AuthRepository extends BaseRepository {
-  final client = serviceLocator<AuthDioSettings>().dio;
+  final client = serviceLocator<ApiSecondDioSettings>().dio;
 
   Future<Either<Failure, AuthModel>> auth(String login, String password) async {
     final result = await client
