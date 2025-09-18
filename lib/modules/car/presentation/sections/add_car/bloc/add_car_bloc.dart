@@ -9,10 +9,10 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
   final ImagePicker _imagePicker;
 
   AddCarBloc({ImagePicker? imagePicker})
-      : _imagePicker = imagePicker ?? ImagePicker(),
-        super(const AddCarState.initial()) {
+    : _imagePicker = imagePicker ?? ImagePicker(),
+      super(const AddCarState.initial()) {
     on<AddCarEvent>((event, emit) async {
-      event.map(
+      await event.map<Future<void>>(
         photoPickerRequested: (event) async {
           try {
             emit(const AddCarState.loading());
@@ -34,30 +34,35 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
             emit(AddCarState.error(message: 'Ошибка при выборе фото: $e'));
           }
         },
-        onPhotoSelected: (event) {
+        onPhotoSelected: (event) async {
           add(AddCarEvent.photoPickerRequested(event.source));
         },
-        cleared: (event) => {
-          emit(const AddCarState.cleared())
+        cleared: (event) async {
+          emit(const AddCarState.cleared());
         },
         permissionsRequested: (event) async {
           try {
             final cameraStatus = await Permission.camera.request();
-            final photosStatus = await Permission.photos.request();
+            //final photosStatus = await Permission.photos.request();
 
-            if (cameraStatus.isGranted && photosStatus.isGranted) {
+            if (cameraStatus.isGranted /*&& photosStatus.isGranted*/) {
               emit(const AddCarState.permissionsGranted());
             } else {
-              emit(const AddCarState.permissionsDenied(
-                message: 'Необходимы разрешения для доступа к камере и галерее',
-              ));
+              emit(
+                const AddCarState.permissionsDenied(
+                  message:
+                      'Необходимы разрешения для доступа к камере и галерее',
+                ),
+              );
             }
           } catch (e) {
-            emit(AddCarState.permissionsDenied(
-              message: 'Ошибка запроса разрешений: $e',
-            ));
+            emit(
+              AddCarState.permissionsDenied(
+                message: 'Ошибка запроса разрешений: $e',
+              ),
+            );
           }
-        }
+        },
       );
     });
   }

@@ -63,6 +63,9 @@ dependencies:
   image_picker: ^1.2.0
   permission_handler: ^12.0.1
   jumping_dot: ^0.0.7
+  fluttertoast: 8.2.13
+  another_flushbar: ^1.12.30
+
   #flutter_mobile_vision_2: ^0.1.15 #зменить бибилотек на другую
 
 
