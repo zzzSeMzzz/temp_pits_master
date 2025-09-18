@@ -76,7 +76,7 @@ class _MapScreenState extends State<MapScreen> {
     zoom: _defaultZoom,
   );
 
-  static const double _defaultZoom = 12.4746;
+  static const double _defaultZoom = 10.4746;
 
   /*void _loadIcon() async {
     _markerIcon = await BitmapDescriptor.asset(

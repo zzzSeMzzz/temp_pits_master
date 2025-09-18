@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
+import 'package:pits_app/assets/constants/app_images.dart';
 import '../../../../../../assets/constants/app_icons.dart';
 import '../../../../../../utils/action_status.dart';
 import '../bloc/single/service_single_bloc.dart';
@@ -21,6 +22,17 @@ class ServiceInfoWindow extends StatefulWidget {
   @override
   State<ServiceInfoWindow> createState() => _ServiceInfoWindowState();
 }
+
+/*
+state.serviceSingle.cover.isNotEmpty
+                            ? ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(
+                            state.serviceSingle.cover,
+                            fit: BoxFit.cover,
+                          ),
+                        ) : const SizedBox(),
+ */
 
 class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
   @override
@@ -62,9 +74,9 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                     borderRadius: BorderRadius.circular(10),
                     // Optional: rounded corners
                     image: DecorationImage(
-                      image: NetworkImage(
-                        state.serviceSingle.image,
-                      ),
+                      image: state.serviceSingle.cover.isNotEmpty ? NetworkImage(
+                        state.serviceSingle.cover,
+                      ) : const AssetImage(AppImages.emptyService),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -109,16 +121,18 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                                 ],
                               ),
                             ),
-                            const Spacer(),
-                            Text(state.serviceSingle.name,
-                                style: Theme.of(context).textTheme
-                                    .labelLarge!.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18,
-                                    color: const Color(0XFF04FF00)
-                                ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(state.serviceSingle.name,
+                                  style: Theme.of(context).textTheme
+                                      .labelLarge!.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18,
+                                      color: const Color(0XFF04FF00)
+                                  ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
                             )
                           ],
                         ),
