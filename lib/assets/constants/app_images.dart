@@ -2,7 +2,7 @@ class AppImages {
   static const String onboarding1 = 'assets/images/onboarding1.png';
   static const String onboarding2 = 'assets/images/onboarding2.png';
   static const String onboarding3 = 'assets/images/onboarding3.png';
-  static const String onboarding4 = 'assets/images/onboarding4_old.png';
+  static const String onboarding4 = 'assets/images/onboarding4.png';
   static const String scanCar = 'assets/images/scan_car.png';
   static const String splashLogo = 'assets/images/splash_logo.png';
   static const String carNoAuth = 'assets/images/car_no_auth.png';

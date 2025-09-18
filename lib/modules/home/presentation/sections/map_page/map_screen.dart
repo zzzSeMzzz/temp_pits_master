@@ -250,6 +250,7 @@ class _MapScreenState extends State<MapScreen> {
                     "¿Quieres salir?",
                     "¡Todos los filtros y servicios se descartarán!",
                     () {
+                      _hideInfoWindow();
                       Navigator.pop(context);
                       Navigator.pop(context);
                     },
