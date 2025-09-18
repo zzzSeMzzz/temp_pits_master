@@ -24,6 +24,7 @@ import '../../../../../assets/constants/app_images.dart';
 import '../../../../../base/custom_aler_dialog.dart';
 import '../../../domain/usecase/get_single_service.dart';
 import 'bloc/single/service_single_bloc.dart';
+import 'part/info_bottomsheet.dart';
 import 'part/info_window.dart';
 
 // ВАЖНО: Оборачивайте MapScreen в MultiBlocProvider снаружи!
@@ -110,7 +111,7 @@ class _MapScreenState extends State<MapScreen> {
     _mapController.animateCamera(CameraUpdate.newLatLng(newTargetLatLng), duration: const Duration(milliseconds: 300));
   }
 
-  void _showInfoWindow(LatLng? point, ServiceSingleBloc bloc) {
+  void _showInfoWindow(LatLng? point, ServiceSingleBloc bloc, VoidCallback onNeedClose) {
     debugPrint("_showInfoWindow: point=$point");
     // Проверяем, что карта инициализирована и точка не null
     if (point == null) {
@@ -169,7 +170,7 @@ class _MapScreenState extends State<MapScreen> {
             child: Material(
               elevation: 8,
               borderRadius: BorderRadius.circular(10),
-              child: ServiceInfoWindow(serviceSingleBloc: bloc),
+              child: ServiceInfoWindow(serviceSingleBloc: bloc, onNeedClose: onNeedClose),
             ),
           ),
         );
@@ -196,7 +197,7 @@ class _MapScreenState extends State<MapScreen> {
                 "try show modal with service id = ${state.selectedServiceId}");
             if (state.selectedServiceId != null) {
               //showInfoBottomSheet(context, serviceSingleBloc);
-              _showInfoWindow(state.selectedServicePosition, serviceSingleBloc);
+              _showInfoWindow(state.selectedServicePosition, serviceSingleBloc, () => _hideInfoWindow());
               serviceSingleBloc.add(ServiceSingleEvent.getSingleService(
                   id: state.selectedServiceId.toString()));
             }
