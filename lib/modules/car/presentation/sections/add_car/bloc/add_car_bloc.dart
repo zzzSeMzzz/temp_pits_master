@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/repository/car_repository.dart';
 import '../data/model/photo_model.dart';
 import 'add_car_event.dart';
 import 'add_car_state.dart';
@@ -7,6 +8,8 @@ import 'package:permission_handler/permission_handler.dart';
 
 class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
   final ImagePicker _imagePicker;
+
+  final _repo = CarRepository();
 
   AddCarBloc({ImagePicker? imagePicker})
     : _imagePicker = imagePicker ?? ImagePicker(),
