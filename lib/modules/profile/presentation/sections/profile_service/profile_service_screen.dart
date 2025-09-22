@@ -70,16 +70,16 @@ class _ProfileServiceScreenState extends State<ProfileServiceScreen>
                   flexibleSpace: Stack(
                     children: [
                       Positioned.fill(
-                          child: Image(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              widget.entity.cover,
-                            ),
-                          ),
                           top: 0,
                           left: 0,
                           right: 0,
-                          bottom: 0),
+                          bottom: 0,
+                          child: Image(
+                            fit: BoxFit.cover,
+                            image: widget.entity.cover.isEmpty ? const AssetImage(AppImages.emptyService) : NetworkImage(
+                              widget.entity.cover,
+                            ),
+                          )),
                       // Positioned(
                       //     top: 16 + MediaQuery.of(context).padding.top,
                       //     left: 20,
@@ -122,13 +122,13 @@ class _ProfileServiceScreenState extends State<ProfileServiceScreen>
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 height: 100,
                                 width: 100,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(50),
                                   child: ClipRRect(
-                                    child: Image.network(
+                                    child: widget.entity.image.isEmpty ? Image.asset(AppImages.emptyService) : Image.network(
                                       widget.entity.image,
                                       fit: BoxFit.cover,
                                     ),
