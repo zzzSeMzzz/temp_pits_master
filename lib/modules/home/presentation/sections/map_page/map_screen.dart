@@ -2,13 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 /*import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'
     as cluster_manager;*/
 /*import 'package:google_maps_cluster_manager_2/google_maps_cluster_manager_2.dart'
     as cluster_manager;*/
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jumping_dot/jumping_dot.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/alarm/widgets/alarm_screen.dart';
@@ -357,11 +357,10 @@ class _MapScreenState extends State<MapScreen> {
                               )
                             ],
                           ),*/
-                          JumpingDots(
+                          const SpinKitThreeBounce(
                             color: Colors.black,
-                            radius: 9,
-                            numberOfDots: 3,
-                          )
+                            size: 30.0,
+                          ),
                     )
               ) : const SizedBox(),
               ),
