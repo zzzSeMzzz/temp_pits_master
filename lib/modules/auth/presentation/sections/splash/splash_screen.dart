@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
 
         if(StorageRepository.isAuth() || StorageRepository.loginAsGuest()) {
-          Navigator.push(
+          Navigator.pushReplacement(
               context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
         } else {
           Navigator.pushReplacement(

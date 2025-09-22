@@ -20,27 +20,33 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() cleared,
+    required TResult Function() loadVehicles,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? cleared,
+    TResult? Function()? loadVehicles,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cleared,
+    TResult Function()? loadVehicles,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_LoadVehicles value) loadVehicles,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_LoadVehicles value)? loadVehicles,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_LoadVehicles value)? loadVehicles,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -107,13 +113,19 @@ class _$ClearedImpl implements _Cleared {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({required TResult Function() cleared}) {
+  TResult when<TResult extends Object?>({
+    required TResult Function() cleared,
+    required TResult Function() loadVehicles,
+  }) {
     return cleared();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({TResult? Function()? cleared}) {
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cleared,
+    TResult? Function()? loadVehicles,
+  }) {
     return cleared?.call();
   }
 
@@ -121,6 +133,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cleared,
+    TResult Function()? loadVehicles,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -133,6 +146,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_LoadVehicles value) loadVehicles,
   }) {
     return cleared(this);
   }
@@ -141,6 +155,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_LoadVehicles value)? loadVehicles,
   }) {
     return cleared?.call(this);
   }
@@ -149,6 +164,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_LoadVehicles value)? loadVehicles,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -160,4 +176,111 @@ class _$ClearedImpl implements _Cleared {
 
 abstract class _Cleared implements HomeEvent {
   const factory _Cleared() = _$ClearedImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadVehiclesImplCopyWith<$Res> {
+  factory _$$LoadVehiclesImplCopyWith(
+    _$LoadVehiclesImpl value,
+    $Res Function(_$LoadVehiclesImpl) then,
+  ) = __$$LoadVehiclesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadVehiclesImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$LoadVehiclesImpl>
+    implements _$$LoadVehiclesImplCopyWith<$Res> {
+  __$$LoadVehiclesImplCopyWithImpl(
+    _$LoadVehiclesImpl _value,
+    $Res Function(_$LoadVehiclesImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadVehiclesImpl implements _LoadVehicles {
+  const _$LoadVehiclesImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.loadVehicles()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadVehiclesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cleared,
+    required TResult Function() loadVehicles,
+  }) {
+    return loadVehicles();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cleared,
+    TResult? Function()? loadVehicles,
+  }) {
+    return loadVehicles?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cleared,
+    TResult Function()? loadVehicles,
+    required TResult orElse(),
+  }) {
+    if (loadVehicles != null) {
+      return loadVehicles();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_LoadVehicles value) loadVehicles,
+  }) {
+    return loadVehicles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_LoadVehicles value)? loadVehicles,
+  }) {
+    return loadVehicles?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_LoadVehicles value)? loadVehicles,
+    required TResult orElse(),
+  }) {
+    if (loadVehicles != null) {
+      return loadVehicles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadVehicles implements HomeEvent {
+  const factory _LoadVehicles() = _$LoadVehiclesImpl;
 }

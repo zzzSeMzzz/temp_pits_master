@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/core/data/extensions.dart';
+import 'package:pits_app/core/data/network/api_response.dart';
+import 'package:pits_app/core/data/singletons/storage.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
+import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_screen.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_bloc.dart';
@@ -43,7 +47,11 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const CarInfoBox(),
+                if(state is Loading) const SpinKitThreeBounce(
+                  color: Colors.black,
+                  size: 30.0,
+                ),
+                //const CarInfoBox(),
                 const SizedBox(
                   height: 16,
                 ),
@@ -52,6 +60,29 @@ class HomeScreen extends StatelessWidget {
                   height: 55,
                   onTap: () {
                     //Navigator.push(context, fade(page: AddCarScreen(isBackButton: true,)));
+                    if(!StorageRepository.isAuth()) {
+                      final snackBar = SnackBar(
+                        content: Text('Please auth before add car', style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(
+                            fontWeight: FontWeight.w500, fontSize: 16),),
+                        action: SnackBarAction(
+                          textColor: Colors.black,
+                          label: 'SignIn',
+                          onPressed: () {
+                            Navigator.of(context, rootNavigator: true).pushReplacement(
+                                fade(page: const AuthScreen())
+                            );
+                          },
+                        ),
+                        duration: const Duration(seconds: 3), // Optional: set duration
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                      return;
+                    }
                     Navigator.of(context, rootNavigator: true).push(
                       MaterialPageRoute(
                         builder: (_) =>
