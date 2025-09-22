@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pits_app/core/data/repo/base_repoitory.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/car_reg_request.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import '../../../../../../../core/data/network/api_response.dart';
 import '../../../../../../../core/data/singletons/dio.dart';
@@ -79,6 +80,26 @@ class CarRepository extends BaseRepository {
       return Error(e.message ?? "Failure getVehicle");
     } catch (e) {
       debugPrint("CarRepository:: failure getVehicle ${e.toString()}");
+      return Error(e.toString());
+    }
+  }
+
+
+  Future<ApiResponse<Vehicle>> regCar(CareRegRequest car) async {
+    try {
+      final data = await _service.getPostApiResponse(
+        "api/pits/cars/register",
+         car.toJson()
+      );
+
+      Vehicle response = Vehicle.fromJson(data);
+      debugPrint("CarRepository:: regCar success");
+      return Success(response);
+    } on DioException catch (e) {
+      debugPrint("CarRepository:: regCar vehicles ${e.toString()}");
+      return Error(e.message ?? "regCar vehicles");
+    } catch (e) {
+      debugPrint("CarRepository:: regCar vehicles ${e.toString()}");
       return Error(e.toString());
     }
   }
