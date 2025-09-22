@@ -14,6 +14,7 @@ import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_scr
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_bloc.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_state.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/appbar.dart';
@@ -29,6 +30,18 @@ import '../map_page/bloc/services_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  Widget _buildContentByState(BuildContext context, HomeState state) {
+    return state.maybeWhen(
+      loading: () => const SpinKitThreeBounce(
+        color: Colors.black,
+        size: 30.0,
+      ),
+      success: (vehicles) => const CarInfoBox(),
+      //error: (message) => const SizedBox(),
+      orElse: () => const SizedBox(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) => BlocConsumer<HomeBloc, HomeState>(
@@ -47,10 +60,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                if(state is Loading) const SpinKitThreeBounce(
-                  color: Colors.black,
-                  size: 30.0,
-                ),
+                _buildContentByState(context, state),
                 //const CarInfoBox(),
                 const SizedBox(
                   height: 16,

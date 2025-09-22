@@ -38,7 +38,7 @@ class CarRepository extends BaseRepository {
       debugPrint("CarRepository:: failure upload image ${e.toString()}");
       return Error(e.message ?? "Failure getTenders");
     } catch (e) {
-      debugPrint("TenderRepository:: failure upload ${e.toString()}");
+      debugPrint("CarRepository:: failure upload ${e.toString()}");
       return Error(e.toString());
     }
   }
@@ -53,7 +53,7 @@ class CarRepository extends BaseRepository {
       List<Vehicle> response = (data as List)
           .map((json) => Vehicle.fromJson(json))
           .toList();
-      debugPrint("CarRepository:: getTenders");
+      debugPrint("CarRepository:: getAllVehicles success");
       return Success(response);
     } on DioException catch (e) {
       debugPrint("CarRepository:: failure load vehicles ${e.toString()}");

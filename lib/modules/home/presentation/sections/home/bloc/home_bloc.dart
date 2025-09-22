@@ -13,8 +13,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   HomeBloc() : super(const HomeState.initial()) {
 
-    on<HomeEvent>((event, emit) {
-      event.map(
+    on<HomeEvent>((event, emit) async {
+      await event.map(
         cleared: (event) {
           emit(const HomeState.cleared());
         },
