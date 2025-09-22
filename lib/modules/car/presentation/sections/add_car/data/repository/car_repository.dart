@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pits_app/core/data/repo/base_repoitory.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import '../../../../../../../core/data/network/api_response.dart';
 import '../../../../../../../core/data/singletons/dio.dart';
 import '../../../../../../../core/data/singletons/service_locator.dart';
@@ -8,7 +9,8 @@ import '../model/photo_model.dart';
 
 class CarRepository extends BaseRepository {
 
-  final _client = serviceLocator<ApiSecondDioSettings>().dio;
+  //final _client = serviceLocator<ApiSecondDioSettings>().dio;
+  final _service = serviceLocator<ApiSecondDioSettings>();
 
 
   Future<ApiResponse<dynamic>> loadCarImage(PhotoModel photoModel) async {
@@ -21,7 +23,7 @@ class CarRepository extends BaseRepository {
         ),
       });
 
-      final data = await _client.post(
+      final data = await _service.dio.post(
         "api/scan-plate",
         data: formData,
           /*queryParameters: {
@@ -37,6 +39,27 @@ class CarRepository extends BaseRepository {
       return Error(e.message ?? "Failure getTenders");
     } catch (e) {
       debugPrint("TenderRepository:: failure upload ${e.toString()}");
+      return Error(e.toString());
+    }
+  }
+
+
+  Future<ApiResponse<List<Vehicle>>> getAllVehicles() async {
+    try {
+      final data = await _service.getGetApiResponse(
+          "/api/vehicles",
+      );
+
+      List<Vehicle> response = (data as List)
+          .map((json) => Vehicle.fromJson(json))
+          .toList();
+      debugPrint("TenderRepository:: getTenders");
+      return Success(response);
+    } on DioException catch (e) {
+      debugPrint("TenderRepository:: failure load vehicles ${e.toString()}");
+      return Error(e.message ?? "Failure load vehicles");
+    } catch (e) {
+      debugPrint("TenderRepository:: failure load vehicles ${e.toString()}");
       return Error(e.toString());
     }
   }

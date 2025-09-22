@@ -147,6 +147,10 @@ class ApiSecondDioSettings extends BaseApiServices {
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
+    } on DioException catch (e) {
+      debugPrint("DIO exception");
+
+      throw Exception(_getMessageFromResponse(e));
     }
 
     return responseJson;
