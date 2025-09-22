@@ -20,6 +20,7 @@ Vehicle _$VehicleFromJson(Map<String, dynamic> json) => Vehicle(
   (json['kilometros'] as num?)?.toInt(),
   json['fabricados'] as String?,
   json['otros_modelos_motor'] as String?,
+  json['matricula'] as String?,
 );
 
 Map<String, dynamic> _$VehicleToJson(Vehicle instance) => <String, dynamic>{
@@ -36,4 +37,5 @@ Map<String, dynamic> _$VehicleToJson(Vehicle instance) => <String, dynamic>{
   'kilometros': instance.kilometers,
   'fabricados': instance.manufactured,
   'otros_modelos_motor': instance.otherEngineModels,
+  'matricula': instance.registrationNumber,
 };

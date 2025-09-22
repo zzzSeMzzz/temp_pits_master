@@ -53,13 +53,32 @@ class CarRepository extends BaseRepository {
       List<Vehicle> response = (data as List)
           .map((json) => Vehicle.fromJson(json))
           .toList();
-      debugPrint("TenderRepository:: getTenders");
+      debugPrint("CarRepository:: getTenders");
       return Success(response);
     } on DioException catch (e) {
-      debugPrint("TenderRepository:: failure load vehicles ${e.toString()}");
+      debugPrint("CarRepository:: failure load vehicles ${e.toString()}");
       return Error(e.message ?? "Failure load vehicles");
     } catch (e) {
-      debugPrint("TenderRepository:: failure load vehicles ${e.toString()}");
+      debugPrint("CarRepository:: failure load vehicles ${e.toString()}");
+      return Error(e.toString());
+    }
+  }
+
+
+  Future<ApiResponse<Vehicle>> getVehicleDetails(String registrationNumber) async {
+    try {
+      final data = await _service.getGetApiResponse(
+        "/api/vehicles/$registrationNumber/details",
+      );
+
+      Vehicle response =  Vehicle.fromJson(data);
+      debugPrint("CarRepository:: getVehicle");
+      return Success(response);
+    } on DioException catch (e) {
+      debugPrint("CarRepository:: failure getVehicle ${e.toString()}");
+      return Error(e.message ?? "Failure getVehicle");
+    } catch (e) {
+      debugPrint("CarRepository:: failure getVehicle ${e.toString()}");
       return Error(e.toString());
     }
   }

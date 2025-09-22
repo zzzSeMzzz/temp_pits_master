@@ -29,12 +29,15 @@ class Vehicle {
   String? manufactured;
   @JsonKey(name: 'otros_modelos_motor')
   String? otherEngineModels;
+  @JsonKey(name: 'matricula')
+  String? registrationNumber;
 
 
   Vehicle(this.image, this.brand, this.model, this.chasis,
       this.yearOfManufacture, this.yearOfRegistration, this.powers,
       this.acceleration, this.averageConsumption, this.marketPrice,
-      this.kilometers, this.manufactured, this.otherEngineModels);
+      this.kilometers, this.manufactured, this.otherEngineModels,
+      this.registrationNumber);
 
   factory Vehicle.fromJson(Map<String, dynamic> json) =>
       _$VehicleFromJson(json);
