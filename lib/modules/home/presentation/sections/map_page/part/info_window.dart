@@ -126,7 +126,9 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                               ),
                               const SizedBox(width: 10),
                               Expanded(
-                                child: Text(state.serviceSingle.name,
+
+                                child: Text(state.serviceSingle.status,
+                                    textAlign: TextAlign.end,
                                     style: Theme.of(context).textTheme
                                         .labelLarge!.copyWith(
                                         fontWeight: FontWeight.w700,
@@ -141,7 +143,7 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                           ),
                   //                        const Spacer(),
                         const Spacer(),
-                          Text(state.serviceSingle.desc,
+                          Text(state.serviceSingle.name,
                             style: Theme.of(context).textTheme
                                 .displayLarge!.copyWith(
                                 fontWeight: FontWeight.w700,
