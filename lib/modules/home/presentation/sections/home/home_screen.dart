@@ -27,6 +27,7 @@ import '../../../../alarm/widgets/alarm_screen.dart';
 import '../../../../car/presentation/sections/add_car/bloc/add_car_state.dart';
 import '../../../domain/usecase/get_services.dart';
 import '../map_page/bloc/services_bloc.dart';
+import 'parts/vehicle_page_view.dart' show VehiclePageView;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
         color: Colors.black,
         size: 30.0,
       ),
-      success: (vehicles) => const CarInfoBox(),
+      success: (vehicles) => VehiclePageView(vehicles: vehicles),
       //error: (message) => const SizedBox(),
       orElse: () => const SizedBox(),
     );
