@@ -10,7 +10,7 @@ class Vehicle {
   @JsonKey(name: 'modelo')
   String? model;
   @JsonKey(name: 'chasis')
-  String? chasis;
+  String? chassis;
   @JsonKey(name: 'año_fabricacion')
   int? yearOfManufacture;
   @JsonKey(name: 'año_matriculacion')
@@ -33,7 +33,7 @@ class Vehicle {
   String? registrationNumber;
 
 
-  Vehicle(this.image, this.brand, this.model, this.chasis,
+  Vehicle(this.image, this.brand, this.model, this.chassis,
       this.yearOfManufacture, this.yearOfRegistration, this.powers,
       this.acceleration, this.averageConsumption, this.marketPrice,
       this.kilometers, this.manufactured, this.otherEngineModels,

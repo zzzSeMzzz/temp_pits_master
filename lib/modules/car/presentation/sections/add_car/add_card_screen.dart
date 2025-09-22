@@ -22,13 +22,13 @@ class AddCarScreen extends StatefulWidget {
 }
 
 class _AddCarScreenState extends State<AddCarScreen> {
-  late final AddCarBloc _bloc = AddCarBloc();
+  /*late final AddCarBloc _bloc; = AddCarBloc();
 
   @override
   void dispose() {
     _bloc.close();
     super.dispose();
-  }
+  }*/
 
   void _showPickPhotoSheet() {
     final addCarBloc = context.read<AddCarBloc>();
@@ -74,125 +74,123 @@ class _AddCarScreenState extends State<AddCarScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => BlocProvider<AddCarBloc>.value(
-    value: _bloc,
-    child: BlocConsumer<AddCarBloc, AddCarState>(
-      listener: (context, state) {
-        state.when(
-          permissionsGranted: () {
-            debugPrint("permissionsGranted");
-            //_showPickPhotoSheet();
-            _bloc.add(
-              const AddCarEvent.onPhotoSelected(ImageSource.camera),
-            );
-          },
-          initial: () {},
-          loading: () {},
-          success: (PhotoModel photo) {
-            debugPrint('success take photo');
-          },
-          error: (String message) {
-            Utils.flushBarErrorMessage(message, context);
-            context.read<AddCarBloc>().add(const AddCarEvent.cleared());
-          },
-          permissionsDenied: (String message) {
-            debugPrint("permissionsDenied: $message");
-            Utils.flushBarErrorMessage(message, context);
-            context.read<AddCarBloc>().add(const AddCarEvent.cleared());
-          },
-          cleared: () {},
-        );
-      },
-      //child: BlocBuilder<AlarmBloc, AlarmState>(
-      builder: (context, state) {
-        final bloc = context.read<AddCarBloc>();
-        return Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (widget.isBackButton)
-                    Container(
-                      margin: const EdgeInsets.only(left: 16),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: SvgPicture.asset(
-                          AppIcons.arrowLeft,
-                          width: 24,
-                          height: 24,
-                        ),
-                      ),
-                    ),
-                  SizedBox(height: widget.isBackButton ? 16 : 56),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Conecta con tu vehículo',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.displayLarge!
-                              .copyWith(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 24,
-                              ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 70),
-                  Image.asset(
-                    AppImages.scanCar,
-                    width: double.maxFinite,
-                    fit: BoxFit.cover,
-                    height: 395,
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Text(
-                      'Introduce una matrícula o VIN',
-                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13,
+  Widget build(BuildContext context) => BlocConsumer<AddCarBloc, AddCarState>(
+    listener: (context, state) {
+      AddCarBloc bloc = context.read<AddCarBloc>();
+      state.when(
+        permissionsGranted: () {
+          debugPrint("permissionsGranted");
+          //_showPickPhotoSheet();
+          bloc.add(
+            const AddCarEvent.onPhotoSelected(ImageSource.camera),
+          );
+        },
+        initial: () {},
+        loading: () {},
+        success: (PhotoModel photo) {
+          debugPrint('success take photo');
+        },
+        error: (String message) {
+          Utils.flushBarErrorMessage(message, context);
+          context.read<AddCarBloc>().add(const AddCarEvent.cleared());
+        },
+        permissionsDenied: (String message) {
+          debugPrint("permissionsDenied: $message");
+          Utils.flushBarErrorMessage(message, context);
+          context.read<AddCarBloc>().add(const AddCarEvent.cleared());
+        },
+        cleared: () {},
+      );
+    },
+    //child: BlocBuilder<AlarmBloc, AlarmState>(
+    builder: (context, state) {
+      final bloc = context.read<AddCarBloc>();
+      return Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (widget.isBackButton)
+                  Container(
+                    margin: const EdgeInsets.only(left: 16),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: SvgPicture.asset(
+                        AppIcons.arrowLeft,
+                        width: 24,
+                        height: 24,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: WTextField(
-                      disabledBorderColor: textGrey,
-                      fillColor: white,
-                      height: 56,
-                      borderColor: textGrey,
-                      borderRadius: 16,
-                      onTapSuffix: () {},
-                      suffixIcon: AppIcons.icScan2,
-                      onChanged: (text) {},
+                SizedBox(height: widget.isBackButton ? 16 : 56),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Conecta con tu vehículo',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.displayLarge!
+                            .copyWith(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 70),
+                Image.asset(
+                  AppImages.scanCar,
+                  width: double.maxFinite,
+                  fit: BoxFit.cover,
+                  height: 395,
+                ),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    'Introduce una matrícula o VIN',
+                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  WButton(
-                    margin: const EdgeInsets.symmetric(horizontal: 24),
-                    onTap: () => bloc.add(
-                      const AddCarEvent.permissionsRequested(),
-                    ), //_showPickPhotoSheet(bloc),
-                    svgAsset: AppIcons.plusCircle,
-                    borderRadius: 16,
-                    text: 'Conectar',
+                ),
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: WTextField(
+                    disabledBorderColor: textGrey,
+                    fillColor: white,
                     height: 56,
-                    textColor: white,
+                    borderColor: textGrey,
+                    borderRadius: 16,
+                    onTapSuffix: () {},
+                    suffixIcon: AppIcons.icScan2,
+                    onChanged: (text) {},
                   ),
-                  SizedBox(height: MediaQuery.of(context).padding.bottom + 30),
-                ],
-              ),
+                ),
+                const SizedBox(height: 24),
+                WButton(
+                  margin: const EdgeInsets.symmetric(horizontal: 24),
+                  onTap: () => bloc.add(
+                    const AddCarEvent.permissionsRequested(),
+                  ), //_showPickPhotoSheet(bloc),
+                  svgAsset: AppIcons.plusCircle,
+                  borderRadius: 16,
+                  text: 'Conectar',
+                  height: 56,
+                  textColor: white,
+                ),
+                SizedBox(height: MediaQuery.of(context).padding.bottom + 30),
+              ],
             ),
           ),
-        );
-      },
-    ),
+        ),
+      );
+    },
   );
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/assets/theme/theme.dart';
 import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/auth/presentation/sections/splash/splash_screen.dart';
+import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_bloc.dart';
 import 'utils/AppScrollBehavior.dart';
 
 void main() async {
@@ -18,7 +20,17 @@ void main() async {
     ),
   );
   await setupLocator();
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc(),
+        )
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
