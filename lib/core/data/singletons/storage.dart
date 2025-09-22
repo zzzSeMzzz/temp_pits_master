@@ -31,6 +31,10 @@ class StorageRepository {
     return getBool(loginAsGuestKey, defValue: false);
   }
 
+  static void logout() async {
+   await deleteString(accessTokenKey);
+   await deleteBool(loginAsGuestKey);
+  }
   static const String accessTokenKey = "accessTokenKey";
   static const String loginAsGuestKey = "loginAsGuest";
 
