@@ -25,7 +25,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: white,
         body: Container(
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
               SizedBox(
@@ -44,11 +44,11 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 height: 48,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4), color: fieldGrey),
@@ -66,7 +66,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                         .textTheme
                         .displayMedium!
                         .copyWith(fontWeight: FontWeight.w700, fontSize: 12),
-                    tabs: [
+                    tabs: const [
                       Tab(
                         text: 'All',
                       ),
@@ -82,7 +82,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                 height: 24,
               ),
               Expanded(child: ActivityList()),
-              SizedBox(height: 16,),
+              const SizedBox(height: 16,),
             ],
           ),
         ),

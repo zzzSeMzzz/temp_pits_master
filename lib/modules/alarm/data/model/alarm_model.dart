@@ -3,8 +3,8 @@ part 'alarm_model.g.dart';
 
 @JsonSerializable()
 class AlarmModel {
-  /*@JsonKey(name: 'success', defaultValue: false)
-  final bool? success;*/
+  @JsonKey(name: 'id', defaultValue: '')
+  final int? id;
   @JsonKey(name: 'emergency', defaultValue: '')
   final String? emergency;
   @JsonKey(name: 'carStart', defaultValue: true)
@@ -17,15 +17,22 @@ class AlarmModel {
   final double? lat;
   @JsonKey(name: 'lon')
   final double? lon;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
+  @JsonKey(name: 'updated_at')
+  final String? updatedAt;
 
 
   const AlarmModel({
+    this.id,
     this.emergency,
     required this.carStart,
     this.notes,
     this.timestamp,
     this.lat,
-    this.lon
+    this.lon,
+    this.createdAt,
+    this.updatedAt
   });
 
   factory AlarmModel.fromJson(Map<String, dynamic> json) =>
