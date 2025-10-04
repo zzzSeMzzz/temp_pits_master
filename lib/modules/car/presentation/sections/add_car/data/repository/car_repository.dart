@@ -6,6 +6,7 @@ import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/ve
 import '../../../../../../../core/data/network/api_response.dart';
 import '../../../../../../../core/data/singletons/dio.dart';
 import '../../../../../../../core/data/singletons/service_locator.dart';
+import '../model/car_reg_response.dart';
 import '../model/car_scan_info.dart';
 import '../model/photo_model.dart';
 
@@ -80,14 +81,14 @@ class CarRepository extends BaseRepository {
     }
   }
 
-  Future<ApiResponse<Vehicle>> regCar(CareRegRequest car) async {
+  Future<ApiResponse<CarRegResponse>> regCar(CareRegRequest car) async {
     try {
       final data = await _service.getPostApiResponse(
         "api/pits/cars/register",
         car.toJson(),
       );
 
-      Vehicle response = Vehicle.fromJson(data);
+      final response = CarRegResponse.fromJson(data);
       debugPrint("CarRepository:: regCar success");
       return Success(response);
     } on DioException catch (e) {

@@ -4,6 +4,7 @@ import 'package:pits_app/core/data/network/api_response.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/car_reg_request.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/car_scan_info.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/repository/car_repository.dart';
+import '../data/model/car_reg_response.dart';
 import '../data/model/photo_model.dart';
 import '../data/model/vehicle.dart';
 import 'add_car_event.dart';
@@ -92,9 +93,9 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
           try {
             emit(const AddCarState.loading());
             final carInfo = await _repo.regCar(CareRegRequest.formNumber(event.carNumber));
-            if(carInfo is Success<Vehicle>) {
+            if(carInfo is Success<CarRegResponse>) {
               emit(AddCarState.success(vehicle: carInfo.data));
-            } else if(carInfo is Error<Vehicle>) {
+            } else if(carInfo is Error<CarRegResponse>) {
               emit(AddCarState.error(message: carInfo.errorMessage));
             }
           } catch (e) {

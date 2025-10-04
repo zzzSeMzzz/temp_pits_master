@@ -12,6 +12,7 @@ import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import 'bloc/add_car_bloc.dart';
 import 'bloc/add_car_event.dart';
+import 'data/model/car_reg_response.dart';
 import 'data/model/photo_model.dart';
 import 'package:pits_app/utils/utils.dart';
 
@@ -95,7 +96,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
         },
         initial: () {},
         loading: () {},
-        success: (Vehicle vehicle) {
+        success: (CarRegResponse vehicle) {
           debugPrint('success reg car $vehicle');
           Utils.flushBarErrorMessage("El coche está matriculado", context, color: greenAccent);
           Navigator.of(context).pop();
