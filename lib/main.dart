@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/assets/theme/theme.dart';
+import 'package:pits_app/core/data/interceptors/auth_interceptor.dart';
 import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/auth/presentation/sections/splash/splash_screen.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_bloc.dart';
@@ -16,18 +17,14 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.dark,
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness: Brightness.light
+      statusBarBrightness: Brightness.light,
     ),
   );
   await setupLocator();
   //runApp(const MyApp());
   runApp(
     MultiBlocProvider(
-      providers: [
-        BlocProvider<HomeBloc>(
-          create: (context) => HomeBloc(),
-        )
-      ],
+      providers: [BlocProvider<HomeBloc>(create: (context) => HomeBloc())],
       child: const MyApp(),
     ),
   );
@@ -39,10 +36,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Pits',
-        theme: AppTheme.theme(),
-        scrollBehavior:
-            AppScrollBehavior(), //web view page scroll. remove if need
-        home: const SplashScreen());
+      title: 'Pits',
+      navigatorKey: AuthInterceptor.navigatorKey,
+      theme: AppTheme.theme(),
+      scrollBehavior:
+          AppScrollBehavior(), //web view page scroll. remove if need
+      home: const SplashScreen(),
+    );
   }
 }

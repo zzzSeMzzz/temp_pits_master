@@ -4,6 +4,7 @@ import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pits_app/assets/constants/app_constants.dart';
+import 'package:pits_app/core/data/interceptors/auth_interceptor.dart';
 import 'package:pits_app/core/data/network/base_api_service.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
 
@@ -16,7 +17,10 @@ class DioSettings {
     receiveTimeout: const Duration(seconds: 33),
     followRedirects: false,
     headers: <String, dynamic>{
-      'Accept-Language': StorageRepository.getString('language', defValue: 'uz')
+      'Accept-Language': StorageRepository.getString(
+        'language',
+        defValue: 'es',
+      ),
     },
     validateStatus: (status) => status != null && status <= 500,
   );
@@ -37,19 +41,25 @@ class DioSettings {
 
   late final Dio _dio;
 
-
   DioSettings() {
     _dio = Dio(_dioBaseOptions);
 
-    _dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) async {
-        final token = StorageRepository.getString(StorageRepository.accessTokenKey);
-        if (token.isNotEmpty) {
-          options.headers['Authorization'] = 'Bearer $token';
-        }
-        return handler.next(options);
-      },
-    ));
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = StorageRepository.getString(
+            StorageRepository.accessTokenKey,
+          );
+          if (token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+          return handler.next(options);
+        },
+      ),
+    );
+
+    // Добавляем interceptor для обработки 401 ошибок
+    _dio.interceptors.add(AuthInterceptor());
 
     _dio.interceptors.add(
       AwesomeDioInterceptor(
@@ -63,13 +73,10 @@ class DioSettings {
         logger: debugPrint,
       ),
     );
-
   }
 
   Dio get dio => _dio;
 }
-
-
 
 class ApiSecondDioSettings extends BaseApiServices {
   BaseOptions _dioBaseOptions = BaseOptions(
@@ -78,7 +85,10 @@ class ApiSecondDioSettings extends BaseApiServices {
     receiveTimeout: const Duration(seconds: 33),
     followRedirects: false,
     headers: <String, dynamic>{
-      'Accept-Language': StorageRepository.getString('language', defValue: 'uz')
+      'Accept-Language': StorageRepository.getString(
+        'language',
+        defValue: 'uz',
+      ),
     },
     validateStatus: (status) => status != null && status <= 500,
   );
@@ -99,19 +109,25 @@ class ApiSecondDioSettings extends BaseApiServices {
 
   late final Dio _dio;
 
-
   ApiSecondDioSettings() {
     _dio = Dio(_dioBaseOptions);
 
-    _dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) async {
-        final token = StorageRepository.getString(StorageRepository.accessTokenKey);
-        if (token.isNotEmpty) {
-          options.headers['Authorization'] = 'Bearer $token';
-        }
-        return handler.next(options);
-      },
-    ));
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = StorageRepository.getString(
+            StorageRepository.accessTokenKey,
+          );
+          if (token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+          return handler.next(options);
+        },
+      ),
+    );
+
+    // Добавляем interceptor для обработки 401 ошибок
+    _dio.interceptors.add(AuthInterceptor());
 
     _dio.interceptors.add(
       AwesomeDioInterceptor(
@@ -129,20 +145,18 @@ class ApiSecondDioSettings extends BaseApiServices {
 
   Dio get dio => _dio;
 
-
   @override
   Future getGetApiResponse(
-      String url, {
-        Map<String, dynamic>? queryParameters,
-        CancelToken? cancelToken
-      }
-      ) async {
+    String url, {
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+  }) async {
     dynamic responseJson;
     try {
       final response = await _dio.get(
-          url,
-          queryParameters: queryParameters,
-          cancelToken: cancelToken
+        url,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
       );
       responseJson = returnResponse(response);
     } on SocketException {
@@ -159,7 +173,7 @@ class ApiSecondDioSettings extends BaseApiServices {
   String _getMessageFromResponse(DioException ex) {
     String? message;
     final data = ex.response?.data;
-    if(data != null) {
+    if (data != null) {
       try {
         if (data is Map<String, dynamic>) {
           final err = data['error'];
@@ -178,21 +192,19 @@ class ApiSecondDioSettings extends BaseApiServices {
 
   @override
   Future getPostApiResponse(
-      String url,
-      dynamic data,
-      {
-        Map<String, dynamic>? queryParameters,
-        CancelToken? cancelToken
-      }
-      ) async {
+    String url,
+    dynamic data, {
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+  }) async {
     //Map<String,String> header = {'Content-Type':'application/json'};
     dynamic responseJson;
     try {
       Response response = await _dio.post(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          cancelToken: cancelToken
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
       );
       responseJson = returnResponse(response);
     } on SocketException {
@@ -215,23 +227,27 @@ class ApiSecondDioSettings extends BaseApiServices {
       case 204:
       case 205:
       case 206:
-      /*dynamic responseJson = jsonDecode(response.data);
+        /*dynamic responseJson = jsonDecode(response.data);
         debugPrint("success_json: $responseJson");*/
         return response.data;
       case 400:
-        throw BadRequestException(_getErrorFromResponse(response, "BadRequestException"));
-    //case 500:
+        throw BadRequestException(
+          _getErrorFromResponse(response, "BadRequestException"),
+        );
+      //case 500:
       case 401:
-        throw UnauthorizedException(_getErrorFromResponse(response, "UnauthorizedException"));
+        // Не выбрасываем исключение для 401, позволяем interceptor'у обработать
+        return response.data;
       default:
-        throw FetchDataException(_getErrorFromResponse(response, "FetchDataException"));
+        throw FetchDataException(
+          _getErrorFromResponse(response, "FetchDataException"),
+        );
     }
   }
 
   String _getErrorFromResponse(Response response, String def) {
     String error = def;
-    if(response.data is Map<String, dynamic>) {
-
+    if (response.data is Map<String, dynamic>) {
       final err = response.data['error'];
       if (err is String && err.isNotEmpty) {
         error = err;
@@ -241,5 +257,4 @@ class ApiSecondDioSettings extends BaseApiServices {
       throw error;
     }
   }
-
 }
