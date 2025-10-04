@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/globals/widgets/interaction/w_textfield.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_state.dart';
@@ -29,6 +30,14 @@ class _AddCarScreenState extends State<AddCarScreen> {
     _bloc.close();
     super.dispose();
   }*/
+
+  final _cnController = TextEditingController();
+
+  @override
+  void dispose() {
+    _cnController.dispose();
+    super.dispose();
+  }
 
   void _showPickPhotoSheet() {
     final addCarBloc = context.read<AddCarBloc>();
@@ -81,9 +90,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
         permissionsGranted: () {
           debugPrint("permissionsGranted");
           //_showPickPhotoSheet();
-          bloc.add(
-            const AddCarEvent.onPhotoSelected(ImageSource.camera),
-          );
+          bloc.add(const AddCarEvent.onPhotoSelected(ImageSource.camera));
         },
         initial: () {},
         loading: () {},
@@ -100,6 +107,11 @@ class _AddCarScreenState extends State<AddCarScreen> {
           context.read<AddCarBloc>().add(const AddCarEvent.cleared());
         },
         cleared: () {},
+        currentCarNumber: (String? carNumber) {
+          if (!carNumber.isNullOrEmpty()) {
+            _cnController.text = carNumber!;
+          }
+        },
       );
     },
     //child: BlocBuilder<AlarmBloc, AlarmState>(
@@ -163,33 +175,37 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: WTextField(
+                    controller: _cnController,
                     disabledBorderColor: textGrey,
                     fillColor: white,
                     height: 56,
                     borderColor: textGrey,
                     borderRadius: 16,
-                    onTapSuffix: () {
-                      bloc.add(
-                        const AddCarEvent.permissionsRequested(),
-                      );
-                    },
+                    onTapSuffix: state.maybeWhen(
+                      loading: () => null,
+                      orElse: () => () {
+                        bloc.add(const AddCarEvent.permissionsRequested());
+                      }
+                    ),
                     suffixIcon: AppIcons.icScan2,
-                    onChanged: (text) {
-
-                    },
+                    onChanged: (text) {},
                   ),
                 ),
                 const SizedBox(height: 24),
                 WButton(
                   margin: const EdgeInsets.symmetric(horizontal: 24),
                   onTap: () => bloc.add(
-                    const AddCarEvent.permissionsRequested(),//fixme
+                    const AddCarEvent.permissionsRequested(), //fixme
                   ), //_showPickPhotoSheet(bloc),
                   svgAsset: AppIcons.plusCircle,
                   borderRadius: 16,
                   text: 'Conectar',
                   height: 56,
                   textColor: white,
+                  isLoading: state.maybeWhen(
+                    loading: () => true,
+                    orElse: () => false,
+                  ),
                 ),
                 SizedBox(height: MediaQuery.of(context).padding.bottom + 30),
               ],

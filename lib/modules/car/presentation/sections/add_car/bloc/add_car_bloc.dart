@@ -20,7 +20,6 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
       await event.map<Future<void>>(
         photoPickerRequested: (event) async {
           try {
-            emit(const AddCarState.loading());
 
             final XFile? pickedFile = await _imagePicker.pickImage(
               source: event.source,
@@ -29,9 +28,10 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
               imageQuality: 85,
             );
 
+            emit(const AddCarState.loading());
+
             if (pickedFile != null) {
               final photo = PhotoModel.fromFilePath(pickedFile.path);
-              emit(AddCarState.success(photo: photo));
               add(AddCarEvent.onScanPhoto(photo));
             } else {
               emit(const AddCarState.error(message: 'Фото не было выбрано'));
@@ -86,7 +86,7 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
             emit(AddCarState.error(message: 'Ошибка распознавания фото: $e'));
           }
         },
-        onGetVehicleInfo: (event) {
+        onGetVehicleInfo: (event) async {
 
         },
       );

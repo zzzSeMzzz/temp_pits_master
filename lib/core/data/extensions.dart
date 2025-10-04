@@ -32,3 +32,10 @@ extension Extheme on BuildContext {
   ColorScheme get colorScheme => theme.colorScheme;
 // more if you want
 }
+
+
+extension ExCheckEmpty on String? {
+  bool isNullOrEmpty() {
+    return this == null || this?.isEmpty == true;
+  }
+}
