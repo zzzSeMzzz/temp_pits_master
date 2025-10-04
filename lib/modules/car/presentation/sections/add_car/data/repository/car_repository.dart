@@ -10,12 +10,12 @@ import '../model/car_scan_info.dart';
 import '../model/photo_model.dart';
 
 class CarRepository extends BaseRepository {
-
   //final _client = serviceLocator<ApiSecondDioSettings>().dio;
   final _service = serviceLocator<ApiSecondDioSettings>();
 
-
-  Future<ApiResponse<CarScanInfoContainer>> loadCarImage(PhotoModel photoModel) async {
+  Future<ApiResponse<CarScanInfoContainer>> loadCarImage(
+    PhotoModel photoModel,
+  ) async {
     try {
       FormData formData = FormData.fromMap({
         "image": await MultipartFile.fromFile(
@@ -42,12 +42,9 @@ class CarRepository extends BaseRepository {
     }
   }
 
-
   Future<ApiResponse<List<Vehicle>>> getAllVehicles() async {
     try {
-      final data = await _service.getGetApiResponse(
-          "/api/vehicles",
-      );
+      final data = await _service.getGetApiResponse("/api/vehicles");
 
       List<Vehicle> response = (data as List)
           .map((json) => Vehicle.fromJson(json))
@@ -63,14 +60,15 @@ class CarRepository extends BaseRepository {
     }
   }
 
-
-  Future<ApiResponse<Vehicle>> getVehicleDetails(String registrationNumber) async {
+  Future<ApiResponse<Vehicle>> getVehicleDetails(
+    String registrationNumber,
+  ) async {
     try {
       final data = await _service.getGetApiResponse(
         "/api/vehicles/$registrationNumber/details",
       );
 
-      Vehicle response =  Vehicle.fromJson(data);
+      Vehicle response = Vehicle.fromJson(data);
       debugPrint("CarRepository:: getVehicle");
       return Success(response);
     } on DioException catch (e) {
@@ -82,12 +80,11 @@ class CarRepository extends BaseRepository {
     }
   }
 
-
   Future<ApiResponse<Vehicle>> regCar(CareRegRequest car) async {
     try {
       final data = await _service.getPostApiResponse(
         "api/pits/cars/register",
-         car.toJson()
+        car.toJson(),
       );
 
       Vehicle response = Vehicle.fromJson(data);
@@ -101,5 +98,4 @@ class CarRepository extends BaseRepository {
       return Error(e.toString());
     }
   }
-
 }
