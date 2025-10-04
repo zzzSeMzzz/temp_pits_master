@@ -50,8 +50,6 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                   ),
                   Row(
                     children: [
-                      // SvgPicture.asset(AppIcons.iArrowLeft,width: 24,height: 24,),
-
                       Text(
                         'Activities',
                         style: Theme.of(context)
