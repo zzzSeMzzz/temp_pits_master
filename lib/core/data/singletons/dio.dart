@@ -238,6 +238,8 @@ class ApiSecondDioSettings extends BaseApiServices {
       case 401:
         // Не выбрасываем исключение для 401, позволяем interceptor'у обработать
         return response.data;
+      case 404:
+        return response.data;
       default:
         throw FetchDataException(
           _getErrorFromResponse(response, "FetchDataException"),

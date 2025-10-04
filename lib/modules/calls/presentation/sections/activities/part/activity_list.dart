@@ -26,7 +26,7 @@ class _ActivityListState extends State<ActivityList> {
           ActivityItem(activity: widget.activities[index]),
       itemCount: widget.activities.length,
     ) : Center(
-      child: Text("Casos está vacío", style: context.textTheme.displayLarge!.copyWith(
+      child: Text("Emergencia no encontrada", style: context.textTheme.displayLarge!.copyWith(
         fontWeight: FontWeight.w500
       )),
     );
