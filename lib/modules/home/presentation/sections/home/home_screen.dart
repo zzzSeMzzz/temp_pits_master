@@ -5,28 +5,19 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
-import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/core/data/extensions.dart';
-import 'package:pits_app/core/data/network/api_response.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_screen.dart';
-import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_bloc.dart';
-import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_state.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/appbar.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/map_button.dart';
-import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_info_card.dart';
 import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 import 'package:pits_app/modules/service/presentation/sections/part_selection/part_selection_screen.dart';
-
 import '../../../../alarm/widgets/alarm_screen.dart';
-import '../../../../car/presentation/sections/add_car/bloc/add_car_state.dart';
-import '../../../domain/usecase/get_services.dart';
-import '../map_page/bloc/services_bloc.dart';
 import 'parts/vehicle_page_view.dart' show VehiclePageView;
 
 class HomeScreen extends StatelessWidget {
@@ -50,10 +41,14 @@ class HomeScreen extends StatelessWidget {
 
       },
       builder: (context, state) {
-        final bloc = context.read<HomeBloc>();
+        //final bloc = context.read<HomeBloc>();
+        final isVisible = state.maybeWhen(
+          success: (vehicles) => vehicles.isEmpty,
+          orElse: () => false
+        );
         return Scaffold(
           backgroundColor: white,
-          appBar: const HomeAppBar(),
+          appBar: HomeAppBar(isNoCarVisible: isVisible),
           body: Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
+import 'package:pits_app/base/safe_iamge.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_info_bottomsheet.dart';
 
@@ -20,10 +21,12 @@ class CarInfoBox extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
+            SafeNetworkImage(
+              url: vehicle.image,
+              fallbackAsset:
               AppImages.testBrand,
               width: 40,
-              height: 40,
+              height: 40
             ),
             const SizedBox(
               width: 10,

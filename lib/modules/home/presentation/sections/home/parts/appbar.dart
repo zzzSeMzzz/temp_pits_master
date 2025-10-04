@@ -4,7 +4,9 @@ import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_info_bottomsheet.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({Key? key}) : super(key: key);
+  const HomeAppBar({Key? key, required this.isNoCarVisible}) : super(key: key);
+
+  final bool isNoCarVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 .displayLarge!
                 .copyWith(fontSize: 24, fontWeight: FontWeight.w700),
           ),
+          isNoCarVisible ?
           GestureDetector(
             onTap: () {
-              showCarInfoBottomSheet(context);
+              //showCarInfoBottomSheet(context);
             },
             child: Image.asset(
               AppImages.carNoAuth,
@@ -36,13 +39,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: 124,
               fit: BoxFit.cover,
             ),
-          )
+          ) : const SizedBox()
         ],
       ),
     );
   }
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(180);
+
+  Size get preferredSize => isNoCarVisible ? const Size.fromHeight(180) : const Size.fromHeight(56);
 }
