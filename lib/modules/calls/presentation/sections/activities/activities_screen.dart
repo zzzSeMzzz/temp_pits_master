@@ -30,17 +30,12 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
   Widget build(BuildContext context) => BlocConsumer<ActivityBloc, ActivityState>(
       listener: (context, state) {
         //ActivityBloc bloc = context.read<ActivityBloc>();
-        state.when(
-          initial: () {},
-          loading: () {},
-          success: (List<AlarmModel> alarms) {
-            debugPrint('success load activities ${alarms.length}');
-          },
+        state.maybeWhen(
           error: (String message) {
             Utils.flushBarErrorMessage(message, context);
             context.read<ActivityBloc>().add(const ActivityEvent.cleared());
           },
-          cleared: () {},
+          orElse: () {}
         );
       },
       builder: (context, state) {
