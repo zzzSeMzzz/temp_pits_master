@@ -83,13 +83,22 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                             .copyWith(fontWeight: FontWeight.w700, fontSize: 12),
                         tabs: const [
                           Tab(
-                            text: 'All',
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text("All"),
+                            ),
                           ),
                           Tab(
-                            text: 'Paid',
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text("Paid"),
+                            ),
                           ),
                           Tab(
-                            text: 'Not paid',
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text("Not paid"),
+                            ),
                           ),
                         ]),
                   ),
