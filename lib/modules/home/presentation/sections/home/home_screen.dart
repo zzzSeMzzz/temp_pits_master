@@ -24,15 +24,24 @@ import 'parts/vehicle_page_view.dart' show VehiclePageView;
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  PreferredSizeWidget _buildAppBar(BuildContext context, HomeState state) {
+    final selectedVehicle = state.maybeWhen(
+      selectedVehicle: (vehicle) => vehicle,
+      orElse: () => null,
+    );
+    return HomeAppBar(vehicle: selectedVehicle);
+  }
+
   Widget _buildContentByState(BuildContext context, HomeBloc bloc) {
     return bloc.state.maybeWhen(
-      loading: () => const SpinKitThreeBounce(
-        color: Colors.black,
-        size: 30.0,
-      ),
+      loading: () => const SpinKitThreeBounce(color: Colors.black, size: 30.0),
       success: (vehicles) => VehiclePageView(
-          vehicles: vehicles,
-          onSelectVehicle: (veh) => bloc.add(HomeEvent.onSelectVehicle(veh))
+        vehicles: vehicles,
+        onSelectVehicle: (veh) => bloc.add(HomeEvent.onSelectVehicle(veh)),
+      ),
+      selectedVehicle: (vehicle) => VehiclePageView(
+        vehicles: bloc.vehicles,
+        onSelectVehicle: (veh) => bloc.add(HomeEvent.onSelectVehicle(veh)),
       ),
       orElse: () => const SizedBox(),
     );
@@ -40,132 +49,119 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocConsumer<HomeBloc, HomeState>(
-      listener: (context, state) {
-
-      },
-      builder: (context, state) {
-        final bloc = context.read<HomeBloc>();
-        final selVek = state.maybeWhen(
-          selectedVehicle: (vehicle) => vehicle,
-          orElse: () => null
-        );
-        return Scaffold(
-          backgroundColor: white,
-          appBar: HomeAppBar(vehicle: selVek),
-          body: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 16,
-                ),
-                _buildContentByState(context, bloc),
-                //const CarInfoBox(),
-                const SizedBox(
-                  height: 16,
-                ),
-                WButton(
-                  color: Colors.transparent,
-                  height: 55,
-                  onTap: () {
-                    //Navigator.push(context, fade(page: AddCarScreen(isBackButton: true,)));
-                    if(!StorageRepository.isAuth()) {
-                      final snackBar = SnackBar(
-                        content: Text('Please auth before add car', style: Theme.of(context)
-                            .textTheme
-                            .displayLarge!
+    listener: (context, state) {},
+    builder: (context, state) {
+      final bloc = context.read<HomeBloc>();
+      return Scaffold(
+        backgroundColor: white,
+        appBar: _buildAppBar(context, state),
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              _buildContentByState(context, bloc),
+              //const CarInfoBox(),
+              const SizedBox(height: 16),
+              WButton(
+                color: Colors.transparent,
+                height: 55,
+                onTap: () {
+                  //Navigator.push(context, fade(page: AddCarScreen(isBackButton: true,)));
+                  if (!StorageRepository.isAuth()) {
+                    final snackBar = SnackBar(
+                      content: Text(
+                        'Please auth before add car',
+                        style: Theme.of(context).textTheme.displayLarge!
                             .copyWith(
-                            fontWeight: FontWeight.w500, fontSize: 16),),
-                        action: SnackBarAction(
-                          textColor: Colors.black,
-                          label: 'SignIn',
-                          onPressed: () {
-                            Navigator.of(context, rootNavigator: true).pushReplacement(
-                                fade(page: const AuthScreen())
-                            );
-                          },
-                        ),
-                        duration: const Duration(seconds: 3), // Optional: set duration
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-                      return;
-                    }
-                    Navigator.of(context, rootNavigator: true).push(
-                      MaterialPageRoute(
-                        builder: (_) =>
-                            MultiBlocProvider(
-                              providers: [
-                                BlocProvider(create: (_) => AddCarBloc()),
-                              ],
-                              child: const AddCarScreen(isBackButton: true),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
                             ),
                       ),
+                      action: SnackBarAction(
+                        textColor: Colors.black,
+                        label: 'SignIn',
+                        onPressed: () {
+                          Navigator.of(
+                            context,
+                            rootNavigator: true,
+                          ).pushReplacement(fade(page: const AuthScreen()));
+                        },
+                      ),
+                      duration: const Duration(
+                        seconds: 3,
+                      ), // Optional: set duration
                     );
-                  },
-                  border: Border.all(color: mainDark),
-                  borderRadius: 16,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        AppIcons.plusCircle,
-                        width: 24,
-                        height: 24,
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                    return;
+                  }
+                  Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute(
+                      builder: (_) => MultiBlocProvider(
+                        providers: [BlocProvider(create: (_) => AddCarBloc())],
+                        child: const AddCarScreen(isBackButton: true),
                       ),
-                      const SizedBox(
-                        width: 10,
+                    ),
+                  );
+                },
+                border: Border.all(color: mainDark),
+                borderRadius: 16,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      AppIcons.plusCircle,
+                      width: 24,
+                      height: 24,
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      'Añadir vehículo',
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
                       ),
-                      Text(
-                        'Añadir vehículo',
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .displayLarge!
-                            .copyWith(
-                            fontWeight: FontWeight.w600, fontSize: 16),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const MapButton(),
-                const SizedBox(
-                  height: 8,
-                ),
-                SizedBox(
-                  height: 100,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: WButton(
-                          onTap: () {
-                            Navigator.push(context,
-                                fade(page: const PartSelectionScreen()));
-                          },
-                          height: 55,
-                          svgAsset: AppIcons.plusCircle,
-                          borderRadius: 16,
-                          textColor: white,
-                          text: 'Solicitar Reparación',
-                        ),
+              ),
+              const SizedBox(height: 16),
+              const MapButton(),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 100,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: WButton(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            fade(page: const PartSelectionScreen()),
+                          );
+                        },
+                        height: 55,
+                        svgAsset: AppIcons.plusCircle,
+                        borderRadius: 16,
+                        textColor: white,
+                        text: 'Solicitar Reparación',
                       ),
-                      SvgPicture.asset(
-                        AppIcons.icAlarmButton,
-                        fit: BoxFit.fill,
-                        width: 96,
-                        height: 96,
-                      ).onTap(() => showAlarmBottomSheet(context, null))
-                    ],
-                  ),
-                )
-              ],
-            ),
+                    ),
+                    SvgPicture.asset(
+                      AppIcons.icAlarmButton,
+                      fit: BoxFit.fill,
+                      width: 96,
+                      height: 96,
+                    ).onTap(() => showAlarmBottomSheet(context, null)),
+                  ],
+                ),
+              ),
+            ],
           ),
-        );
-      }
+        ),
+      );
+    },
   );
 }

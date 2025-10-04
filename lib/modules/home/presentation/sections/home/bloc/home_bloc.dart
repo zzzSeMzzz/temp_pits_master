@@ -7,11 +7,12 @@ import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_state
 import 'home_event.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-
   final _repo = CarRepository();
+  List<Vehicle> _vehicles = [];
+
+  List<Vehicle> get vehicles => _vehicles;
 
   HomeBloc() : super(const HomeState.initial()) {
-
     on<HomeEvent>((event, emit) async {
       await event.map(
         cleared: (event) {
@@ -24,16 +25,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             if (response is Error<List<Vehicle>>) {
               emit(HomeState.error(message: response.errorMessage));
             } else if (response is Success<List<Vehicle>>) {
+              _vehicles = response.data;
               emit(HomeState.success(vehicles: response.data));
-              if(response.data.isNotEmpty) {
+              if (response.data.isNotEmpty) {
                 emit(HomeState.selectedVehicle(vehicle: response.data.first));
               }
             }
           }
         },
         onSelectVehicle: (event) async {
-          emit(HomeState.selectedVehicle(vehicle: event.vehicle));
-        }
+          if (_vehicles.isNotEmpty) {
+            emit(HomeState.selectedVehicle(vehicle: event.vehicle));
+          }
+        },
       );
     });
 

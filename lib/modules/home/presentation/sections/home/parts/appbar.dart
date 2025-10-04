@@ -20,7 +20,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20))),
       padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 10, left: 24, right: 24),
+          top: MediaQuery.of(context).padding.top + 10, left: 24, right: 24,bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,16 +31,20 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 .displayLarge!
                 .copyWith(fontSize: 24, fontWeight: FontWeight.w700),
           ),
-          GestureDetector(
-            onTap: () {
-              showCarInfoBottomSheet(context);
-            },
-            child: SafeNetworkImage(
-                url: vehicle?.image,
-                fallbackAsset: AppImages.carNoAuth,
-                width: double.maxFinite,
-                height: 124,
-                fit: BoxFit.cover,
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                showCarInfoBottomSheet(context);
+              },
+              child: Center(
+                child: SafeNetworkImage(
+                    url: vehicle?.image,
+                    fallbackAsset: AppImages.carNoAuth,
+                    width: double.maxFinite,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                ),
+              ),
             ),
           )
         ],
