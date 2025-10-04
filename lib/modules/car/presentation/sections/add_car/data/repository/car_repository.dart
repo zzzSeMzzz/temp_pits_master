@@ -6,6 +6,7 @@ import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/ve
 import '../../../../../../../core/data/network/api_response.dart';
 import '../../../../../../../core/data/singletons/dio.dart';
 import '../../../../../../../core/data/singletons/service_locator.dart';
+import '../model/car_scan_info.dart';
 import '../model/photo_model.dart';
 
 class CarRepository extends BaseRepository {
@@ -14,7 +15,7 @@ class CarRepository extends BaseRepository {
   final _service = serviceLocator<ApiSecondDioSettings>();
 
 
-  Future<ApiResponse<dynamic>> loadCarImage(PhotoModel photoModel) async {
+  Future<ApiResponse<CarScanInfoContainer>> loadCarImage(PhotoModel photoModel) async {
     try {
       FormData formData = FormData.fromMap({
         "image": await MultipartFile.fromFile(
@@ -24,15 +25,12 @@ class CarRepository extends BaseRepository {
         ),
       });
 
-      final data = await _service.dio.post(
+      final data = await _service.getPostApiResponse(
         "api/scan-plate",
-        data: formData,
-          /*queryParameters: {
-            'limit': limit,
-          }*/
+        formData,
       );
 
-      final response = data;//TenderResponse.fromJson(data);
+      final response = CarScanInfoContainer.fromJson(data);
       debugPrint("CarRepository:: success upload image");
       return Success(response);
     } on DioException catch (e) {

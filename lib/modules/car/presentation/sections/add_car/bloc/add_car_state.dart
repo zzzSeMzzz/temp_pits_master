@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../../../core/data/network/api_response.dart';
+import '../data/model/car_scan_info.dart';
 import '../data/model/photo_model.dart';
 part 'add_car_state.freezed.dart';
 
@@ -23,4 +25,8 @@ abstract class AddCarState with _$AddCarState {
   }) = _PermissionsDenied;
 
   const factory AddCarState.cleared() = _Cleared;
+
+  const factory AddCarState.currentCarNumber({
+    String? carNumber,
+  }) = _CurrentCarNumber;
 }

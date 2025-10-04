@@ -168,16 +168,22 @@ class _AddCarScreenState extends State<AddCarScreen> {
                     height: 56,
                     borderColor: textGrey,
                     borderRadius: 16,
-                    onTapSuffix: () {},
+                    onTapSuffix: () {
+                      bloc.add(
+                        const AddCarEvent.permissionsRequested(),
+                      );
+                    },
                     suffixIcon: AppIcons.icScan2,
-                    onChanged: (text) {},
+                    onChanged: (text) {
+
+                    },
                   ),
                 ),
                 const SizedBox(height: 24),
                 WButton(
                   margin: const EdgeInsets.symmetric(horizontal: 24),
                   onTap: () => bloc.add(
-                    const AddCarEvent.permissionsRequested(),
+                    const AddCarEvent.permissionsRequested(),//fixme
                   ), //_showPickPhotoSheet(bloc),
                   svgAsset: AppIcons.plusCircle,
                   borderRadius: 16,

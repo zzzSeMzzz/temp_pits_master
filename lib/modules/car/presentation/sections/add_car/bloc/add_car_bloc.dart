@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pits_app/core/data/network/api_response.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/car_scan_info.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/repository/car_repository.dart';
 import '../data/model/photo_model.dart';
 import 'add_car_event.dart';
@@ -30,6 +32,7 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
             if (pickedFile != null) {
               final photo = PhotoModel.fromFilePath(pickedFile.path);
               emit(AddCarState.success(photo: photo));
+              add(AddCarEvent.onScanPhoto(photo));
             } else {
               emit(const AddCarState.error(message: 'Фото не было выбрано'));
             }
@@ -37,7 +40,7 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
             emit(AddCarState.error(message: 'Ошибка при выборе фото: $e'));
           }
         },
-        onPhotoSelected: (event) async {
+        onPhotoSelected: (event) async { //проиходит, когда выбираем откуда источник фотки камера или галерея
           add(AddCarEvent.photoPickerRequested(event.source));
         },
         cleared: (event) async {
@@ -65,6 +68,26 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
               ),
             );
           }
+        },
+        onScanPhoto: (event) async {
+          try {
+            emit(const AddCarState.loading());
+            final carInfo = await _repo.loadCarImage(event.photo);
+            if(carInfo is Success<CarScanInfoContainer>) {
+              String? cNum;
+              if(carInfo.data.results!=null && carInfo.data.results!.isNotEmpty) {
+                cNum = carInfo.data.results!.first.plate;
+              }
+              emit(AddCarState.currentCarNumber(carNumber: cNum));
+            } else if(carInfo is Error<CarScanInfoContainer>) {
+              emit(AddCarState.error(message: carInfo.errorMessage));
+            }
+          } catch (e) {
+            emit(AddCarState.error(message: 'Ошибка распознавания фото: $e'));
+          }
+        },
+        onGetVehicleInfo: (event) {
+
         },
       );
     });

@@ -26,6 +26,7 @@ mixin _$AddCarState {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -36,6 +37,7 @@ mixin _$AddCarState {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -46,6 +48,7 @@ mixin _$AddCarState {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +60,7 @@ mixin _$AddCarState {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -67,6 +71,7 @@ mixin _$AddCarState {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -77,6 +82,7 @@ mixin _$AddCarState {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -153,6 +159,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return initial();
   }
@@ -167,6 +174,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return initial?.call();
   }
@@ -181,6 +189,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -199,6 +208,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return initial(this);
   }
@@ -213,6 +223,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return initial?.call(this);
   }
@@ -227,6 +238,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -290,6 +302,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return loading();
   }
@@ -304,6 +317,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return loading?.call();
   }
@@ -318,6 +332,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -336,6 +351,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return loading(this);
   }
@@ -350,6 +366,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return loading?.call(this);
   }
@@ -364,6 +381,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -454,6 +472,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return success(photo);
   }
@@ -468,6 +487,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return success?.call(photo);
   }
@@ -482,6 +502,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -500,6 +521,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return success(this);
   }
@@ -514,6 +536,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return success?.call(this);
   }
@@ -528,6 +551,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -626,6 +650,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return error(message);
   }
@@ -640,6 +665,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return error?.call(message);
   }
@@ -654,6 +680,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -672,6 +699,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return error(this);
   }
@@ -686,6 +714,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return error?.call(this);
   }
@@ -700,6 +729,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -771,6 +801,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return permissionsGranted();
   }
@@ -785,6 +816,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return permissionsGranted?.call();
   }
@@ -799,6 +831,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (permissionsGranted != null) {
@@ -817,6 +850,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return permissionsGranted(this);
   }
@@ -831,6 +865,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return permissionsGranted?.call(this);
   }
@@ -845,6 +880,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (permissionsGranted != null) {
@@ -938,6 +974,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return permissionsDenied(message);
   }
@@ -952,6 +989,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return permissionsDenied?.call(message);
   }
@@ -966,6 +1004,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (permissionsDenied != null) {
@@ -984,6 +1023,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return permissionsDenied(this);
   }
@@ -998,6 +1038,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return permissionsDenied?.call(this);
   }
@@ -1012,6 +1053,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (permissionsDenied != null) {
@@ -1084,6 +1126,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
   }) {
     return cleared();
   }
@@ -1098,6 +1141,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
   }) {
     return cleared?.call();
   }
@@ -1112,6 +1156,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
     TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -1130,6 +1175,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
   }) {
     return cleared(this);
   }
@@ -1144,6 +1190,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
   }) {
     return cleared?.call(this);
   }
@@ -1158,6 +1205,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -1169,4 +1217,187 @@ class _$ClearedImpl implements _Cleared {
 
 abstract class _Cleared implements AddCarState {
   const factory _Cleared() = _$ClearedImpl;
+}
+
+/// @nodoc
+abstract class _$$CurrentCarNumberImplCopyWith<$Res> {
+  factory _$$CurrentCarNumberImplCopyWith(
+    _$CurrentCarNumberImpl value,
+    $Res Function(_$CurrentCarNumberImpl) then,
+  ) = __$$CurrentCarNumberImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? carNumber});
+}
+
+/// @nodoc
+class __$$CurrentCarNumberImplCopyWithImpl<$Res>
+    extends _$AddCarStateCopyWithImpl<$Res, _$CurrentCarNumberImpl>
+    implements _$$CurrentCarNumberImplCopyWith<$Res> {
+  __$$CurrentCarNumberImplCopyWithImpl(
+    _$CurrentCarNumberImpl _value,
+    $Res Function(_$CurrentCarNumberImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AddCarState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? carNumber = freezed}) {
+    return _then(
+      _$CurrentCarNumberImpl(
+        carNumber: freezed == carNumber
+            ? _value.carNumber
+            : carNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$CurrentCarNumberImpl implements _CurrentCarNumber {
+  const _$CurrentCarNumberImpl({this.carNumber});
+
+  @override
+  final String? carNumber;
+
+  @override
+  String toString() {
+    return 'AddCarState.currentCarNumber(carNumber: $carNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CurrentCarNumberImpl &&
+            (identical(other.carNumber, carNumber) ||
+                other.carNumber == carNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, carNumber);
+
+  /// Create a copy of AddCarState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CurrentCarNumberImplCopyWith<_$CurrentCarNumberImpl> get copyWith =>
+      __$$CurrentCarNumberImplCopyWithImpl<_$CurrentCarNumberImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(PhotoModel photo) success,
+    required TResult Function(String message) error,
+    required TResult Function() permissionsGranted,
+    required TResult Function(String message) permissionsDenied,
+    required TResult Function() cleared,
+    required TResult Function(String? carNumber) currentCarNumber,
+  }) {
+    return currentCarNumber(carNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(String message)? error,
+    TResult? Function()? permissionsGranted,
+    TResult? Function(String message)? permissionsDenied,
+    TResult? Function()? cleared,
+    TResult? Function(String? carNumber)? currentCarNumber,
+  }) {
+    return currentCarNumber?.call(carNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(PhotoModel photo)? success,
+    TResult Function(String message)? error,
+    TResult Function()? permissionsGranted,
+    TResult Function(String message)? permissionsDenied,
+    TResult Function()? cleared,
+    TResult Function(String? carNumber)? currentCarNumber,
+    required TResult orElse(),
+  }) {
+    if (currentCarNumber != null) {
+      return currentCarNumber(carNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_PermissionsGranted value) permissionsGranted,
+    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_CurrentCarNumber value) currentCarNumber,
+  }) {
+    return currentCarNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_PermissionsGranted value)? permissionsGranted,
+    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_CurrentCarNumber value)? currentCarNumber,
+  }) {
+    return currentCarNumber?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_PermissionsGranted value)? permissionsGranted,
+    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_CurrentCarNumber value)? currentCarNumber,
+    required TResult orElse(),
+  }) {
+    if (currentCarNumber != null) {
+      return currentCarNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CurrentCarNumber implements AddCarState {
+  const factory _CurrentCarNumber({final String? carNumber}) =
+      _$CurrentCarNumberImpl;
+
+  String? get carNumber;
+
+  /// Create a copy of AddCarState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CurrentCarNumberImplCopyWith<_$CurrentCarNumberImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
