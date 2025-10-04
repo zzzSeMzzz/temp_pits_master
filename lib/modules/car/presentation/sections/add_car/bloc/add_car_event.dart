@@ -11,5 +11,5 @@ class AddCarEvent with _$AddCarEvent {
   const factory AddCarEvent.permissionsRequested () = _PermissionsRequested;
   const factory AddCarEvent.cleared() = _Cleared;
   const factory AddCarEvent.onScanPhoto(PhotoModel photo) = _onScanPhoto;
-  const factory AddCarEvent.onGetVehicleInfo(String carNumber) = _onGetVehicleInfo;
+  const factory AddCarEvent.onRegCar(String carNumber) = _onRegCarInfo;
 }

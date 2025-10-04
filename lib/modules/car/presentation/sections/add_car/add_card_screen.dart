@@ -9,6 +9,7 @@ import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/globals/widgets/interaction/w_textfield.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_state.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import 'bloc/add_car_bloc.dart';
 import 'bloc/add_car_event.dart';
 import 'data/model/photo_model.dart';
@@ -94,8 +95,10 @@ class _AddCarScreenState extends State<AddCarScreen> {
         },
         initial: () {},
         loading: () {},
-        success: (PhotoModel photo) {
-          debugPrint('success take photo');
+        success: (Vehicle vehicle) {
+          debugPrint('success reg car $vehicle');
+          Utils.flushBarErrorMessage("El coche está matriculado", context, color: greenAccent);
+          Navigator.of(context).pop();
         },
         error: (String message) {
           Utils.flushBarErrorMessage(message, context);
@@ -194,9 +197,12 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 const SizedBox(height: 24),
                 WButton(
                   margin: const EdgeInsets.symmetric(horizontal: 24),
-                  onTap: () => bloc.add(
-                    const AddCarEvent.permissionsRequested(), //fixme
-                  ), //_showPickPhotoSheet(bloc),
+                  onTap: () {
+                    final carNumber = _cnController.text;
+                    if(carNumber.isNotEmpty) {
+                      bloc.add(AddCarEvent.onRegCar(carNumber));
+                    }
+                  },
                   svgAsset: AppIcons.plusCircle,
                   borderRadius: 16,
                   text: 'Conectar',

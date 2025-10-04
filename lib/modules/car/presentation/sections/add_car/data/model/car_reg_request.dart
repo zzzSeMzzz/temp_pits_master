@@ -21,6 +21,12 @@ class CareRegRequest {
   CareRegRequest({this.registrationNumber, this.model, this.customField41,
       this.customField51, this.custId, this.custIdSlug, this.dateStart});
 
+  factory CareRegRequest.formNumber(String number) {
+    final req = CareRegRequest();
+    req.registrationNumber = number;
+    return req;
+  }
+
 
   factory CareRegRequest.fromJson(Map<String, dynamic> json) =>
       _$CareRegRequestFromJson(json);

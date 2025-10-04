@@ -24,7 +24,7 @@ mixin _$AddCarEvent {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -33,7 +33,7 @@ mixin _$AddCarEvent {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -42,7 +42,7 @@ mixin _$AddCarEvent {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,7 +52,7 @@ mixin _$AddCarEvent {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -61,7 +61,7 @@ mixin _$AddCarEvent {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -70,7 +70,7 @@ mixin _$AddCarEvent {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -176,7 +176,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) {
     return photoPickerRequested(source);
   }
@@ -189,7 +189,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) {
     return photoPickerRequested?.call(source);
   }
@@ -202,7 +202,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) {
     if (photoPickerRequested != null) {
@@ -219,7 +219,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) {
     return photoPickerRequested(this);
   }
@@ -232,7 +232,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) {
     return photoPickerRequested?.call(this);
   }
@@ -245,7 +245,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) {
     if (photoPickerRequested != null) {
@@ -346,7 +346,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) {
     return onPhotoSelected(source);
   }
@@ -359,7 +359,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) {
     return onPhotoSelected?.call(source);
   }
@@ -372,7 +372,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
@@ -389,7 +389,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) {
     return onPhotoSelected(this);
   }
@@ -402,7 +402,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) {
     return onPhotoSelected?.call(this);
   }
@@ -415,7 +415,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
@@ -487,7 +487,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) {
     return permissionsRequested();
   }
@@ -500,7 +500,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) {
     return permissionsRequested?.call();
   }
@@ -513,7 +513,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) {
     if (permissionsRequested != null) {
@@ -530,7 +530,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) {
     return permissionsRequested(this);
   }
@@ -543,7 +543,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) {
     return permissionsRequested?.call(this);
   }
@@ -556,7 +556,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) {
     if (permissionsRequested != null) {
@@ -618,7 +618,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) {
     return cleared();
   }
@@ -631,7 +631,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) {
     return cleared?.call();
   }
@@ -644,7 +644,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -661,7 +661,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) {
     return cleared(this);
   }
@@ -674,7 +674,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) {
     return cleared?.call(this);
   }
@@ -687,7 +687,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -776,7 +776,7 @@ class _$onScanPhotoImpl implements _onScanPhoto {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) {
     return onScanPhoto(photo);
   }
@@ -789,7 +789,7 @@ class _$onScanPhotoImpl implements _onScanPhoto {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) {
     return onScanPhoto?.call(photo);
   }
@@ -802,7 +802,7 @@ class _$onScanPhotoImpl implements _onScanPhoto {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) {
     if (onScanPhoto != null) {
@@ -819,7 +819,7 @@ class _$onScanPhotoImpl implements _onScanPhoto {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) {
     return onScanPhoto(this);
   }
@@ -832,7 +832,7 @@ class _$onScanPhotoImpl implements _onScanPhoto {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) {
     return onScanPhoto?.call(this);
   }
@@ -845,7 +845,7 @@ class _$onScanPhotoImpl implements _onScanPhoto {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) {
     if (onScanPhoto != null) {
@@ -868,22 +868,22 @@ abstract class _onScanPhoto implements AddCarEvent {
 }
 
 /// @nodoc
-abstract class _$$onGetVehicleInfoImplCopyWith<$Res> {
-  factory _$$onGetVehicleInfoImplCopyWith(
-    _$onGetVehicleInfoImpl value,
-    $Res Function(_$onGetVehicleInfoImpl) then,
-  ) = __$$onGetVehicleInfoImplCopyWithImpl<$Res>;
+abstract class _$$onRegCarInfoImplCopyWith<$Res> {
+  factory _$$onRegCarInfoImplCopyWith(
+    _$onRegCarInfoImpl value,
+    $Res Function(_$onRegCarInfoImpl) then,
+  ) = __$$onRegCarInfoImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String carNumber});
 }
 
 /// @nodoc
-class __$$onGetVehicleInfoImplCopyWithImpl<$Res>
-    extends _$AddCarEventCopyWithImpl<$Res, _$onGetVehicleInfoImpl>
-    implements _$$onGetVehicleInfoImplCopyWith<$Res> {
-  __$$onGetVehicleInfoImplCopyWithImpl(
-    _$onGetVehicleInfoImpl _value,
-    $Res Function(_$onGetVehicleInfoImpl) _then,
+class __$$onRegCarInfoImplCopyWithImpl<$Res>
+    extends _$AddCarEventCopyWithImpl<$Res, _$onRegCarInfoImpl>
+    implements _$$onRegCarInfoImplCopyWith<$Res> {
+  __$$onRegCarInfoImplCopyWithImpl(
+    _$onRegCarInfoImpl _value,
+    $Res Function(_$onRegCarInfoImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of AddCarEvent
@@ -892,7 +892,7 @@ class __$$onGetVehicleInfoImplCopyWithImpl<$Res>
   @override
   $Res call({Object? carNumber = null}) {
     return _then(
-      _$onGetVehicleInfoImpl(
+      _$onRegCarInfoImpl(
         null == carNumber
             ? _value.carNumber
             : carNumber // ignore: cast_nullable_to_non_nullable
@@ -904,22 +904,22 @@ class __$$onGetVehicleInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
-  const _$onGetVehicleInfoImpl(this.carNumber);
+class _$onRegCarInfoImpl implements _onRegCarInfo {
+  const _$onRegCarInfoImpl(this.carNumber);
 
   @override
   final String carNumber;
 
   @override
   String toString() {
-    return 'AddCarEvent.onGetVehicleInfo(carNumber: $carNumber)';
+    return 'AddCarEvent.onRegCar(carNumber: $carNumber)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$onGetVehicleInfoImpl &&
+            other is _$onRegCarInfoImpl &&
             (identical(other.carNumber, carNumber) ||
                 other.carNumber == carNumber));
   }
@@ -932,11 +932,8 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$onGetVehicleInfoImplCopyWith<_$onGetVehicleInfoImpl> get copyWith =>
-      __$$onGetVehicleInfoImplCopyWithImpl<_$onGetVehicleInfoImpl>(
-        this,
-        _$identity,
-      );
+  _$$onRegCarInfoImplCopyWith<_$onRegCarInfoImpl> get copyWith =>
+      __$$onRegCarInfoImplCopyWithImpl<_$onRegCarInfoImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -946,9 +943,9 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
     required TResult Function(PhotoModel photo) onScanPhoto,
-    required TResult Function(String carNumber) onGetVehicleInfo,
+    required TResult Function(String carNumber) onRegCar,
   }) {
-    return onGetVehicleInfo(carNumber);
+    return onRegCar(carNumber);
   }
 
   @override
@@ -959,9 +956,9 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
     TResult? Function(PhotoModel photo)? onScanPhoto,
-    TResult? Function(String carNumber)? onGetVehicleInfo,
+    TResult? Function(String carNumber)? onRegCar,
   }) {
-    return onGetVehicleInfo?.call(carNumber);
+    return onRegCar?.call(carNumber);
   }
 
   @override
@@ -972,11 +969,11 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
     TResult Function(PhotoModel photo)? onScanPhoto,
-    TResult Function(String carNumber)? onGetVehicleInfo,
+    TResult Function(String carNumber)? onRegCar,
     required TResult orElse(),
   }) {
-    if (onGetVehicleInfo != null) {
-      return onGetVehicleInfo(carNumber);
+    if (onRegCar != null) {
+      return onRegCar(carNumber);
     }
     return orElse();
   }
@@ -989,9 +986,9 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_onScanPhoto value) onScanPhoto,
-    required TResult Function(_onGetVehicleInfo value) onGetVehicleInfo,
+    required TResult Function(_onRegCarInfo value) onRegCar,
   }) {
-    return onGetVehicleInfo(this);
+    return onRegCar(this);
   }
 
   @override
@@ -1002,9 +999,9 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_onScanPhoto value)? onScanPhoto,
-    TResult? Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult? Function(_onRegCarInfo value)? onRegCar,
   }) {
-    return onGetVehicleInfo?.call(this);
+    return onRegCar?.call(this);
   }
 
   @override
@@ -1015,25 +1012,24 @@ class _$onGetVehicleInfoImpl implements _onGetVehicleInfo {
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
     TResult Function(_onScanPhoto value)? onScanPhoto,
-    TResult Function(_onGetVehicleInfo value)? onGetVehicleInfo,
+    TResult Function(_onRegCarInfo value)? onRegCar,
     required TResult orElse(),
   }) {
-    if (onGetVehicleInfo != null) {
-      return onGetVehicleInfo(this);
+    if (onRegCar != null) {
+      return onRegCar(this);
     }
     return orElse();
   }
 }
 
-abstract class _onGetVehicleInfo implements AddCarEvent {
-  const factory _onGetVehicleInfo(final String carNumber) =
-      _$onGetVehicleInfoImpl;
+abstract class _onRegCarInfo implements AddCarEvent {
+  const factory _onRegCarInfo(final String carNumber) = _$onRegCarInfoImpl;
 
   String get carNumber;
 
   /// Create a copy of AddCarEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$onGetVehicleInfoImplCopyWith<_$onGetVehicleInfoImpl> get copyWith =>
+  _$$onRegCarInfoImplCopyWith<_$onRegCarInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

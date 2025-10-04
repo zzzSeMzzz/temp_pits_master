@@ -21,7 +21,7 @@ mixin _$AddCarState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -32,7 +32,7 @@ mixin _$AddCarState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -43,7 +43,7 @@ mixin _$AddCarState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -154,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -169,7 +169,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -184,7 +184,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -297,7 +297,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -312,7 +312,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -327,7 +327,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -402,7 +402,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
     $Res Function(_$SuccessImpl) then,
   ) = __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PhotoModel photo});
+  $Res call({Vehicle vehicle});
 }
 
 /// @nodoc
@@ -418,13 +418,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? photo = null}) {
+  $Res call({Object? vehicle = null}) {
     return _then(
       _$SuccessImpl(
-        photo: null == photo
-            ? _value.photo
-            : photo // ignore: cast_nullable_to_non_nullable
-                  as PhotoModel,
+        vehicle: null == vehicle
+            ? _value.vehicle
+            : vehicle // ignore: cast_nullable_to_non_nullable
+                  as Vehicle,
       ),
     );
   }
@@ -433,14 +433,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.photo});
+  const _$SuccessImpl({required this.vehicle});
 
   @override
-  final PhotoModel photo;
+  final Vehicle vehicle;
 
   @override
   String toString() {
-    return 'AddCarState.success(photo: $photo)';
+    return 'AddCarState.success(vehicle: $vehicle)';
   }
 
   @override
@@ -448,11 +448,11 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.photo, photo) || other.photo == photo));
+            (identical(other.vehicle, vehicle) || other.vehicle == vehicle));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, photo);
+  int get hashCode => Object.hash(runtimeType, vehicle);
 
   /// Create a copy of AddCarState
   /// with the given fields replaced by the non-null parameter values.
@@ -467,14 +467,14 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
     required TResult Function(String? carNumber) currentCarNumber,
   }) {
-    return success(photo);
+    return success(vehicle);
   }
 
   @override
@@ -482,14 +482,14 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
     TResult? Function(String? carNumber)? currentCarNumber,
   }) {
-    return success?.call(photo);
+    return success?.call(vehicle);
   }
 
   @override
@@ -497,7 +497,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -506,7 +506,7 @@ class _$SuccessImpl implements _Success {
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(photo);
+      return success(vehicle);
     }
     return orElse();
   }
@@ -562,9 +562,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements AddCarState {
-  const factory _Success({required final PhotoModel photo}) = _$SuccessImpl;
+  const factory _Success({required final Vehicle vehicle}) = _$SuccessImpl;
 
-  PhotoModel get photo;
+  Vehicle get vehicle;
 
   /// Create a copy of AddCarState
   /// with the given fields replaced by the non-null parameter values.
@@ -645,7 +645,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -660,7 +660,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -675,7 +675,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -796,7 +796,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -811,7 +811,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -826,7 +826,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -969,7 +969,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -984,7 +984,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -999,7 +999,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -1121,7 +1121,7 @@ class _$ClearedImpl implements _Cleared {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -1136,7 +1136,7 @@ class _$ClearedImpl implements _Cleared {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -1151,7 +1151,7 @@ class _$ClearedImpl implements _Cleared {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -1295,7 +1295,7 @@ class _$CurrentCarNumberImpl implements _CurrentCarNumber {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PhotoModel photo) success,
+    required TResult Function(Vehicle vehicle) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -1310,7 +1310,7 @@ class _$CurrentCarNumberImpl implements _CurrentCarNumber {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PhotoModel photo)? success,
+    TResult? Function(Vehicle vehicle)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -1325,7 +1325,7 @@ class _$CurrentCarNumberImpl implements _CurrentCarNumber {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PhotoModel photo)? success,
+    TResult Function(Vehicle vehicle)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,

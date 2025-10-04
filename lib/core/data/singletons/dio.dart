@@ -219,14 +219,26 @@ class ApiSecondDioSettings extends BaseApiServices {
         debugPrint("success_json: $responseJson");*/
         return response.data;
       case 400:
-        throw BadRequestException(response.data);
+        throw BadRequestException(_getErrorFromResponse(response, "BadRequestException"));
     //case 500:
       case 401:
-        throw UnauthorizedException(response.data);
+        throw UnauthorizedException(_getErrorFromResponse(response, "UnauthorizedException"));
       default:
-        throw /*FetchDataException(
-            'Error accrued while communicating with server with status code ${response.statusCode}');*/
-        FetchDataException(response.data);
+        throw FetchDataException(_getErrorFromResponse(response, "FetchDataException"));
+    }
+  }
+
+  String _getErrorFromResponse(Response response, String def) {
+    String error = def;
+    if(response.data is Map<String, dynamic>) {
+
+      final err = response.data['error'];
+      if (err is String && err.isNotEmpty) {
+        error = err;
+      }
+      return error;
+    } else {
+      throw error;
     }
   }
 

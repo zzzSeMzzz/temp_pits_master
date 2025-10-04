@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pits_app/core/data/network/api_response.dart';
+import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/car_reg_request.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/car_scan_info.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/repository/car_repository.dart';
 import '../data/model/photo_model.dart';
+import '../data/model/vehicle.dart';
 import 'add_car_event.dart';
 import 'add_car_state.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -86,8 +88,18 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
             emit(AddCarState.error(message: 'Ошибка распознавания фото: $e'));
           }
         },
-        onGetVehicleInfo: (event) async {
-
+        onRegCar: (event) async {
+          try {
+            emit(const AddCarState.loading());
+            final carInfo = await _repo.regCar(CareRegRequest.formNumber(event.carNumber));
+            if(carInfo is Success<Vehicle>) {
+              emit(AddCarState.success(vehicle: carInfo.data));
+            } else if(carInfo is Error<Vehicle>) {
+              emit(AddCarState.error(message: carInfo.errorMessage));
+            }
+          } catch (e) {
+            emit(AddCarState.error(message: 'Ошибка распознавания фото: $e'));
+          }
         },
       );
     });

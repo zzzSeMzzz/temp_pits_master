@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../../core/data/network/api_response.dart';
 import '../data/model/car_scan_info.dart';
 import '../data/model/photo_model.dart';
+import '../data/model/vehicle.dart';
 part 'add_car_state.freezed.dart';
 
 @freezed
@@ -11,7 +12,7 @@ abstract class AddCarState with _$AddCarState {
   const factory AddCarState.loading() = _Loading;
 
   const factory AddCarState.success({
-    required PhotoModel photo,
+    required Vehicle vehicle,
   }) = _Success;
 
   const factory AddCarState.error({
