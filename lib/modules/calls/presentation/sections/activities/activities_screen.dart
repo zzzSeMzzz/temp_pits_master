@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/assets/colors/colors.dart';
+import 'package:pits_app/base/try_again_widget.dart';
 import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_bloc.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_event.dart';
@@ -29,16 +30,16 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
   @override
   Widget build(BuildContext context) => BlocConsumer<ActivityBloc, ActivityState>(
       listener: (context, state) {
-        //ActivityBloc bloc = context.read<ActivityBloc>();
         state.maybeWhen(
-          error: (String message) {
+          /*error: (String message) {
             Utils.flushBarErrorMessage(message, context);
             context.read<ActivityBloc>().add(const ActivityEvent.cleared());
-          },
+          },*/
           orElse: () {}
         );
       },
       builder: (context, state) {
+        final bloc = context.read<ActivityBloc>();
           return Scaffold(
             backgroundColor: white,
             body: Container(
@@ -105,9 +106,16 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                   const SizedBox(
                     height: 24,
                   ),
-                  state.maybeWhen(
-                    success: (activities) => Expanded(child: ActivityList(activities: activities)),
-                    orElse: () => const Center(child: CircularProgressIndicator())
+                  Expanded(
+                    child: state.maybeWhen(
+                      success: (activities) => ActivityList(activities: activities),
+                      error: (message) => Center(
+                        child: TryAgainWidget(onTap: () {
+                          bloc.add(const ActivityEvent.loadActivities());
+                        }),
+                      ),
+                      orElse: () => const Center(child: CircularProgressIndicator())
+                    ),
                   ),
                   const SizedBox(height: 16,),
                 ],

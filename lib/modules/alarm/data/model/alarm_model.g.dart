@@ -12,10 +12,8 @@ AlarmModel _$AlarmModelFromJson(Map<String, dynamic> json) => AlarmModel(
   carStart: json['carStart'] as bool? ?? true,
   notes: json['notes'] as String? ?? '',
   timestamp: json['timestamp'] as String?,
-  /*lat: (json['lat'] as num?)?.toDouble(),
-  lon: (json['lon'] as num?)?.toDouble(),*/
-  lat: 0,
-  lon: 0,
+  lat: (json['lat'] as num?)?.toDouble(),
+  lon: (json['lon'] as num?)?.toDouble(),
   createdAt: json['created_at'] as String?,
   updatedAt: json['updated_at'] as String?,
 );
