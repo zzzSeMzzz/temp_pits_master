@@ -68,3 +68,25 @@ bool intToBool(int? value) {
 int boolToInt(bool? value) {
   return value == true ? 1 : 0;
 }
+
+
+double? doubleFromAny(dynamic value) {
+  double? result;
+  if(value==null) return result;
+  if(value is String) {
+    try {
+      result = double.parse(value);
+    } catch (e) {
+      result = null;
+    }
+  }
+  if(value is num) {
+    try {
+      result = value.toDouble();
+    } catch (e) {
+      result = null;
+    }
+  }
+
+  return result;
+}

@@ -9,11 +9,13 @@ part of 'alarm_model.dart';
 AlarmModel _$AlarmModelFromJson(Map<String, dynamic> json) => AlarmModel(
   id: (json['id'] as num?)?.toInt(),
   emergency: json['emergency'] as String? ?? '',
-  carStart: json['carStart'] as bool? ?? true,
+  carStart: json['carStart'] == null
+      ? true
+      : intToBool((json['carStart'] as num?)?.toInt()),
   notes: json['notes'] as String? ?? '',
   timestamp: json['timestamp'] as String?,
-  lat: (json['lat'] as num?)?.toDouble(),
-  lon: (json['lon'] as num?)?.toDouble(),
+  lat: doubleFromAny(json['lat']),
+  lon: doubleFromAny(json['lon']),
   createdAt: json['created_at'] as String?,
   updatedAt: json['updated_at'] as String?,
 );

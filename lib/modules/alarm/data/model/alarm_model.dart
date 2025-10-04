@@ -15,9 +15,9 @@ class AlarmModel {
   final String? notes;
   @JsonKey(name: 'timestamp')
   final String? timestamp;
-  @JsonKey(name: 'lat')
+  @JsonKey(name: 'lat', fromJson: doubleFromAny)
   final double? lat;
-  @JsonKey(name: 'lon')
+  @JsonKey(name: 'lon', fromJson: doubleFromAny)
   final double? lon;
   @JsonKey(name: 'created_at')
   final String? createdAt;
