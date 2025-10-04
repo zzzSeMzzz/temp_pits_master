@@ -24,6 +24,7 @@ mixin _$HomeState {
     required TResult Function(List<Vehicle> vehicles) success,
     required TResult Function(String message) error,
     required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -32,6 +33,7 @@ mixin _$HomeState {
     TResult? Function(List<Vehicle> vehicles)? success,
     TResult? Function(String message)? error,
     TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -40,6 +42,7 @@ mixin _$HomeState {
     TResult Function(List<Vehicle> vehicles)? success,
     TResult Function(String message)? error,
     TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +52,7 @@ mixin _$HomeState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -57,6 +61,7 @@ mixin _$HomeState {
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -65,6 +70,7 @@ mixin _$HomeState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -137,6 +143,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Vehicle> vehicles) success,
     required TResult Function(String message) error,
     required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
   }) {
     return initial();
   }
@@ -149,6 +156,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<Vehicle> vehicles)? success,
     TResult? Function(String message)? error,
     TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
   }) {
     return initial?.call();
   }
@@ -161,6 +169,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<Vehicle> vehicles)? success,
     TResult Function(String message)? error,
     TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -177,6 +186,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
   }) {
     return initial(this);
   }
@@ -189,6 +199,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
   }) {
     return initial?.call(this);
   }
@@ -201,6 +212,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -262,6 +274,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<Vehicle> vehicles) success,
     required TResult Function(String message) error,
     required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
   }) {
     return loading();
   }
@@ -274,6 +287,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<Vehicle> vehicles)? success,
     TResult? Function(String message)? error,
     TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
   }) {
     return loading?.call();
   }
@@ -286,6 +300,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<Vehicle> vehicles)? success,
     TResult Function(String message)? error,
     TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -302,6 +317,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
   }) {
     return loading(this);
   }
@@ -314,6 +330,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
   }) {
     return loading?.call(this);
   }
@@ -326,6 +343,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -421,6 +439,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(List<Vehicle> vehicles) success,
     required TResult Function(String message) error,
     required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
   }) {
     return success(vehicles);
   }
@@ -433,6 +452,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(List<Vehicle> vehicles)? success,
     TResult? Function(String message)? error,
     TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
   }) {
     return success?.call(vehicles);
   }
@@ -445,6 +465,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(List<Vehicle> vehicles)? success,
     TResult Function(String message)? error,
     TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -461,6 +482,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
   }) {
     return success(this);
   }
@@ -473,6 +495,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
   }) {
     return success?.call(this);
   }
@@ -485,6 +508,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -582,6 +606,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(List<Vehicle> vehicles) success,
     required TResult Function(String message) error,
     required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
   }) {
     return error(message);
   }
@@ -594,6 +619,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(List<Vehicle> vehicles)? success,
     TResult? Function(String message)? error,
     TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
   }) {
     return error?.call(message);
   }
@@ -606,6 +632,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(List<Vehicle> vehicles)? success,
     TResult Function(String message)? error,
     TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -622,6 +649,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
   }) {
     return error(this);
   }
@@ -634,6 +662,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
   }) {
     return error?.call(this);
   }
@@ -646,6 +675,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -715,6 +745,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(List<Vehicle> vehicles) success,
     required TResult Function(String message) error,
     required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
   }) {
     return cleared();
   }
@@ -727,6 +758,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(List<Vehicle> vehicles)? success,
     TResult? Function(String message)? error,
     TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
   }) {
     return cleared?.call();
   }
@@ -739,6 +771,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(List<Vehicle> vehicles)? success,
     TResult Function(String message)? error,
     TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -755,6 +788,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
   }) {
     return cleared(this);
   }
@@ -767,6 +801,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
   }) {
     return cleared?.call(this);
   }
@@ -779,6 +814,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -790,4 +826,174 @@ class _$ClearedImpl implements _Cleared {
 
 abstract class _Cleared implements HomeState {
   const factory _Cleared() = _$ClearedImpl;
+}
+
+/// @nodoc
+abstract class _$$SelectedVehicleImplCopyWith<$Res> {
+  factory _$$SelectedVehicleImplCopyWith(
+    _$SelectedVehicleImpl value,
+    $Res Function(_$SelectedVehicleImpl) then,
+  ) = __$$SelectedVehicleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Vehicle vehicle});
+}
+
+/// @nodoc
+class __$$SelectedVehicleImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$SelectedVehicleImpl>
+    implements _$$SelectedVehicleImplCopyWith<$Res> {
+  __$$SelectedVehicleImplCopyWithImpl(
+    _$SelectedVehicleImpl _value,
+    $Res Function(_$SelectedVehicleImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? vehicle = null}) {
+    return _then(
+      _$SelectedVehicleImpl(
+        vehicle: null == vehicle
+            ? _value.vehicle
+            : vehicle // ignore: cast_nullable_to_non_nullable
+                  as Vehicle,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SelectedVehicleImpl implements _SelectedVehicle {
+  const _$SelectedVehicleImpl({required this.vehicle});
+
+  @override
+  final Vehicle vehicle;
+
+  @override
+  String toString() {
+    return 'HomeState.selectedVehicle(vehicle: $vehicle)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectedVehicleImpl &&
+            (identical(other.vehicle, vehicle) || other.vehicle == vehicle));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, vehicle);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectedVehicleImplCopyWith<_$SelectedVehicleImpl> get copyWith =>
+      __$$SelectedVehicleImplCopyWithImpl<_$SelectedVehicleImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Vehicle> vehicles) success,
+    required TResult Function(String message) error,
+    required TResult Function() cleared,
+    required TResult Function(Vehicle vehicle) selectedVehicle,
+  }) {
+    return selectedVehicle(vehicle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Vehicle> vehicles)? success,
+    TResult? Function(String message)? error,
+    TResult? Function()? cleared,
+    TResult? Function(Vehicle vehicle)? selectedVehicle,
+  }) {
+    return selectedVehicle?.call(vehicle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Vehicle> vehicles)? success,
+    TResult Function(String message)? error,
+    TResult Function()? cleared,
+    TResult Function(Vehicle vehicle)? selectedVehicle,
+    required TResult orElse(),
+  }) {
+    if (selectedVehicle != null) {
+      return selectedVehicle(vehicle);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SelectedVehicle value) selectedVehicle,
+  }) {
+    return selectedVehicle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SelectedVehicle value)? selectedVehicle,
+  }) {
+    return selectedVehicle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SelectedVehicle value)? selectedVehicle,
+    required TResult orElse(),
+  }) {
+    if (selectedVehicle != null) {
+      return selectedVehicle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedVehicle implements HomeState {
+  const factory _SelectedVehicle({required final Vehicle vehicle}) =
+      _$SelectedVehicleImpl;
+
+  Vehicle get vehicle;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectedVehicleImplCopyWith<_$SelectedVehicleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

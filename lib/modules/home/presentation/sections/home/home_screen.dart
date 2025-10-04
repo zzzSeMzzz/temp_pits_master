@@ -12,6 +12,7 @@ import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_scr
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_bloc.dart';
+import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_event.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_state.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/appbar.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/map_button.dart';
@@ -23,14 +24,16 @@ import 'parts/vehicle_page_view.dart' show VehiclePageView;
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  Widget _buildContentByState(BuildContext context, HomeState state) {
-    return state.maybeWhen(
+  Widget _buildContentByState(BuildContext context, HomeBloc bloc) {
+    return bloc.state.maybeWhen(
       loading: () => const SpinKitThreeBounce(
         color: Colors.black,
         size: 30.0,
       ),
-      success: (vehicles) => VehiclePageView(vehicles: vehicles),
-      //error: (message) => const SizedBox(),
+      success: (vehicles) => VehiclePageView(
+          vehicles: vehicles,
+          onSelectVehicle: (veh) => bloc.add(HomeEvent.onSelectVehicle(veh))
+      ),
       orElse: () => const SizedBox(),
     );
   }
@@ -41,14 +44,14 @@ class HomeScreen extends StatelessWidget {
 
       },
       builder: (context, state) {
-        //final bloc = context.read<HomeBloc>();
-        final isVisible = state.maybeWhen(
-          success: (vehicles) => vehicles.isEmpty,
-          orElse: () => false
+        final bloc = context.read<HomeBloc>();
+        final selVek = state.maybeWhen(
+          selectedVehicle: (vehicle) => vehicle,
+          orElse: () => null
         );
         return Scaffold(
           backgroundColor: white,
-          appBar: HomeAppBar(isNoCarVisible: isVisible),
+          appBar: HomeAppBar(vehicle: selVek),
           body: Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
@@ -56,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                _buildContentByState(context, state),
+                _buildContentByState(context, bloc),
                 //const CarInfoBox(),
                 const SizedBox(
                   height: 16,

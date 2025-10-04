@@ -17,4 +17,8 @@ abstract class HomeState with _$HomeState {
   }) = _Error;
 
   const factory HomeState.cleared() = _Cleared;
+
+  const factory HomeState.selectedVehicle({
+    required Vehicle vehicle,
+  }) = _SelectedVehicle;
 }

@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_info_row.dart';
 
-showCarInfoBottomSheet(BuildContext context) {
+showCarInfoBottomSheet(BuildContext context, ) {
   showModalBottomSheet(
       context: context,
       useRootNavigator: true,

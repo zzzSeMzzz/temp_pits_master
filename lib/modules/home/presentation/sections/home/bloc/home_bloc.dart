@@ -4,7 +4,6 @@ import 'package:pits_app/core/data/singletons/storage.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/vehicle.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/repository/car_repository.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_state.dart';
-
 import 'home_event.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -26,8 +25,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               emit(HomeState.error(message: response.errorMessage));
             } else if (response is Success<List<Vehicle>>) {
               emit(HomeState.success(vehicles: response.data));
+              if(response.data.isNotEmpty) {
+                emit(HomeState.selectedVehicle(vehicle: response.data.first));
+              }
             }
           }
+        },
+        onSelectVehicle: (event) async {
+          emit(HomeState.selectedVehicle(vehicle: event.vehicle));
         }
       );
     });

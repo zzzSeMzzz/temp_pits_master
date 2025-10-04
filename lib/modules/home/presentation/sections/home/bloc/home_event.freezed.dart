@@ -21,32 +21,38 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() cleared,
     required TResult Function() loadVehicles,
+    required TResult Function(Vehicle vehicle) onSelectVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? cleared,
     TResult? Function()? loadVehicles,
+    TResult? Function(Vehicle vehicle)? onSelectVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cleared,
     TResult Function()? loadVehicles,
+    TResult Function(Vehicle vehicle)? onSelectVehicle,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_LoadVehicles value) loadVehicles,
+    required TResult Function(_OnSelectVehicle value) onSelectVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_LoadVehicles value)? loadVehicles,
+    TResult? Function(_OnSelectVehicle value)? onSelectVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Cleared value)? cleared,
     TResult Function(_LoadVehicles value)? loadVehicles,
+    TResult Function(_OnSelectVehicle value)? onSelectVehicle,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -116,6 +122,7 @@ class _$ClearedImpl implements _Cleared {
   TResult when<TResult extends Object?>({
     required TResult Function() cleared,
     required TResult Function() loadVehicles,
+    required TResult Function(Vehicle vehicle) onSelectVehicle,
   }) {
     return cleared();
   }
@@ -125,6 +132,7 @@ class _$ClearedImpl implements _Cleared {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? cleared,
     TResult? Function()? loadVehicles,
+    TResult? Function(Vehicle vehicle)? onSelectVehicle,
   }) {
     return cleared?.call();
   }
@@ -134,6 +142,7 @@ class _$ClearedImpl implements _Cleared {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cleared,
     TResult Function()? loadVehicles,
+    TResult Function(Vehicle vehicle)? onSelectVehicle,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -147,6 +156,7 @@ class _$ClearedImpl implements _Cleared {
   TResult map<TResult extends Object?>({
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_LoadVehicles value) loadVehicles,
+    required TResult Function(_OnSelectVehicle value) onSelectVehicle,
   }) {
     return cleared(this);
   }
@@ -156,6 +166,7 @@ class _$ClearedImpl implements _Cleared {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_LoadVehicles value)? loadVehicles,
+    TResult? Function(_OnSelectVehicle value)? onSelectVehicle,
   }) {
     return cleared?.call(this);
   }
@@ -165,6 +176,7 @@ class _$ClearedImpl implements _Cleared {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Cleared value)? cleared,
     TResult Function(_LoadVehicles value)? loadVehicles,
+    TResult Function(_OnSelectVehicle value)? onSelectVehicle,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -223,6 +235,7 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
   TResult when<TResult extends Object?>({
     required TResult Function() cleared,
     required TResult Function() loadVehicles,
+    required TResult Function(Vehicle vehicle) onSelectVehicle,
   }) {
     return loadVehicles();
   }
@@ -232,6 +245,7 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? cleared,
     TResult? Function()? loadVehicles,
+    TResult? Function(Vehicle vehicle)? onSelectVehicle,
   }) {
     return loadVehicles?.call();
   }
@@ -241,6 +255,7 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cleared,
     TResult Function()? loadVehicles,
+    TResult Function(Vehicle vehicle)? onSelectVehicle,
     required TResult orElse(),
   }) {
     if (loadVehicles != null) {
@@ -254,6 +269,7 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
   TResult map<TResult extends Object?>({
     required TResult Function(_Cleared value) cleared,
     required TResult Function(_LoadVehicles value) loadVehicles,
+    required TResult Function(_OnSelectVehicle value) onSelectVehicle,
   }) {
     return loadVehicles(this);
   }
@@ -263,6 +279,7 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Cleared value)? cleared,
     TResult? Function(_LoadVehicles value)? loadVehicles,
+    TResult? Function(_OnSelectVehicle value)? onSelectVehicle,
   }) {
     return loadVehicles?.call(this);
   }
@@ -272,6 +289,7 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Cleared value)? cleared,
     TResult Function(_LoadVehicles value)? loadVehicles,
+    TResult Function(_OnSelectVehicle value)? onSelectVehicle,
     required TResult orElse(),
   }) {
     if (loadVehicles != null) {
@@ -283,4 +301,155 @@ class _$LoadVehiclesImpl implements _LoadVehicles {
 
 abstract class _LoadVehicles implements HomeEvent {
   const factory _LoadVehicles() = _$LoadVehiclesImpl;
+}
+
+/// @nodoc
+abstract class _$$OnSelectVehicleImplCopyWith<$Res> {
+  factory _$$OnSelectVehicleImplCopyWith(
+    _$OnSelectVehicleImpl value,
+    $Res Function(_$OnSelectVehicleImpl) then,
+  ) = __$$OnSelectVehicleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Vehicle vehicle});
+}
+
+/// @nodoc
+class __$$OnSelectVehicleImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$OnSelectVehicleImpl>
+    implements _$$OnSelectVehicleImplCopyWith<$Res> {
+  __$$OnSelectVehicleImplCopyWithImpl(
+    _$OnSelectVehicleImpl _value,
+    $Res Function(_$OnSelectVehicleImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? vehicle = null}) {
+    return _then(
+      _$OnSelectVehicleImpl(
+        null == vehicle
+            ? _value.vehicle
+            : vehicle // ignore: cast_nullable_to_non_nullable
+                  as Vehicle,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$OnSelectVehicleImpl implements _OnSelectVehicle {
+  const _$OnSelectVehicleImpl(this.vehicle);
+
+  @override
+  final Vehicle vehicle;
+
+  @override
+  String toString() {
+    return 'HomeEvent.onSelectVehicle(vehicle: $vehicle)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnSelectVehicleImpl &&
+            (identical(other.vehicle, vehicle) || other.vehicle == vehicle));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, vehicle);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnSelectVehicleImplCopyWith<_$OnSelectVehicleImpl> get copyWith =>
+      __$$OnSelectVehicleImplCopyWithImpl<_$OnSelectVehicleImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cleared,
+    required TResult Function() loadVehicles,
+    required TResult Function(Vehicle vehicle) onSelectVehicle,
+  }) {
+    return onSelectVehicle(vehicle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cleared,
+    TResult? Function()? loadVehicles,
+    TResult? Function(Vehicle vehicle)? onSelectVehicle,
+  }) {
+    return onSelectVehicle?.call(vehicle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cleared,
+    TResult Function()? loadVehicles,
+    TResult Function(Vehicle vehicle)? onSelectVehicle,
+    required TResult orElse(),
+  }) {
+    if (onSelectVehicle != null) {
+      return onSelectVehicle(vehicle);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_LoadVehicles value) loadVehicles,
+    required TResult Function(_OnSelectVehicle value) onSelectVehicle,
+  }) {
+    return onSelectVehicle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_LoadVehicles value)? loadVehicles,
+    TResult? Function(_OnSelectVehicle value)? onSelectVehicle,
+  }) {
+    return onSelectVehicle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_LoadVehicles value)? loadVehicles,
+    TResult Function(_OnSelectVehicle value)? onSelectVehicle,
+    required TResult orElse(),
+  }) {
+    if (onSelectVehicle != null) {
+      return onSelectVehicle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSelectVehicle implements HomeEvent {
+  const factory _OnSelectVehicle(final Vehicle vehicle) = _$OnSelectVehicleImpl;
+
+  Vehicle get vehicle;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnSelectVehicleImplCopyWith<_$OnSelectVehicleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -5,9 +5,10 @@ import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_inf
 import '../../../../../../assets/colors/colors.dart';
 
 class VehiclePageView extends StatefulWidget {
-  const VehiclePageView({super.key, required this.vehicles});
+  const VehiclePageView({super.key, required this.vehicles, required this.onSelectVehicle});
 
   final List<Vehicle> vehicles;
+  final Function(Vehicle) onSelectVehicle;
 
   @override
   State<VehiclePageView> createState() => _VehiclePageViewState();
@@ -24,6 +25,7 @@ class _VehiclePageViewState extends State<VehiclePageView> {
     _pageController.addListener(() {
       setState(() {
         _currentPage = _pageController.page ?? 0.0;
+        widget.onSelectVehicle.call(widget.vehicles[_currentPage.toInt()]);
       });
     });
   }
