@@ -1,17 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
-import 'package:pits_app/globals/widgets/interaction/w_button.dart';
+import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/widgets/service_info.dart';
 
 class ActivityItem extends StatelessWidget {
-  const ActivityItem({Key? key}) : super(key: key);
+  const ActivityItem({Key? key, required this.activity}) : super(key: key);
+
+  final AlarmModel activity;
 
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4), color: fieldGrey),
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
             Container(

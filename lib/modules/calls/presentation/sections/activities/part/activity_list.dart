@@ -19,8 +19,8 @@ class _ActivityListState extends State<ActivityList> {
     separatorBuilder: (context, index) => const SizedBox(
       height: 8,
     ),
-    itemBuilder: (context, index) => const ActivityItem(),
-    itemCount: 12,
+    itemBuilder: (context, index) => ActivityItem(activity: widget.activities[index]),
+    itemCount: widget.activities.length,
   );
 }
 

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_event.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_state.dart';
@@ -10,7 +11,10 @@ class ActivityBloc extends Bloc<ActivityEvent, ActivityState> {
   final _repo = ActivityRepository();
 
   ActivityBloc() : super(const ActivityState.initial()) {
-    add(const ActivityEvent.loadActivities());
+    Future.microtask(() {
+      debugPrint('ActivityBloc:: Microtask: add loadActivities');
+      add(const ActivityEvent.loadActivities());
+    });
 
     on<ActivityEvent>((event, emit) async {
       await event.map<Future<void>>(

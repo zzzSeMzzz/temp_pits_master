@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../../utils/utils.dart';
 part 'alarm_model.g.dart';
 
 @JsonSerializable()
@@ -7,7 +9,7 @@ class AlarmModel {
   final int? id;
   @JsonKey(name: 'emergency', defaultValue: '')
   final String? emergency;
-  @JsonKey(name: 'carStart', defaultValue: true)
+  @JsonKey(name: 'carStart', defaultValue: true, fromJson: intToBool)
   final bool carStart;
   @JsonKey(name: 'notes', defaultValue: '')
   final String? notes;
