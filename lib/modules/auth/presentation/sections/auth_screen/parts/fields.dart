@@ -18,7 +18,7 @@ class AuthFieldsState extends State<AuthFields> {
   final TextEditingController regEmailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
+  //final TextEditingController lastNameController = TextEditingController();
 
   @override
   void dispose() {
@@ -27,7 +27,7 @@ class AuthFieldsState extends State<AuthFields> {
     regEmailController.dispose();
     phoneController.dispose();
     firstNameController.dispose();
-    lastNameController.dispose();
+    //lastNameController.dispose();
     super.dispose();
   }
 
@@ -37,11 +37,15 @@ class AuthFieldsState extends State<AuthFields> {
           const SizedBox(
             height: 32,
           ),
-          AuthField(
-            controller: emailController,
-            hint: 'Nombre de usuario o correo electrónico',
-            prefixIconPath: AppIcons.user,
-            keyboardType: TextInputType.emailAddress,
+          BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              return AuthField(
+                controller: state.isLoginMode ? emailController : firstNameController,
+                hint: state.isLoginMode ? 'Nombre de usuario o correo electrónico' : 'Nombre y apellido',
+                prefixIconPath: AppIcons.user,
+                keyboardType: TextInputType.emailAddress,
+              );
+            }
           ),
           const SizedBox(
             height: 8,

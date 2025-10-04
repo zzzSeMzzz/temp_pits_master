@@ -175,12 +175,18 @@ class _AuthScreenState extends State<AuthScreen> {
                                                   email: email,
                                                   password: password));
                                         } else {
-                                          final firstname = fields
+                                          final fullName = fields
                                               .firstNameController.text
-                                              .trim();
-                                          final lastname = fields
+                                              .trim().split(" ");
+                                          String firstName = "";
+                                          String lastName = "";
+                                          if(fullName.length>=2) {
+                                            firstName = fullName.first;
+                                            lastName = fullName.last;
+                                          }
+                                          /*final lastname = fields
                                               .lastNameController.text
-                                              .trim();
+                                              .trim();*/
                                           final email = fields
                                               .regEmailController.text
                                               .trim();
@@ -190,8 +196,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                           final password = fields
                                               .passwordController.text
                                               .trim();
-                                          if (firstname.isEmpty ||
-                                              lastname.isEmpty ||
+                                          if (firstName.isEmpty ||
+                                              lastName.isEmpty ||
                                               email.isEmpty ||
                                               phone.isEmpty ||
                                               password.isEmpty) {
@@ -202,8 +208,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                           context
                                               .read<AuthBloc>()
                                               .add(AuthEvent.register(
-                                                firstname: firstname,
-                                                lastname: lastname,
+                                                firstname: firstName,
+                                                lastname: lastName,
                                                 email: email,
                                                 phone: phone,
                                                 password: password,
