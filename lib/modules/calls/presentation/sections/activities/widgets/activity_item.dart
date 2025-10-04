@@ -45,11 +45,11 @@ class ActivityItem extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsets.symmetric(horizontal: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -60,23 +60,23 @@ class ActivityItem extends StatelessWidget {
                         .displayLarge!
                         .copyWith(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
-                  ServiceInfo(name: 'Oil change 5 liters Texo Mobil 1'),
-                  SizedBox(
+                  const ServiceInfo(name: 'Oil change 5 liters Texo Mobil 1'),
+                  const SizedBox(
                     height: 4,
                   ),
-                  ServiceInfo(name: 'Oil filter replacement'),
-                  SizedBox(
+                  const ServiceInfo(name: 'Oil filter replacement'),
+                  const SizedBox(
                     height: 16,
                   ),
-                  Divider(
+                  const Divider(
                     height: 1,
                     thickness: 1,
                     color: textGrey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Row(
