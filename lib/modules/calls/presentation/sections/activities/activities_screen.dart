@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/base/try_again_widget.dart';
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_bloc.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_event.dart';
@@ -113,6 +114,9 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                         child: TryAgainWidget(onTap: () {
                           bloc.add(const ActivityEvent.loadActivities());
                         }),
+                      ),
+                      noAuth: (message) => Center(
+                          child: Text(message, style: context.textTheme.displayLarge!.copyWith(fontWeight: FontWeight.w500))
                       ),
                       orElse: () => const Center(child: CircularProgressIndicator())
                     ),

@@ -7,6 +7,8 @@ part 'activity_state.freezed.dart';
 class ActivityState with _$ActivityState {
   const factory ActivityState.initial() = _Initial;
 
+  const factory ActivityState.noAuth(String message) = NoAuth;
+
   const factory ActivityState.loading() = _Loading;
 
   const factory ActivityState.success({

@@ -20,6 +20,7 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(String message) noAuth,
     required TResult Function() loading,
     required TResult Function(List<AlarmModel> activities) success,
     required TResult Function(String message) error,
@@ -28,6 +29,7 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
     TResult? Function()? loading,
     TResult? Function(List<AlarmModel> activities)? success,
     TResult? Function(String message)? error,
@@ -36,6 +38,7 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(String message)? noAuth,
     TResult Function()? loading,
     TResult Function(List<AlarmModel> activities)? success,
     TResult Function(String message)? error,
@@ -45,6 +48,7 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -53,6 +57,7 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -61,6 +66,7 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -135,6 +141,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(String message) noAuth,
     required TResult Function() loading,
     required TResult Function(List<AlarmModel> activities) success,
     required TResult Function(String message) error,
@@ -147,6 +154,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
     TResult? Function()? loading,
     TResult? Function(List<AlarmModel> activities)? success,
     TResult? Function(String message)? error,
@@ -159,6 +167,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(String message)? noAuth,
     TResult Function()? loading,
     TResult Function(List<AlarmModel> activities)? success,
     TResult Function(String message)? error,
@@ -175,6 +184,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -187,6 +197,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -199,6 +210,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -214,6 +226,172 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements ActivityState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$NoAuthImplCopyWith<$Res> {
+  factory _$$NoAuthImplCopyWith(
+    _$NoAuthImpl value,
+    $Res Function(_$NoAuthImpl) then,
+  ) = __$$NoAuthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$NoAuthImplCopyWithImpl<$Res>
+    extends _$ActivityStateCopyWithImpl<$Res, _$NoAuthImpl>
+    implements _$$NoAuthImplCopyWith<$Res> {
+  __$$NoAuthImplCopyWithImpl(
+    _$NoAuthImpl _value,
+    $Res Function(_$NoAuthImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ActivityState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$NoAuthImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$NoAuthImpl implements NoAuth {
+  const _$NoAuthImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ActivityState.noAuth(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoAuthImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ActivityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NoAuthImplCopyWith<_$NoAuthImpl> get copyWith =>
+      __$$NoAuthImplCopyWithImpl<_$NoAuthImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) noAuth,
+    required TResult Function() loading,
+    required TResult Function(List<AlarmModel> activities) success,
+    required TResult Function(String message) error,
+    required TResult Function() cleared,
+  }) {
+    return noAuth(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
+    TResult? Function()? loading,
+    TResult? Function(List<AlarmModel> activities)? success,
+    TResult? Function(String message)? error,
+    TResult? Function()? cleared,
+  }) {
+    return noAuth?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? noAuth,
+    TResult Function()? loading,
+    TResult Function(List<AlarmModel> activities)? success,
+    TResult Function(String message)? error,
+    TResult Function()? cleared,
+    required TResult orElse(),
+  }) {
+    if (noAuth != null) {
+      return noAuth(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Cleared value) cleared,
+  }) {
+    return noAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Cleared value)? cleared,
+  }) {
+    return noAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_Cleared value)? cleared,
+    required TResult orElse(),
+  }) {
+    if (noAuth != null) {
+      return noAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoAuth implements ActivityState {
+  const factory NoAuth(final String message) = _$NoAuthImpl;
+
+  String get message;
+
+  /// Create a copy of ActivityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NoAuthImplCopyWith<_$NoAuthImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -260,6 +438,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(String message) noAuth,
     required TResult Function() loading,
     required TResult Function(List<AlarmModel> activities) success,
     required TResult Function(String message) error,
@@ -272,6 +451,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
     TResult? Function()? loading,
     TResult? Function(List<AlarmModel> activities)? success,
     TResult? Function(String message)? error,
@@ -284,6 +464,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(String message)? noAuth,
     TResult Function()? loading,
     TResult Function(List<AlarmModel> activities)? success,
     TResult Function(String message)? error,
@@ -300,6 +481,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -312,6 +494,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -324,6 +507,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -424,6 +608,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(String message) noAuth,
     required TResult Function() loading,
     required TResult Function(List<AlarmModel> activities) success,
     required TResult Function(String message) error,
@@ -436,6 +621,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
     TResult? Function()? loading,
     TResult? Function(List<AlarmModel> activities)? success,
     TResult? Function(String message)? error,
@@ -448,6 +634,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(String message)? noAuth,
     TResult Function()? loading,
     TResult Function(List<AlarmModel> activities)? success,
     TResult Function(String message)? error,
@@ -464,6 +651,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -476,6 +664,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -488,6 +677,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -585,6 +775,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(String message) noAuth,
     required TResult Function() loading,
     required TResult Function(List<AlarmModel> activities) success,
     required TResult Function(String message) error,
@@ -597,6 +788,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
     TResult? Function()? loading,
     TResult? Function(List<AlarmModel> activities)? success,
     TResult? Function(String message)? error,
@@ -609,6 +801,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(String message)? noAuth,
     TResult Function()? loading,
     TResult Function(List<AlarmModel> activities)? success,
     TResult Function(String message)? error,
@@ -625,6 +818,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -637,6 +831,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -649,6 +844,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -718,6 +914,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(String message) noAuth,
     required TResult Function() loading,
     required TResult Function(List<AlarmModel> activities) success,
     required TResult Function(String message) error,
@@ -730,6 +927,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(String message)? noAuth,
     TResult? Function()? loading,
     TResult? Function(List<AlarmModel> activities)? success,
     TResult? Function(String message)? error,
@@ -742,6 +940,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(String message)? noAuth,
     TResult Function()? loading,
     TResult Function(List<AlarmModel> activities)? success,
     TResult Function(String message)? error,
@@ -758,6 +957,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(NoAuth value) noAuth,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -770,6 +970,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(NoAuth value)? noAuth,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -782,6 +983,7 @@ class _$ClearedImpl implements _Cleared {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(NoAuth value)? noAuth,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
