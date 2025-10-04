@@ -7,7 +7,7 @@ part of 'alarm_model.dart';
 // **************************************************************************
 
 AlarmModel _$AlarmModelFromJson(Map<String, dynamic> json) => AlarmModel(
-  id: (json['id'] as num?)?.toInt() ?? '',
+  id: (json['id'] as num?)?.toInt(),
   emergency: json['emergency'] as String? ?? '',
   carStart: json['carStart'] as bool? ?? true,
   notes: json['notes'] as String? ?? '',

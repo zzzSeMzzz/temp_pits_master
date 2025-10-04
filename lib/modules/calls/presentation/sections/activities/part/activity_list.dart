@@ -1,9 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/widgets/activity_item.dart';
 
-class ActivityList extends StatelessWidget {
-  const ActivityList({Key? key}) : super(key: key);
+class ActivityList extends StatefulWidget {
+  const ActivityList({super.key, required this.activities});
 
+  final List<AlarmModel> activities;
+
+  @override
+  State<ActivityList> createState() => _ActivityListState();
+}
+
+class _ActivityListState extends State<ActivityList> {
   @override
   Widget build(BuildContext context) => ListView.separated(
     padding: EdgeInsets.zero,
@@ -15,3 +23,4 @@ class ActivityList extends StatelessWidget {
     itemCount: 12,
   );
 }
+

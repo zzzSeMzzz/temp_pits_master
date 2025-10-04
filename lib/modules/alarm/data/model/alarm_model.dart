@@ -3,7 +3,7 @@ part 'alarm_model.g.dart';
 
 @JsonSerializable()
 class AlarmModel {
-  @JsonKey(name: 'id', defaultValue: '')
+  @JsonKey(name: 'id')
   final int? id;
   @JsonKey(name: 'emergency', defaultValue: '')
   final String? emergency;
