@@ -25,7 +25,6 @@ class _VehiclePageViewState extends State<VehiclePageView> {
     _pageController.addListener(() {
       setState(() {
         _currentPage = _pageController.page ?? 0.0;
-        widget.onSelectVehicle.call(widget.vehicles[_currentPage.toInt()]);
       });
     });
   }
@@ -45,6 +44,9 @@ class _VehiclePageViewState extends State<VehiclePageView> {
           height: 90,
           child: PageView(
             controller: _pageController,
+              onPageChanged: (int page) {
+                widget.onSelectVehicle.call(widget.vehicles[page]);
+              },
             children: widget.vehicles
                 .map((vehicle) => CarInfoBox(vehicle: vehicle)).toList()
           ),
