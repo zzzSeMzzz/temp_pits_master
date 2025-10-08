@@ -23,6 +23,9 @@ class SafeNetworkImage extends StatelessWidget {
     }
     return Image.network(
       url!,
+      width: width,
+      height: height,
+      fit: fit,
       errorBuilder: (_, __, ___) => Image.asset(fallbackAsset, width: width, height: height, fit: fit,),
       loadingBuilder: (context, child, progress) {
         if (progress == null) return child;
