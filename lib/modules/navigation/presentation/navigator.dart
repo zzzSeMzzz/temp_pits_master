@@ -5,6 +5,8 @@ import 'package:pits_app/modules/home/presentation/sections/home/home_screen.dar
 import 'package:pits_app/modules/navigation/presentation/home.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile/profile_screen.dart';
 
+import '../../alarm/widgets/view_alarm.dart';
+
 class TabNavigatorRoutes {
   static const String root = '/';
 }
@@ -36,7 +38,7 @@ class _TabNavigatorState extends State<TabNavigator>
         };
       case NavItemEnum.messages:
         return {
-          TabNavigatorRoutes.root: (context) => const ChatScreen(),
+          TabNavigatorRoutes.root: (context) => const ViewAlarm(),//const ChatScreen(),//fixme
         };
       case NavItemEnum.profile:
         return {
