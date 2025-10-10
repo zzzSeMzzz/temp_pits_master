@@ -71,6 +71,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                         borderRadius: BorderRadius.circular(4), color: fieldGrey),
                     child: TabBar(
                         controller: tabController,
+                        isScrollable: false,
+                        labelPadding: EdgeInsets.zero,
                         unselectedLabelColor: black,
                         labelColor: white,
                         indicator: BoxDecoration(
@@ -87,19 +89,19 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                           Tab(
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Text("All"),
+                              child: Text("Todas"),
                             ),
                           ),
                           Tab(
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Text("Paid"),
+                              child: Text("Pagados"),
                             ),
                           ),
                           Tab(
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Text("Not paid"),
+                              child: Text("No pagados"),
                             ),
                           ),
                         ]),
