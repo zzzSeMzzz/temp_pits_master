@@ -40,7 +40,7 @@ void showAlarmViewAlertDialog(
                 builder: (BuildContext context) {
                   return BlocProvider(
                     create: (context) => AlarmViewBloc(),
-                    child: ViewAlarm(position: alarm.getOrDefault(AppConstants.madridLocation)),
+                    child: ViewAlarm(alarm: alarm),
                   );
                 }
             ),
@@ -52,9 +52,9 @@ void showAlarmViewAlertDialog(
 
 
 class ViewAlarm extends StatefulWidget {
-  const ViewAlarm({super.key, required this.position});
+  const ViewAlarm({super.key, required this.alarm});
 
-  final LatLng position;
+  final AlarmModel alarm;
 
   @override
   State<ViewAlarm> createState() => _ViewAlarmState();
@@ -69,7 +69,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
     super.initState();
     // Вызываем после того как виджет полностью инициализирован
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AlarmViewBloc>().add(AlarmViewEvent.load(widget.position));
+      context.read<AlarmViewBloc>().add(AlarmViewEvent.load(widget.alarm.getOrDefault(AppConstants.madridLocation)));
     });
   }
 
