@@ -39,7 +39,7 @@ class _TabNavigatorState extends State<TabNavigator>
         };
       case NavItemEnum.messages:
         return {
-          TabNavigatorRoutes.root: (context) => const ViewAlarm(position: LatLng(1, 1)),//const ChatScreen(),//fixme
+          TabNavigatorRoutes.root: (context) => const ChatScreen(),
         };
       case NavItemEnum.profile:
         return {

@@ -6,10 +6,43 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
+import 'package:pits_app/modules/alarm/details/bloc/alarm_view_event.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_state.dart';
 import '../../../../assets/colors/colors.dart';
 import '../../../../base/blur_container.dart';
 import '../bloc/alarm_view_bloc.dart';
+
+
+
+void showAlarmViewAlertDialog(
+    BuildContext context,
+    LatLng position) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          backgroundColor: Colors.transparent,
+          insetPadding: const EdgeInsets.symmetric(horizontal: 10.0), // Отступы по бокам
+          contentPadding: EdgeInsets.zero, // Убираем внутренние отступы
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width - 10, // Ширина экрана минус отступы
+            child: Builder(
+                builder: (BuildContext context) {
+                  return BlocProvider(
+                    create: (context) => AlarmViewBloc(),
+                    child: ViewAlarm(position: position),
+                  );
+                }
+            ),
+          ),
+        );
+      }
+  );
+}
+
 
 class ViewAlarm extends StatefulWidget {
   const ViewAlarm({super.key, required this.position});
@@ -21,6 +54,17 @@ class ViewAlarm extends StatefulWidget {
 }
 
 class _ViewAlarmState extends State<ViewAlarm> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    // Вызываем после того как виджет полностью инициализирован
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AlarmViewBloc>().add(AlarmViewEvent.load(widget.position));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

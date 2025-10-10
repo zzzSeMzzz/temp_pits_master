@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
+import 'package:pits_app/modules/alarm/details/widget/view_alarm.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_screen.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/add_card_screen.dart';
 import 'package:pits_app/modules/car/presentation/sections/add_car/bloc/add_car_bloc.dart';
@@ -154,7 +156,7 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                       width: 96,
                       height: 96,
-                    ).onTap(() => showAlarmBottomSheet(context, null)),
+                    ).onTap(() => showAlarmViewAlertDialog(context, const LatLng(40.351205, -3.721937))/*showAlarmBottomSheet(context, null)*/),
                   ],
                 ),
               ),
