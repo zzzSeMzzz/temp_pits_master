@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/activities_screen.dart';
 import 'package:pits_app/modules/chat/presentation/sections/chat/chat_screen.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/home_screen.dart';
 import 'package:pits_app/modules/navigation/presentation/home.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile/profile_screen.dart';
 
-import '../../alarm/widgets/view_alarm.dart';
+import '../../alarm/details/widget/view_alarm.dart';
 
 class TabNavigatorRoutes {
   static const String root = '/';
@@ -38,7 +39,7 @@ class _TabNavigatorState extends State<TabNavigator>
         };
       case NavItemEnum.messages:
         return {
-          TabNavigatorRoutes.root: (context) => const ViewAlarm(),//const ChatScreen(),//fixme
+          TabNavigatorRoutes.root: (context) => const ViewAlarm(position: LatLng(1, 1)),//const ChatScreen(),//fixme
         };
       case NavItemEnum.profile:
         return {
