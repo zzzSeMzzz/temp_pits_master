@@ -5,4 +5,6 @@ part 'alarm_view_event.freezed.dart';
 @freezed
 class AlarmViewEvent with _$AlarmViewEvent {
   const factory AlarmViewEvent.load(LatLng latLng) = LoadAlarmData;
+  const factory AlarmViewEvent.setPageInsures(int page) = SetPageInsures;
+  const factory AlarmViewEvent.setPageWorkshops(int page) = setPageWorkshops;
 }

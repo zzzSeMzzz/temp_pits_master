@@ -11,6 +11,11 @@ part 'alarm_view_state.freezed.dart';
 class AlarmViewState with _$AlarmViewState {
   const factory AlarmViewState.initial() = AlarmViewInitial;
   const factory AlarmViewState.loading() = AlarmViewLoading;
-  const factory AlarmViewState.success(List<Insurers> insures, List<Workshop> workshops) = AlarmViewSuccess;
+  factory AlarmViewState.success(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop
+  ) = AlarmViewSuccess;
   const factory AlarmViewState.error(String message) = AlarmViewError;
 }

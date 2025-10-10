@@ -20,45 +20,61 @@ mixin _$AlarmViewState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadings,
-    required TResult Function(List<Insurers> insures, List<Workshop> workshops)
+    required TResult Function() loading,
+    required TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )
     success,
     required TResult Function(String message) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadings,
-    TResult? Function(List<Insurers> insures, List<Workshop> workshops)?
+    TResult? Function()? loading,
+    TResult? Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
     success,
     TResult? Function(String message)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadings,
-    TResult Function(List<Insurers> insures, List<Workshop> workshops)? success,
+    TResult Function()? loading,
+    TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
+    success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AlarmViewInitial value) initial,
-    required TResult Function(AlarmViewLoading value) loadings,
+    required TResult Function(AlarmViewLoading value) loading,
     required TResult Function(AlarmViewSuccess value) success,
     required TResult Function(AlarmViewError value) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AlarmViewInitial value)? initial,
-    TResult? Function(AlarmViewLoading value)? loadings,
+    TResult? Function(AlarmViewLoading value)? loading,
     TResult? Function(AlarmViewSuccess value)? success,
     TResult? Function(AlarmViewError value)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AlarmViewInitial value)? initial,
-    TResult Function(AlarmViewLoading value)? loadings,
+    TResult Function(AlarmViewLoading value)? loading,
     TResult Function(AlarmViewSuccess value)? success,
     TResult Function(AlarmViewError value)? error,
     required TResult orElse(),
@@ -131,8 +147,13 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadings,
-    required TResult Function(List<Insurers> insures, List<Workshop> workshops)
+    required TResult Function() loading,
+    required TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )
     success,
     required TResult Function(String message) error,
   }) {
@@ -143,8 +164,13 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadings,
-    TResult? Function(List<Insurers> insures, List<Workshop> workshops)?
+    TResult? Function()? loading,
+    TResult? Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
     success,
     TResult? Function(String message)? error,
   }) {
@@ -155,8 +181,14 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadings,
-    TResult Function(List<Insurers> insures, List<Workshop> workshops)? success,
+    TResult Function()? loading,
+    TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
+    success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -170,7 +202,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AlarmViewInitial value) initial,
-    required TResult Function(AlarmViewLoading value) loadings,
+    required TResult Function(AlarmViewLoading value) loading,
     required TResult Function(AlarmViewSuccess value) success,
     required TResult Function(AlarmViewError value) error,
   }) {
@@ -181,7 +213,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AlarmViewInitial value)? initial,
-    TResult? Function(AlarmViewLoading value)? loadings,
+    TResult? Function(AlarmViewLoading value)? loading,
     TResult? Function(AlarmViewSuccess value)? success,
     TResult? Function(AlarmViewError value)? error,
   }) {
@@ -192,7 +224,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AlarmViewInitial value)? initial,
-    TResult Function(AlarmViewLoading value)? loadings,
+    TResult Function(AlarmViewLoading value)? loading,
     TResult Function(AlarmViewSuccess value)? success,
     TResult Function(AlarmViewError value)? error,
     required TResult orElse(),
@@ -236,7 +268,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
 
   @override
   String toString() {
-    return 'AlarmViewState.loadings()';
+    return 'AlarmViewState.loading()';
   }
 
   @override
@@ -252,37 +284,53 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadings,
-    required TResult Function(List<Insurers> insures, List<Workshop> workshops)
+    required TResult Function() loading,
+    required TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )
     success,
     required TResult Function(String message) error,
   }) {
-    return loadings();
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadings,
-    TResult? Function(List<Insurers> insures, List<Workshop> workshops)?
+    TResult? Function()? loading,
+    TResult? Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
     success,
     TResult? Function(String message)? error,
   }) {
-    return loadings?.call();
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadings,
-    TResult Function(List<Insurers> insures, List<Workshop> workshops)? success,
+    TResult Function()? loading,
+    TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
+    success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (loadings != null) {
-      return loadings();
+    if (loading != null) {
+      return loading();
     }
     return orElse();
   }
@@ -291,35 +339,35 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AlarmViewInitial value) initial,
-    required TResult Function(AlarmViewLoading value) loadings,
+    required TResult Function(AlarmViewLoading value) loading,
     required TResult Function(AlarmViewSuccess value) success,
     required TResult Function(AlarmViewError value) error,
   }) {
-    return loadings(this);
+    return loading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AlarmViewInitial value)? initial,
-    TResult? Function(AlarmViewLoading value)? loadings,
+    TResult? Function(AlarmViewLoading value)? loading,
     TResult? Function(AlarmViewSuccess value)? success,
     TResult? Function(AlarmViewError value)? error,
   }) {
-    return loadings?.call(this);
+    return loading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AlarmViewInitial value)? initial,
-    TResult Function(AlarmViewLoading value)? loadings,
+    TResult Function(AlarmViewLoading value)? loading,
     TResult Function(AlarmViewSuccess value)? success,
     TResult Function(AlarmViewError value)? error,
     required TResult orElse(),
   }) {
-    if (loadings != null) {
-      return loadings(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
@@ -336,7 +384,12 @@ abstract class _$$AlarmViewSuccessImplCopyWith<$Res> {
     $Res Function(_$AlarmViewSuccessImpl) then,
   ) = __$$AlarmViewSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Insurers> insures, List<Workshop> workshops});
+  $Res call({
+    List<Insurers> insures,
+    List<Workshop> workshops,
+    int pageInsures,
+    int pageWorkShop,
+  });
 }
 
 /// @nodoc
@@ -352,7 +405,12 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? insures = null, Object? workshops = null}) {
+  $Res call({
+    Object? insures = null,
+    Object? workshops = null,
+    Object? pageInsures = null,
+    Object? pageWorkShop = null,
+  }) {
     return _then(
       _$AlarmViewSuccessImpl(
         null == insures
@@ -363,6 +421,14 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
             ? _value._workshops
             : workshops // ignore: cast_nullable_to_non_nullable
                   as List<Workshop>,
+        null == pageInsures
+            ? _value.pageInsures
+            : pageInsures // ignore: cast_nullable_to_non_nullable
+                  as int,
+        null == pageWorkShop
+            ? _value.pageWorkShop
+            : pageWorkShop // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -371,9 +437,11 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
-  const _$AlarmViewSuccessImpl(
+  _$AlarmViewSuccessImpl(
     final List<Insurers> insures,
     final List<Workshop> workshops,
+    this.pageInsures,
+    this.pageWorkShop,
   ) : _insures = insures,
       _workshops = workshops;
 
@@ -394,8 +462,13 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   }
 
   @override
+  final int pageInsures;
+  @override
+  final int pageWorkShop;
+
+  @override
   String toString() {
-    return 'AlarmViewState.success(insures: $insures, workshops: $workshops)';
+    return 'AlarmViewState.success(insures: $insures, workshops: $workshops, pageInsures: $pageInsures, pageWorkShop: $pageWorkShop)';
   }
 
   @override
@@ -407,7 +480,11 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
             const DeepCollectionEquality().equals(
               other._workshops,
               _workshops,
-            ));
+            ) &&
+            (identical(other.pageInsures, pageInsures) ||
+                other.pageInsures == pageInsures) &&
+            (identical(other.pageWorkShop, pageWorkShop) ||
+                other.pageWorkShop == pageWorkShop));
   }
 
   @override
@@ -415,6 +492,8 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
     runtimeType,
     const DeepCollectionEquality().hash(_insures),
     const DeepCollectionEquality().hash(_workshops),
+    pageInsures,
+    pageWorkShop,
   );
 
   /// Create a copy of AlarmViewState
@@ -432,37 +511,53 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadings,
-    required TResult Function(List<Insurers> insures, List<Workshop> workshops)
+    required TResult Function() loading,
+    required TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )
     success,
     required TResult Function(String message) error,
   }) {
-    return success(insures, workshops);
+    return success(insures, workshops, pageInsures, pageWorkShop);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadings,
-    TResult? Function(List<Insurers> insures, List<Workshop> workshops)?
+    TResult? Function()? loading,
+    TResult? Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
     success,
     TResult? Function(String message)? error,
   }) {
-    return success?.call(insures, workshops);
+    return success?.call(insures, workshops, pageInsures, pageWorkShop);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadings,
-    TResult Function(List<Insurers> insures, List<Workshop> workshops)? success,
+    TResult Function()? loading,
+    TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
+    success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(insures, workshops);
+      return success(insures, workshops, pageInsures, pageWorkShop);
     }
     return orElse();
   }
@@ -471,7 +566,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AlarmViewInitial value) initial,
-    required TResult Function(AlarmViewLoading value) loadings,
+    required TResult Function(AlarmViewLoading value) loading,
     required TResult Function(AlarmViewSuccess value) success,
     required TResult Function(AlarmViewError value) error,
   }) {
@@ -482,7 +577,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AlarmViewInitial value)? initial,
-    TResult? Function(AlarmViewLoading value)? loadings,
+    TResult? Function(AlarmViewLoading value)? loading,
     TResult? Function(AlarmViewSuccess value)? success,
     TResult? Function(AlarmViewError value)? error,
   }) {
@@ -493,7 +588,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AlarmViewInitial value)? initial,
-    TResult Function(AlarmViewLoading value)? loadings,
+    TResult Function(AlarmViewLoading value)? loading,
     TResult Function(AlarmViewSuccess value)? success,
     TResult Function(AlarmViewError value)? error,
     required TResult orElse(),
@@ -506,13 +601,17 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
 }
 
 abstract class AlarmViewSuccess implements AlarmViewState {
-  const factory AlarmViewSuccess(
+  factory AlarmViewSuccess(
     final List<Insurers> insures,
     final List<Workshop> workshops,
+    final int pageInsures,
+    final int pageWorkShop,
   ) = _$AlarmViewSuccessImpl;
 
   List<Insurers> get insures;
   List<Workshop> get workshops;
+  int get pageInsures;
+  int get pageWorkShop;
 
   /// Create a copy of AlarmViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -595,8 +694,13 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadings,
-    required TResult Function(List<Insurers> insures, List<Workshop> workshops)
+    required TResult Function() loading,
+    required TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )
     success,
     required TResult Function(String message) error,
   }) {
@@ -607,8 +711,13 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadings,
-    TResult? Function(List<Insurers> insures, List<Workshop> workshops)?
+    TResult? Function()? loading,
+    TResult? Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
     success,
     TResult? Function(String message)? error,
   }) {
@@ -619,8 +728,14 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadings,
-    TResult Function(List<Insurers> insures, List<Workshop> workshops)? success,
+    TResult Function()? loading,
+    TResult Function(
+      List<Insurers> insures,
+      List<Workshop> workshops,
+      int pageInsures,
+      int pageWorkShop,
+    )?
+    success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -634,7 +749,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AlarmViewInitial value) initial,
-    required TResult Function(AlarmViewLoading value) loadings,
+    required TResult Function(AlarmViewLoading value) loading,
     required TResult Function(AlarmViewSuccess value) success,
     required TResult Function(AlarmViewError value) error,
   }) {
@@ -645,7 +760,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AlarmViewInitial value)? initial,
-    TResult? Function(AlarmViewLoading value)? loadings,
+    TResult? Function(AlarmViewLoading value)? loading,
     TResult? Function(AlarmViewSuccess value)? success,
     TResult? Function(AlarmViewError value)? error,
   }) {
@@ -656,7 +771,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AlarmViewInitial value)? initial,
-    TResult Function(AlarmViewLoading value)? loadings,
+    TResult Function(AlarmViewLoading value)? loading,
     TResult Function(AlarmViewSuccess value)? success,
     TResult Function(AlarmViewError value)? error,
     required TResult orElse(),

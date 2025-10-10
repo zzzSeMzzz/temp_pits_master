@@ -8,6 +8,8 @@ import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_event.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_state.dart';
+import 'package:pits_app/modules/alarm/details/data/model/insurers.dart';
+import 'package:pits_app/modules/alarm/details/data/model/workshop.dart';
 import '../../../../assets/colors/colors.dart';
 import '../../../../base/blur_container.dart';
 import '../bloc/alarm_view_bloc.dart';
@@ -26,7 +28,7 @@ void showAlarmViewAlertDialog(
           ),
           backgroundColor: Colors.transparent,
           insetPadding: const EdgeInsets.symmetric(horizontal: 10.0), // Отступы по бокам
-          contentPadding: EdgeInsets.zero, // Убираем внутренние отступы
+          contentPadding: const EdgeInsets.only(top: 50), // Убираем внутренние отступы
           content: SizedBox(
             width: MediaQuery.of(context).size.width - 10, // Ширина экрана минус отступы
             child: Builder(
@@ -55,6 +57,7 @@ class ViewAlarm extends StatefulWidget {
 
 class _ViewAlarmState extends State<ViewAlarm> {
 
+  //late final PageController controllerInsures, controllerWorkShops;
 
   @override
   void initState() {
@@ -64,6 +67,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
       context.read<AlarmViewBloc>().add(AlarmViewEvent.load(widget.position));
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -156,54 +160,40 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         height: 60,
                         child: state.maybeWhen(
                           error: (message) => Text(message),
-                          success: (insures, workshops) => const Placeholder(),
-                          orElse: () => const CircularProgressIndicator()
+                          success: (insures, workshops, pageInsures, pageWorkShop) => PageView(
+                            onPageChanged: (newIndex) {
+                              context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageInsures(newIndex));
+                            },
+                            children: insures
+                               .map((insures) => _buildInsures(insures))
+                              .toList()
+                          ),
+                          orElse: () => const Center(child: CircularProgressIndicator())
                         ),
                       ),
-                      Center(
-                        child: DotsIndicator(
-                          dotsCount: 4,
-                          position: 1,
-                          decorator: const DotsDecorator(
-                            size: Size.square(6.0),
-                            activeSize: Size.square(8.0),
-                            shape: CircleBorder(
-                              side: BorderSide(color: textGrey, width: 1),
-                            ),
-                            activeShape: CircleBorder(
-                              side: BorderSide(color: Colors.black, width: 2.0),
-                            ),
-                            color: Colors.transparent, // делаем основной цвет прозрачным
-                            activeColor: Colors.transparent,
-                          ),
-                        ),
+                      state.maybeWhen(
+                          success: (insures, workshops, pageInsures, pageWorkShop) => _buildDots(insures.length, pageInsures),
+                          orElse: () => const SizedBox.shrink()
                       ),
                       const SizedBox(height: 8),
                       SizedBox(
                         height: 60,
                         child: state.maybeWhen(
                             error: (message) => Text(message),
-                            success: (insures, workshops) => const Placeholder(),
-                            orElse: () => const CircularProgressIndicator()
+                            success: (insures, workshops, pageInsures, pageWorkShop) => PageView(
+                                onPageChanged: (newIndex) {
+                                  context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageWorkshops(newIndex));
+                                },
+                                children: workshops
+                                    .map((workshop) => _buildWorkshop(workshop))
+                                    .toList()
+                            ),
+                            orElse: () => const Center(child: CircularProgressIndicator())
                         ),
                       ),
-                      Center(
-                        child: DotsIndicator(
-                          dotsCount: 4,
-                          position: 1,
-                          decorator: const DotsDecorator(
-                            size: Size.square(6.0),
-                            activeSize: Size.square(8.0),
-                            shape: CircleBorder(
-                              side: BorderSide(color: textGrey, width: 1),
-                            ),
-                            activeShape: CircleBorder(
-                              side: BorderSide(color: Colors.black, width: 2.0),
-                            ),
-                            color: Colors.transparent, // делаем основной цвет прозрачным
-                            activeColor: Colors.transparent,
-                          ),
-                        ),
+                      state.maybeWhen(
+                          success: (insures, workshops, pageInsures, pageWorkShop) => _buildDots(workshops.length, pageWorkShop),
+                          orElse: () => const SizedBox.shrink()
                       ),
                       const SizedBox(height: 16),
                       WButton(
@@ -224,4 +214,34 @@ class _ViewAlarmState extends State<ViewAlarm> {
       ),
     );
   }
+
+  Widget _buildDots(int count, int currentPosition) {
+    return count == 0 ? const SizedBox.shrink() : Center(
+      child: DotsIndicator(
+        dotsCount: count,
+        position: currentPosition.toDouble(),
+        decorator: const DotsDecorator(
+          size: Size.square(6.0),
+          activeSize: Size.square(8.0),
+          shape: CircleBorder(
+            side: BorderSide(color: textGrey, width: 1),
+          ),
+          activeShape: CircleBorder(
+            side: BorderSide(color: Colors.black, width: 2.0),
+          ),
+          color: Colors.transparent, // делаем основной цвет прозрачным
+          activeColor: Colors.transparent,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInsures(Insurers item) {
+    return Text(item.name ?? "dhdh");
+  }
+
+  Widget _buildWorkshop(Workshop item) {
+    return Text(item.title ?? "dhdh");
+  }
+
 }

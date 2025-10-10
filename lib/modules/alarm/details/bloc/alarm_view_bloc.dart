@@ -46,8 +46,20 @@ class AlarmViewBloc extends Bloc<AlarmViewEvent, AlarmViewState> {
               workshops = model;
             },
           );
-          emit(AlarmViewState.success(insures, workshops));
+          emit(AlarmViewState.success(insures, workshops, 0, 0));
         },
+        setPageInsures: (event) {
+          if(state is AlarmViewSuccess) {
+            final currentState = state as AlarmViewSuccess;
+            emit(currentState.copyWith(pageInsures: event.page));
+          }
+        },
+        setPageWorkshops: (event) {
+          if(state is AlarmViewSuccess) {
+            final currentState = state as AlarmViewSuccess;
+            emit(currentState.copyWith(pageWorkShop: event.page));
+          }
+        }
       );
     });
   }

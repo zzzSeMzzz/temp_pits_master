@@ -31,11 +31,11 @@ class AlarmRepository extends BaseRepository {
 
   Future<Either<Failure, List<Insurers>>> loadInsures() async {
     final result = await clientMain.get(
-        'es/wp-json/pits/v1/insurers',
+        'wp-json/pits/v1/insurers',
     );
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
-      final model = (result.data as List<Insurers>)
+      final model = (result.data as List<dynamic>)
         .map((json) => Insurers.fromJson(json as Map<String, dynamic>))
         .toList();
       return Right(model);
@@ -47,7 +47,7 @@ class AlarmRepository extends BaseRepository {
 
   Future<Either<Failure, List<Workshop>>> loadWorkshopsByLocation(LatLng location) async {
     final result = await clientMain.get(
-      'es/wp-json/pits/v1/talleres-ubicacion',
+      'wp-json/pits/v1/talleres-ubicacion',
       queryParameters: {
         "lat": location.latitude,
         "lng": location.longitude,
@@ -55,7 +55,7 @@ class AlarmRepository extends BaseRepository {
     );
 
     if (result.statusCode! >= 200 && result.statusCode! < 300) {
-      final model = (result.data as List<Workshop>)
+      final model = (result.data as List<dynamic>)
           .map((json) => Workshop.fromJson(json as Map<String, dynamic>))
           .toList();
       return Right(model);
