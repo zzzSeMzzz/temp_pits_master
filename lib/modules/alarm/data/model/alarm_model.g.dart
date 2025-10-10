@@ -8,7 +8,7 @@ part of 'alarm_model.dart';
 
 AlarmModel _$AlarmModelFromJson(Map<String, dynamic> json) => AlarmModel(
   id: (json['id'] as num?)?.toInt(),
-  customerId: json['customer_id'] as String?,
+  customerId: (json['customer_id'] as num?)?.toInt(),
   emergency: json['emergency'] as String? ?? '',
   carStart: json['car_start'] == null ? true : boolFromAny(json['car_start']),
   notes: json['notes'] as String? ?? '',
@@ -24,7 +24,7 @@ Map<String, dynamic> _$AlarmModelToJson(AlarmModel instance) =>
       'id': instance.id,
       'emergency': instance.emergency,
       'car_start': instance.carStart,
-      'carStart': instance.carStart,//todo remove this
+      'carStart': instance.carStart,//todo remove
       'notes': instance.notes,
       'timestamp': instance.timestamp,
       'lat': instance.lat,

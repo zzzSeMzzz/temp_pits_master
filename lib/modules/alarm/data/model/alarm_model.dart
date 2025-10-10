@@ -27,7 +27,7 @@ class AlarmModel {
   @JsonKey(name: 'updated_at')
   final String? updatedAt;
   @JsonKey(name: 'customer_id')
-  final String? customerId;
+  final int? customerId;
 
 
   const AlarmModel({

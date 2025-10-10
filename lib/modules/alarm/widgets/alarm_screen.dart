@@ -177,6 +177,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                 final newAlarm = AlarmModel.fromJson(rState.data.data!);
                 widget.onAlarmCreateSuccess?.call(newAlarm);
               } catch (e) {
+                debugPrint("Error parse new alarmModel $e");
                 _showSnack(message);
               }
             } else {
