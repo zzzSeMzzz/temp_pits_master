@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'car_reg_request.g.dart';
 
@@ -24,6 +25,7 @@ class CareRegRequest {
   factory CareRegRequest.formNumber(String number) {
     final req = CareRegRequest();
     req.registrationNumber = number;
+    req.dateStart = DateFormat('yyyy-MM-dd').format(DateTime.now());
     return req;
   }
 
