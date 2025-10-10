@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
+import 'package:pits_app/core/data/extensions.dart';
 
 import '../../../../utils/utils.dart';
 part 'alarm_model.g.dart';
@@ -49,5 +51,17 @@ class AlarmModel {
   LatLng getOrDefault(LatLng defaultLatLng) {
     if(lat!=null && lon!=null) return LatLng(lat!, lon!);
     return defaultLatLng;
+  }
+
+  DateTime getTimeStampOrDefault() {
+    if(timestamp.isNullOrEmpty()) {
+      return DateTime.now();
+    } else {
+      try {
+        return DateFormat('yyyy-MM-dd HH:mm:ss').parse(timestamp!);
+      } catch(e) {
+        return DateTime.now();
+      }
+    }
   }
 }

@@ -19,21 +19,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AlarmViewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LatLng latLng) load,
+    required TResult Function(LatLng latLng, DateTime alarmTimestamp) load,
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
+    required TResult Function() updateTimer,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LatLng latLng)? load,
+    TResult? Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
+    TResult? Function()? updateTimer,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LatLng latLng)? load,
+    TResult Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
+    TResult Function()? updateTimer,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,18 +44,21 @@ mixin _$AlarmViewEvent {
     required TResult Function(LoadAlarmData value) load,
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
+    required TResult Function(UpdateTimer value) updateTimer,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadAlarmData value)? load,
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
+    TResult? Function(UpdateTimer value)? updateTimer,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadAlarmData value)? load,
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
+    TResult Function(UpdateTimer value)? updateTimer,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -86,7 +92,7 @@ abstract class _$$LoadAlarmDataImplCopyWith<$Res> {
     $Res Function(_$LoadAlarmDataImpl) then,
   ) = __$$LoadAlarmDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LatLng latLng});
+  $Res call({LatLng latLng, DateTime alarmTimestamp});
 }
 
 /// @nodoc
@@ -102,13 +108,17 @@ class __$$LoadAlarmDataImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? latLng = null}) {
+  $Res call({Object? latLng = null, Object? alarmTimestamp = null}) {
     return _then(
       _$LoadAlarmDataImpl(
         null == latLng
             ? _value.latLng
             : latLng // ignore: cast_nullable_to_non_nullable
                   as LatLng,
+        null == alarmTimestamp
+            ? _value.alarmTimestamp
+            : alarmTimestamp // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
       ),
     );
   }
@@ -117,14 +127,16 @@ class __$$LoadAlarmDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadAlarmDataImpl implements LoadAlarmData {
-  const _$LoadAlarmDataImpl(this.latLng);
+  const _$LoadAlarmDataImpl(this.latLng, this.alarmTimestamp);
 
   @override
   final LatLng latLng;
+  @override
+  final DateTime alarmTimestamp;
 
   @override
   String toString() {
-    return 'AlarmViewEvent.load(latLng: $latLng)';
+    return 'AlarmViewEvent.load(latLng: $latLng, alarmTimestamp: $alarmTimestamp)';
   }
 
   @override
@@ -132,11 +144,13 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadAlarmDataImpl &&
-            (identical(other.latLng, latLng) || other.latLng == latLng));
+            (identical(other.latLng, latLng) || other.latLng == latLng) &&
+            (identical(other.alarmTimestamp, alarmTimestamp) ||
+                other.alarmTimestamp == alarmTimestamp));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, latLng);
+  int get hashCode => Object.hash(runtimeType, latLng, alarmTimestamp);
 
   /// Create a copy of AlarmViewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -149,33 +163,36 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LatLng latLng) load,
+    required TResult Function(LatLng latLng, DateTime alarmTimestamp) load,
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
+    required TResult Function() updateTimer,
   }) {
-    return load(latLng);
+    return load(latLng, alarmTimestamp);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LatLng latLng)? load,
+    TResult? Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
+    TResult? Function()? updateTimer,
   }) {
-    return load?.call(latLng);
+    return load?.call(latLng, alarmTimestamp);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LatLng latLng)? load,
+    TResult Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
+    TResult Function()? updateTimer,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load(latLng);
+      return load(latLng, alarmTimestamp);
     }
     return orElse();
   }
@@ -186,6 +203,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     required TResult Function(LoadAlarmData value) load,
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
+    required TResult Function(UpdateTimer value) updateTimer,
   }) {
     return load(this);
   }
@@ -196,6 +214,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     TResult? Function(LoadAlarmData value)? load,
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
+    TResult? Function(UpdateTimer value)? updateTimer,
   }) {
     return load?.call(this);
   }
@@ -206,6 +225,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     TResult Function(LoadAlarmData value)? load,
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
+    TResult Function(UpdateTimer value)? updateTimer,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -216,9 +236,13 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
 }
 
 abstract class LoadAlarmData implements AlarmViewEvent {
-  const factory LoadAlarmData(final LatLng latLng) = _$LoadAlarmDataImpl;
+  const factory LoadAlarmData(
+    final LatLng latLng,
+    final DateTime alarmTimestamp,
+  ) = _$LoadAlarmDataImpl;
 
   LatLng get latLng;
+  DateTime get alarmTimestamp;
 
   /// Create a copy of AlarmViewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -300,9 +324,10 @@ class _$SetPageInsuresImpl implements SetPageInsures {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LatLng latLng) load,
+    required TResult Function(LatLng latLng, DateTime alarmTimestamp) load,
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
+    required TResult Function() updateTimer,
   }) {
     return setPageInsures(page);
   }
@@ -310,9 +335,10 @@ class _$SetPageInsuresImpl implements SetPageInsures {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LatLng latLng)? load,
+    TResult? Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
+    TResult? Function()? updateTimer,
   }) {
     return setPageInsures?.call(page);
   }
@@ -320,9 +346,10 @@ class _$SetPageInsuresImpl implements SetPageInsures {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LatLng latLng)? load,
+    TResult Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
+    TResult Function()? updateTimer,
     required TResult orElse(),
   }) {
     if (setPageInsures != null) {
@@ -337,6 +364,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     required TResult Function(LoadAlarmData value) load,
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
+    required TResult Function(UpdateTimer value) updateTimer,
   }) {
     return setPageInsures(this);
   }
@@ -347,6 +375,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     TResult? Function(LoadAlarmData value)? load,
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
+    TResult? Function(UpdateTimer value)? updateTimer,
   }) {
     return setPageInsures?.call(this);
   }
@@ -357,6 +386,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     TResult Function(LoadAlarmData value)? load,
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
+    TResult Function(UpdateTimer value)? updateTimer,
     required TResult orElse(),
   }) {
     if (setPageInsures != null) {
@@ -451,9 +481,10 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LatLng latLng) load,
+    required TResult Function(LatLng latLng, DateTime alarmTimestamp) load,
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
+    required TResult Function() updateTimer,
   }) {
     return setPageWorkshops(page);
   }
@@ -461,9 +492,10 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LatLng latLng)? load,
+    TResult? Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
+    TResult? Function()? updateTimer,
   }) {
     return setPageWorkshops?.call(page);
   }
@@ -471,9 +503,10 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LatLng latLng)? load,
+    TResult Function(LatLng latLng, DateTime alarmTimestamp)? load,
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
+    TResult Function()? updateTimer,
     required TResult orElse(),
   }) {
     if (setPageWorkshops != null) {
@@ -488,6 +521,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     required TResult Function(LoadAlarmData value) load,
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
+    required TResult Function(UpdateTimer value) updateTimer,
   }) {
     return setPageWorkshops(this);
   }
@@ -498,6 +532,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     TResult? Function(LoadAlarmData value)? load,
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
+    TResult? Function(UpdateTimer value)? updateTimer,
   }) {
     return setPageWorkshops?.call(this);
   }
@@ -508,6 +543,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     TResult Function(LoadAlarmData value)? load,
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
+    TResult Function(UpdateTimer value)? updateTimer,
     required TResult orElse(),
   }) {
     if (setPageWorkshops != null) {
@@ -527,4 +563,123 @@ abstract class setPageWorkshops implements AlarmViewEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$setPageWorkshopsImplCopyWith<_$setPageWorkshopsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateTimerImplCopyWith<$Res> {
+  factory _$$UpdateTimerImplCopyWith(
+    _$UpdateTimerImpl value,
+    $Res Function(_$UpdateTimerImpl) then,
+  ) = __$$UpdateTimerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateTimerImplCopyWithImpl<$Res>
+    extends _$AlarmViewEventCopyWithImpl<$Res, _$UpdateTimerImpl>
+    implements _$$UpdateTimerImplCopyWith<$Res> {
+  __$$UpdateTimerImplCopyWithImpl(
+    _$UpdateTimerImpl _value,
+    $Res Function(_$UpdateTimerImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateTimerImpl implements UpdateTimer {
+  const _$UpdateTimerImpl();
+
+  @override
+  String toString() {
+    return 'AlarmViewEvent.updateTimer()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateTimerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LatLng latLng, DateTime alarmTimestamp) load,
+    required TResult Function(int page) setPageInsures,
+    required TResult Function(int page) setPageWorkshops,
+    required TResult Function() updateTimer,
+  }) {
+    return updateTimer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LatLng latLng, DateTime alarmTimestamp)? load,
+    TResult? Function(int page)? setPageInsures,
+    TResult? Function(int page)? setPageWorkshops,
+    TResult? Function()? updateTimer,
+  }) {
+    return updateTimer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LatLng latLng, DateTime alarmTimestamp)? load,
+    TResult Function(int page)? setPageInsures,
+    TResult Function(int page)? setPageWorkshops,
+    TResult Function()? updateTimer,
+    required TResult orElse(),
+  }) {
+    if (updateTimer != null) {
+      return updateTimer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlarmData value) load,
+    required TResult Function(SetPageInsures value) setPageInsures,
+    required TResult Function(setPageWorkshops value) setPageWorkshops,
+    required TResult Function(UpdateTimer value) updateTimer,
+  }) {
+    return updateTimer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadAlarmData value)? load,
+    TResult? Function(SetPageInsures value)? setPageInsures,
+    TResult? Function(setPageWorkshops value)? setPageWorkshops,
+    TResult? Function(UpdateTimer value)? updateTimer,
+  }) {
+    return updateTimer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlarmData value)? load,
+    TResult Function(SetPageInsures value)? setPageInsures,
+    TResult Function(setPageWorkshops value)? setPageWorkshops,
+    TResult Function(UpdateTimer value)? updateTimer,
+    required TResult orElse(),
+  }) {
+    if (updateTimer != null) {
+      return updateTimer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateTimer implements AlarmViewEvent {
+  const factory UpdateTimer() = _$UpdateTimerImpl;
 }

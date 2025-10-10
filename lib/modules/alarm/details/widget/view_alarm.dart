@@ -69,7 +69,10 @@ class _ViewAlarmState extends State<ViewAlarm> {
     super.initState();
     // Вызываем после того как виджет полностью инициализирован
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AlarmViewBloc>().add(AlarmViewEvent.load(widget.alarm.getOrDefault(AppConstants.madridLocation)));
+      context.read<AlarmViewBloc>().add(AlarmViewEvent.load(
+         widget.alarm.getOrDefault(AppConstants.madridLocation),
+         widget.alarm.getTimeStampOrDefault(), // Передаем timestamp
+      ));
     });
   }
 
@@ -111,6 +114,10 @@ class _ViewAlarmState extends State<ViewAlarm> {
               ),
               child: BlocBuilder<AlarmViewBloc, AlarmViewState>(
                   builder: (context, state) {
+                    final elapsedTime = state.maybeWhen(
+                      success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => elapsedTime,
+                      orElse: () => "00:00:00",
+                    );
                   return Column(
                     children: [
                       Row(
@@ -141,7 +148,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("00:45:13", style: context.textTheme.displayLarge!.copyWith(fontSize: 24)),
+                                  Text(elapsedTime, style: context.textTheme.displayLarge!.copyWith(fontSize: 24)),
                                   Text("Incidencia en curso", style: context.textTheme.bodyLarge!.copyWith(color: textGrey)),
                                 ],
                               ),
@@ -165,7 +172,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         height: 60,
                         child: state.maybeWhen(
                           error: (message) => Text(message),
-                          success: (insures, workshops, pageInsures, pageWorkShop) => PageView(
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => PageView(
                             onPageChanged: (newIndex) {
                               context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageInsures(newIndex));
                             },
@@ -177,7 +184,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         ),
                       ),
                       state.maybeWhen(
-                          success: (insures, workshops, pageInsures, pageWorkShop) => _buildDots(insures.length, pageInsures),
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => _buildDots(insures.length, pageInsures),
                           orElse: () => const SizedBox.shrink()
                       ),
                       const SizedBox(height: 8),
@@ -185,7 +192,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         height: 60,
                         child: state.maybeWhen(
                             error: (message) => Text(message),
-                            success: (insures, workshops, pageInsures, pageWorkShop) => PageView(
+                            success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => PageView(
                                 onPageChanged: (newIndex) {
                                   context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageWorkshops(newIndex));
                                 },
@@ -197,7 +204,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         ),
                       ),
                       state.maybeWhen(
-                          success: (insures, workshops, pageInsures, pageWorkShop) {
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) {
                             /*final workshopPagesCount = (workshops.length / 2).ceil(); // Округляем вверх
                             return _buildDots(workshopPagesCount, pageWorkShop);*/
                             return _buildDots(workshops.length, pageWorkShop);

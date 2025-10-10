@@ -26,6 +26,7 @@ mixin _$AlarmViewState {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )
     success,
     required TResult Function(String message) error,
@@ -39,6 +40,7 @@ mixin _$AlarmViewState {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult? Function(String message)? error,
@@ -52,6 +54,7 @@ mixin _$AlarmViewState {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult Function(String message)? error,
@@ -153,6 +156,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )
     success,
     required TResult Function(String message) error,
@@ -170,6 +174,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult? Function(String message)? error,
@@ -187,6 +192,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult Function(String message)? error,
@@ -290,6 +296,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )
     success,
     required TResult Function(String message) error,
@@ -307,6 +314,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult? Function(String message)? error,
@@ -324,6 +332,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult Function(String message)? error,
@@ -389,6 +398,7 @@ abstract class _$$AlarmViewSuccessImplCopyWith<$Res> {
     List<Workshop> workshops,
     int pageInsures,
     int pageWorkShop,
+    String elapsedTime,
   });
 }
 
@@ -410,6 +420,7 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
     Object? workshops = null,
     Object? pageInsures = null,
     Object? pageWorkShop = null,
+    Object? elapsedTime = null,
   }) {
     return _then(
       _$AlarmViewSuccessImpl(
@@ -429,6 +440,10 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
             ? _value.pageWorkShop
             : pageWorkShop // ignore: cast_nullable_to_non_nullable
                   as int,
+        null == elapsedTime
+            ? _value.elapsedTime
+            : elapsedTime // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -442,6 +457,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
     final List<Workshop> workshops,
     this.pageInsures,
     this.pageWorkShop,
+    this.elapsedTime,
   ) : _insures = insures,
       _workshops = workshops;
 
@@ -465,10 +481,12 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   final int pageInsures;
   @override
   final int pageWorkShop;
+  @override
+  final String elapsedTime;
 
   @override
   String toString() {
-    return 'AlarmViewState.success(insures: $insures, workshops: $workshops, pageInsures: $pageInsures, pageWorkShop: $pageWorkShop)';
+    return 'AlarmViewState.success(insures: $insures, workshops: $workshops, pageInsures: $pageInsures, pageWorkShop: $pageWorkShop, elapsedTime: $elapsedTime)';
   }
 
   @override
@@ -484,7 +502,9 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
             (identical(other.pageInsures, pageInsures) ||
                 other.pageInsures == pageInsures) &&
             (identical(other.pageWorkShop, pageWorkShop) ||
-                other.pageWorkShop == pageWorkShop));
+                other.pageWorkShop == pageWorkShop) &&
+            (identical(other.elapsedTime, elapsedTime) ||
+                other.elapsedTime == elapsedTime));
   }
 
   @override
@@ -494,6 +514,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
     const DeepCollectionEquality().hash(_workshops),
     pageInsures,
     pageWorkShop,
+    elapsedTime,
   );
 
   /// Create a copy of AlarmViewState
@@ -517,11 +538,12 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )
     success,
     required TResult Function(String message) error,
   }) {
-    return success(insures, workshops, pageInsures, pageWorkShop);
+    return success(insures, workshops, pageInsures, pageWorkShop, elapsedTime);
   }
 
   @override
@@ -534,11 +556,18 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult? Function(String message)? error,
   }) {
-    return success?.call(insures, workshops, pageInsures, pageWorkShop);
+    return success?.call(
+      insures,
+      workshops,
+      pageInsures,
+      pageWorkShop,
+      elapsedTime,
+    );
   }
 
   @override
@@ -551,13 +580,20 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(insures, workshops, pageInsures, pageWorkShop);
+      return success(
+        insures,
+        workshops,
+        pageInsures,
+        pageWorkShop,
+        elapsedTime,
+      );
     }
     return orElse();
   }
@@ -606,12 +642,14 @@ abstract class AlarmViewSuccess implements AlarmViewState {
     final List<Workshop> workshops,
     final int pageInsures,
     final int pageWorkShop,
+    final String elapsedTime,
   ) = _$AlarmViewSuccessImpl;
 
   List<Insurers> get insures;
   List<Workshop> get workshops;
   int get pageInsures;
   int get pageWorkShop;
+  String get elapsedTime;
 
   /// Create a copy of AlarmViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -700,6 +738,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )
     success,
     required TResult Function(String message) error,
@@ -717,6 +756,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult? Function(String message)? error,
@@ -734,6 +774,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
+      String elapsedTime,
     )?
     success,
     TResult Function(String message)? error,
