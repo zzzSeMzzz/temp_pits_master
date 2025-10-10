@@ -187,14 +187,18 @@ class _ViewAlarmState extends State<ViewAlarm> {
                                   context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageWorkshops(newIndex));
                                 },
                                 children: workshops
-                                    .map((workshop) => _buildWorkshop(workshop))
-                                    .toList()
+                                    .map((workshop) => _buildWorkshopItem(workshop))
+                                    .toList()/*_buildWorkshopPages(workshops)*/
                             ),
                             orElse: () => const Center(child: CircularProgressIndicator())
                         ),
                       ),
                       state.maybeWhen(
-                          success: (insures, workshops, pageInsures, pageWorkShop) => _buildDots(workshops.length, pageWorkShop),
+                          success: (insures, workshops, pageInsures, pageWorkShop) {
+                            /*final workshopPagesCount = (workshops.length / 2).ceil(); // Округляем вверх
+                            return _buildDots(workshopPagesCount, pageWorkShop);*/
+                            _buildDots(workshops.length, pageWorkShop);
+                          },
                           orElse: () => const SizedBox.shrink()
                       ),
                       const SizedBox(height: 16),
@@ -274,7 +278,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
     );
   }
 
-  Widget _buildWorkshop(Workshop item) {
+  Widget _buildWorkshopItem(Workshop item) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
@@ -300,6 +304,57 @@ class _ViewAlarmState extends State<ViewAlarm> {
         ],
       ),
     );
+  }
+
+
+  List<Widget> _buildWorkshopPages(List<Workshop> workshops) {
+    final List<Widget> pages = [];
+
+    for (int i = 0; i < workshops.length; i += 2) {
+      // Если есть следующий элемент, создаем строку с двумя workshop
+      if (i + 1 < workshops.length) {
+        pages.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: _buildWorkshopItem(workshops[i]),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  flex: 1,
+                  child: _buildWorkshopItem(workshops[i + 1]),
+                ),
+              ],
+            ),
+          ),
+        );
+      } else {
+        // Если элемент последний и нечетный, создаем страницу с одним workshop
+        pages.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: _buildWorkshopItem(workshops[i]),
+                ),
+                const SizedBox(width: 8),
+                const Expanded(
+                  flex: 1,
+                  child: SizedBox(), // Пустое место для выравнивания
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+
+    return pages;
   }
 
 }
