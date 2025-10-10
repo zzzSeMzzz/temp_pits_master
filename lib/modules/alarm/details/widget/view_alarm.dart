@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
+import 'package:pits_app/assets/constants/app_images.dart';
+import 'package:pits_app/base/safe_image.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_event.dart';
@@ -237,11 +239,67 @@ class _ViewAlarmState extends State<ViewAlarm> {
   }
 
   Widget _buildInsures(Insurers item) {
-    return Text(item.name ?? "dhdh");
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Row(
+        children: [
+          SafeNetworkImage(
+            url: item.logo,
+            fallbackAsset: AppIcons.loader,
+            width: 40,
+            height: 40,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(item.name ?? "", style: context.textTheme.displayLarge),
+                Text(item.description ?? "", style: context.textTheme.bodyLarge!.copyWith(fontSize: 13)),
+              ],
+            ),
+          ),
+          Container(
+            width: 40,
+            height: 40,
+            decoration: const BoxDecoration(
+              color: Color(0xffFFC6C6),
+              borderRadius: BorderRadius.all(
+                Radius.circular(3),
+              ),
+            ),
+            child: SvgPicture.asset(AppIcons.phone)
+          )
+        ],
+      ),
+    );
   }
 
   Widget _buildWorkshop(Workshop item) {
-    return Text(item.title ?? "dhdh");
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Row(
+        children: [
+          /*SafeNetworkImage(
+            url: item.logo,
+            fallbackAsset: AppIcons.loader,
+            width: 40,
+            height: 40,
+          ),*/
+          Image.asset(AppImages.emptyService, width: 40, height: 40,),
+          const SizedBox(width: 10,),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(item.title ?? "", style: context.textTheme.displayLarge),
+                Text(item.distanceKm?.toString() ?? "", style: context.textTheme.bodyLarge!.copyWith(fontSize: 13)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
 }
