@@ -8,11 +8,13 @@ import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/base/safe_image.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
+import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_event.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_state.dart';
 import 'package:pits_app/modules/alarm/details/data/model/insurers.dart';
 import 'package:pits_app/modules/alarm/details/data/model/workshop.dart';
 import '../../../../assets/colors/colors.dart';
+import '../../../../assets/constants/app_constants.dart';
 import '../../../../base/blur_container.dart';
 import '../bloc/alarm_view_bloc.dart';
 
@@ -20,7 +22,8 @@ import '../bloc/alarm_view_bloc.dart';
 
 void showAlarmViewAlertDialog(
     BuildContext context,
-    LatLng position) {
+    AlarmModel alarm
+  ) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -37,7 +40,7 @@ void showAlarmViewAlertDialog(
                 builder: (BuildContext context) {
                   return BlocProvider(
                     create: (context) => AlarmViewBloc(),
-                    child: ViewAlarm(position: position),
+                    child: ViewAlarm(position: alarm.getOrDefault(AppConstants.madridLocation)),
                   );
                 }
             ),
@@ -197,7 +200,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                           success: (insures, workshops, pageInsures, pageWorkShop) {
                             /*final workshopPagesCount = (workshops.length / 2).ceil(); // Округляем вверх
                             return _buildDots(workshopPagesCount, pageWorkShop);*/
-                            _buildDots(workshops.length, pageWorkShop);
+                            return _buildDots(workshops.length, pageWorkShop);
                           },
                           orElse: () => const SizedBox.shrink()
                       ),
@@ -306,7 +309,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
     );
   }
 
-
+  //разделение на два элемента
   List<Widget> _buildWorkshopPages(List<Workshop> workshops) {
     final List<Widget> pages = [];
 

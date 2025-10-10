@@ -10,7 +10,9 @@ import 'package:flutter_svg/svg.dart';
     as cluster_manager;*/
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/colors/colors.dart';
+import 'package:pits_app/assets/constants/app_constants.dart';
 import 'package:pits_app/core/data/extensions.dart';
+import 'package:pits_app/modules/alarm/details/widget/view_alarm.dart';
 import 'package:pits_app/modules/alarm/widgets/alarm_screen.dart';
 import 'package:pits_app/modules/home/domain/entity/car_service.dart';
 import 'package:pits_app/modules/home/presentation/sections/map_page/bloc/services_bloc.dart';
@@ -73,7 +75,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   static const CameraPosition _kMadrid = CameraPosition(
-    target: LatLng(40.416775, -3.703790),
+    target: AppConstants.madridLocation,
     zoom: _defaultZoom,
   );
 
@@ -392,7 +394,13 @@ class _MapScreenState extends State<MapScreen> {
                       fit: BoxFit.fill,
                       width: 82,
                       height: 82,
-                    ).onTap(() => showAlarmBottomSheet(context, state.currentLocation))
+                    ).onTap(() => showAlarmBottomSheet(
+                        context,
+                        state.currentLocation,
+                        (newAlarm) {
+                          showAlarmViewAlertDialog(context, newAlarm);
+                        }
+                    ))
                   ],
                 ),
               ),

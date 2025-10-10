@@ -18,8 +18,10 @@ import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_event
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_state.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/appbar.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/parts/map_button.dart';
+import 'package:pits_app/modules/home/presentation/sections/map_page/map_screen.dart';
 import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 import 'package:pits_app/modules/service/presentation/sections/part_selection/part_selection_screen.dart';
+import '../../../../../assets/constants/app_constants.dart';
 import '../../../../alarm/widgets/alarm_screen.dart';
 import 'parts/vehicle_page_view.dart' show VehiclePageView;
 
@@ -156,7 +158,9 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                       width: 96,
                       height: 96,
-                    ).onTap(() => showAlarmViewAlertDialog(context, const LatLng(40.351205, -3.721937))/*showAlarmBottomSheet(context, null)*/),
+                    ).onTap(() => showAlarmBottomSheet(context, null, (newAlarm) {
+                      showAlarmViewAlertDialog(context, newAlarm);
+                    })),
                   ],
                 ),
               ),

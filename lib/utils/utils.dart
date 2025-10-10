@@ -90,3 +90,28 @@ double? doubleFromAny(dynamic value) {
 
   return result;
 }
+
+
+bool boolFromAny(dynamic value) {
+  bool result = false;
+  if(value==null) return false;
+  if(value is String) {
+    try {
+      result = bool.parse(value);
+    } catch (e) {
+      result = false;
+    }
+  }
+  if(value is num) {
+    try {
+      result = value == 1;
+    } catch (e) {
+      result = false;
+    }
+  }
+  if(value is bool) {
+    result = value;
+  }
+
+  return result;
+}

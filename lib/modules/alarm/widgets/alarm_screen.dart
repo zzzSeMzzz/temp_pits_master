@@ -12,7 +12,6 @@ import 'package:pits_app/modules/alarm/bloc/alarm_event.dart';
 import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/alarm/widgets/problem_type.dart';
 import 'package:pits_app/modules/alarm/widgets/selected%20box.dart';
-
 import '../../../assets/colors/colors.dart';
 import '../../../assets/constants/app_icons.dart';
 import '../../../globals/widgets/interaction/w_button.dart';
@@ -21,7 +20,7 @@ import '../bloc/alarm_state.dart';
 
 
 
-showAlarmBottomSheet(BuildContext context, LatLng? currentPosition) {
+showAlarmBottomSheet(BuildContext context, LatLng? currentPosition, Function(AlarmModel)? onAlarmCreateSuccess) {
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -29,16 +28,17 @@ showAlarmBottomSheet(BuildContext context, LatLng? currentPosition) {
       builder: (BuildContext context) {
         return BlocProvider(
           create: (context) => AlarmBloc(),
-          child: const AlarmScreen(),
+          child: AlarmScreen(position: currentPosition, onAlarmCreateSuccess: onAlarmCreateSuccess),
         );
       }
   );
 }
 
 class AlarmScreen extends StatefulWidget {
-  const AlarmScreen({super.key, this.position});
+  const AlarmScreen({super.key, this.position, this.onAlarmCreateSuccess});
 
   final LatLng? position;
+  final Function(AlarmModel)? onAlarmCreateSuccess;
 
   @override
   State<AlarmScreen> createState() => _AlarmScreenState();
@@ -172,8 +172,17 @@ class _AlarmScreenState extends State<AlarmScreen> {
           final rState = state.responseState;
           if (rState is Success<BaseResponse>) {
             final message = rState.data.message ?? "Emergency request sent successfully!";
+            if(rState.data.data!=null) {
+              try {
+                final newAlarm = AlarmModel.fromJson(rState.data.data!);
+                widget.onAlarmCreateSuccess?.call(newAlarm);
+              } catch (e) {
+                _showSnack(message);
+              }
+            } else {
+              _showSnack(message);
+            }
             Navigator.of(context).pop();
-            _showSnack(message);
           } else if (rState is Error<BaseResponse>) {
           } else if (rState is Error<BaseResponse>) {
             _showSnack(rState.errorMessage);

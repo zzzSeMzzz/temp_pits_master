@@ -8,10 +8,9 @@ part of 'alarm_model.dart';
 
 AlarmModel _$AlarmModelFromJson(Map<String, dynamic> json) => AlarmModel(
   id: (json['id'] as num?)?.toInt(),
+  customerId: json['customer_id'] as String?,
   emergency: json['emergency'] as String? ?? '',
-  carStart: json['carStart'] == null
-      ? true
-      : intToBool((json['carStart'] as num?)?.toInt()),
+  carStart: json['car_start'] == null ? true : boolFromAny(json['car_start']),
   notes: json['notes'] as String? ?? '',
   timestamp: json['timestamp'] as String?,
   lat: doubleFromAny(json['lat']),
@@ -24,11 +23,12 @@ Map<String, dynamic> _$AlarmModelToJson(AlarmModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'emergency': instance.emergency,
-      'carStart': instance.carStart,
+      'car_start': instance.carStart,
       'notes': instance.notes,
       'timestamp': instance.timestamp,
       'lat': instance.lat,
       'lon': instance.lon,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'customer_id': instance.customerId,
     };
