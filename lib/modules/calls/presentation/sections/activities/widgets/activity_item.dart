@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/widgets/service_info.dart';
 
@@ -22,7 +23,7 @@ class ActivityItem extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'Red Seat',
+                    activity.emergency ?? "Unknown emergency",
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!
@@ -35,7 +36,7 @@ class ActivityItem extends StatelessWidget {
                         color: fieldGrey),
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      'not paid',
+                      'No pagado',
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
@@ -53,8 +54,9 @@ class ActivityItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if(!activity.notes.isNullOrEmpty())
                   Text(
-                    'Oil and filter change',
+                    activity.notes ?? '',
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!
@@ -63,11 +65,11 @@ class ActivityItem extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  const ServiceInfo(name: 'Oil change 5 liters Texo Mobil 1'),
+                  ServiceInfo(name: 'Fetcha uy Hora: ${activity.timestamp}', iconVisible: false),
                   const SizedBox(
                     height: 4,
                   ),
-                  const ServiceInfo(name: 'Oil filter replacement'),
+                  ServiceInfo(name: 'Ubicación: ${activity.lat} ${activity.lon}', iconVisible: false),
                   const SizedBox(
                     height: 16,
                   ),
@@ -82,7 +84,7 @@ class ActivityItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Total price',
+                        'Precio',
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -91,7 +93,7 @@ class ActivityItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        '\$ 240',
+                        '€€',
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
