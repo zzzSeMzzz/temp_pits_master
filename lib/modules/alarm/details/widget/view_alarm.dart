@@ -356,7 +356,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
         pages.add(
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(fix
+            child: Row(
               children: [
                 Expanded(
                   flex: 1,
