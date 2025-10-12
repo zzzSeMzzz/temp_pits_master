@@ -1,8 +1,6 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/base/safe_image.dart';
@@ -13,6 +11,7 @@ import 'package:pits_app/modules/alarm/details/bloc/alarm_view_event.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_state.dart';
 import 'package:pits_app/modules/alarm/details/data/model/insurers.dart';
 import 'package:pits_app/modules/alarm/details/data/model/workshop.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../assets/colors/colors.dart';
 import '../../../../assets/constants/app_constants.dart';
 import '../../../../base/blur_container.dart';
@@ -62,12 +61,15 @@ class ViewAlarm extends StatefulWidget {
 
 class _ViewAlarmState extends State<ViewAlarm> {
 
-  //late final PageController controllerInsures, controllerWorkShops;
+  late final PageController controllerInsures, controllerWorkShops;
+
 
   @override
   void initState() {
     super.initState();
-    // Вызываем после того как виджет полностью инициализирован
+    controllerInsures = PageController();
+    controllerWorkShops = PageController();
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AlarmViewBloc>().add(AlarmViewEvent.load(
          widget.alarm.getOrDefault(AppConstants.madridLocation),
@@ -76,6 +78,13 @@ class _ViewAlarmState extends State<ViewAlarm> {
     });
   }
 
+
+  @override
+  void dispose() {
+    super.dispose();
+    controllerWorkShops.dispose();
+    controllerInsures.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +182,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         child: state.maybeWhen(
                           error: (message) => Text(message),
                           success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => PageView(
+                            controller: controllerInsures,
                             onPageChanged: (newIndex) {
                               context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageInsures(newIndex));
                             },
@@ -184,7 +194,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         ),
                       ),
                       state.maybeWhen(
-                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => _buildDots(insures.length, pageInsures),
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => _buildDots(insures.length, pageInsures, controllerInsures),
                           orElse: () => const SizedBox.shrink()
                       ),
                       const SizedBox(height: 8),
@@ -193,6 +203,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         child: state.maybeWhen(
                             error: (message) => Text(message),
                             success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => PageView(
+                                controller: controllerWorkShops,
                                 onPageChanged: (newIndex) {
                                   context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageWorkshops(newIndex));
                                 },
@@ -207,7 +218,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                           success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) {
                             /*final workshopPagesCount = (workshops.length / 2).ceil(); // Округляем вверх
                             return _buildDots(workshopPagesCount, pageWorkShop);*/
-                            return _buildDots(workshops.length, pageWorkShop);
+                            return _buildDots(workshops.length, pageWorkShop, controllerWorkShops);
                           },
                           orElse: () => const SizedBox.shrink()
                       ),
@@ -231,7 +242,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
     );
   }
 
-  Widget _buildDots(int count, int currentPosition) {
+ /* Widget _buildDots(int count, int currentPosition) {
     return count == 0 ? const SizedBox.shrink() : Center(
       child: DotsIndicator(
         dotsCount: count,
@@ -249,6 +260,25 @@ class _ViewAlarmState extends State<ViewAlarm> {
           activeColor: Colors.transparent,
         ),
       ),
+    );
+  }*/
+
+   Widget _buildDots(int count, int currentPosition, PageController controller) {
+    return count == 0 ? const SizedBox.shrink() : Center(
+      child: SmoothPageIndicator(
+        controller: controller,
+        count: count,
+        effect:  const ScrollingDotsEffect(
+          activeDotColor: Colors.black,
+          activeDotScale: 1.0,
+          dotColor: textGrey,
+          strokeWidth: 2.0,
+          dotWidth: 8.0,
+          dotHeight: 8.0,
+          spacing: 8.0,
+          paintStyle: PaintingStyle.stroke
+        ),
+      )
     );
   }
 
@@ -326,7 +356,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
         pages.add(
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
+            child: Row(fix
               children: [
                 Expanded(
                   flex: 1,
