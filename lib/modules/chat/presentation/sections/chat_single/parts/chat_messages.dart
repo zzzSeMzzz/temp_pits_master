@@ -5,16 +5,14 @@ class ChatMessages extends StatelessWidget {
   const ChatMessages({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        child: ListView.separated(
-            scrollDirection: Axis.vertical,
-            itemCount: 20,
-            separatorBuilder: (context, index) => const SizedBox(
-                  height: 16,
-                ),
-            itemBuilder: (context, index) => ChatMessage(
-                  isMyMessage: index % 2 == 0,
-                  message: 'Hello how are you doing today ?',
-                )),
-      );
+  Widget build(BuildContext context) => ListView.separated(
+      scrollDirection: Axis.vertical,
+      itemCount: 2,
+      separatorBuilder: (context, index) => const SizedBox(
+            height: 16,
+          ),
+      itemBuilder: (context, index) => ChatMessage(
+            isMyMessage: index % 2 == 0,
+            message: index % 2 == 0 ? '¡Está en construcción este apartado! Gracias' : '¡Pronto podrás hablar con los mecánicos!',
+          ));
 }
