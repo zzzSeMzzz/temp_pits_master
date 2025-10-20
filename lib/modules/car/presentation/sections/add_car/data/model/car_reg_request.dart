@@ -1,5 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../../../../../utils/utils.dart';
 part 'car_reg_request.g.dart';
 
 @JsonSerializable()
@@ -12,10 +14,10 @@ class CareRegRequest {
   String? customField41;
   @JsonKey(name: 'custom_field_51')
   int? customField51;
-  @JsonKey(name: 'cust_id')
+  @JsonKey(name: 'cust_id', fromJson: intFromAny)
   int? custId;
-  @JsonKey(name: 'cust_id_slug')
-  String? custIdSlug;
+  @JsonKey(name: 'cust_id_slug', fromJson: intFromAny)
+  int? custIdSlug;
   @JsonKey(name: 'date_start')
   String? dateStart;
 
@@ -25,6 +27,8 @@ class CareRegRequest {
   factory CareRegRequest.formNumber(String number) {
     final req = CareRegRequest();
     req.registrationNumber = number;
+    req.custId = 1000;//fixme
+    req.custIdSlug = 1000;//fixme
     req.dateStart = DateFormat('yyyy-MM-dd').format(DateTime.now());
     return req;
   }

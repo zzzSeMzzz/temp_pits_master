@@ -12,8 +12,8 @@ CareRegRequest _$CareRegRequestFromJson(Map<String, dynamic> json) =>
       model: json['modelo'] as String?,
       customField41: json['custom_field_41'] as String?,
       customField51: (json['custom_field_51'] as num?)?.toInt(),
-      custId: (json['cust_id'] as num?)?.toInt(),
-      custIdSlug: json['cust_id_slug'] as String?,
+      custId: intFromAny(json['cust_id']),
+      custIdSlug: intFromAny(json['cust_id_slug']),
       dateStart: json['date_start'] as String?,
     );
 

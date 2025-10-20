@@ -92,6 +92,27 @@ double? doubleFromAny(dynamic value) {
 }
 
 
+int? intFromAny(dynamic value) {
+  int? result;
+  if(value==null) return result;
+  if(value is String) {
+    try {
+      result = int.parse(value);
+    } catch (e) {
+      result = null;
+    }
+  }
+  if(value is num) {
+    try {
+      result = value.toInt();
+    } catch (e) {
+      result = null;
+    }
+  }
+
+  return result;
+}
+
 bool boolFromAny(dynamic value) {
   bool result = false;
   if(value==null) return false;
