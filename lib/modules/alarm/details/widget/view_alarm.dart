@@ -12,6 +12,7 @@ import 'package:pits_app/modules/alarm/details/bloc/alarm_view_state.dart';
 import 'package:pits_app/modules/alarm/details/data/model/insurers.dart';
 import 'package:pits_app/modules/alarm/details/data/model/workshop.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../assets/colors/colors.dart';
 import '../../../../assets/constants/app_constants.dart';
 import '../../../../base/blur_container.dart';
@@ -136,7 +137,8 @@ class _ViewAlarmState extends State<ViewAlarm> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Sutiación de emergencia", style: context.textTheme.bodyLarge),
+                              Text("Situación de emergencia", style: context.textTheme.bodyLarge),
+
                               Text("Falle de frenos", style: context.textTheme.displayLarge),
                             ],
                           )
@@ -158,7 +160,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(elapsedTime, style: context.textTheme.displayLarge!.copyWith(fontSize: 24)),
-                                  Text("Incidencia en curso", style: context.textTheme.bodyLarge!.copyWith(color: textGrey)),
+                                  Text(widget.alarm.emergency ?? "Incidencia en curso", style: context.textTheme.bodyLarge!.copyWith(color: textGrey)),
                                 ],
                               ),
                             ),
@@ -263,6 +265,15 @@ class _ViewAlarmState extends State<ViewAlarm> {
     );
   }*/
 
+  Future<void> _launchCaller(String phoneNumber) async {
+    final Uri phoneUri = Uri(scheme: "tel", path: phoneNumber);
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    } else {
+      throw 'Could not launch $phoneUri';
+    }
+  }
+
    Widget _buildDots(int count, int currentPosition, PageController controller) {
     return count == 0 ? const SizedBox.shrink() : Center(
       child: SmoothPageIndicator(
@@ -311,8 +322,8 @@ class _ViewAlarmState extends State<ViewAlarm> {
                 Radius.circular(3),
               ),
             ),
-            child: SvgPicture.asset(AppIcons.phone)
-          )
+            child: SvgPicture.asset(AppIcons.icPhoneRed, width: 24, height: 24,)
+          ).onTap(() => _launchCaller(item.description ?? ""))
         ],
       ),
     );

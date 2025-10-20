@@ -23,6 +23,7 @@ class WButton extends StatelessWidget {
   final double? scaleValue;
   final List<BoxShadow>? shadow;
   final bool hasError;
+  final bool svgColorFilterDiable;
   final String? svgAsset;
 
   const WButton({
@@ -45,6 +46,7 @@ class WButton extends StatelessWidget {
     this.scaleValue,
     this.shadow,
     this.svgAsset,
+    this.svgColorFilterDiable = false,
     Key? key,
   }) : super(key: key);
 
@@ -108,7 +110,7 @@ class WButton extends StatelessWidget {
                               svgAsset!,
                               width: 18,
                               height: 18,
-                              colorFilter:
+                              colorFilter: svgColorFilterDiable ? null :
                                   ColorFilter.mode(textColor, BlendMode.srcIn),
                             ),
                             const SizedBox(width: 8),

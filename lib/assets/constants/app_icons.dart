@@ -103,4 +103,5 @@ class AppIcons {
   static const String icAlertBig = 'assets/icons/ic_alert_big.svg';
   static const String icCheckCircleFrame = 'assets/icons/ic_check_circle_frame.svg';
   static const String icTimer = 'assets/icons/ic_timer.svg';
+  static const String icPhoneRed = 'assets/icons/ic_phone_red.svg';
 }

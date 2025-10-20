@@ -67,6 +67,7 @@ dependencies:
   another_flushbar: ^1.12.30
   flutter_spinkit: ^5.2.2
   smooth_page_indicator: ^1.2.1
+  url_launcher: ^6.3.2
 
   #flutter_mobile_vision_2: ^0.1.15 #зменить бибилотек на другую
 
