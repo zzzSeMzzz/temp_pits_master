@@ -64,4 +64,11 @@ class AlarmModel {
       }
     }
   }
+
+  @override
+  String toString() {
+    return 'AlarmModel{id: $id, emergency: $emergency, carStart: $carStart, notes: $notes, timestamp: $timestamp, lat: $lat, lon: $lon, createdAt: $createdAt, updatedAt: $updatedAt, customerId: $customerId}';
+  }
+
+
 }

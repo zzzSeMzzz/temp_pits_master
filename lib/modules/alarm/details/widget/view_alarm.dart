@@ -27,6 +27,7 @@ void showAlarmViewAlertDialog(
   showDialog(
       context: context,
       builder: (BuildContext context) {
+        debugPrint("AlarmViewAlertDialog:: $alarm");
         return AlertDialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
@@ -138,8 +139,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Situación de emergencia", style: context.textTheme.bodyLarge),
-
-                              Text("Falle de frenos", style: context.textTheme.displayLarge),
+                              Text(widget.alarm.emergency ?? "", style: context.textTheme.displayLarge),
                             ],
                           )
                         ],
@@ -160,7 +160,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(elapsedTime, style: context.textTheme.displayLarge!.copyWith(fontSize: 24)),
-                                  Text(widget.alarm.emergency ?? "Incidencia en curso", style: context.textTheme.bodyLarge!.copyWith(color: textGrey)),
+                                  Text("Incidencia en curso", style: context.textTheme.bodyLarge!.copyWith(color: textGrey)),
                                 ],
                               ),
                             ),
@@ -322,7 +322,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                 Radius.circular(3),
               ),
             ),
-            child: SvgPicture.asset(AppIcons.icPhoneRed, width: 24, height: 24,)
+            child: Center(child: SvgPicture.asset(AppIcons.icPhoneRed, width: 24, height: 24,))
           ).onTap(() => _launchCaller(item.description ?? ""))
         ],
       ),
