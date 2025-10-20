@@ -211,13 +211,13 @@ class _AlarmScreenState extends State<AlarmScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("What happen?",
+                              Text("¿Qué Ocurre?",
                                   style: context.textTheme.displayLarge!.copyWith(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700)
                               ),
                               const SizedBox(height: 8),
-                              Text("Select the type of emergency",
+                              Text("Seleccionar tipo de asistencia",
                                   style: context.textTheme.displayLarge!.copyWith(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14
@@ -263,7 +263,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                           padding: const EdgeInsets.all(10.0),
                           child: Row(
                             children: [
-                              Text("Does the\ncar start?",
+                              Text("¿El vehículo\narranca?",
                                   style: context.textTheme.displayLarge!.copyWith(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 20
@@ -275,7 +275,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                   _bloc.add(const AlarmEvent.setStartEngine(true))
                                 },
                                 isSelected: state.isStartEngine,
-                                title: "Yes",
+                                title: "Si",
                                 width: 73,
                                 height: 56,
                               ),
@@ -313,7 +313,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                   //focusNode: focusNode,
                                   autofocus: false,
                                   decoration: const InputDecoration(
-                                    hintText: 'Explain us more (optionale)',
+                                    hintText: 'Explícanos más (opcional)',
                                     hintStyle: TextStyle(color: Colors.black, fontSize: 16), // Set hint color to black
                                     //border: OutlineInputBorder(), // Optional: Add a border
                                   ),
@@ -330,7 +330,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                   svgAsset: AppIcons.icSend,
                                   onTap: () async {
                                     if(state.selectedAlarm==null) {
-                                      _showSnack("Select emergency");
+                                      _showSnack("Seleccionar tipo de asistencia");
                                       return;
                                     }
                                     String formattedDateTime = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
@@ -359,7 +359,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                                     _bloc.add(AlarmEvent.sendAlarm(alarm));
                                   },
                                   color: primaryColor,
-                                  text: "Submit an emergency request",
+                                  text: "Enviar incidencia",
                                   textColor: white,
                                 )
                               ],
