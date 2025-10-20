@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pits_app/modules/auth/presentation/sections/mock/auth_mock_screen.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/activities_screen.dart';
 import 'package:pits_app/modules/chat/presentation/sections/chat/chat_screen.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/home_screen.dart';
 import 'package:pits_app/modules/navigation/presentation/home.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile/profile_screen.dart';
 
+import '../../../core/data/singletons/storage.dart';
 import '../../alarm/details/widget/view_alarm.dart';
 
 class TabNavigatorRoutes {
@@ -43,7 +45,7 @@ class _TabNavigatorState extends State<TabNavigator>
         };
       case NavItemEnum.profile:
         return {
-          TabNavigatorRoutes.root: (context) => const ProfileScreen(),
+          TabNavigatorRoutes.root: (context) => StorageRepository.isAuth() ? const ProfileScreen() : const AuthMockScreen(),
         };
 
       default:

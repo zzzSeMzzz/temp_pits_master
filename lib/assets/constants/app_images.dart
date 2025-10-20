@@ -29,4 +29,5 @@ class AppImages {
   static const String myLocationIcon = 'assets/images/marker_my_location.png';
   static const String alarmButton = 'assets/images/alarm_button.png';
   static const String emptyService = 'assets/images/empty_service_logo.png';
+  static const String authMockLogo = 'assets/images/auth_mock_logo.png';
 }

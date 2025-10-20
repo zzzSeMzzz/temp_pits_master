@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   if (!StorageRepository.isAuth()) {
                     final snackBar = SnackBar(
                       content: Text(
-                        'Please auth before add car',
+                        'Autorizate antes de añadir un vehículo',
                         style: Theme.of(context).textTheme.displayLarge!
                             .copyWith(
                               fontWeight: FontWeight.w500,
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       action: SnackBarAction(
                         textColor: Colors.black,
-                        label: 'SignIn',
+                        label: 'Acceder',
                         onPressed: () {
                           Navigator.of(
                             context,

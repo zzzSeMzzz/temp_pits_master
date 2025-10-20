@@ -37,10 +37,10 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
               final photo = PhotoModel.fromFilePath(pickedFile.path);
               add(AddCarEvent.onScanPhoto(photo));
             } else {
-              emit(const AddCarState.error(message: 'Фото не было выбрано'));
+              emit(const AddCarState.error(message: 'La foto no se ha guardado'));
             }
           } catch (e) {
-            emit(AddCarState.error(message: 'Ошибка при выборе фото: $e'));
+            emit(AddCarState.error(message: 'Error al seleccionar una foto: $e'));
           }
         },
         onPhotoSelected: (event) async { //проиходит, когда выбираем откуда источник фотки камера или галерея
@@ -60,14 +60,14 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
               emit(
                 const AddCarState.permissionsDenied(
                   message:
-                      'Необходимы разрешения для доступа к камере и галерее',
+                      'Se requieren permisos para acceder a la cámara y la galería.',
                 ),
               );
             }
           } catch (e) {
             emit(
               AddCarState.permissionsDenied(
-                message: 'Ошибка запроса разрешений: $e',
+                message: 'Error de solicitud de permiso: $e',
               ),
             );
           }
@@ -86,7 +86,7 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
               emit(AddCarState.error(message: carInfo.errorMessage));
             }
           } catch (e) {
-            emit(AddCarState.error(message: 'Ошибка распознавания фото: $e'));
+            emit(AddCarState.error(message: 'Error al seleccionar una foto: $e'));
           }
         },
         onRegCar: (event) async {
@@ -99,7 +99,7 @@ class AddCarBloc extends Bloc<AddCarEvent, AddCarState> {
               emit(AddCarState.error(message: carInfo.errorMessage));
             }
           } catch (e) {
-            emit(AddCarState.error(message: 'Ошибка распознавания фото: $e'));
+            emit(AddCarState.error(message: 'Error al seleccionar una foto: $e'));
           }
         },
       );
