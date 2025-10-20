@@ -6,8 +6,12 @@ abstract class BaseRepository {
       //final data = result.data;
       if (data is Map<String, dynamic>) {
         final err = data['error'];
+        final err2 = data['message'];
         if (err is String && err.isNotEmpty) {
           message = err;
+        }
+        if (err2 is String && err2.isNotEmpty) {
+          message = err2;
         }
       }
     } catch (_) {}

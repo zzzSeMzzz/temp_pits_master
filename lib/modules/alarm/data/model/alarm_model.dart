@@ -6,7 +6,7 @@ import 'package:pits_app/core/data/extensions.dart';
 import '../../../../utils/utils.dart';
 part 'alarm_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class AlarmModel {
   @JsonKey(name: 'id')
   final int? id;
