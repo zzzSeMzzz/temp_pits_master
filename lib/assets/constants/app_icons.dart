@@ -1,4 +1,7 @@
 class AppIcons {
+
+  AppIcons._();
+
   static const String close = 'assets/icons/close.svg';
   static const String doneCircle = 'assets/icons/done_circle.svg';
   static const String eyeClose = 'assets/icons/eye_close.svg';
@@ -70,4 +73,35 @@ class AppIcons {
   static const String emojis = 'assets/icons/emojis.svg';
   static const String gallery = 'assets/icons/gallery.svg';
   static const String microphone = 'assets/icons/microphone.svg';
+  static const String list = 'assets/icons/list.svg';
+  static const String arrowDown = 'assets/icons/ic_arrow_down.svg';
+  static const String icScan2 = 'assets/icons/ic_scan_2.svg';
+  static const String myLocation = 'assets/icons/ic_my_location.svg';
+  static const String icAlarmButton = 'assets/icons/ic_alarm_button.svg';
+  static const String icSend = 'assets/icons/ic_send.svg';
+
+  static const String icHomeTabActive = 'assets/icons/ic_tab_home_active.svg';
+  static const String icHomeTabInactive = 'assets/icons/ic_tab_home_inactive.svg';
+
+  //alarm buttom
+  static const String icBrakeFailure = 'assets/icons/ic_brake_failure.svg';
+  static const String icCheckDiagnostic = 'assets/icons/ic_check_diagnostic.svg';
+  static const String icCheckEngine = 'assets/icons/ic_check_engine.svg';
+  static const String icCheckFuses = 'assets/icons/ic_check_fuses.svg';
+  static const String icHotEngine = 'assets/icons/ic_hot_engine.svg';
+  static const String icLowOil = 'assets/icons/ic_low_oil.svg';
+  static const String icNoFuel = 'assets/icons/ic_no_fuel.svg';
+  static const String icNoWater = 'assets/icons/ic_no_water.svg';
+  static const String icOtherRepair = 'assets/icons/ic_other_repair.svg';
+  static const String icTurboFailure = 'assets/icons/ic_turbo_failure.svg';
+  static const String icWheelChains = 'assets/icons/ic_wheel_chains.svg';
+  static const String icWheelPuncture = 'assets/icons/ic_wheel_puncture.svg';
+  static const String icLostKey = 'assets/icons/ic_lost_ket.svg';
+  static const String icLowBattery = 'assets/icons/ic_low_battery.svg';
+  static const String icErrorFueling = 'assets/icons/ic_error_fueling.svg';
+  static const String icDlgQuestion = 'assets/icons/ic_dlg_question.svg';
+  static const String icAlertBig = 'assets/icons/ic_alert_big.svg';
+  static const String icCheckCircleFrame = 'assets/icons/ic_check_circle_frame.svg';
+  static const String icTimer = 'assets/icons/ic_timer.svg';
+  static const String icPhoneRed = 'assets/icons/ic_phone_red.svg';
 }

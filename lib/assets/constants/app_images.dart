@@ -22,4 +22,12 @@ class AppImages {
   static const String testInsurer = 'assets/images/test_insurer.png';
   static const String mapTestProfile = 'assets/images/map_test_profile.png';
   static const String wrenchLocation = 'assets/images/wrench_location.png';
+  static const String serviceNotFt = 'assets/images/marker_not_ft.png';
+  static const String serviceFtOpen = 'assets/images/marker_ft_open.png';
+  static const String serviceFtClosed = 'assets/images/marker_ft_closed.png';
+  static const String clusterIcon = 'assets/images/cluster_icon.png';
+  static const String myLocationIcon = 'assets/images/marker_my_location.png';
+  static const String alarmButton = 'assets/images/alarm_button.png';
+  static const String emptyService = 'assets/images/empty_service_logo.png';
+  static const String authMockLogo = 'assets/images/auth_mock_logo.png';
 }

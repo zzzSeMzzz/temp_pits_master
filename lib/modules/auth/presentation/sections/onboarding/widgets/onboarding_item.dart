@@ -20,61 +20,61 @@ class OnboardingItem extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Positioned(
-            left: 0,
-            right: 0,
-            top: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xff121212),
-                        Color(0xff121212).withOpacity(0),
-                      ])),
-              height: 340,
-            )),
-        Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                    Color(0xff121212),
-                    Color(0xff121212).withOpacity(0),
-                  ])),
-              height: 341,
-            )),
+        // Positioned(
+        //     left: 0,
+        //     right: 0,
+        //     top: 0,
+        //     child: Container(
+        //       decoration: BoxDecoration(
+        //           gradient: LinearGradient(
+        //               begin: Alignment.topCenter,
+        //               end: Alignment.bottomCenter,
+        //               colors: [
+        //                 Color(0xff121212),
+        //                 Color(0xff121212).withOpacity(0),
+        //               ])),
+        //       height: 340,
+        //     )),
+        // Positioned(
+        //     left: 0,
+        //     right: 0,
+        //     bottom: 0,
+        //     child: Container(
+        //       decoration: BoxDecoration(
+        //           gradient: LinearGradient(
+        //               begin: Alignment.bottomCenter,
+        //               end: Alignment.topCenter,
+        //               colors: [
+        //             Color(0xff121212),
+        //             Color(0xff121212).withOpacity(0),
+        //           ])),
+        //       height: 341,
+        //     )),
         Positioned.fill(
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 68 + MediaQuery.of(context).padding.top,
+            ),
             Text(
               title,
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
-                  .copyWith(fontSize: 24),
+                  .copyWith(fontSize: 32, color: Colors.black),
             ),
-            SizedBox(
-              height: 50,
+            const SizedBox(
+              height: 30,
             ),
             Text(
               desc,
               style: Theme.of(context)
                   .textTheme
-                  .displayMedium!
-                  .copyWith(fontSize: 16),
+                  .bodyMedium!
+                  .copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w400),
             ),
-            SizedBox(
-              height: 68 + MediaQuery.of(context).padding.bottom,
-            )
           ],
         )),
       ],

@@ -8,5 +8,6 @@ final serviceLocator = GetIt.I;
 Future<void> setupLocator() async {
   await StorageRepository.getInstance();
   serviceLocator.registerLazySingleton(DioSettings.new);
+  serviceLocator.registerLazySingleton(ApiSecondDioSettings.new);
 
 }

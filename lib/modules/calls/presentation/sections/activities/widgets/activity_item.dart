@@ -1,17 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
-import 'package:pits_app/globals/widgets/interaction/w_button.dart';
+import 'package:pits_app/core/data/extensions.dart';
+import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/widgets/service_info.dart';
 
 class ActivityItem extends StatelessWidget {
-  const ActivityItem({Key? key}) : super(key: key);
+  const ActivityItem({Key? key, required this.activity}) : super(key: key);
+
+  final AlarmModel activity;
 
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4), color: fieldGrey),
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
             Container(
@@ -21,7 +23,7 @@ class ActivityItem extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'Red Seat',
+                    activity.emergency ?? "Unknown emergency",
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!
@@ -34,7 +36,7 @@ class ActivityItem extends StatelessWidget {
                         color: fieldGrey),
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      'not paid',
+                      'No pagado',
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
@@ -44,44 +46,45 @@ class ActivityItem extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsets.symmetric(horizontal: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if(!activity.notes.isNullOrEmpty())
                   Text(
-                    'Oil and filter change',
+                    activity.notes ?? '',
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!
                         .copyWith(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
-                  ServiceInfo(name: 'Oil change 5 liters Texo Mobil 1'),
-                  SizedBox(
+                  ServiceInfo(name: 'Fetcha uy Hora: ${activity.timestamp}', iconVisible: false),
+                  const SizedBox(
                     height: 4,
                   ),
-                  ServiceInfo(name: 'Oil filter replacement'),
-                  SizedBox(
+                  ServiceInfo(name: 'Ubicación: ${activity.lat} ${activity.lon}', iconVisible: false),
+                  const SizedBox(
                     height: 16,
                   ),
-                  Divider(
+                  const Divider(
                     height: 1,
                     thickness: 1,
                     color: textGrey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Row(
                     children: [
                       Text(
-                        'Total price',
+                        'Precio',
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -90,7 +93,7 @@ class ActivityItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        '\$ 240',
+                        '€€',
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!

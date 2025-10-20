@@ -21,11 +21,16 @@ class NavItemWidget extends StatelessWidget {
       child: Column(
         children: [
           Center(
-            child: SvgPicture.asset(
+            child: navBar.isMultipleIconTab ? SvgPicture.asset(
+              currentIndex == navBar.id ? navBar.icon : navBar.inactiveIcon!,
+              height: 24,
+              width: 24,
+            ) :
+            SvgPicture.asset(
               navBar.icon,
-              color: currentIndex == navBar.id
-                  ? primaryColor
-                  : textGrey,
+              colorFilter: currentIndex == navBar.id
+                  ? const ColorFilter.mode(primaryColor, BlendMode.srcIn)
+                  : const ColorFilter.mode(textGrey, BlendMode.srcIn),
               height: 24,
               width: 24,
             ),

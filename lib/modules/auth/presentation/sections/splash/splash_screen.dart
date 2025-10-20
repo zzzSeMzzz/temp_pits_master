@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
+import 'package:pits_app/modules/auth/presentation/sections/auth_screen/auth_screen.dart';
 import 'package:pits_app/modules/auth/presentation/sections/onboarding/onboarding_screen.dart';
 import 'package:pits_app/modules/navigation/presentation/home.dart';
 
@@ -18,14 +19,20 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    var isFirst =StorageRepository.getBool('isFirst',defValue: true);
+    var isFirst = StorageRepository.getBool('isFirst', defValue: true);
     Timer(const Duration(seconds: 2), () {
       if(isFirst){
-        Navigator.push(
+        Navigator.pushReplacement(
             context, CupertinoPageRoute(builder: (c) => const OnboardingScreen()));
-      }else {
-        Navigator.push(
-            context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
+      } else {
+
+        if(StorageRepository.isAuth() || StorageRepository.loginAsGuest()) {
+          Navigator.pushReplacement(
+              context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));
+        } else {
+          Navigator.pushReplacement(
+              context, CupertinoPageRoute(builder: (c) => const AuthScreen()));
+        }
       }
 
     });
@@ -37,22 +44,22 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: primaryColor,
         body: Stack(
           children: [
-            Positioned.fill(
-                child: Column(
-              children: [
-                const Spacer(),
-                Text(
-                  'Repair your car\njust in record time',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium!
-                      .copyWith(fontSize: 16),
-                ),
-                SizedBox(
-                  height: 60 + MediaQuery.of(context).padding.bottom,
-                )
-              ],
-            )),
+            // Positioned.fill(
+            //     child: Column(
+            //   children: [
+            //     const Spacer(),
+            //     Text(
+            //       'Repair your car\njust in record time',
+            //       style: Theme.of(context)
+            //           .textTheme
+            //           .displayMedium!
+            //           .copyWith(fontSize: 16),
+            //     ),
+            //     SizedBox(
+            //       height: 60 + MediaQuery.of(context).padding.bottom,
+            //     )
+            //   ],
+            // )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -71,11 +78,19 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 40,
                 ),
                 Text(
-                  'Welcom to Pits',
+                  'Welcome to Pits',
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
                       .copyWith(fontSize: 24),
+                ),
+                const SizedBox(height: 20,),
+                Text(
+                  'Muévete Seguro',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 16),
                 ),
               ],
             ),

@@ -2,12 +2,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
-import 'package:pits_app/modules/auth/presentation/sections/auth_screen/bloc/auth_bloc.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/parts/register_fields.dart';
 import 'package:pits_app/modules/auth/presentation/sections/auth_screen/widgets/auth_field.dart';
 
-class AuthFields extends StatelessWidget {
+class AuthFields extends StatefulWidget {
   const AuthFields({Key? key}) : super(key: key);
+
+  @override
+  State<AuthFields> createState() => AuthFieldsState();
+}
+
+class AuthFieldsState extends State<AuthFields> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController regEmailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  //final TextEditingController lastNameController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    regEmailController.dispose();
+    phoneController.dispose();
+    firstNameController.dispose();
+    //lastNameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) => Column(
@@ -15,17 +37,25 @@ class AuthFields extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          const AuthField(
-            hint: 'Your username, email or phone',
-            prefixIconPath: AppIcons.mail,
+          BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              return AuthField(
+                controller: state.isLoginMode ? emailController : firstNameController,
+                hint: state.isLoginMode ? 'Nombre de usuario o correo electrónico' : 'Nombre y apellido',
+                prefixIconPath: AppIcons.user,
+                keyboardType: TextInputType.emailAddress,
+              );
+            }
           ),
           const SizedBox(
             height: 8,
           ),
-          const AuthField(
-            hint: 'Password',
+          AuthField(
+            controller: passwordController,
+            hint: 'Contraseña',
             isPassword: true,
             prefixIconPath: AppIcons.lock,
+            keyboardType: TextInputType.visiblePassword,
           ),
           const SizedBox(
             height: 8,
@@ -34,7 +64,10 @@ class AuthFields extends StatelessWidget {
             builder: (context, state) {
               return AnimatedCrossFade(
                   firstChild: Container(),
-                  secondChild: RegisterFields(),
+                  secondChild: RegisterFields(
+                    regEmailController: regEmailController,
+                    phoneController: phoneController,
+                  ),
                   crossFadeState: state.isLoginMode
                       ? CrossFadeState.showFirst
                       : CrossFadeState.showSecond,

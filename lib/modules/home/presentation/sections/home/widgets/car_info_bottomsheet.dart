@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/widgets/car_info_row.dart';
 
-showCarInfoBottomSheet(BuildContext context) {
+showCarInfoBottomSheet(BuildContext context, ) {
   showModalBottomSheet(
       context: context,
       useRootNavigator: true,
@@ -20,10 +20,11 @@ class CarInfoBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: MediaQuery.of(context).size.height * 0.5,
+        //height: MediaQuery.of(context).size.height * 0.5,
         padding: EdgeInsets.fromLTRB(
             24, 20, 24, 16 + MediaQuery.of(context).padding.bottom),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Stack(
               children: [

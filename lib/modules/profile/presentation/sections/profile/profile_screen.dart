@@ -4,9 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
 import 'package:pits_app/assets/constants/app_images.dart';
+import 'package:pits_app/core/data/extensions.dart';
+import 'package:pits_app/core/data/singletons/storage.dart';
 import 'package:pits_app/modules/home/domain/entity/service_single_entity.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile/widgets/profile_menu_tile.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/profile_service_screen.dart';
+
+import '../../../../../base/custom_aler_dialog.dart';
+import '../../../../auth/presentation/sections/auth_screen/auth_screen.dart';
+import '../../../../navigation/presentation/navigator.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -14,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(backgroundColor: white,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -46,13 +52,29 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   SvgPicture.asset(
                     AppIcons.logOut,
                     width: 32,
                     height: 32,
+                  ).onTap(() =>
+                      showCustomAlertDialog(
+                          context,
+                          "Logout",
+                          "¿Estás seguro que deseas cerrar la sesión?",
+                          () {
+                            StorageRepository.logout();
+                            Navigator.of(context, rootNavigator: true).pop();
+                            Navigator.of(context, rootNavigator: true).pushReplacement(
+                                fade(page: const AuthScreen())
+                            );
+                          },
+                          () {
+                              Navigator.of(context, rootNavigator: true).pop();
+                          }
+                      )
                   )
                 ],
               ),

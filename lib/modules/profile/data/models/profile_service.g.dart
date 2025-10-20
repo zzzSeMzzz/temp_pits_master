@@ -13,8 +13,5 @@ ProfileServiceModel _$ProfileServiceModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ProfileServiceModelToJson(
-        ProfileServiceModel instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      '': instance.id,
-    };
+  ProfileServiceModel instance,
+) => <String, dynamic>{'name': instance.name, '': instance.id};
