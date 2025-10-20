@@ -131,18 +131,33 @@ class _ViewAlarmState extends State<ViewAlarm> {
                     );
                   return Column(
                     children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(AppIcons.icCheckCircleFrame),
-                          const SizedBox(width: 10,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Situación de emergencia", style: context.textTheme.bodyLarge),
-                              Text(widget.alarm.emergency ?? "", style: context.textTheme.displayLarge),
-                            ],
-                          )
-                        ],
+                      SizedBox(
+                        height: 50,
+                        child: Stack(
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(AppIcons.icCheckCircleFrame),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Situación de emergencia", style: context.textTheme.bodyLarge),
+                                    Text(widget.alarm.emergency ?? "", style: context.textTheme.displayLarge),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Positioned(top: 0, right: 0,
+                              child: Container(
+                                width: 24,
+                                height: 24,
+                                padding: const EdgeInsets.all(2),
+                                child: SvgPicture.asset(AppIcons.close)).onTap(() => Navigator.pop(context)))
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Container(
