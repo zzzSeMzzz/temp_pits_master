@@ -126,7 +126,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
               child: BlocBuilder<AlarmViewBloc, AlarmViewState>(
                   builder: (context, state) {
                     final elapsedTime = state.maybeWhen(
-                      success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => elapsedTime,
+                      success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime, callRequestLoading) => elapsedTime,
                       orElse: () => "00:00:00",
                     );
                   return Column(
@@ -183,7 +183,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         height: 60,
                         child: state.maybeWhen(
                           error: (message) => Text(message),
-                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => PageView(
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime, callRequestLoading) => PageView(
                             controller: controllerInsures,
                             onPageChanged: (newIndex) {
                               context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageInsures(newIndex));
@@ -196,7 +196,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         ),
                       ),
                       state.maybeWhen(
-                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => _buildDots(insures.length, pageInsures, controllerInsures),
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime, callRequestLoading) => _buildDots(insures.length, pageInsures, controllerInsures),
                           orElse: () => const SizedBox.shrink()
                       ),
                       const SizedBox(height: 8),
@@ -204,7 +204,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         height: 60,
                         child: state.maybeWhen(
                             error: (message) => Text(message),
-                            success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) => PageView(
+                            success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime, callRequestLoading) => PageView(
                                 controller: controllerWorkShops,
                                 onPageChanged: (newIndex) {
                                   context.read<AlarmViewBloc>().add(AlarmViewEvent.setPageWorkshops(newIndex));
@@ -217,7 +217,7 @@ class _ViewAlarmState extends State<ViewAlarm> {
                         ),
                       ),
                       state.maybeWhen(
-                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime) {
+                          success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime, callRequestLoading) {
                             /*final workshopPagesCount = (workshops.length / 2).ceil(); // Округляем вверх
                             return _buildDots(workshopPagesCount, pageWorkShop);*/
                             return _buildDots(workshops.length, pageWorkShop, controllerWorkShops);
@@ -226,12 +226,22 @@ class _ViewAlarmState extends State<ViewAlarm> {
                       ),
                       const SizedBox(height: 16),
                       WButton(
-                        onTap: () {},
+                        onTap: () {
+                          context.read<AlarmViewBloc>().add(AlarmViewEvent.callRequest(
+                            widget.alarm.id ?? -1
+                          ));
+                        },
                         color: Colors.red,
                         svgAsset: AppIcons.phone,
                         height: 72,
                         textStyle: context.textTheme.displayMedium,
                         text: "Solicitar Llamada",
+                        isLoading: state.maybeWhen(
+                            success: (insures, workshops, pageInsures, pageWorkShop, elapsedTime, callRequestLoading) {
+                              return callRequestLoading;
+                            },
+                            orElse: () => false
+                        ),
                       )
                     ],
                   );

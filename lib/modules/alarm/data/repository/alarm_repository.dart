@@ -2,6 +2,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pits_app/core/data/model/base_response.dart';
 import 'package:pits_app/core/data/repo/base_repoitory.dart';
 import 'package:pits_app/modules/alarm/data/model/alarm_model.dart';
+import 'package:pits_app/modules/alarm/data/model/call_request.dart';
 import 'package:pits_app/modules/alarm/details/data/model/insurers.dart';
 import 'package:pits_app/modules/alarm/details/data/model/workshop.dart';
 import '../../../../../../../core/data/error/failures.dart';
@@ -59,6 +60,24 @@ class AlarmRepository extends BaseRepository {
           .map((json) => Workshop.fromJson(json as Map<String, dynamic>))
           .toList();
       return Right(model);
+    } else {
+      return Left(ServerFailure(message: getErrorFromResponse(result.data)));
+    }
+  }
+
+
+  Future<Either<Failure, bool>> callRequest(CallRequest callRequest) async {
+    final result = await client.post(
+        'api/call-request',
+        data: callRequest.toJson()
+    );
+
+
+    if (result.statusCode! >= 200 && result.statusCode! < 300) {
+      /*final model = (result.data as List<dynamic>)
+          .map((json) => Workshop.fromJson(json as Map<String, dynamic>))
+          .toList();*/
+      return Right(true);
     } else {
       return Left(ServerFailure(message: getErrorFromResponse(result.data)));
     }

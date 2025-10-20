@@ -27,6 +27,7 @@ mixin _$AlarmViewState {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )
     success,
     required TResult Function(String message) error,
@@ -41,6 +42,7 @@ mixin _$AlarmViewState {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult? Function(String message)? error,
@@ -55,6 +57,7 @@ mixin _$AlarmViewState {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult Function(String message)? error,
@@ -157,6 +160,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )
     success,
     required TResult Function(String message) error,
@@ -175,6 +179,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult? Function(String message)? error,
@@ -193,6 +198,7 @@ class _$AlarmViewInitialImpl implements AlarmViewInitial {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult Function(String message)? error,
@@ -297,6 +303,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )
     success,
     required TResult Function(String message) error,
@@ -315,6 +322,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult? Function(String message)? error,
@@ -333,6 +341,7 @@ class _$AlarmViewLoadingImpl implements AlarmViewLoading {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult Function(String message)? error,
@@ -399,6 +408,7 @@ abstract class _$$AlarmViewSuccessImplCopyWith<$Res> {
     int pageInsures,
     int pageWorkShop,
     String elapsedTime,
+    bool callRequestLoading,
   });
 }
 
@@ -421,6 +431,7 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
     Object? pageInsures = null,
     Object? pageWorkShop = null,
     Object? elapsedTime = null,
+    Object? callRequestLoading = null,
   }) {
     return _then(
       _$AlarmViewSuccessImpl(
@@ -444,6 +455,10 @@ class __$$AlarmViewSuccessImplCopyWithImpl<$Res>
             ? _value.elapsedTime
             : elapsedTime // ignore: cast_nullable_to_non_nullable
                   as String,
+        null == callRequestLoading
+            ? _value.callRequestLoading
+            : callRequestLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -458,6 +473,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
     this.pageInsures,
     this.pageWorkShop,
     this.elapsedTime,
+    this.callRequestLoading,
   ) : _insures = insures,
       _workshops = workshops;
 
@@ -483,10 +499,12 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
   final int pageWorkShop;
   @override
   final String elapsedTime;
+  @override
+  final bool callRequestLoading;
 
   @override
   String toString() {
-    return 'AlarmViewState.success(insures: $insures, workshops: $workshops, pageInsures: $pageInsures, pageWorkShop: $pageWorkShop, elapsedTime: $elapsedTime)';
+    return 'AlarmViewState.success(insures: $insures, workshops: $workshops, pageInsures: $pageInsures, pageWorkShop: $pageWorkShop, elapsedTime: $elapsedTime, callRequestLoading: $callRequestLoading)';
   }
 
   @override
@@ -504,7 +522,9 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
             (identical(other.pageWorkShop, pageWorkShop) ||
                 other.pageWorkShop == pageWorkShop) &&
             (identical(other.elapsedTime, elapsedTime) ||
-                other.elapsedTime == elapsedTime));
+                other.elapsedTime == elapsedTime) &&
+            (identical(other.callRequestLoading, callRequestLoading) ||
+                other.callRequestLoading == callRequestLoading));
   }
 
   @override
@@ -515,6 +535,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
     pageInsures,
     pageWorkShop,
     elapsedTime,
+    callRequestLoading,
   );
 
   /// Create a copy of AlarmViewState
@@ -539,11 +560,19 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )
     success,
     required TResult Function(String message) error,
   }) {
-    return success(insures, workshops, pageInsures, pageWorkShop, elapsedTime);
+    return success(
+      insures,
+      workshops,
+      pageInsures,
+      pageWorkShop,
+      elapsedTime,
+      callRequestLoading,
+    );
   }
 
   @override
@@ -557,6 +586,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult? Function(String message)? error,
@@ -567,6 +597,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       pageInsures,
       pageWorkShop,
       elapsedTime,
+      callRequestLoading,
     );
   }
 
@@ -581,6 +612,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult Function(String message)? error,
@@ -593,6 +625,7 @@ class _$AlarmViewSuccessImpl implements AlarmViewSuccess {
         pageInsures,
         pageWorkShop,
         elapsedTime,
+        callRequestLoading,
       );
     }
     return orElse();
@@ -643,6 +676,7 @@ abstract class AlarmViewSuccess implements AlarmViewState {
     final int pageInsures,
     final int pageWorkShop,
     final String elapsedTime,
+    final bool callRequestLoading,
   ) = _$AlarmViewSuccessImpl;
 
   List<Insurers> get insures;
@@ -650,6 +684,7 @@ abstract class AlarmViewSuccess implements AlarmViewState {
   int get pageInsures;
   int get pageWorkShop;
   String get elapsedTime;
+  bool get callRequestLoading;
 
   /// Create a copy of AlarmViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -739,6 +774,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )
     success,
     required TResult Function(String message) error,
@@ -757,6 +793,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult? Function(String message)? error,
@@ -775,6 +812,7 @@ class _$AlarmViewErrorImpl implements AlarmViewError {
       int pageInsures,
       int pageWorkShop,
       String elapsedTime,
+      bool callRequestLoading,
     )?
     success,
     TResult Function(String message)? error,

@@ -23,6 +23,7 @@ mixin _$AlarmViewEvent {
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
     required TResult Function() updateTimer,
+    required TResult Function(int reportId) callRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -30,6 +31,7 @@ mixin _$AlarmViewEvent {
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
     TResult? Function()? updateTimer,
+    TResult? Function(int reportId)? callRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -37,6 +39,7 @@ mixin _$AlarmViewEvent {
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
     TResult Function()? updateTimer,
+    TResult Function(int reportId)? callRequest,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +48,7 @@ mixin _$AlarmViewEvent {
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
     required TResult Function(UpdateTimer value) updateTimer,
+    required TResult Function(CallRequestEvent value) callRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -52,6 +56,7 @@ mixin _$AlarmViewEvent {
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
     TResult? Function(UpdateTimer value)? updateTimer,
+    TResult? Function(CallRequestEvent value)? callRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -59,6 +64,7 @@ mixin _$AlarmViewEvent {
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
     TResult Function(UpdateTimer value)? updateTimer,
+    TResult Function(CallRequestEvent value)? callRequest,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -167,6 +173,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
     required TResult Function() updateTimer,
+    required TResult Function(int reportId) callRequest,
   }) {
     return load(latLng, alarmTimestamp);
   }
@@ -178,6 +185,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
     TResult? Function()? updateTimer,
+    TResult? Function(int reportId)? callRequest,
   }) {
     return load?.call(latLng, alarmTimestamp);
   }
@@ -189,6 +197,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
     TResult Function()? updateTimer,
+    TResult Function(int reportId)? callRequest,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -204,6 +213,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
     required TResult Function(UpdateTimer value) updateTimer,
+    required TResult Function(CallRequestEvent value) callRequest,
   }) {
     return load(this);
   }
@@ -215,6 +225,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
     TResult? Function(UpdateTimer value)? updateTimer,
+    TResult? Function(CallRequestEvent value)? callRequest,
   }) {
     return load?.call(this);
   }
@@ -226,6 +237,7 @@ class _$LoadAlarmDataImpl implements LoadAlarmData {
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
     TResult Function(UpdateTimer value)? updateTimer,
+    TResult Function(CallRequestEvent value)? callRequest,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -328,6 +340,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
     required TResult Function() updateTimer,
+    required TResult Function(int reportId) callRequest,
   }) {
     return setPageInsures(page);
   }
@@ -339,6 +352,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
     TResult? Function()? updateTimer,
+    TResult? Function(int reportId)? callRequest,
   }) {
     return setPageInsures?.call(page);
   }
@@ -350,6 +364,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
     TResult Function()? updateTimer,
+    TResult Function(int reportId)? callRequest,
     required TResult orElse(),
   }) {
     if (setPageInsures != null) {
@@ -365,6 +380,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
     required TResult Function(UpdateTimer value) updateTimer,
+    required TResult Function(CallRequestEvent value) callRequest,
   }) {
     return setPageInsures(this);
   }
@@ -376,6 +392,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
     TResult? Function(UpdateTimer value)? updateTimer,
+    TResult? Function(CallRequestEvent value)? callRequest,
   }) {
     return setPageInsures?.call(this);
   }
@@ -387,6 +404,7 @@ class _$SetPageInsuresImpl implements SetPageInsures {
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
     TResult Function(UpdateTimer value)? updateTimer,
+    TResult Function(CallRequestEvent value)? callRequest,
     required TResult orElse(),
   }) {
     if (setPageInsures != null) {
@@ -485,6 +503,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
     required TResult Function() updateTimer,
+    required TResult Function(int reportId) callRequest,
   }) {
     return setPageWorkshops(page);
   }
@@ -496,6 +515,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
     TResult? Function()? updateTimer,
+    TResult? Function(int reportId)? callRequest,
   }) {
     return setPageWorkshops?.call(page);
   }
@@ -507,6 +527,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
     TResult Function()? updateTimer,
+    TResult Function(int reportId)? callRequest,
     required TResult orElse(),
   }) {
     if (setPageWorkshops != null) {
@@ -522,6 +543,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
     required TResult Function(UpdateTimer value) updateTimer,
+    required TResult Function(CallRequestEvent value) callRequest,
   }) {
     return setPageWorkshops(this);
   }
@@ -533,6 +555,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
     TResult? Function(UpdateTimer value)? updateTimer,
+    TResult? Function(CallRequestEvent value)? callRequest,
   }) {
     return setPageWorkshops?.call(this);
   }
@@ -544,6 +567,7 @@ class _$setPageWorkshopsImpl implements setPageWorkshops {
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
     TResult Function(UpdateTimer value)? updateTimer,
+    TResult Function(CallRequestEvent value)? callRequest,
     required TResult orElse(),
   }) {
     if (setPageWorkshops != null) {
@@ -612,6 +636,7 @@ class _$UpdateTimerImpl implements UpdateTimer {
     required TResult Function(int page) setPageInsures,
     required TResult Function(int page) setPageWorkshops,
     required TResult Function() updateTimer,
+    required TResult Function(int reportId) callRequest,
   }) {
     return updateTimer();
   }
@@ -623,6 +648,7 @@ class _$UpdateTimerImpl implements UpdateTimer {
     TResult? Function(int page)? setPageInsures,
     TResult? Function(int page)? setPageWorkshops,
     TResult? Function()? updateTimer,
+    TResult? Function(int reportId)? callRequest,
   }) {
     return updateTimer?.call();
   }
@@ -634,6 +660,7 @@ class _$UpdateTimerImpl implements UpdateTimer {
     TResult Function(int page)? setPageInsures,
     TResult Function(int page)? setPageWorkshops,
     TResult Function()? updateTimer,
+    TResult Function(int reportId)? callRequest,
     required TResult orElse(),
   }) {
     if (updateTimer != null) {
@@ -649,6 +676,7 @@ class _$UpdateTimerImpl implements UpdateTimer {
     required TResult Function(SetPageInsures value) setPageInsures,
     required TResult Function(setPageWorkshops value) setPageWorkshops,
     required TResult Function(UpdateTimer value) updateTimer,
+    required TResult Function(CallRequestEvent value) callRequest,
   }) {
     return updateTimer(this);
   }
@@ -660,6 +688,7 @@ class _$UpdateTimerImpl implements UpdateTimer {
     TResult? Function(SetPageInsures value)? setPageInsures,
     TResult? Function(setPageWorkshops value)? setPageWorkshops,
     TResult? Function(UpdateTimer value)? updateTimer,
+    TResult? Function(CallRequestEvent value)? callRequest,
   }) {
     return updateTimer?.call(this);
   }
@@ -671,6 +700,7 @@ class _$UpdateTimerImpl implements UpdateTimer {
     TResult Function(SetPageInsures value)? setPageInsures,
     TResult Function(setPageWorkshops value)? setPageWorkshops,
     TResult Function(UpdateTimer value)? updateTimer,
+    TResult Function(CallRequestEvent value)? callRequest,
     required TResult orElse(),
   }) {
     if (updateTimer != null) {
@@ -682,4 +712,168 @@ class _$UpdateTimerImpl implements UpdateTimer {
 
 abstract class UpdateTimer implements AlarmViewEvent {
   const factory UpdateTimer() = _$UpdateTimerImpl;
+}
+
+/// @nodoc
+abstract class _$$CallRequestEventImplCopyWith<$Res> {
+  factory _$$CallRequestEventImplCopyWith(
+    _$CallRequestEventImpl value,
+    $Res Function(_$CallRequestEventImpl) then,
+  ) = __$$CallRequestEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int reportId});
+}
+
+/// @nodoc
+class __$$CallRequestEventImplCopyWithImpl<$Res>
+    extends _$AlarmViewEventCopyWithImpl<$Res, _$CallRequestEventImpl>
+    implements _$$CallRequestEventImplCopyWith<$Res> {
+  __$$CallRequestEventImplCopyWithImpl(
+    _$CallRequestEventImpl _value,
+    $Res Function(_$CallRequestEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AlarmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? reportId = null}) {
+    return _then(
+      _$CallRequestEventImpl(
+        null == reportId
+            ? _value.reportId
+            : reportId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$CallRequestEventImpl implements CallRequestEvent {
+  const _$CallRequestEventImpl(this.reportId);
+
+  @override
+  final int reportId;
+
+  @override
+  String toString() {
+    return 'AlarmViewEvent.callRequest(reportId: $reportId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CallRequestEventImpl &&
+            (identical(other.reportId, reportId) ||
+                other.reportId == reportId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reportId);
+
+  /// Create a copy of AlarmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CallRequestEventImplCopyWith<_$CallRequestEventImpl> get copyWith =>
+      __$$CallRequestEventImplCopyWithImpl<_$CallRequestEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LatLng latLng, DateTime alarmTimestamp) load,
+    required TResult Function(int page) setPageInsures,
+    required TResult Function(int page) setPageWorkshops,
+    required TResult Function() updateTimer,
+    required TResult Function(int reportId) callRequest,
+  }) {
+    return callRequest(reportId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LatLng latLng, DateTime alarmTimestamp)? load,
+    TResult? Function(int page)? setPageInsures,
+    TResult? Function(int page)? setPageWorkshops,
+    TResult? Function()? updateTimer,
+    TResult? Function(int reportId)? callRequest,
+  }) {
+    return callRequest?.call(reportId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LatLng latLng, DateTime alarmTimestamp)? load,
+    TResult Function(int page)? setPageInsures,
+    TResult Function(int page)? setPageWorkshops,
+    TResult Function()? updateTimer,
+    TResult Function(int reportId)? callRequest,
+    required TResult orElse(),
+  }) {
+    if (callRequest != null) {
+      return callRequest(reportId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlarmData value) load,
+    required TResult Function(SetPageInsures value) setPageInsures,
+    required TResult Function(setPageWorkshops value) setPageWorkshops,
+    required TResult Function(UpdateTimer value) updateTimer,
+    required TResult Function(CallRequestEvent value) callRequest,
+  }) {
+    return callRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadAlarmData value)? load,
+    TResult? Function(SetPageInsures value)? setPageInsures,
+    TResult? Function(setPageWorkshops value)? setPageWorkshops,
+    TResult? Function(UpdateTimer value)? updateTimer,
+    TResult? Function(CallRequestEvent value)? callRequest,
+  }) {
+    return callRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlarmData value)? load,
+    TResult Function(SetPageInsures value)? setPageInsures,
+    TResult Function(setPageWorkshops value)? setPageWorkshops,
+    TResult Function(UpdateTimer value)? updateTimer,
+    TResult Function(CallRequestEvent value)? callRequest,
+    required TResult orElse(),
+  }) {
+    if (callRequest != null) {
+      return callRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CallRequestEvent implements AlarmViewEvent {
+  const factory CallRequestEvent(final int reportId) = _$CallRequestEventImpl;
+
+  int get reportId;
+
+  /// Create a copy of AlarmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CallRequestEventImplCopyWith<_$CallRequestEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

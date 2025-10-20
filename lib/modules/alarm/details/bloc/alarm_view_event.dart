@@ -11,4 +11,5 @@ class AlarmViewEvent with _$AlarmViewEvent {
   const factory AlarmViewEvent.setPageInsures(int page) = SetPageInsures;
   const factory AlarmViewEvent.setPageWorkshops(int page) = setPageWorkshops;
   const factory AlarmViewEvent.updateTimer() = UpdateTimer;
+  const factory AlarmViewEvent.callRequest(int reportId) = CallRequestEvent;
 }

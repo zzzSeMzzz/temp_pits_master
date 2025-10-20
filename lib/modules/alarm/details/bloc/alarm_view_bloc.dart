@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:pits_app/modules/alarm/data/model/call_request.dart';
 import 'package:pits_app/modules/alarm/data/repository/alarm_repository.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_event.dart';
 import 'package:pits_app/modules/alarm/details/bloc/alarm_view_state.dart';
@@ -73,7 +74,23 @@ class AlarmViewBloc extends Bloc<AlarmViewEvent, AlarmViewState> {
               final elapsedTime = _calculateElapsedTime(_alarmTimestamp!);
               emit(currentState.copyWith(elapsedTime: elapsedTime));
             }
+          },
+        callRequest: (event) async {
+          if(state is AlarmViewSuccess) {
+            final currentState = state as AlarmViewSuccess;
+            emit(currentState.copyWith(callRequestLoading: true));
+
+            final resulCall = await _repository.callRequest(CallRequest(reportId: event.reportId));
+            resulCall.fold(
+                (failure) {
+                  emit(currentState.copyWith(callRequestLoading: false));
+                },
+                (model) {
+                  emit(currentState.copyWith(callRequestLoading: false));
+                },
+            );
           }
+        }
       );
     });
   }
@@ -87,7 +104,7 @@ class AlarmViewBloc extends Bloc<AlarmViewEvent, AlarmViewState> {
     final initialElapsedTime = _calculateElapsedTime(_alarmTimestamp!);
 
     // Эмитим начальное состояние
-    emit(AlarmViewState.success(insures, workshops, 0, 0, initialElapsedTime));
+    emit(AlarmViewState.success(insures, workshops, 0, 0, initialElapsedTime, false));
 
     // Запускаем таймер
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {

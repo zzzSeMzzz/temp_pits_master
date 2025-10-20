@@ -12,7 +12,8 @@ class AlarmViewState with _$AlarmViewState {
       List<Workshop> workshops,
       int pageInsures,
       int pageWorkShop,
-      String elapsedTime
+      String elapsedTime,
+      bool callRequestLoading
   ) = AlarmViewSuccess;
   const factory AlarmViewState.error(String message) = AlarmViewError;
 }
