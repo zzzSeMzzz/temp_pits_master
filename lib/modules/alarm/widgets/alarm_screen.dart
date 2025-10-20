@@ -150,7 +150,11 @@ class _AlarmScreenState extends State<AlarmScreen> {
     _bloc.add(const AlarmEvent.setLoading());
     try {
       final hasPermission = await _ensureLocationPermission();
-      if (!hasPermission) return null;
+      if (!hasPermission) {
+        _showSnack('Permissions not granted');
+        _bloc.add(const AlarmEvent.resetState());
+        return null;
+      }
       return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       );
@@ -184,7 +188,6 @@ class _AlarmScreenState extends State<AlarmScreen> {
               _showSnack(message);
             }
             Navigator.of(context).pop();
-          } else if (rState is Error<BaseResponse>) {
           } else if (rState is Error<BaseResponse>) {
             _showSnack(rState.errorMessage);
             _bloc.add(const AlarmEvent.resetState());
