@@ -9,6 +9,7 @@ import 'package:pits_app/modules/profile/presentation/sections/profile/profile_s
 
 import '../../../core/data/singletons/storage.dart';
 import '../../alarm/details/widget/view_alarm.dart';
+import '../../chat/presentation/sections/chat_single/chat_single.dart';
 
 class TabNavigatorRoutes {
   static const String root = '/';
@@ -41,7 +42,7 @@ class _TabNavigatorState extends State<TabNavigator>
         };
       case NavItemEnum.messages:
         return {
-          TabNavigatorRoutes.root: (context) => const ChatScreen(),
+          TabNavigatorRoutes.root: (context) => const ChatSingleScreen(),//ChatScreen(),
         };
       case NavItemEnum.profile:
         return {

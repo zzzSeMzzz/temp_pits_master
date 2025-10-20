@@ -23,14 +23,17 @@ class ChatMessage extends StatelessWidget {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.7,
-                decoration: const BoxDecoration(color: fieldGrey),
+                decoration: BoxDecoration(
+                  color: isMyMessage ? fieldGrey : Colors.black,
+                  borderRadius: BorderRadius.circular(4)
+                ),
                 padding: const EdgeInsets.all(10),
                 child: Text(
                   message,
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16),
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16, color: isMyMessage ? Colors.black : Colors.white),
                 ),
               ),
               const SizedBox(

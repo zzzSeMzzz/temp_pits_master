@@ -21,14 +21,14 @@ AlarmModel _$AlarmModelFromJson(Map<String, dynamic> json) => AlarmModel(
 
 Map<String, dynamic> _$AlarmModelToJson(AlarmModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'emergency': instance.emergency,
+      if (instance.id case final value?) 'id': value,
+      if (instance.emergency case final value?) 'emergency': value,
       'car_start': instance.carStart,
-      'notes': instance.notes,
-      'timestamp': instance.timestamp,
-      'lat': instance.lat,
-      'lon': instance.lon,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
-      'customer_id': instance.customerId,
+      if (instance.notes case final value?) 'notes': value,
+      if (instance.timestamp case final value?) 'timestamp': value,
+      if (instance.lat case final value?) 'lat': value,
+      if (instance.lon case final value?) 'lon': value,
+      if (instance.createdAt case final value?) 'created_at': value,
+      if (instance.updatedAt case final value?) 'updated_at': value,
+      if (instance.customerId case final value?) 'customer_id': value,
     };
