@@ -3,11 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location to locate user in map</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background to update user location on map</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open and in the background to show user on map and update by time</string>
+	<string>This app needs access to your location while in use to provide location-based features.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -29,7 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -57,12 +53,9 @@
 	<array>
 		<string>tel</string>
 	</array>
-
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to your camera to take photos/videos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to your photo library to save or select photos.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to your location while in use to provide location-based features.</string>
 </dict>
 </plist>
