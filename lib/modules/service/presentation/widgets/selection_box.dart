@@ -26,12 +26,16 @@ class SelectionBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(4), color: fieldGrey),
           padding: const EdgeInsets.all(10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                svgIcon,
-                width: 100,
-                height: 100,
+              SizedBox(
+                width: 70,
+                height: 70,
+                child: SvgPicture.asset(
+                  svgIcon,
+                ),
               ),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(

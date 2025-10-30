@@ -39,7 +39,7 @@ class ServiceSelectionScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Services (multiselect)',
+                    'Servicios (multiselección)',
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
