@@ -13,6 +13,7 @@ import 'package:pits_app/modules/profile/presentation/sections/profile_service/p
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/car_categories.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/description.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/insurers.dart';
+import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/job_price.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/map.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/profile_actions.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/part/send_button.dart';
@@ -192,31 +193,36 @@ class _ProfileServiceScreenState extends State<ProfileServiceScreen>
                 const  SizedBox(
                   height: 16,
                 ),
-                const  SizedBox(
+               /* const  SizedBox(
                   height: 16,
                 ),
-                const ProfileMapPoint(),
+                const ProfileMapPoint(),*/
                 const SizedBox(
                   height: 32,
                 ),
-                BlocProvider.value(value: profileServicesBloc,
+                /*BlocProvider.value(value: profileServicesBloc,
                     child:const ProfileServices()),
                 const   SizedBox(
                   height: 32,
                 ),
                 BlocProvider.value(value: profileCarBrandsBloc,
-                    child:const ProfileCarBrands()),
-                const  SizedBox(
+                    child:const ProfileCarBrands()),*/
+               /* const  SizedBox(
                   height: 32,
                 ),
-                const   ProfileInsurers(),
+                const   ProfileInsurers(),*/
                 // SizedBox(
                 //   height: 32,
                 // ),
                 // ProfileCarCategories(),
-                const SizedBox(
+                const JobPrice(title: "Reparación ultra económica", description: "Rehabilitar lo que se ha estropeado", icon: "🛺", price: "30"),
+                const SizedBox(height: 20),
+                const JobPrice(title: "Reparación regular", description: "Recambios compatibles", icon: "🏎", price: "150"),
+                const SizedBox(height: 20),
+                const JobPrice(title: "Reparación de casa", description: "Recambios originales según marca", icon: "🚀", price: "500"),
+                /*const SizedBox(
                   height: 50,
-                ),
+                ),*/
               ],
             ),
           )),
