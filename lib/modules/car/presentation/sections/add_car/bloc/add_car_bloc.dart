@@ -6,7 +6,6 @@ import 'package:pits_app/modules/car/presentation/sections/add_car/data/model/ca
 import 'package:pits_app/modules/car/presentation/sections/add_car/data/repository/car_repository.dart';
 import '../data/model/car_reg_response.dart';
 import '../data/model/photo_model.dart';
-import '../data/model/vehicle.dart';
 import 'add_car_event.dart';
 import 'add_car_state.dart';
 import 'package:permission_handler/permission_handler.dart';
