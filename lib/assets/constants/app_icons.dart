@@ -117,7 +117,7 @@ class AppIcons {
     "Equilibrado\ny Paralelo" : "assets/icons/ic_equil.svg",
     "Pulido\nde faros" : "assets/icons/ic_pulio.svg",
     "ITV" : "assets/icons/ic_itv.svg",
-    "Pre-ITV" : "assets/icons/ic_tpre_itv.svg",
+    "Pre-ITV" : "assets/icons/ic_pre_itv.svg",
     "Cambio de\naceite y filtro" : "assets/icons/ic_cambio_de_aceite.svg",
     "Inflado\nde neumáticos" : "assets/icons/ic_inflado.svg",
     "Refrigerante" : "assets/icons/ic_refrigerante.svg",

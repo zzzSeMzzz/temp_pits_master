@@ -55,7 +55,7 @@ class ServiceSelectionScreen extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
-                    itemCount: 17,
+                    itemCount: AppIcons.serviceRepairIcons.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -64,12 +64,13 @@ class ServiceSelectionScreen extends StatelessWidget {
                             mainAxisSpacing: 8,
                             crossAxisSpacing: 8),
                     itemBuilder: (context, index) {
+                      final repairInfo = AppIcons.serviceRepairIcons.entries.elementAt(index);
                       return SelectionBox(
                           onTap: () {
                             Navigator.push(context, fade(page: const RepairSelectionScreen()));
                           },
-                          title: 'Service',
-                          svgIcon: AppIcons.serviceBalance
+                          title: repairInfo.key,
+                          svgIcon: repairInfo.value
                       );
                     }),
               ),
