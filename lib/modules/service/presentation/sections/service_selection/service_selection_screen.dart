@@ -10,6 +10,8 @@ import 'package:pits_app/modules/service/presentation/widgets/selection_box.dart
 class ServiceSelectionScreen extends StatelessWidget {
   const ServiceSelectionScreen({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: white,

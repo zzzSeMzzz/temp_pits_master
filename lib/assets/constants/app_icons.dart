@@ -106,4 +106,26 @@ class AppIcons {
   static const String icPhoneRed = 'assets/icons/ic_phone_red.svg';
   static const String icTakeCar = 'assets/icons/ic_take_car.svg';
   static const String icByeInsures = 'assets/icons/ic_bye_insures.svg';
+
+  static const serviceRepairIcons = {
+    "Mantenimiento" : "assets/icons/ic_mantenimiento.svg",
+    "Revisión" : "assets/icons/ic_revision.svg",
+    "Cambio de\nbatería" : "assets/icons/ic_cambio.svg",
+    "Aire\nacondicionado" : "assets/icons/ic_aire_acondicionado.svg",
+    "Diagnóstico\nelectrónico" : "assets/icons/ic_diagnostico_el.svg",
+    "Cambiar\npastillas de freno" : "assets/icons/ic_cambiar.svg",
+    "Equilibrado\ny Paralelo" : "assets/icons/ic_equil.svg",
+    "Pulido\nde faros" : "assets/icons/ic_pulio.svg",
+    "ITV" : "assets/icons/ic_itv.svg",
+    "Pre-ITV" : "assets/icons/ic_tpre_itv.svg",
+    "Cambio de\naceite y filtro" : "assets/icons/ic_cambio_de_aceite.svg",
+    "Inflado\nde neumáticos" : "assets/icons/ic_inflado.svg",
+    "Refrigerante" : "assets/icons/ic_refrigerante.svg",
+    "Pinchazo" : "assets/icons/ic_pinchazo.svg",
+    "Cambio\nde neumáticos" : "assets/icons/ic_cambio_de_neumaticos.svg",
+    "Amortiguadores" : "assets/icons/ic_amortiguadores.svg",
+    "Sensores\nde ruedas" : "assets/icons/ic_sensores_de_ruedas.svg",
+    "Hotel\nde neumáticos" : "assets/icons/ic_hotel.svg",
+    "AdBlue" : "assets/icons/ic_ad_blue.svg",
+  };
 }
