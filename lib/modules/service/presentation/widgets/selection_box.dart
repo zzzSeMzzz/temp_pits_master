@@ -7,13 +7,14 @@ class SelectionBox extends StatelessWidget {
   final String title;
   final String svgIcon;
   final double? width;
+  final ColorFilter? colorFilter;
 
   const SelectionBox(
       {required this.onTap,
       required this.title,
       required this.svgIcon,
        this.width,
-      Key? key})
+      Key? key, this.colorFilter})
       : super(key: key);
 
   @override
@@ -33,6 +34,7 @@ class SelectionBox extends StatelessWidget {
                 height: 70,
                 child: SvgPicture.asset(
                   svgIcon,
+                  colorFilter: colorFilter,
                 ),
               ),
               const SizedBox(height: 20),
