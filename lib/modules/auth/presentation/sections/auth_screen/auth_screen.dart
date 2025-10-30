@@ -228,7 +228,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               const SizedBox(
                                 height: 23,
                               ),
-                              const SocialButtons(),
+                             // const SocialButtons(),//todo
                               BlocBuilder<AuthBloc, AuthState>(
                                 builder: (context, state) {
                                   return state.isLoginMode

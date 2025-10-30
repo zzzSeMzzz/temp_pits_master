@@ -20,8 +20,11 @@ class AuthMockScreen extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            Positioned.fill(
-                child: Center(child: Image.asset(AppImages.authMockLogo),)
+            Positioned(
+                left: 0.0,
+                right: 0.0,
+                top: 24,
+                child: Image.asset(AppImages.authMockLogo)
             ),
             Positioned(
               left: 0.0,

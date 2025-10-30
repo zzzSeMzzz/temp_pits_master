@@ -51,7 +51,7 @@ class CarInfoBox extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.w400, fontSize: 16),
                   ),
                   Text(
-                    'Price: ${vehicle.marketPrice ?? "?"} \$',
+                    'Price: ${vehicle.marketPrice ?? "?"} \€',
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!

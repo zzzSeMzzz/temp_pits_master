@@ -59,7 +59,7 @@ class PartSelectionScreen extends StatelessWidget {
                           Navigator.of(context, rootNavigator: true)
                               .push(fade(page: const ServiceSelectionScreen()));
                         },
-                        title: 'Pickup your car',
+                        title: 'Llevar el coche',
                         svgIcon: AppIcons.typeCar),
                   ),
                   const SizedBox(
@@ -71,7 +71,7 @@ class PartSelectionScreen extends StatelessWidget {
                           Navigator.of(context, rootNavigator: true)
                               .push(fade(page: const ServiceSelectionScreen()));
                         },
-                        title: 'Pick up with crane',
+                        title: 'Recogida con grúa',
                         svgIcon: AppIcons.typeCrane),
                   )
                 ],
@@ -87,8 +87,8 @@ class PartSelectionScreen extends StatelessWidget {
                           Navigator.of(context, rootNavigator: true)
                               .push(fade(page: const ServiceSelectionScreen()));
                         },
-                        title: 'Take the car',
-                        svgIcon: AppIcons.typeCar),
+                        title: 'Que lo recojan',
+                        svgIcon: AppIcons.icTakeCar),
                   ),
                   const SizedBox(
                     width: 8,
@@ -99,12 +99,12 @@ class PartSelectionScreen extends StatelessWidget {
                           Navigator.of(context, rootNavigator: true)
                               .push(fade(page: const ServiceSelectionScreen()));
                         },
-                        title: 'By insurer',
-                        svgIcon: AppIcons.typeCrane),
+                        title: 'Por aseguradora',
+                        svgIcon: AppIcons.icByeInsures),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               WButton(

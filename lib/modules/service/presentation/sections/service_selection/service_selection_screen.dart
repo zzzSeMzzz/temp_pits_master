@@ -39,7 +39,7 @@ class ServiceSelectionScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Services (multiselect)',
+                    'Servicios (multiselección)',
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
@@ -64,10 +64,11 @@ class ServiceSelectionScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return SelectionBox(
                           onTap: () {
-                            Navigator.push(context, fade(page: RepairSelectionScreen()));
+                            Navigator.push(context, fade(page: const RepairSelectionScreen()));
                           },
                           title: 'Service',
-                          svgIcon: AppIcons.serviceBalance);
+                          svgIcon: AppIcons.serviceBalance
+                      );
                     }),
               ),
               SizedBox(

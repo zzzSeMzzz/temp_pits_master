@@ -193,7 +193,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
           markerId: const MarkerId('my_location'),
           position: event.latLng!,
           icon: _iconMyLocation,
-          infoWindow: const InfoWindow(title: 'Моё местоположение'),
+          infoWindow: const InfoWindow(title: '¡Estoy Aquí!'),
         );
       }
 

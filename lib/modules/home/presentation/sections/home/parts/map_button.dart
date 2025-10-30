@@ -31,7 +31,7 @@ class MapButton extends StatelessWidget {
         },
         child: SizedBox(
           width: double.infinity, // на всю ширину
-          height: 170,
+          //height: 110,
           child: Image.asset(
             AppImages.mapTest,
             fit: BoxFit.fill,

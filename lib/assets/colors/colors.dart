@@ -82,6 +82,9 @@ const darkBlue = Color(0xff29364E);
 const textGrey = Color(0xff8693A3);
 const textGreen = Color(0xff219653);
 const lightCyan = Color(0xffF3F8FF);
+const mapInfoWindowBackground = Color(0x66121212);
+const mapInfoWindowBackgroundWO = Color(0xFF121212);
+const colorOlive = Color(0xFFFEF9EB);
 
 // Main palette (http://www.color-blindness.com/color-name-hue/).
 const _tiber = Color(0xFF13293E);
