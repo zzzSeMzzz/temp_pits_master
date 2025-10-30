@@ -72,96 +72,122 @@ class _ServiceInfoWindowState extends State<ServiceInfoWindow> {
                 return GestureDetector(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: mapInfoWindowBackground,
                       // Background color if image is transparent or not covering fully
                       borderRadius: BorderRadius.circular(10),
                       // Optional: rounded corners
-                      image: DecorationImage(
+                      /*image: DecorationImage(
                         image: state.serviceSingle.cover.isNotEmpty ? NetworkImage(
                           state.serviceSingle.cover,
                         ) : const AssetImage(AppImages.emptyService),
                         fit: BoxFit.cover,
-                      ),
+                      ),*/
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                state.serviceSingle.priceRange,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge!
-                                    .copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                    fontSize: 18
+                    /*foregroundDecoration: BoxDecoration(
+                      color: mapInfoWindowBackgroundWO.withAlpha(40),//mapInfoWindowBackground,//mapInfoWindowBackground варинт 1, withAlpha вариант 2
+                      borderRadius: BorderRadius.circular(10),
+                    ),  */
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              image: state.serviceSingle.cover.isNotEmpty
+                                  ? NetworkImage(state.serviceSingle.cover)
+                                  : const AssetImage(AppImages.emptyService) as ImageProvider,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        // Цветной слой поверх изображения
+                        Container(
+                          decoration: BoxDecoration(
+                            color: mapInfoWindowBackground, // Регулируйте прозрачность
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  state.serviceSingle.priceRange,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayLarge!
+                                      .copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      fontSize: 18
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 10),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    WidgetSpan(
-                                      child: SvgPicture.asset(
-                                        AppIcons.star,
-                                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                                        width: 20,
-                                        height: 20,
+                                const SizedBox(width: 10),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      WidgetSpan(
+                                        child: SvgPicture.asset(
+                                          AppIcons.star,
+                                          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                          width: 20,
+                                          height: 20,
+                                        ),
                                       ),
-                                    ),
-                                    TextSpan(
-                                        text: " ${state.serviceSingle.rating.toString()}",
-                                        style: Theme.of(context).textTheme
-                                            .displayLarge!.copyWith(
-                                            color: Colors.white,
-                                            fontSize: 18
-                                        )
-                                    ),
-                                  ],
+                                      TextSpan(
+                                          text: " ${state.serviceSingle.rating.toString()}",
+                                          style: Theme.of(context).textTheme
+                                              .displayLarge!.copyWith(
+                                              color: Colors.white,
+                                              fontSize: 18
+                                          )
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
+                                const SizedBox(width: 10),
+                                Expanded(
 
-                                child: Text(state.serviceSingle.status,
-                                    textAlign: TextAlign.end,
-                                    style: Theme.of(context).textTheme
-                                        .labelLarge!.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18,
-                                        color: const Color(0XFF04FF00)
-                                    ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                              )
-                            ],
-                          ),
-                  //                        const Spacer(),
-                        const Spacer(),
-                          Text(state.serviceSingle.name,
-                            style: Theme.of(context).textTheme
-                                .displayLarge!.copyWith(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 18,
-                                color: Colors.white),
-                            overflow: TextOverflow.ellipsis, // Добавлено свойство ellipsis
-                            maxLines: 1,
-                          ),
-                          InfoRow(
-                            title: state.serviceSingle.phone,
-                            icon: AppIcons.phone,
-                          ),
-                          InfoRow(
-                            title: state.serviceSingle.address,
-                            icon: AppIcons.place,
-                          ),
-                        ],
-                      ),
+                                  child: Text(state.serviceSingle.status,
+                                      textAlign: TextAlign.end,
+                                      style: Theme.of(context).textTheme
+                                          .labelLarge!.copyWith(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 18,
+                                          color: const Color(0XFF04FF00)
+                                      ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                )
+                              ],
+                            ),
+                                        //                        const Spacer(),
+                          const Spacer(),
+                            Text(state.serviceSingle.name,
+                              style: Theme.of(context).textTheme
+                                  .displayLarge!.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18,
+                                  color: Colors.white),
+                              overflow: TextOverflow.ellipsis, // Добавлено свойство ellipsis
+                              maxLines: 1,
+                            ),
+                            InfoRow(
+                              title: state.serviceSingle.phone,
+                              icon: AppIcons.phone,
+                            ),
+                            InfoRow(
+                              title: state.serviceSingle.address,
+                              icon: AppIcons.place,
+                            ),
+                          ],
+                        ),
+                      )
+                      ],
                     ),
                   ),
                   onTap: () {

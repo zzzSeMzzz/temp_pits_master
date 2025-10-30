@@ -21,7 +21,7 @@ class ChatSingleScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    GestureDetector(
+                   /* GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
                         Navigator.pop(context);
@@ -34,7 +34,7 @@ class ChatSingleScreen extends StatelessWidget {
                     ),
                     const SizedBox(
                       width: 20,
-                    ),
+                    ),*/
                     Text(
                       'Mecánico On-line',
                       style: Theme.of(context)
