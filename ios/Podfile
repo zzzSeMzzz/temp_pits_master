@@ -45,17 +45,17 @@ post_install do |installer|
       config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
         '$(inherited)',
 
-        dart: PermissionGroup.camera
+        ##dart: PermissionGroup.camera
         'PERMISSION_CAMERA=1',
 
-        dart: PermissionGroup.photos
+        ##dart: PermissionGroup.photos
         'PERMISSION_PHOTOS=1',
 
         ## The 'PERMISSION_LOCATION' macro enables the `locationWhenInUse` and `locationAlways` permission. If
         ## the application only requires `locationWhenInUse`, only specify the `PERMISSION_LOCATION_WHENINUSE`
         ## macro.
         ##
-        dart: [PermissionGroup.location, PermissionGroup.locationAlways, PermissionGroup.locationWhenInUse]
+        ##dart: [PermissionGroup.location, PermissionGroup.locationAlways, PermissionGroup.locationWhenInUse]
         'PERMISSION_LOCATION=1',
         'PERMISSION_LOCATION_WHENINUSE=0',
       ]
