@@ -7,6 +7,7 @@ import 'package:pits_app/core/data/singletons/service_locator.dart';
 import 'package:pits_app/modules/auth/presentation/sections/splash/splash_screen.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_bloc.dart';
 import 'package:pits_app/modules/home/presentation/sections/home/bloc/home_bloc.dart';
+import 'package:pits_app/modules/profile/presentation/sections/profile/bloc/profile_bloc.dart';
 import 'utils/AppScrollBehavior.dart';
 
 void main() async {
@@ -28,6 +29,7 @@ void main() async {
       providers: [
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
         BlocProvider<ActivityBloc>(create: (context) => ActivityBloc()),
+        BlocProvider<ProfileBloc>(create: (context) => ProfileBloc()),
       ],
       child: const MyApp(),
     ),
