@@ -97,23 +97,23 @@ class RepairSelectionScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                AxisSelector(
+                const AxisSelector(
                   title: 'Axis 1',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                AxisSelector(
+                const AxisSelector(
                   title: 'Axis 2',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                OtherAxisSelector(),
-                SizedBox(
+                const OtherAxisSelector(),
+                const SizedBox(
                   height: 40,
                 ),
                 WButton(
@@ -130,7 +130,7 @@ class RepairSelectionScreen extends StatelessWidget {
                         width: 24,
                         height: 24,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
@@ -159,7 +159,7 @@ class RepairSelectionScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 WTextField(
@@ -169,7 +169,7 @@ class RepairSelectionScreen extends StatelessWidget {
                   maxLines: 10,
                   hintText: 'Type here...',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 WButton(
