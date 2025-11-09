@@ -30,4 +30,6 @@ class AppImages {
   static const String alarmButton = 'assets/images/alarm_button.png';
   static const String emptyService = 'assets/images/empty_service_logo.png';
   static const String authMockLogo = 'assets/images/auth_mock_logo.png';
+  static const String imgCar = 'assets/images/img_car2.svg';
+  static const String carSelection2 = 'assets/images/car_selection_2.png';
 }

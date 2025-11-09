@@ -6,6 +6,7 @@ import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/globals/widgets/interaction/w_textfield.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/axis_selector.dart';
+import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/car_selector.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/other_axis_selector.dart';
 
 class RepairSelectionScreen extends StatelessWidget {
@@ -75,13 +76,20 @@ class RepairSelectionScreen extends StatelessWidget {
                 const SizedBox(
                   height: 32,
                 ),
-                Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Image.asset(
-                      AppImages.carSelection,
-                      fit: BoxFit.cover,
-                      width: double.maxFinite,
-                    )),
+                // Container(
+                //     margin: const EdgeInsets.symmetric(horizontal: 16),
+                //     child: Image.asset(
+                //       AppImages.carSelection2,
+                //       fit: BoxFit.cover,
+                //       width: double.maxFinite,
+                //     )
+                //   // child: SvgPicture.asset(
+                //   //     AppImages.imgCar,
+                //   //     fit: BoxFit.cover,
+                //   //     width: double.maxFinite,
+                //   // ),
+                // ),
+                const CarSelector(),
                 const SizedBox(
                   height: 40,
                 ),
