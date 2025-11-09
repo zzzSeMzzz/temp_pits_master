@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pits_app/core/data/extensions.dart';
+import '../../../../../../assets/colors/colors.dart';
 import '../../../../../../assets/constants/app_images.dart';
 
 class CarSelector extends StatefulWidget {
@@ -126,11 +127,25 @@ class _CarSelectorState extends State<CarSelector> {
 
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.5), width: 1),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.3), width: 1),
       ),
-      child: isSelected ? const SizedBox(
+      child: isSelected ? SizedBox(
         width: double.infinity,
-        child: Icon(Icons.check, color: Colors.red)
+        child: switch (cellId) {
+          1 || 17 => const Padding(
+            padding: EdgeInsets.only(bottom: 44),
+            child: Icon(Icons.check, color: primaryColor),
+          ),
+          2 || 12 => const Padding(
+            padding: EdgeInsets.only(top: 60),
+            child: Icon(Icons.check, color: primaryColor),
+          ),
+          5 || 15 => const Padding(
+            padding: EdgeInsets.only(bottom: 54),
+            child: Icon(Icons.check, color: primaryColor),
+          ),
+          _ => const Icon(Icons.check, color: primaryColor)
+        }
       ) : null,
     ).onTap(() {
       debugPrint('Tapped cell $cellId');
