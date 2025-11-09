@@ -25,5 +25,20 @@ class UserProfileRepository extends BaseRepository {
     }
   }
 
+  Future<Either<Failure, bool>> removeProfile() async {
+    final result = await client.delete(
+      'api/pits/account',
+    );
+    if (result.statusCode! >= 200 && result.statusCode! < 300) {
+      final model = ProfileResponse.fromJson(result.data as Map<String, dynamic>);
+      if(model.user!=null) {
+        return Right(true);
+      } else {
+        return Left(ServerFailure(message: getErrorFromResponse(result.data)));
+      }
+    } else {
+      return Left(ServerFailure(message: getErrorFromResponse(result.data)));
+    }
+  }
 
 }

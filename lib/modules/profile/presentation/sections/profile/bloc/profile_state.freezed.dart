@@ -20,19 +20,19 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(User user) success,
+    required TResult Function(User user, bool isRemovingProfile) success,
     required TResult Function(String message) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, bool isRemovingProfile)? success,
     TResult? Function(String message)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(User user)? success,
+    TResult Function(User user, bool isRemovingProfile)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -124,7 +124,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(User user) success,
+    required TResult Function(User user, bool isRemovingProfile) success,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -134,7 +134,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, bool isRemovingProfile)? success,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -144,7 +144,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(User user)? success,
+    TResult Function(User user, bool isRemovingProfile)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -200,7 +200,7 @@ abstract class _$$ProfileStateSuccessImplCopyWith<$Res> {
     $Res Function(_$ProfileStateSuccessImpl) then,
   ) = __$$ProfileStateSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
+  $Res call({User user, bool isRemovingProfile});
 }
 
 /// @nodoc
@@ -216,13 +216,17 @@ class __$$ProfileStateSuccessImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? user = null}) {
+  $Res call({Object? user = null, Object? isRemovingProfile = null}) {
     return _then(
       _$ProfileStateSuccessImpl(
         null == user
             ? _value.user
             : user // ignore: cast_nullable_to_non_nullable
                   as User,
+        null == isRemovingProfile
+            ? _value.isRemovingProfile
+            : isRemovingProfile // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -231,14 +235,16 @@ class __$$ProfileStateSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
-  _$ProfileStateSuccessImpl(this.user);
+  _$ProfileStateSuccessImpl(this.user, this.isRemovingProfile);
 
   @override
   final User user;
+  @override
+  final bool isRemovingProfile;
 
   @override
   String toString() {
-    return 'ProfileState.success(user: $user)';
+    return 'ProfileState.success(user: $user, isRemovingProfile: $isRemovingProfile)';
   }
 
   @override
@@ -246,11 +252,13 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileStateSuccessImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.isRemovingProfile, isRemovingProfile) ||
+                other.isRemovingProfile == isRemovingProfile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, user, isRemovingProfile);
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
@@ -267,32 +275,32 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(User user) success,
+    required TResult Function(User user, bool isRemovingProfile) success,
     required TResult Function(String message) error,
   }) {
-    return success(user);
+    return success(user, isRemovingProfile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, bool isRemovingProfile)? success,
     TResult? Function(String message)? error,
   }) {
-    return success?.call(user);
+    return success?.call(user, isRemovingProfile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(User user)? success,
+    TResult Function(User user, bool isRemovingProfile)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(user);
+      return success(user, isRemovingProfile);
     }
     return orElse();
   }
@@ -333,9 +341,11 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
 }
 
 abstract class ProfileStateSuccess implements ProfileState {
-  factory ProfileStateSuccess(final User user) = _$ProfileStateSuccessImpl;
+  factory ProfileStateSuccess(final User user, final bool isRemovingProfile) =
+      _$ProfileStateSuccessImpl;
 
   User get user;
+  bool get isRemovingProfile;
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
@@ -418,7 +428,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(User user) success,
+    required TResult Function(User user, bool isRemovingProfile) success,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -428,7 +438,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, bool isRemovingProfile)? success,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -438,7 +448,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(User user)? success,
+    TResult Function(User user, bool isRemovingProfile)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

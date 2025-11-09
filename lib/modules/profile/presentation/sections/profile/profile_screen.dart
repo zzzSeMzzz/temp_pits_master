@@ -34,7 +34,14 @@ class ProfileScreen extends StatelessWidget {
               final bloc = BlocProvider.of<ProfileBloc>(context);
               return state.maybeWhen(
                 loading: () => const Center(child: CircularProgressIndicator()),
-                success: (user) {
+                success: (user, isRemovedProfile) {
+                  if(isRemovedProfile) {
+                    StorageRepository.logout();
+                    Navigator.of(context, rootNavigator: true).pushReplacement(
+                      fade(page: const AuthScreen()),
+                    );
+                  }
+
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Column(
@@ -165,7 +172,21 @@ class ProfileScreen extends StatelessWidget {
         const SizedBox(height: 8),*/
         ProfileMenuTile(title: 'Historial solicitudes', icon: AppIcons.icHistory, onTap: () {}),
         const SizedBox(height: 8),
-        ProfileMenuTile(title: 'Eliminar mi cuenta', icon: AppIcons.icDeleteRed, onTap: () {}),
+        ProfileMenuTile(title: 'Eliminar mi cuenta', icon: AppIcons.icDeleteRed, onTap: () {
+          showCustomAlertDialog(
+            context,
+            "Eliminar mi cuenta",
+            "¿De verdad quieres eliminar tu perfil?",
+                () {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  final bloc = BlocProvider.of<ProfileBloc>(context);
+                  bloc.add(const ProfileEvent.removeProfile());
+            },
+                () {
+              Navigator.of(context, rootNavigator: true).pop();
+            },
+          );
+        }),
         // ProfileMenuTile(title: 'My car', icon: AppIcons.myCar, onTap: () {}),
         // const SizedBox(height: 8),
         // ProfileMenuTile(title: 'Order history', icon: AppIcons.document, onTap: () {}),
