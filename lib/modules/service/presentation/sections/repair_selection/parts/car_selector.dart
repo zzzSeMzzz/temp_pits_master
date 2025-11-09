@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import '../../../../../../assets/colors/colors.dart';
+import '../../../../../../assets/constants/app_icons.dart';
 import '../../../../../../assets/constants/app_images.dart';
 
 class CarSelector extends StatefulWidget {
@@ -126,9 +128,9 @@ class _CarSelectorState extends State<CarSelector> {
     //debugPrint('Building cell $cellId, selected: $isSelected');
 
     return Container(
-      decoration: BoxDecoration(
+      /*decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.withValues(alpha: 0.3), width: 1),
-      ),
+      ),*/
       child: isSelected ? SizedBox(
         width: double.infinity,
         child: switch (cellId) {
@@ -142,7 +144,7 @@ class _CarSelectorState extends State<CarSelector> {
           ),
           5 || 15 => const Padding(
             padding: EdgeInsets.only(bottom: 54),
-            child: Icon(Icons.check, color: primaryColor),
+            child: Icon(Icons.check, color: primaryColor)
           ),
           _ => const Icon(Icons.check, color: primaryColor)
         }
