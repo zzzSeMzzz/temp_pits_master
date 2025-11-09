@@ -37,8 +37,10 @@ class AuthMockScreen extends StatelessWidget {
                   children: [
                     WButton(
                       onTap: () => {
-                        Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) => const AuthScreen()),
+                        Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+                          MaterialPageRoute(
+
+                              builder: (context) => const AuthScreen()),
                               (route) => false,
                         )
                       },
@@ -50,7 +52,7 @@ class AuthMockScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     WButton(
                       onTap: () => {
-                        Navigator.of(context).pushAndRemoveUntil(
+                        Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
                           MaterialPageRoute(builder: (context) => const AuthScreen()),
                               (route) => false,
                         )

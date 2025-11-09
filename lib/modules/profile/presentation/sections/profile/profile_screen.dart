@@ -14,6 +14,7 @@ import 'package:pits_app/modules/profile/presentation/sections/profile/bloc/prof
 import 'package:pits_app/modules/profile/presentation/sections/profile/widgets/profile_menu_tile.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile_service/profile_service_screen.dart';
 import '../../../../../base/custom_aler_dialog.dart';
+import '../../../../../base/safe_image.dart';
 import '../../../../auth/presentation/sections/auth_screen/auth_screen.dart';
 import '../../../../navigation/presentation/navigator.dart';
 import 'bloc/profile_state.dart';
@@ -44,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         _buildHeader(context, user.fullName()),
                         const SizedBox(height: 12),
-                        _buildAvatar(context, user.fullName()),
+                        _buildAvatar(context, user.avatar ?? '', user.fullName()),
                         const SizedBox(height: 24),
                         _buildMenuTiles(context),
                       ],
@@ -78,14 +79,14 @@ class ProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello, customer',
+                'Hello, $userName',
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
                     .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
               ),
               Text(
-                userName,
+                '¿Como Estás?',
                 style: Theme.of(context)
                     .textTheme
                     .displaySmall!
@@ -120,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAvatar(BuildContext context, String userName) {
+  Widget _buildAvatar(BuildContext context, String ava, String userName) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -130,8 +131,9 @@ class ProfileScreen extends StatelessWidget {
             backgroundColor: Colors.transparent,
             radius: 50,
             child: ClipOval(
-              child: Image.asset(
-                AppImages.orderSample,
+              child: SafeNetworkImage(
+                url: ava,
+                fallbackAsset: AppImages.orderSample,
                 width: 100,
                 height: 100,
                 fit: BoxFit.fill,
@@ -148,7 +150,7 @@ class ProfileScreen extends StatelessWidget {
   Widget _buildMenuTiles(BuildContext context) {
     return Column(
       children: [
-        ProfileMenuTile(
+        /*ProfileMenuTile(
           title: 'Profile',
           icon: AppIcons.userCircle,
           onTap: () {
@@ -160,16 +162,19 @@ class ProfileScreen extends StatelessWidget {
             );
           },
         ),
+        const SizedBox(height: 8),*/
+        ProfileMenuTile(title: 'Historial solicitudes', icon: AppIcons.icHistory, onTap: () {}),
         const SizedBox(height: 8),
-        ProfileMenuTile(title: 'My car', icon: AppIcons.myCar, onTap: () {}),
-        const SizedBox(height: 8),
-        ProfileMenuTile(title: 'Order history', icon: AppIcons.document, onTap: () {}),
-        const SizedBox(height: 8),
-        ProfileMenuTile(title: 'Document', icon: AppIcons.files, onTap: () {}),
-        const SizedBox(height: 8),
-        ProfileMenuTile(title: 'Refer & earn', icon: AppIcons.gift, onTap: () {}),
-        const SizedBox(height: 8),
-        ProfileMenuTile(title: 'Feedback', icon: AppIcons.chatCircle, onTap: () {}),
+        ProfileMenuTile(title: 'Eliminar mi cuenta', icon: AppIcons.icDeleteRed, onTap: () {}),
+        // ProfileMenuTile(title: 'My car', icon: AppIcons.myCar, onTap: () {}),
+        // const SizedBox(height: 8),
+        // ProfileMenuTile(title: 'Order history', icon: AppIcons.document, onTap: () {}),
+        // const SizedBox(height: 8),
+        // ProfileMenuTile(title: 'Document', icon: AppIcons.files, onTap: () {}),
+        // const SizedBox(height: 8),
+        // ProfileMenuTile(title: 'Refer & earn', icon: AppIcons.gift, onTap: () {}),
+        // const SizedBox(height: 8),
+        // ProfileMenuTile(title: 'Feedback', icon: AppIcons.chatCircle, onTap: () {}),
       ],
     );
   }

@@ -14,7 +14,7 @@ class ProfileMenuTile extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => InkWell(
         onTap: onTap,
         child: Container(color: white,
           padding: const EdgeInsets.symmetric(vertical: 8),
@@ -40,7 +40,7 @@ class ProfileMenuTile extends StatelessWidget {
                 AppIcons.iArrowRight,
                 width: 24,
                 height: 24,
-                color: textGrey,
+                colorFilter: const ColorFilter.mode(textGrey, BlendMode.srcIn),
               )
             ],
           ),
