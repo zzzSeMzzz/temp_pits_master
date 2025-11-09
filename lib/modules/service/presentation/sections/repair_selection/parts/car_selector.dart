@@ -66,10 +66,10 @@ class _CarSelectorState extends State<CarSelector> {
                       flex: 2,
                       child: Column(
                         children: [
-                          Expanded(flex: 2, child: _buildCell(_cellIds[1][0])),
-                          Expanded(flex: 3, child: _buildCell(_cellIds[1][1])),
-                          Expanded(flex: 3, child: _buildCell(_cellIds[1][2])),
-                          Expanded(flex: 2, child: _buildCell(_cellIds[1][3])),
+                          Expanded(flex: 4, child: _buildCell(_cellIds[1][0])),
+                          Expanded(flex: 2, child: _buildCell(_cellIds[1][1])),
+                          Expanded(flex: 2, child: _buildCell(_cellIds[1][2])),
+                          Expanded(flex: 4, child: _buildCell(_cellIds[1][3])),
                         ],
                       ),
                     ),
@@ -92,10 +92,10 @@ class _CarSelectorState extends State<CarSelector> {
                       flex: 2,
                       child: Column(
                         children: [
-                          Expanded(flex: 2, child: _buildCell(_cellIds[3][0])),
-                          Expanded(flex: 3, child: _buildCell(_cellIds[3][1])),
-                          Expanded(flex: 3, child: _buildCell(_cellIds[3][2])),
-                          Expanded(flex: 2, child: _buildCell(_cellIds[3][3])),
+                          Expanded(flex: 4, child: _buildCell(_cellIds[3][0])),
+                          Expanded(flex: 2, child: _buildCell(_cellIds[3][1])),
+                          Expanded(flex: 2, child: _buildCell(_cellIds[3][2])),
+                          Expanded(flex: 4, child: _buildCell(_cellIds[3][3])),
                         ],
                       ),
                     ),
@@ -126,7 +126,7 @@ class _CarSelectorState extends State<CarSelector> {
 
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.8), width: 1),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.5), width: 1),
       ),
       child: isSelected ? const SizedBox(
         width: double.infinity,
