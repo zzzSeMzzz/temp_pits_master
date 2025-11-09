@@ -7,6 +7,7 @@ import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/repair_selection_screen.dart';
 import 'package:pits_app/modules/service/presentation/widgets/selection_box.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../repair_selection/bloc/repair_selection_bloc.dart';
 import 'bloc/service_selection_bloc.dart';
 import 'bloc/service_selection_state.dart';
 import 'bloc/service_selection_event.dart';
@@ -103,10 +104,19 @@ class ServiceSelectionScreen extends StatelessWidget {
               const SizedBox(height: 20),
               WButton(
                 onTap: () {
-                  Navigator.of(
+                  /*Navigator.of(
                     context,
                     rootNavigator: true,
-                  ).push(fade(page: const RepairSelectionScreen()));
+                  ).push(fade(page: const RepairSelectionScreen()));*/
+
+                  Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute(
+                      builder: (_) => MultiBlocProvider(
+                        providers: [BlocProvider(create: (_) => RepairSelectionBloc())],
+                        child: const RepairSelectionScreen(),
+                      ),
+                    ),
+                  );
                 },
                 height: 55,
                 borderRadius: 4,
