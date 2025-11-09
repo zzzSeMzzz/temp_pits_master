@@ -34,9 +34,6 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
             //_showPickPhotoSheet();
             bloc.add(const RepairSelectionEvent.onPhotoSelected(ImageSource.camera));
           },
-          success: () {
-
-          },
           error: (String message) {
             Utils.flushBarErrorMessage(message, context);
             context.read<RepairSelectionBloc>().add(const RepairSelectionEvent.cleared());
@@ -165,29 +162,45 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                     WButton(
                       color: Colors.transparent,
                       height: 72,
-                      onTap: () {},
+                      onTap: () {
+                        bloc.add(const RepairSelectionEvent.permissionsRequested());
+                      },
+                      isDisabled: state.maybeWhen(
+                          loading: () => true,
+                          orElse: () => false
+                      ),
                       border: Border.all(color: mainDark),
                       borderRadius: 4,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            AppIcons.plusCircle,
-                            width: 24,
-                            height: 24,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Añadir fotos',
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 16),
-                          ),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              AppIcons.plusCircle,
+                              width: 24,
+                              height: 24,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Flexible(
+                              fit: FlexFit.loose,
+                              child: Text(
+                                state.maybeWhen(
+                                    success: (photo) => photo?.fileName ?? 'Añadir foto',
+                                    orElse: () => 'Añadir foto'),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                        fontWeight: FontWeight.w600, fontSize: 16),
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(

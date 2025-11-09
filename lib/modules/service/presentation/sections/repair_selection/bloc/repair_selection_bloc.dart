@@ -12,6 +12,9 @@ class RepairSelectionBloc extends Bloc<RepairSelectionEvent, RepairSelectionStat
 
   final _repo = RepairRepository();
 
+  PhotoModel? _photo;
+  PhotoModel? get photo => _photo;
+
   RepairSelectionBloc({ImagePicker? imagePicker})
     : _imagePicker = imagePicker ?? ImagePicker(),
       super(const RepairSelectionState.initial()) {
@@ -30,10 +33,11 @@ class RepairSelectionBloc extends Bloc<RepairSelectionEvent, RepairSelectionStat
             emit(const RepairSelectionState.loading());
 
             if (pickedFile != null) {
-              final photo = PhotoModel.fromFilePath(pickedFile.path);
-              //add(RepairSelectionEvent.onScanPhoto(photo));//todo
+              _photo = PhotoModel.fromFilePath(pickedFile.path);
+              emit(RepairSelectionState.success(selectedPhoto: _photo));
             } else {
-              emit(const RepairSelectionState.error(message: 'La foto no se ha guardado'));
+              //emit(const RepairSelectionState.error(message: 'La foto no se ha guardado'));
+              emit(RepairSelectionState.success(selectedPhoto: _photo));
             }
           } catch (e) {
             emit(RepairSelectionState.error(message: 'Error al seleccionar una foto: $e'));

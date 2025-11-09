@@ -21,7 +21,7 @@ mixin _$RepairSelectionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -31,7 +31,7 @@ mixin _$RepairSelectionState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -41,7 +41,7 @@ mixin _$RepairSelectionState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -151,7 +151,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -165,7 +165,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -179,7 +179,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -288,7 +288,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -302,7 +302,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -316,7 +316,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -386,6 +386,8 @@ abstract class _$$SuccessImplCopyWith<$Res> {
     _$SuccessImpl value,
     $Res Function(_$SuccessImpl) then,
   ) = __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PhotoModel? selectedPhoto});
 }
 
 /// @nodoc
@@ -399,39 +401,65 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
   /// Create a copy of RepairSelectionState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? selectedPhoto = freezed}) {
+    return _then(
+      _$SuccessImpl(
+        selectedPhoto: freezed == selectedPhoto
+            ? _value.selectedPhoto
+            : selectedPhoto // ignore: cast_nullable_to_non_nullable
+                  as PhotoModel?,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl();
+  const _$SuccessImpl({this.selectedPhoto});
+
+  @override
+  final PhotoModel? selectedPhoto;
 
   @override
   String toString() {
-    return 'RepairSelectionState.success()';
+    return 'RepairSelectionState.success(selectedPhoto: $selectedPhoto)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.selectedPhoto, selectedPhoto) ||
+                other.selectedPhoto == selectedPhoto));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, selectedPhoto);
+
+  /// Create a copy of RepairSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
     required TResult Function() cleared,
   }) {
-    return success();
+    return success(selectedPhoto);
   }
 
   @override
@@ -439,13 +467,13 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
     TResult? Function()? cleared,
   }) {
-    return success?.call();
+    return success?.call(selectedPhoto);
   }
 
   @override
@@ -453,7 +481,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -461,7 +489,7 @@ class _$SuccessImpl implements _Success {
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(selectedPhoto);
     }
     return orElse();
   }
@@ -514,7 +542,15 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements RepairSelectionState {
-  const factory _Success() = _$SuccessImpl;
+  const factory _Success({final PhotoModel? selectedPhoto}) = _$SuccessImpl;
+
+  PhotoModel? get selectedPhoto;
+
+  /// Create a copy of RepairSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -589,7 +625,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -603,7 +639,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -617,7 +653,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -734,7 +770,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -748,7 +784,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -762,7 +798,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -901,7 +937,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -915,7 +951,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -929,7 +965,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
@@ -1047,7 +1083,7 @@ class _$ClearedImpl implements _Cleared {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(PhotoModel? selectedPhoto) success,
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
@@ -1061,7 +1097,7 @@ class _$ClearedImpl implements _Cleared {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(PhotoModel? selectedPhoto)? success,
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
@@ -1075,7 +1111,7 @@ class _$ClearedImpl implements _Cleared {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(PhotoModel? selectedPhoto)? success,
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
