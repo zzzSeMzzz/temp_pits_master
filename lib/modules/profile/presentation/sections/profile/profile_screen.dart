@@ -29,47 +29,53 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: white,
         body: BlocProvider(
           create: (context) => ProfileBloc(),
-          child: BlocBuilder<ProfileBloc, ProfileState>(
-            builder: (context, state) {
-              final bloc = BlocProvider.of<ProfileBloc>(context);
-              return state.maybeWhen(
-                loading: () => const Center(child: CircularProgressIndicator()),
-                success: (user) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        _buildHeader(context, user.fullName()),
-                        const SizedBox(height: 12),
-                        _buildAvatar(context, user.avatar ?? '', user.fullName()),
-                        const SizedBox(height: 24),
-                        _buildMenuTiles(context),
-                      ],
-                    ),
-                  );
-                },
-                error: (message) => Center(
-                  child: TryAgainWidget(
-                    onTap: () {
-                      bloc.add(const ProfileEvent.load());
-                    },
-                  )
-                ),
-                onRemoved: ()  {
+          child: BlocListener<ProfileBloc, ProfileState>(
+            listener: (context, state) {
+              // Обрабатываем навигацию в listener
+              state.whenOrNull(
+                onRemoved: () {
                   StorageRepository.logout();
                   Navigator.of(context, rootNavigator: true).pushReplacement(
                     fade(page: const AuthScreen()),
                   );
-                  return const SizedBox.shrink();
                 },
-                orElse: () => const SizedBox.shrink(),
               );
-      
             },
+            child: BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                final bloc = BlocProvider.of<ProfileBloc>(context);
+                return state.maybeWhen(
+                  loading: () => const Center(child: CircularProgressIndicator()),
+                  success: (user) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          _buildHeader(context, user.fullName()),
+                          const SizedBox(height: 12),
+                          _buildAvatar(context, user.avatar ?? '', user.fullName()),
+                          const SizedBox(height: 24),
+                          _buildMenuTiles(context),
+                        ],
+                      ),
+                    );
+                  },
+                  error: (message) => Center(
+                    child: TryAgainWidget(
+                      onTap: () {
+                        bloc.add(const ProfileEvent.load());
+                      },
+                    )
+                  ),
+                  orElse: () => const SizedBox.shrink(),
+                );
+                  
+              },
+            ),
           ),
         ),
       ),
