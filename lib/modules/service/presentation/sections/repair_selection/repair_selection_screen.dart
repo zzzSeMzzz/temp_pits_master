@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
-import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/globals/widgets/interaction/w_button.dart';
 import 'package:pits_app/globals/widgets/interaction/w_textfield.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/axis_selector.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/car_selector.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/other_axis_selector.dart';
 
-class RepairSelectionScreen extends StatelessWidget {
+class RepairSelectionScreen extends StatefulWidget {
   const RepairSelectionScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RepairSelectionScreen> createState() => _RepairSelectionScreenState();
+}
+
+class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
