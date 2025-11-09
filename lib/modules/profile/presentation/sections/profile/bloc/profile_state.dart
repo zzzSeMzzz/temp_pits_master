@@ -7,7 +7,7 @@ class ProfileState with _$ProfileState {
   const factory ProfileState.loading() = ProfileStateLoading;
   factory ProfileState.success(
       User user,
-      bool isRemovingProfile,
   ) = ProfileStateSuccess;
   const factory ProfileState.error(String message) = ProfileStateError;
+  factory ProfileState.onRemoved() = ProfileStateRemoved;
 }

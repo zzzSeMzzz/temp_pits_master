@@ -28,7 +28,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             },
             (model) {
               _currentUser = model;
-              emit(ProfileState.success(model, false));
+              emit(ProfileState.success(model));
             },
           );
         },
@@ -46,7 +46,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               return;
             },
             (model) {
-              emit(ProfileState.success(_currentUser ?? User(), true));
+              emit(ProfileState.onRemoved());
             },
           );
         }

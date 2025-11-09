@@ -34,14 +34,7 @@ class ProfileScreen extends StatelessWidget {
               final bloc = BlocProvider.of<ProfileBloc>(context);
               return state.maybeWhen(
                 loading: () => const Center(child: CircularProgressIndicator()),
-                success: (user, isRemovedProfile) {
-                  if(isRemovedProfile) {
-                    StorageRepository.logout();
-                    Navigator.of(context, rootNavigator: true).pushReplacement(
-                      fade(page: const AuthScreen()),
-                    );
-                  }
-
+                success: (user) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Column(
@@ -66,6 +59,13 @@ class ProfileScreen extends StatelessWidget {
                     },
                   )
                 ),
+                onRemoved: ()  {
+                  StorageRepository.logout();
+                  Navigator.of(context, rootNavigator: true).pushReplacement(
+                    fade(page: const AuthScreen()),
+                  );
+                  return const SizedBox.shrink();
+                },
                 orElse: () => const SizedBox.shrink(),
               );
       
