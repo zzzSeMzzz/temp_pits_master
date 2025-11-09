@@ -41,7 +41,7 @@ class _OtherAxisSelectorState extends State<OtherAxisSelector> {
                       },
                       child: SvgPicture.asset(
                         AppIcons.repairAir,
-                        color: axis == 1 ? primaryColor : null,
+                        colorFilter: axis == 1 ? const ColorFilter.mode(primaryColor, BlendMode.srcIn) : null,
                       ),
                     ),
                   ),
@@ -54,7 +54,7 @@ class _OtherAxisSelectorState extends State<OtherAxisSelector> {
                       },
                       child: SvgPicture.asset(
                         AppIcons.repairDiagnosis,
-                        color: axis == 2 ? primaryColor : null,
+                        colorFilter: axis == 2 ? const ColorFilter.mode(primaryColor, BlendMode.srcIn) : null,
                       ),
                     ),
                   ),
@@ -67,7 +67,7 @@ class _OtherAxisSelectorState extends State<OtherAxisSelector> {
                       },
                       child: SvgPicture.asset(
                         AppIcons.repairElectro,
-                        color: axis == 3 ? primaryColor : null,
+                        colorFilter: axis == 3 ? const ColorFilter.mode(primaryColor, BlendMode.srcIn) : null,
                       ),
                     ),
                   ),
@@ -80,7 +80,7 @@ class _OtherAxisSelectorState extends State<OtherAxisSelector> {
                       },
                       child: SvgPicture.asset(
                         AppIcons.repairOil,
-                        color: axis == 4 ? primaryColor : null,
+                        colorFilter: axis == 4 ? const ColorFilter.mode(primaryColor, BlendMode.srcIn) : null,
                       ),
                     ),
                   ),
@@ -93,7 +93,7 @@ class _OtherAxisSelectorState extends State<OtherAxisSelector> {
                       },
                       child: SvgPicture.asset(
                         AppIcons.repairFlame,
-                        color: axis == 5 ? primaryColor : null,
+                        colorFilter: axis == 5 ? const ColorFilter.mode(primaryColor, BlendMode.srcIn) : null,
                       ),
                     ),
                   ),
