@@ -122,7 +122,7 @@ class _CarSelectorState extends State<CarSelector> {
   Widget _buildCell(int cellId) {
     final isSelected = _selectedCells[cellId] ?? false;
 
-    debugPrint('Building cell $cellId, selected: $isSelected');
+    //debugPrint('Building cell $cellId, selected: $isSelected');
 
     return Container(
       decoration: BoxDecoration(
@@ -152,9 +152,92 @@ class _CarSelectorState extends State<CarSelector> {
         .toList();
   }
 
+  List<String> getSelectedCellsNamed() {
+    return _selectedCells.entries
+        .where((entry) => entry.value)
+        .map((entry) => entry.key.toString())
+        .toList();
+  }
+
   void clearSelection() {
     setState(() {
       _selectedCells.clear();
     });
   }
+
+  String _partIdToName(int partId) {
+    switch (partId) {
+      case 0: return 'part-16';
+      case 1: return 'part-23';
+      case 2: return 'part-14';
+      case 3: return 'part-17';
+      case 4: return 'part-20';
+      case 5: return 'part-24';
+      case 6: return 'part-0';
+      case 7: return 'part-4';
+      case 8: return 'part-6';
+      case 9: return 'part-6';//????
+      case 10: return 'part-12';
+      case 11: return 'part-9';
+      case 12: return 'part-27';
+      case 13: return 'part-28';
+      case 14: return 'part-31';
+      case 15: return 'part-35';
+      case 16: return 'part-26';
+      case 17: return 'part-34';
+      default: return '';
+    }
+  }
+  /*
+  id="part-0” > передний бампер
+id="part-2” > передняя левая фара
+id="part-3” > передняя правая фара
+id="part-1” > передний номерной знак
+id="part-4” > капот
+id="part-5” > переднее стекло
+id="part-6” > крыша
+id="part-9” > задний бампер
+id="part-13”> фаркоп
+id="part-11” > задний номерной знак
+id="part-12” > задняя правая фара
+id="part-10” > задняя левая фара
+id="part-15” > левое переднее колесо, резина
+id="part-16" > левое переднее колесо, диск
+id="part-22” > левое заднее колесо, резина
+id="part-23" > левое заднее колесо, диск
+id="part-14" > левое переднее крыло
+id="part-17” > левое передняя дверь
+id="part-19” > левое переднее стекло
+id="part-21" > левое заднее стекло
+id="part-18" > левое зеркало
+id="part-20” > левое задняя дверь
+id="part-24" > левое заднее крыло
+id="part-27" > правое переднее крыло
+id="part-28" > правое передняя дверь
+id="part-30" > правое переднее стекло
+id="part-32” > правое заднее стекло
+id="part-29" > правое зеркало
+id="part-31" > правое задняя дверь
+id="part-35" > правое заднее крыло
+id="part-25" > правое переднее колесо, резина
+id="part-26" > правое переднее колесо, диск
+id="part-33" > правое заднее колесо, резина
+id="part-34" > правое заднее колесо, диск
+Axile 1
+id="part-36” > левый тормозной диск
+id="part-37" > левый армотизатор
+id="part-37" > правый армотизатор
+id="part-39" > правый тормозной диск
+Axile 2
+id="part-40” > левый тормозной диск
+id="part-41” > левый армотизатор
+id="part-42" > правый армотизатор
+id="part-43" > правый тормозной диск
+Other:
+id="part-44” > кондиционер
+id="part-45" > электрика
+id="part-46" > механика
+id="part-47" > масла
+id="part-48” > горячий мотор
+   */
 }
