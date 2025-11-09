@@ -10,31 +10,31 @@ class CarSelector extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: Stack(
         children: [
-          // Получаем размеры изображения
+          // Фоновая картинка
           Image.asset(
             AppImages.carSelection2,
             fit: BoxFit.cover,
             width: double.maxFinite,
           ),
 
-          // Сетка, которая занимает всю высоту изображения
+          // Сетка, которая занимает всю высоту изображения (повернутая на 90 градусов)
           Positioned.fill(
             child: LayoutBuilder(
               builder: (context, constraints) {
-                return Column(
+                return Row( // Меняем Column на Row
                   children: [
-                    // Первая строка (flex: 1) - 2 ячейки
+                    // Первая колонка (flex: 1) - 2 ячейки
                     Expanded(
                       flex: 1,
-                      child: Row(
+                      child: Column(
                         children: _buildCells(2),
                       ),
                     ),
 
-                    // Вторая строка (flex: 1) - 4 ячейки
+                    // Вторая колонка (flex: 1) - 4 ячейки
                     Expanded(
-                      flex: 1,
-                      child: Row(
+                      flex: 2,
+                      child: Column(
                         children: [
                           Expanded(flex: 2, child: _buildCell()), // 20%
                           Expanded(flex: 3, child: _buildCell()), // 30%
@@ -44,10 +44,10 @@ class CarSelector extends StatelessWidget {
                       ),
                     ),
 
-                    // Третья строка (flex: 3) - 6 ячеек
+                    // Третья колонка (flex: 3) - 6 ячеек
                     Expanded(
                       flex: 3,
-                      child: Row(
+                      child: Column(
                         children: [
                           Expanded(flex: 1, child: _buildCell()), // 10%
                           Expanded(flex: 3, child: _buildCell()), // 30%
@@ -59,10 +59,10 @@ class CarSelector extends StatelessWidget {
                       ),
                     ),
 
-                    // Четвертая строка (flex: 1) - 4 ячейки
+                    // Четвертая колонка (flex: 1) - 4 ячейки
                     Expanded(
-                      flex: 1,
-                      child: Row(
+                      flex: 2,
+                      child: Column(
                         children: [
                           Expanded(flex: 2, child: _buildCell()), // 20%
                           Expanded(flex: 3, child: _buildCell()), // 30%
@@ -72,10 +72,10 @@ class CarSelector extends StatelessWidget {
                       ),
                     ),
 
-                    // Пятая строка (flex: 1) - 2 ячейки
+                    // Пятая колонка (flex: 1) - 2 ячейки
                     Expanded(
                       flex: 1,
-                      child: Row(
+                      child: Column(
                         children: _buildCells(2),
                       ),
                     ),
