@@ -155,7 +155,7 @@ class _CarSelectorState extends State<CarSelector> {
   List<String> getSelectedCellsNamed() {
     return _selectedCells.entries
         .where((entry) => entry.value)
-        .map((entry) => entry.key.toString())
+        .map((entry) => _partIdToName(entry.key))
         .toList();
   }
 
