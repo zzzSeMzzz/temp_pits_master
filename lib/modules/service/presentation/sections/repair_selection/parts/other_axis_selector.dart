@@ -113,7 +113,7 @@ class _OtherAxisSelectorState extends State<OtherAxisSelector> {
                         color: white,
                       ),
                       child: Text(
-                        'Other',
+                        'Partes',
                         style: Theme.of(context)
                             .textTheme
                             .displaySmall!

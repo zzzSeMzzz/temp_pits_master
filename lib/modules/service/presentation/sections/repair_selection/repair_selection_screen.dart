@@ -47,7 +47,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Selection of car parts',
+                      'Selección de piezas de automóvil',
                       textAlign: TextAlign.center,
                       style: Theme.of(context)
                           .textTheme
@@ -66,7 +66,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                     children: [
                       Expanded(
                         child: Text(
-                          'In addition, it is possible to add photos of broken parts of the car.',
+                          'Además, es posible agregar fotografías de partes rotas del coche.',
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme
@@ -102,7 +102,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Axis',
+                      'Ejes',
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
@@ -114,13 +114,13 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   height: 24,
                 ),
                 const AxisSelector(
-                  title: 'Axis 1',
+                  title: 'Eje 1',
                 ),
                 const SizedBox(
                   height: 24,
                 ),
                 const AxisSelector(
-                  title: 'Axis 2',
+                  title: 'Eje 2',
                 ),
                 const SizedBox(
                   height: 24,
@@ -147,7 +147,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                         width: 10,
                       ),
                       Text(
-                        'Add photo',
+                        'Añadir fotos',
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -164,7 +164,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Add your comment',
+                      'Añadir comentarios',
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
@@ -180,20 +180,20 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   onChanged: (text) {},
                   keyBoardType: TextInputType.multiline,
                   maxLines: 10,
-                  hintText: 'Type here...',
+                  hintText: 'Escribir aquí...',
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                WButton(
+               /* WButton(
                   border: Border.all(color: black),
                   borderRadius: 4,
                   onTap: () {},
                   height: 55,
                   color: white,
-                  text: 'Add comment',
+                  text: 'Añadir comentario',
                   textColor: black,
-                ),
+                ),*/
                 const SizedBox(
                   height: 16,
                 ),
@@ -204,7 +204,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   onTap: () {},
                   height: 55,
                   color: black,
-                  text: 'Send an application',
+                  text: 'Enviar solicitud',
                   textColor: white,
                 ),
               ],
