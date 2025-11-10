@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (_) => MultiBlocProvider(
                         providers: [BlocProvider(create: (_) => AddCarBloc())],
-                        child: const AddCarScreen(isBackButton: true),
+                        child: AddCarScreen(isBackButton: true, onRegSuccess: () => bloc.add(const HomeEvent.loadVehicles())),
                       ),
                     ),
                   );

@@ -18,7 +18,8 @@ import 'package:pits_app/utils/utils.dart';
 
 class AddCarScreen extends StatefulWidget {
   final bool isBackButton;
-  const AddCarScreen({required this.isBackButton, Key? key}) : super(key: key);
+  final VoidCallback? onRegSuccess;
+  const AddCarScreen({required this.isBackButton, this.onRegSuccess, Key? key}) : super(key: key);
 
   @override
   State<AddCarScreen> createState() => _AddCarScreenState();
@@ -88,18 +89,26 @@ class _AddCarScreenState extends State<AddCarScreen> {
   Widget build(BuildContext context) => BlocConsumer<AddCarBloc, AddCarState>(
     listener: (context, state) {
       AddCarBloc bloc = context.read<AddCarBloc>();
-      state.when(
+      state.maybeWhen(
         permissionsGranted: () {
           debugPrint("permissionsGranted");
           //_showPickPhotoSheet();
           bloc.add(const AddCarEvent.onPhotoSelected(ImageSource.camera));
         },
-        initial: () {},
-        loading: () {},
         success: (CarRegResponse vehicle) {
+          context.read<AddCarBloc>().add(const AddCarEvent.cleared());
           debugPrint('success reg car $vehicle');
-          Utils.flushBarErrorMessage("El coche está matriculado", context, color: greenAccent);
-          Navigator.of(context).pop();
+          /*if(mounted) {
+            Utils.flushBarErrorMessage(
+                "El coche está matriculado", context, color: greenAccent);
+          }*/
+
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) {
+              Navigator.of(context).pop();
+              widget.onRegSuccess?.call();
+            }
+          });
         },
         error: (String message) {
           Utils.flushBarErrorMessage(message, context);
@@ -110,17 +119,17 @@ class _AddCarScreenState extends State<AddCarScreen> {
           Utils.flushBarErrorMessage(message, context);
           context.read<AddCarBloc>().add(const AddCarEvent.cleared());
         },
-        cleared: () {},
         currentCarNumber: (String? carNumber) {
           if (!carNumber.isNullOrEmpty()) {
             _cnController.text = carNumber!;
           }
         },
+        orElse: () {},
       );
     },
-    //child: BlocBuilder<AlarmBloc, AlarmState>(
     builder: (context, state) {
       final bloc = context.read<AddCarBloc>();
+
       return Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
