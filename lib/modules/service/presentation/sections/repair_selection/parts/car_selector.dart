@@ -161,6 +161,7 @@ class _CarSelectorState extends State<CarSelector> {
     setState(() {
       _selectedCells[cellId] = isSelected;
       debugPrint('Cell $cellId selection changed to: $isSelected');
+      widget.callbackSelected(getSelectedCellsNamed());
     });
   }
 
