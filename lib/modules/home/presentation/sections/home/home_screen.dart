@@ -143,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            fade(page: const PartSelectionScreen()),
+                            fade(page: PartSelectionScreen(currentCarNumber: bloc.currentVehicle?.registrationNumber)),
                           );
                         },
                         height: 55,

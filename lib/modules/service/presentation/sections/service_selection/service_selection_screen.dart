@@ -13,7 +13,10 @@ import 'bloc/service_selection_state.dart';
 import 'bloc/service_selection_event.dart';
 
 class ServiceSelectionScreen extends StatelessWidget {
-  const ServiceSelectionScreen({Key? key}) : super(key: key);
+  const ServiceSelectionScreen({Key? key, this.carNumber, required this.takeCarAccount}) : super(key: key);
+
+  final String? carNumber;
+  final String  takeCarAccount;
 
   @override
   Widget build(BuildContext context) => BlocProvider(
