@@ -106,8 +106,8 @@ class ServiceSelectionScreen extends StatelessWidget {
                   WButton(
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute(
-                          builder: (_) => MultiBlocProvider(
+                        fade(
+                          page: MultiBlocProvider(
                             providers: [BlocProvider(create: (_) => RepairSelectionBloc())],
                             child: RepairSelectionScreen(
                               carNumber: carNumber,

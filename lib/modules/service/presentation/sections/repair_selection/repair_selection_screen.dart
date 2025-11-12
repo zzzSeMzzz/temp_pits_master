@@ -72,7 +72,9 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
           );
         },
         successSendRequest: () {
-          context.read<RepairSelectionBloc>().add(const RepairSelectionEvent.cleared());
+          context.read<RepairSelectionBloc>().add(
+            const RepairSelectionEvent.cleared(),
+          );
           debugPrint('success send repair request');
           /*if(mounted) {
             Utils.flushBarErrorMessage(
@@ -80,11 +82,17 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
           }*/
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (mounted) {
-              Navigator.of(context)
-                ..pop()
-                ..pop()
-                ..pop();
-              //widget.onRegSuccess?.call();
+              // Возвращаемся назад, закрывая текущий экран (RepairSelectionScreen)
+              // и ServiceSelectionScreen
+              // Используем rootNavigator, так как экраны были открыты через rootNavigator
+              final navigator = Navigator.of(context, rootNavigator: true);
+              navigator.pop(); // Закрываем RepairSelectionScreen
+              if (navigator.canPop()) {
+                navigator.pop(); // Закрываем ServiceSelectionScreen
+              }
+              if (navigator.canPop()) {
+                navigator.pop(); // Закрываем ServiceSelectionScreen
+              }
             }
           });
         },
@@ -181,13 +189,21 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                AxisSelector(title: 'Eje 1', isAxis1: true, callbackSelected: (selected) {
-                  _axis1 = selected;
-                }),
+                AxisSelector(
+                  title: 'Eje 1',
+                  isAxis1: true,
+                  callbackSelected: (selected) {
+                    _axis1 = selected;
+                  },
+                ),
                 const SizedBox(height: 24),
-                AxisSelector(title: 'Eje 2', isAxis1: false, callbackSelected: (selected) {
-                  _axis2 = selected;
-                }),
+                AxisSelector(
+                  title: 'Eje 2',
+                  isAxis1: false,
+                  callbackSelected: (selected) {
+                    _axis2 = selected;
+                  },
+                ),
                 const SizedBox(height: 24),
                 const OtherAxisSelector(),
                 const SizedBox(height: 40),
@@ -288,7 +304,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                         _axis2,
                         bloc.photo?.fileName,
                         commentController.text,
-                        null,//wpServiceId
+                        null, //wpServiceId
                       ),
                     );
                   },
