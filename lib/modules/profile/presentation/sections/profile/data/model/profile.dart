@@ -30,6 +30,8 @@ class User {
   String? email;
   @JsonKey(name: "phone")
   String? phone;
+  @JsonKey(name: "avatar")
+  String? avatar;
 
   User({
     this.id,
@@ -37,6 +39,7 @@ class User {
     this.lastname,
     this.email,
     this.phone,
+    this.avatar,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

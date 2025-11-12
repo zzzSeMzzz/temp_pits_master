@@ -7,12 +7,16 @@ import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/repair_selection_screen.dart';
 import 'package:pits_app/modules/service/presentation/widgets/selection_box.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../repair_selection/bloc/repair_selection_bloc.dart';
 import 'bloc/service_selection_bloc.dart';
 import 'bloc/service_selection_state.dart';
 import 'bloc/service_selection_event.dart';
 
 class ServiceSelectionScreen extends StatelessWidget {
-  const ServiceSelectionScreen({Key? key}) : super(key: key);
+  const ServiceSelectionScreen({Key? key, this.carNumber, required this.takeCarAccount}) : super(key: key);
+
+  final String? carNumber;
+  final String  takeCarAccount;
 
   @override
   Widget build(BuildContext context) => BlocProvider(
@@ -22,44 +26,44 @@ class ServiceSelectionScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 13),
-              GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: SvgPicture.asset(
-                  AppIcons.arrowLeft,
-                  width: 24,
-                  height: 24,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.black,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 35),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          child: BlocBuilder<ServiceSelectionBloc, ServiceSelectionState>(
+            builder: (context, state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Servicios (multiselección)',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+                  const SizedBox(height: 13),
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset(
+                      AppIcons.arrowLeft,
+                      width: 24,
+                      height: 24,
+                      colorFilter: const ColorFilter.mode(
+                        Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 32),
-              Expanded(
-                child: BlocBuilder<ServiceSelectionBloc, ServiceSelectionState>(
-                  builder: (context, state) {
-                    return GridView.builder(
+                  const SizedBox(height: 35),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Servicios (multiselección)',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  Expanded(
+                    child: GridView.builder(
                       itemCount: AppIcons.serviceRepairIcons.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -96,25 +100,33 @@ class ServiceSelectionScreen extends StatelessWidget {
                                 ),
                         );
                       },
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 20),
-              WButton(
-                onTap: () {
-                  Navigator.of(
-                    context,
-                    rootNavigator: true,
-                  ).push(fade(page: const RepairSelectionScreen()));
-                },
-                height: 55,
-                borderRadius: 4,
-                textColor: white,
-                text: 'Continue',
-              ),
-              const SizedBox(height: 12),
-            ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  WButton(
+                    onTap: () {
+                      Navigator.of(context, rootNavigator: true).push(
+                        fade(
+                          page: MultiBlocProvider(
+                            providers: [BlocProvider(create: (_) => RepairSelectionBloc())],
+                            child: RepairSelectionScreen(
+                              carNumber: carNumber,
+                              services: state.selectedKeys,
+                              takeCarAccount: takeCarAccount,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    height: 55,
+                    borderRadius: 4,
+                    textColor: white,
+                    text: 'Continue',
+                  ),
+                  const SizedBox(height: 12),
+                ],
+              );
+            }
           ),
         ),
       ),

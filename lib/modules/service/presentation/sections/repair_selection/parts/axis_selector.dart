@@ -6,8 +6,11 @@ import 'package:pits_app/assets/constants/app_icons.dart';
 
 class AxisSelector extends StatefulWidget {
   final String title;
+  final bool isAxis1;
 
-  const AxisSelector({required this.title, Key? key}) : super(key: key);
+  final Function(List<String>) callbackSelected;
+
+  const AxisSelector({required this.title, Key? key, required this.callbackSelected, required this.isAxis1}) : super(key: key);
 
   @override
   State<AxisSelector> createState() => _AxisSelectorState();
@@ -16,8 +19,20 @@ class AxisSelector extends StatefulWidget {
 class _AxisSelectorState extends State<AxisSelector> {
   int axis = -1;
 
+  List<String> getPartByNum(bool isAxis1) {
+    String result = '';
+    switch(axis) {
+      case 1: isAxis1 ? result = 'part-36' : result = 'part-40';
+      case 2: isAxis1 ? result = 'part-37' : result = 'part-41';
+      case 3: isAxis1 ? result = 'part-38' : result = 'part-42';
+      case 4: isAxis1 ? result = 'part-39' : result = 'part-43';
+      default: result = '';
+    }
+    return [result];
+  }
+
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) => SizedBox(
         height: 90,
         child: Stack(
           children: [
@@ -37,6 +52,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 1;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
@@ -50,6 +66,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 2;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
@@ -63,6 +80,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 3;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
@@ -76,6 +94,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 4;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(

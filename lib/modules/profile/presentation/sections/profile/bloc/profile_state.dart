@@ -9,4 +9,5 @@ class ProfileState with _$ProfileState {
       User user,
   ) = ProfileStateSuccess;
   const factory ProfileState.error(String message) = ProfileStateError;
+  factory ProfileState.onRemoved() = ProfileStateRemoved;
 }

@@ -53,7 +53,9 @@ class ProfileServices extends StatelessWidget {
                       itemBuilder: (context, index) => SelectionBox(
                           onTap: () {
                             Navigator.push(context,
-                                fade(page: const RepairSelectionScreen()));
+                                fade(page: const RepairSelectionScreen(
+                                  services: {}, takeCarAccount: '',
+                                )));
                           },
                           title: state.services[index].title,
                           svgIcon: AppIcons.serviceBalance),

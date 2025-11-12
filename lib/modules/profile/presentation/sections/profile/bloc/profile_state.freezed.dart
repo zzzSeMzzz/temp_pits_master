@@ -22,18 +22,21 @@ mixin _$ProfileState {
     required TResult Function() loading,
     required TResult Function(User user) success,
     required TResult Function(String message) error,
+    required TResult Function() onRemoved,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(User user)? success,
     TResult? Function(String message)? error,
+    TResult? Function()? onRemoved,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(User user)? success,
     TResult Function(String message)? error,
+    TResult Function()? onRemoved,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,18 +44,21 @@ mixin _$ProfileState {
     required TResult Function(ProfileStateLoading value) loading,
     required TResult Function(ProfileStateSuccess value) success,
     required TResult Function(ProfileStateError value) error,
+    required TResult Function(ProfileStateRemoved value) onRemoved,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ProfileStateLoading value)? loading,
     TResult? Function(ProfileStateSuccess value)? success,
     TResult? Function(ProfileStateError value)? error,
+    TResult? Function(ProfileStateRemoved value)? onRemoved,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ProfileStateLoading value)? loading,
     TResult Function(ProfileStateSuccess value)? success,
     TResult Function(ProfileStateError value)? error,
+    TResult Function(ProfileStateRemoved value)? onRemoved,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -126,6 +132,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
     required TResult Function() loading,
     required TResult Function(User user) success,
     required TResult Function(String message) error,
+    required TResult Function() onRemoved,
   }) {
     return loading();
   }
@@ -136,6 +143,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
     TResult? Function()? loading,
     TResult? Function(User user)? success,
     TResult? Function(String message)? error,
+    TResult? Function()? onRemoved,
   }) {
     return loading?.call();
   }
@@ -146,6 +154,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
     TResult Function()? loading,
     TResult Function(User user)? success,
     TResult Function(String message)? error,
+    TResult Function()? onRemoved,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -160,6 +169,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
     required TResult Function(ProfileStateLoading value) loading,
     required TResult Function(ProfileStateSuccess value) success,
     required TResult Function(ProfileStateError value) error,
+    required TResult Function(ProfileStateRemoved value) onRemoved,
   }) {
     return loading(this);
   }
@@ -170,6 +180,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
     TResult? Function(ProfileStateLoading value)? loading,
     TResult? Function(ProfileStateSuccess value)? success,
     TResult? Function(ProfileStateError value)? error,
+    TResult? Function(ProfileStateRemoved value)? onRemoved,
   }) {
     return loading?.call(this);
   }
@@ -180,6 +191,7 @@ class _$ProfileStateLoadingImpl implements ProfileStateLoading {
     TResult Function(ProfileStateLoading value)? loading,
     TResult Function(ProfileStateSuccess value)? success,
     TResult Function(ProfileStateError value)? error,
+    TResult Function(ProfileStateRemoved value)? onRemoved,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -269,6 +281,7 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     required TResult Function() loading,
     required TResult Function(User user) success,
     required TResult Function(String message) error,
+    required TResult Function() onRemoved,
   }) {
     return success(user);
   }
@@ -279,6 +292,7 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     TResult? Function()? loading,
     TResult? Function(User user)? success,
     TResult? Function(String message)? error,
+    TResult? Function()? onRemoved,
   }) {
     return success?.call(user);
   }
@@ -289,6 +303,7 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     TResult Function()? loading,
     TResult Function(User user)? success,
     TResult Function(String message)? error,
+    TResult Function()? onRemoved,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -303,6 +318,7 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     required TResult Function(ProfileStateLoading value) loading,
     required TResult Function(ProfileStateSuccess value) success,
     required TResult Function(ProfileStateError value) error,
+    required TResult Function(ProfileStateRemoved value) onRemoved,
   }) {
     return success(this);
   }
@@ -313,6 +329,7 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     TResult? Function(ProfileStateLoading value)? loading,
     TResult? Function(ProfileStateSuccess value)? success,
     TResult? Function(ProfileStateError value)? error,
+    TResult? Function(ProfileStateRemoved value)? onRemoved,
   }) {
     return success?.call(this);
   }
@@ -323,6 +340,7 @@ class _$ProfileStateSuccessImpl implements ProfileStateSuccess {
     TResult Function(ProfileStateLoading value)? loading,
     TResult Function(ProfileStateSuccess value)? success,
     TResult Function(ProfileStateError value)? error,
+    TResult Function(ProfileStateRemoved value)? onRemoved,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -420,6 +438,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
     required TResult Function() loading,
     required TResult Function(User user) success,
     required TResult Function(String message) error,
+    required TResult Function() onRemoved,
   }) {
     return error(message);
   }
@@ -430,6 +449,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
     TResult? Function()? loading,
     TResult? Function(User user)? success,
     TResult? Function(String message)? error,
+    TResult? Function()? onRemoved,
   }) {
     return error?.call(message);
   }
@@ -440,6 +460,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
     TResult Function()? loading,
     TResult Function(User user)? success,
     TResult Function(String message)? error,
+    TResult Function()? onRemoved,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -454,6 +475,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
     required TResult Function(ProfileStateLoading value) loading,
     required TResult Function(ProfileStateSuccess value) success,
     required TResult Function(ProfileStateError value) error,
+    required TResult Function(ProfileStateRemoved value) onRemoved,
   }) {
     return error(this);
   }
@@ -464,6 +486,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
     TResult? Function(ProfileStateLoading value)? loading,
     TResult? Function(ProfileStateSuccess value)? success,
     TResult? Function(ProfileStateError value)? error,
+    TResult? Function(ProfileStateRemoved value)? onRemoved,
   }) {
     return error?.call(this);
   }
@@ -474,6 +497,7 @@ class _$ProfileStateErrorImpl implements ProfileStateError {
     TResult Function(ProfileStateLoading value)? loading,
     TResult Function(ProfileStateSuccess value)? success,
     TResult Function(ProfileStateError value)? error,
+    TResult Function(ProfileStateRemoved value)? onRemoved,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -494,4 +518,124 @@ abstract class ProfileStateError implements ProfileState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfileStateErrorImplCopyWith<_$ProfileStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProfileStateRemovedImplCopyWith<$Res> {
+  factory _$$ProfileStateRemovedImplCopyWith(
+    _$ProfileStateRemovedImpl value,
+    $Res Function(_$ProfileStateRemovedImpl) then,
+  ) = __$$ProfileStateRemovedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ProfileStateRemovedImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateRemovedImpl>
+    implements _$$ProfileStateRemovedImplCopyWith<$Res> {
+  __$$ProfileStateRemovedImplCopyWithImpl(
+    _$ProfileStateRemovedImpl _value,
+    $Res Function(_$ProfileStateRemovedImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ProfileStateRemovedImpl implements ProfileStateRemoved {
+  _$ProfileStateRemovedImpl();
+
+  @override
+  String toString() {
+    return 'ProfileState.onRemoved()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileStateRemovedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function(String message) error,
+    required TResult Function() onRemoved,
+  }) {
+    return onRemoved();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(User user)? success,
+    TResult? Function(String message)? error,
+    TResult? Function()? onRemoved,
+  }) {
+    return onRemoved?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(String message)? error,
+    TResult Function()? onRemoved,
+    required TResult orElse(),
+  }) {
+    if (onRemoved != null) {
+      return onRemoved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ProfileStateLoading value) loading,
+    required TResult Function(ProfileStateSuccess value) success,
+    required TResult Function(ProfileStateError value) error,
+    required TResult Function(ProfileStateRemoved value) onRemoved,
+  }) {
+    return onRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ProfileStateLoading value)? loading,
+    TResult? Function(ProfileStateSuccess value)? success,
+    TResult? Function(ProfileStateError value)? error,
+    TResult? Function(ProfileStateRemoved value)? onRemoved,
+  }) {
+    return onRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ProfileStateLoading value)? loading,
+    TResult Function(ProfileStateSuccess value)? success,
+    TResult Function(ProfileStateError value)? error,
+    TResult Function(ProfileStateRemoved value)? onRemoved,
+    required TResult orElse(),
+  }) {
+    if (onRemoved != null) {
+      return onRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProfileStateRemoved implements ProfileState {
+  factory ProfileStateRemoved() = _$ProfileStateRemovedImpl;
 }

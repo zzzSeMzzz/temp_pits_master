@@ -1,3 +1,4 @@
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/core/data/repo/base_repoitory.dart';
 import '../../../../../../../core/data/error/failures.dart';
 import '../../../../../../../core/data/singletons/dio.dart';
@@ -25,5 +26,15 @@ class UserProfileRepository extends BaseRepository {
     }
   }
 
+  Future<Either<Failure, bool>> removeProfile() async {
+    final result = await client.delete(
+      'api/pits/account',
+    );
+    if (result.statusCode!.isSuccess) {
+      return Right(true);
+    } else {
+      return Left(ServerFailure(message: getErrorFromResponse(result.data)));
+    }
+  }
 
 }

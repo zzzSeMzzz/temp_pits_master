@@ -12,6 +12,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   List<Vehicle> get vehicles => _vehicles;
 
+  Vehicle? _currentVehicle;
+  Vehicle? get currentVehicle => _currentVehicle;
+
   HomeBloc() : super(const HomeState.initial()) {
     on<HomeEvent>((event, emit) async {
       await event.map(
@@ -35,6 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         },
         onSelectVehicle: (event) async {
           if (_vehicles.isNotEmpty) {
+            _currentVehicle = event.vehicle;
             emit(HomeState.selectedVehicle(vehicle: event.vehicle));
           }
         },

@@ -8,7 +8,9 @@ import 'package:pits_app/modules/service/presentation/sections/service_selection
 import 'package:pits_app/modules/service/presentation/widgets/selection_box.dart';
 
 class PartSelectionScreen extends StatelessWidget {
-  const PartSelectionScreen({Key? key}) : super(key: key);
+  const PartSelectionScreen({Key? key, this.currentCarNumber}) : super(key: key);
+
+  final String? currentCarNumber;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -57,7 +59,9 @@ class PartSelectionScreen extends StatelessWidget {
                     child: SelectionBox(
                         onTap: () {
                           Navigator.of(context, rootNavigator: true)
-                              .push(fade(page: const ServiceSelectionScreen()));
+                              .push(fade(page: ServiceSelectionScreen(
+                            carNumber: currentCarNumber, takeCarAccount: 'go_with_car_it_self',
+                          )));
                         },
                         title: 'Llevar el coche',
                         svgIcon: AppIcons.typeCar),
@@ -69,7 +73,9 @@ class PartSelectionScreen extends StatelessWidget {
                     child: SelectionBox(
                         onTap: () {
                           Navigator.of(context, rootNavigator: true)
-                              .push(fade(page: const ServiceSelectionScreen()));
+                              .push(fade(page: ServiceSelectionScreen(
+                            carNumber: currentCarNumber, takeCarAccount: 'take_with_crane',
+                          )));
                         },
                         title: 'Recogida con grúa',
                         svgIcon: AppIcons.typeCrane),
@@ -85,7 +91,9 @@ class PartSelectionScreen extends StatelessWidget {
                     child: SelectionBox(
                         onTap: () {
                           Navigator.of(context, rootNavigator: true)
-                              .push(fade(page: const ServiceSelectionScreen()));
+                              .push(fade(page: ServiceSelectionScreen(
+                            carNumber: currentCarNumber, takeCarAccount: 'the_workshop_goes_for_the_car',
+                          )));
                         },
                         title: 'Que lo recojan',
                         svgIcon: AppIcons.icTakeCar),
@@ -97,7 +105,9 @@ class PartSelectionScreen extends StatelessWidget {
                     child: SelectionBox(
                         onTap: () {
                           Navigator.of(context, rootNavigator: true)
-                              .push(fade(page: const ServiceSelectionScreen()));
+                              .push(fade(page: ServiceSelectionScreen(
+                            carNumber: currentCarNumber, takeCarAccount: 'by_insurance',
+                          )));
                         },
                         title: 'Por aseguradora',
                         svgIcon: AppIcons.icByeInsures),
@@ -110,7 +120,9 @@ class PartSelectionScreen extends StatelessWidget {
               WButton(
                 onTap: () {
                   Navigator.of(context, rootNavigator: true)
-                      .push(fade(page: const ServiceSelectionScreen()));
+                      .push(fade(page: ServiceSelectionScreen(
+                    carNumber: currentCarNumber, takeCarAccount: '',
+                  )));
                 },
                 height: 55,
                 borderRadius: 4,

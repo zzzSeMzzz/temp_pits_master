@@ -107,6 +107,9 @@ class AppIcons {
   static const String icTakeCar = 'assets/icons/ic_take_car.svg';
   static const String icByeInsures = 'assets/icons/ic_bye_insures.svg';
 
+  static const String icHistory = 'assets/icons/ic_history.svg';
+  static const String icDeleteRed = 'assets/icons/ic_delete_red.svg';
+
   static const serviceRepairIcons = {
     "Mantenimiento" : "assets/icons/ic_mantenimiento.svg",
     "Revisión" : "assets/icons/ic_revision.svg",

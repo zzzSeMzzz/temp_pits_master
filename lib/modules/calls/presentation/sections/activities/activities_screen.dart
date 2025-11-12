@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/base/try_again_widget.dart';
 import 'package:pits_app/core/data/extensions.dart';
@@ -9,10 +10,13 @@ import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/act
 import 'package:pits_app/modules/calls/presentation/sections/activities/bloc/activity_state.dart';
 import 'package:pits_app/modules/calls/presentation/sections/activities/part/activity_list.dart';
 
+import '../../../../../assets/constants/app_icons.dart';
 import '../../../../../utils/utils.dart';
 
 class ActivitiesScreen extends StatefulWidget {
-  const ActivitiesScreen({Key? key}) : super(key: key);
+  const ActivitiesScreen({Key? key, required this.isBackButton}) : super(key: key);
+
+  final bool isBackButton;
 
   @override
   State<ActivitiesScreen> createState() => _ActivitiesScreenState();
@@ -52,6 +56,21 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                   ),
                   Row(
                     children: [
+                      if (widget.isBackButton)
+                        Container(
+                          margin: const EdgeInsets.only(left: 16),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: SvgPicture.asset(
+                              AppIcons.arrowLeft,
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                        ),
+                      if (widget.isBackButton) const SizedBox(width: 20),
                       Text(
                         'Activities',
                         style: Theme.of(context)
