@@ -71,6 +71,23 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
             const RepairSelectionEvent.cleared(),
           );
         },
+        successSendRequest: () {
+          context.read<RepairSelectionBloc>().add(const RepairSelectionEvent.cleared());
+          debugPrint('success send repair request');
+          /*if(mounted) {
+            Utils.flushBarErrorMessage(
+                "El coche está matriculado", context, color: greenAccent);
+          }*/
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) {
+              Navigator.of(context)
+                ..pop()
+                ..pop()
+                ..pop();
+              //widget.onRegSuccess?.call();
+            }
+          });
+        },
         orElse: () {},
       );
     },
