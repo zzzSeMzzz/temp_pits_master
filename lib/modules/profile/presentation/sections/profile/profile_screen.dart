@@ -8,6 +8,7 @@ import 'package:pits_app/assets/constants/app_images.dart';
 import 'package:pits_app/base/try_again_widget.dart';
 import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/core/data/singletons/storage.dart';
+import 'package:pits_app/modules/calls/presentation/sections/activities/activities_screen.dart';
 import 'package:pits_app/modules/home/domain/entity/service_single_entity.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile/bloc/profile_bloc.dart';
 import 'package:pits_app/modules/profile/presentation/sections/profile/bloc/profile_event.dart';
@@ -176,7 +177,11 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
         const SizedBox(height: 8),*/
-        ProfileMenuTile(title: 'Historial solicitudes', icon: AppIcons.icHistory, onTap: () {}),
+        ProfileMenuTile(title: 'Historial solicitudes', icon: AppIcons.icHistory, onTap: () {
+          Navigator.of(context, rootNavigator: true).push(
+            fade(page: const ActivitiesScreen(isBackButton: true)),
+          );
+        }),
         const SizedBox(height: 8),
         ProfileMenuTile(title: 'Eliminar mi cuenta', icon: AppIcons.icDeleteRed, onTap: () {
           showCustomAlertDialog(

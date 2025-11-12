@@ -38,7 +38,7 @@ class _TabNavigatorState extends State<TabNavigator>
         };
       case NavItemEnum.calls:
         return {
-          TabNavigatorRoutes.root: (context) => const ActivitiesScreen(),
+          TabNavigatorRoutes.root: (context) => const ActivitiesScreen(isBackButton: false),
         };
       case NavItemEnum.messages:
         return {
