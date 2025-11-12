@@ -41,6 +41,8 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
   }
 
   List<String> _parts = [];
+  List<String> _axis1 = [];
+  List<String> _axis2 = [];
 
   @override
   Widget build(
@@ -144,7 +146,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                 //   // ),
                 // ),
                 CarSelector(
-                  callbackSeleted: (selected) {
+                  callbackSelected: (selected) {
                     _parts = selected;
                   },
                 ),
@@ -162,9 +164,13 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                const AxisSelector(title: 'Eje 1'),
+                AxisSelector(title: 'Eje 1', isAxis1: true, callbackSelected: (selected) {
+                  _axis1 = selected;
+                }),
                 const SizedBox(height: 24),
-                const AxisSelector(title: 'Eje 2'),
+                AxisSelector(title: 'Eje 2', isAxis1: false, callbackSelected: (selected) {
+                  _axis2 = selected;
+                }),
                 const SizedBox(height: 24),
                 const OtherAxisSelector(),
                 const SizedBox(height: 40),
@@ -261,8 +267,8 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                         widget.takeCarAccount,
                         widget.services,
                         _parts,
-                        1,
-                        2,
+                        _axis1,
+                        _axis2,
                         bloc.photo?.fileName,
                         commentController.text,
                         null,//wpServiceId

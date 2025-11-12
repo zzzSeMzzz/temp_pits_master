@@ -6,8 +6,11 @@ import 'package:pits_app/assets/constants/app_icons.dart';
 
 class AxisSelector extends StatefulWidget {
   final String title;
+  final bool isAxis1;
 
-  const AxisSelector({required this.title, Key? key}) : super(key: key);
+  final Function(List<String>) callbackSelected;
+
+  const AxisSelector({required this.title, Key? key, required this.callbackSelected, required this.isAxis1}) : super(key: key);
 
   @override
   State<AxisSelector> createState() => _AxisSelectorState();
@@ -16,7 +19,7 @@ class AxisSelector extends StatefulWidget {
 class _AxisSelectorState extends State<AxisSelector> {
   int axis = -1;
 
-  String getPartByNum(bool isAxis1) {
+  List<String> getPartByNum(bool isAxis1) {
     String result = '';
     switch(axis) {
       case 1: isAxis1 ? result = 'part-36' : result = 'part-40';
@@ -25,7 +28,7 @@ class _AxisSelectorState extends State<AxisSelector> {
       case 4: isAxis1 ? result = 'part-39' : result = 'part-43';
       default: result = '';
     }
-    return result;
+    return [result];
   }
 
   @override
@@ -49,6 +52,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 1;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
@@ -62,6 +66,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 2;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
@@ -75,6 +80,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 3;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
@@ -88,6 +94,7 @@ class _AxisSelectorState extends State<AxisSelector> {
                       onTap: () {
                         setState(() {
                           axis = 4;
+                          widget.callbackSelected(getPartByNum(widget.isAxis1));
                         });
                       },
                       child: SvgPicture.asset(
