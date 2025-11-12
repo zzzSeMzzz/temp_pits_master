@@ -11,6 +11,8 @@ import 'package:pits_app/modules/service/presentation/sections/repair_selection/
 import 'package:pits_app/modules/service/presentation/sections/repair_selection/parts/other_axis_selector.dart';
 
 import '../../../../../utils/utils.dart';
+import '../../../../navigation/presentation/home.dart';
+import '../../../../navigation/presentation/navigator.dart';
 import 'bloc/repair_selection_bloc.dart';
 import 'bloc/repair_selection_event.dart';
 import 'bloc/repair_selection_state.dart';
@@ -85,14 +87,19 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
               // Возвращаемся назад, закрывая текущий экран (RepairSelectionScreen)
               // и ServiceSelectionScreen
               // Используем rootNavigator, так как экраны были открыты через rootNavigator
-              final navigator = Navigator.of(context, rootNavigator: true);
+              /*final navigator = Navigator.of(context, rootNavigator: true);
               navigator.pop(); // Закрываем RepairSelectionScreen
               if (navigator.canPop()) {
                 navigator.pop(); // Закрываем ServiceSelectionScreen
               }
               if (navigator.canPop()) {
                 navigator.pop(); // Закрываем ServiceSelectionScreen
-              }
+              }*/
+              /*Navigator.pushReplacement(
+                  context, CupertinoPageRoute(builder: (c) => const NavigationScreen()));*/
+              Navigator.of(context, rootNavigator: true).pushReplacement(
+                fade(page: const NavigationScreen()),
+              );
             }
           });
         },
@@ -302,7 +309,7 @@ class _RepairSelectionScreenState extends State<RepairSelectionScreen> {
                         _parts,
                         _axis1,
                         _axis2,
-                        bloc.photo?.fileName,
+                        bloc.photo?.filePath,
                         commentController.text,
                         null, //wpServiceId
                       ),

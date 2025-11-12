@@ -33,10 +33,12 @@ class RepairRepository extends BaseRepository {
       debugPrint("parts count = ${parts.length}");
 
       // Добавляем обычные поля
-      if(!wpServiceId.isNullOrEmpty()) {
+      if (!wpServiceId.isNullOrEmpty()) {
         formData.fields.add(MapEntry('wp_service_id', wpServiceId ?? ''));
       }
-      formData.fields.add(const MapEntry('pickup_crane', '1')); //todo не знаю что это
+      formData.fields.add(
+        const MapEntry('pickup_crane', '1'),
+      ); //todo не знаю что это
       formData.fields.add(MapEntry('comment', comment ?? ''));
       formData.fields.add(MapEntry('take_car_account', takeCarAccount));
 
