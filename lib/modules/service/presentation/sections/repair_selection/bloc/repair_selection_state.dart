@@ -23,6 +23,7 @@ abstract class RepairSelectionState with _$RepairSelectionState {
     required String message,
   }) = _PermissionsDenied;
 
-  const factory RepairSelectionState.cleared() = _Cleared;
+
+  const factory RepairSelectionState.successSendRequest() = _SuccessSendRequest;
 
 }

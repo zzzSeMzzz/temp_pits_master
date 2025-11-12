@@ -26,44 +26,44 @@ class ServiceSelectionScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 13),
-              GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: SvgPicture.asset(
-                  AppIcons.arrowLeft,
-                  width: 24,
-                  height: 24,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.black,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 35),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          child: BlocBuilder<ServiceSelectionBloc, ServiceSelectionState>(
+            builder: (context, state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Servicios (multiselección)',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+                  const SizedBox(height: 13),
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset(
+                      AppIcons.arrowLeft,
+                      width: 24,
+                      height: 24,
+                      colorFilter: const ColorFilter.mode(
+                        Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 32),
-              Expanded(
-                child: BlocBuilder<ServiceSelectionBloc, ServiceSelectionState>(
-                  builder: (context, state) {
-                    return GridView.builder(
+                  const SizedBox(height: 35),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Servicios (multiselección)',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  Expanded(
+                    child: GridView.builder(
                       itemCount: AppIcons.serviceRepairIcons.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -100,34 +100,33 @@ class ServiceSelectionScreen extends StatelessWidget {
                                 ),
                         );
                       },
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 20),
-              WButton(
-                onTap: () {
-                  /*Navigator.of(
-                    context,
-                    rootNavigator: true,
-                  ).push(fade(page: const RepairSelectionScreen()));*/
-
-                  Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(
-                      builder: (_) => MultiBlocProvider(
-                        providers: [BlocProvider(create: (_) => RepairSelectionBloc())],
-                        child: const RepairSelectionScreen(),
-                      ),
                     ),
-                  );
-                },
-                height: 55,
-                borderRadius: 4,
-                textColor: white,
-                text: 'Continue',
-              ),
-              const SizedBox(height: 12),
-            ],
+                  ),
+                  const SizedBox(height: 20),
+                  WButton(
+                    onTap: () {
+                      Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute(
+                          builder: (_) => MultiBlocProvider(
+                            providers: [BlocProvider(create: (_) => RepairSelectionBloc())],
+                            child: RepairSelectionScreen(
+                              carNumber: carNumber,
+                              services: state.selectedKeys,
+                              takeCarAccount: takeCarAccount,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    height: 55,
+                    borderRadius: 4,
+                    textColor: white,
+                    text: 'Continue',
+                  ),
+                  const SizedBox(height: 12),
+                ],
+              );
+            }
           ),
         ),
       ),

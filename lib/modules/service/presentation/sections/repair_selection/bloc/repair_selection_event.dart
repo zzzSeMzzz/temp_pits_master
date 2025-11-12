@@ -8,4 +8,13 @@ class RepairSelectionEvent  with _$RepairSelectionEvent {
   const factory RepairSelectionEvent.onPhotoSelected(ImageSource source) = _OnPhotoSelected;
   const factory RepairSelectionEvent.permissionsRequested() = _PermissionsRequested;
   const factory RepairSelectionEvent.cleared() = _Cleared;
+  const factory RepairSelectionEvent.sendRepairRequest(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts, axis1, axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+  ) = _SendRepairRequest;
 }

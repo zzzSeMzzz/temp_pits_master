@@ -23,6 +23,18 @@ mixin _$RepairSelectionEvent {
     required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
+    required TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )
+    sendRepairRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -30,6 +42,18 @@ mixin _$RepairSelectionEvent {
     TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
+    TResult? Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -37,6 +61,18 @@ mixin _$RepairSelectionEvent {
     TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
+    TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +81,7 @@ mixin _$RepairSelectionEvent {
     required TResult Function(_OnPhotoSelected value) onPhotoSelected,
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SendRepairRequest value) sendRepairRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -52,6 +89,7 @@ mixin _$RepairSelectionEvent {
     TResult? Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SendRepairRequest value)? sendRepairRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -59,6 +97,7 @@ mixin _$RepairSelectionEvent {
     TResult Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SendRepairRequest value)? sendRepairRequest,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -166,6 +205,18 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
+    required TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )
+    sendRepairRequest,
   }) {
     return photoPickerRequested(source);
   }
@@ -177,6 +228,18 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
+    TResult? Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
   }) {
     return photoPickerRequested?.call(source);
   }
@@ -188,6 +251,18 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
+    TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
     required TResult orElse(),
   }) {
     if (photoPickerRequested != null) {
@@ -203,6 +278,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     required TResult Function(_OnPhotoSelected value) onPhotoSelected,
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SendRepairRequest value) sendRepairRequest,
   }) {
     return photoPickerRequested(this);
   }
@@ -214,6 +290,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult? Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SendRepairRequest value)? sendRepairRequest,
   }) {
     return photoPickerRequested?.call(this);
   }
@@ -225,6 +302,7 @@ class _$PhotoPickerRequestedImpl implements _PhotoPickerRequested {
     TResult Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SendRepairRequest value)? sendRepairRequest,
     required TResult orElse(),
   }) {
     if (photoPickerRequested != null) {
@@ -324,6 +402,18 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
+    required TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )
+    sendRepairRequest,
   }) {
     return onPhotoSelected(source);
   }
@@ -335,6 +425,18 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
+    TResult? Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
   }) {
     return onPhotoSelected?.call(source);
   }
@@ -346,6 +448,18 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
+    TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
@@ -361,6 +475,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     required TResult Function(_OnPhotoSelected value) onPhotoSelected,
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SendRepairRequest value) sendRepairRequest,
   }) {
     return onPhotoSelected(this);
   }
@@ -372,6 +487,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult? Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SendRepairRequest value)? sendRepairRequest,
   }) {
     return onPhotoSelected?.call(this);
   }
@@ -383,6 +499,7 @@ class _$OnPhotoSelectedImpl implements _OnPhotoSelected {
     TResult Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SendRepairRequest value)? sendRepairRequest,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
@@ -453,6 +570,18 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
+    required TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )
+    sendRepairRequest,
   }) {
     return permissionsRequested();
   }
@@ -464,6 +593,18 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
+    TResult? Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
   }) {
     return permissionsRequested?.call();
   }
@@ -475,6 +616,18 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
+    TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
     required TResult orElse(),
   }) {
     if (permissionsRequested != null) {
@@ -490,6 +643,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     required TResult Function(_OnPhotoSelected value) onPhotoSelected,
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SendRepairRequest value) sendRepairRequest,
   }) {
     return permissionsRequested(this);
   }
@@ -501,6 +655,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult? Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SendRepairRequest value)? sendRepairRequest,
   }) {
     return permissionsRequested?.call(this);
   }
@@ -512,6 +667,7 @@ class _$PermissionsRequestedImpl implements _PermissionsRequested {
     TResult Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SendRepairRequest value)? sendRepairRequest,
     required TResult orElse(),
   }) {
     if (permissionsRequested != null) {
@@ -572,6 +728,18 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(ImageSource source) onPhotoSelected,
     required TResult Function() permissionsRequested,
     required TResult Function() cleared,
+    required TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )
+    sendRepairRequest,
   }) {
     return cleared();
   }
@@ -583,6 +751,18 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(ImageSource source)? onPhotoSelected,
     TResult? Function()? permissionsRequested,
     TResult? Function()? cleared,
+    TResult? Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
   }) {
     return cleared?.call();
   }
@@ -594,6 +774,18 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(ImageSource source)? onPhotoSelected,
     TResult Function()? permissionsRequested,
     TResult Function()? cleared,
+    TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -609,6 +801,7 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(_OnPhotoSelected value) onPhotoSelected,
     required TResult Function(_PermissionsRequested value) permissionsRequested,
     required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SendRepairRequest value) sendRepairRequest,
   }) {
     return cleared(this);
   }
@@ -620,6 +813,7 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult? Function(_PermissionsRequested value)? permissionsRequested,
     TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SendRepairRequest value)? sendRepairRequest,
   }) {
     return cleared?.call(this);
   }
@@ -631,6 +825,7 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(_OnPhotoSelected value)? onPhotoSelected,
     TResult Function(_PermissionsRequested value)? permissionsRequested,
     TResult Function(_Cleared value)? cleared,
+    TResult Function(_SendRepairRequest value)? sendRepairRequest,
     required TResult orElse(),
   }) {
     if (cleared != null) {
@@ -642,4 +837,356 @@ class _$ClearedImpl implements _Cleared {
 
 abstract class _Cleared implements RepairSelectionEvent {
   const factory _Cleared() = _$ClearedImpl;
+}
+
+/// @nodoc
+abstract class _$$SendRepairRequestImplCopyWith<$Res> {
+  factory _$$SendRepairRequestImplCopyWith(
+    _$SendRepairRequestImpl value,
+    $Res Function(_$SendRepairRequestImpl) then,
+  ) = __$$SendRepairRequestImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    String? carNumber,
+    String takeCarAccount,
+    Set<String> services,
+    List<String> parts,
+    dynamic axis1,
+    dynamic axis2,
+    String? photoFileName,
+    String? comment,
+    String? wpServiceId,
+  });
+}
+
+/// @nodoc
+class __$$SendRepairRequestImplCopyWithImpl<$Res>
+    extends _$RepairSelectionEventCopyWithImpl<$Res, _$SendRepairRequestImpl>
+    implements _$$SendRepairRequestImplCopyWith<$Res> {
+  __$$SendRepairRequestImplCopyWithImpl(
+    _$SendRepairRequestImpl _value,
+    $Res Function(_$SendRepairRequestImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of RepairSelectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? carNumber = freezed,
+    Object? takeCarAccount = null,
+    Object? services = null,
+    Object? parts = null,
+    Object? axis1 = freezed,
+    Object? axis2 = freezed,
+    Object? photoFileName = freezed,
+    Object? comment = freezed,
+    Object? wpServiceId = freezed,
+  }) {
+    return _then(
+      _$SendRepairRequestImpl(
+        freezed == carNumber
+            ? _value.carNumber
+            : carNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        null == takeCarAccount
+            ? _value.takeCarAccount
+            : takeCarAccount // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == services
+            ? _value._services
+            : services // ignore: cast_nullable_to_non_nullable
+                  as Set<String>,
+        null == parts
+            ? _value._parts
+            : parts // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        freezed == axis1 ? _value.axis1! : axis1,
+        freezed == axis2 ? _value.axis2! : axis2,
+        freezed == photoFileName
+            ? _value.photoFileName
+            : photoFileName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        freezed == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        freezed == wpServiceId
+            ? _value.wpServiceId
+            : wpServiceId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SendRepairRequestImpl implements _SendRepairRequest {
+  const _$SendRepairRequestImpl(
+    this.carNumber,
+    this.takeCarAccount,
+    final Set<String> services,
+    final List<String> parts,
+    this.axis1,
+    this.axis2,
+    this.photoFileName,
+    this.comment,
+    this.wpServiceId,
+  ) : _services = services,
+      _parts = parts;
+
+  @override
+  final String? carNumber;
+  @override
+  final String takeCarAccount;
+  final Set<String> _services;
+  @override
+  Set<String> get services {
+    if (_services is EqualUnmodifiableSetView) return _services;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_services);
+  }
+
+  final List<String> _parts;
+  @override
+  List<String> get parts {
+    if (_parts is EqualUnmodifiableListView) return _parts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parts);
+  }
+
+  @override
+  final dynamic axis1;
+  @override
+  final dynamic axis2;
+  @override
+  final String? photoFileName;
+  @override
+  final String? comment;
+  @override
+  final String? wpServiceId;
+
+  @override
+  String toString() {
+    return 'RepairSelectionEvent.sendRepairRequest(carNumber: $carNumber, takeCarAccount: $takeCarAccount, services: $services, parts: $parts, axis1: $axis1, axis2: $axis2, photoFileName: $photoFileName, comment: $comment, wpServiceId: $wpServiceId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendRepairRequestImpl &&
+            (identical(other.carNumber, carNumber) ||
+                other.carNumber == carNumber) &&
+            (identical(other.takeCarAccount, takeCarAccount) ||
+                other.takeCarAccount == takeCarAccount) &&
+            const DeepCollectionEquality().equals(other._services, _services) &&
+            const DeepCollectionEquality().equals(other._parts, _parts) &&
+            const DeepCollectionEquality().equals(other.axis1, axis1) &&
+            const DeepCollectionEquality().equals(other.axis2, axis2) &&
+            (identical(other.photoFileName, photoFileName) ||
+                other.photoFileName == photoFileName) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.wpServiceId, wpServiceId) ||
+                other.wpServiceId == wpServiceId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    carNumber,
+    takeCarAccount,
+    const DeepCollectionEquality().hash(_services),
+    const DeepCollectionEquality().hash(_parts),
+    const DeepCollectionEquality().hash(axis1),
+    const DeepCollectionEquality().hash(axis2),
+    photoFileName,
+    comment,
+    wpServiceId,
+  );
+
+  /// Create a copy of RepairSelectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendRepairRequestImplCopyWith<_$SendRepairRequestImpl> get copyWith =>
+      __$$SendRepairRequestImplCopyWithImpl<_$SendRepairRequestImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ImageSource source) photoPickerRequested,
+    required TResult Function(ImageSource source) onPhotoSelected,
+    required TResult Function() permissionsRequested,
+    required TResult Function() cleared,
+    required TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )
+    sendRepairRequest,
+  }) {
+    return sendRepairRequest(
+      carNumber,
+      takeCarAccount,
+      services,
+      parts,
+      axis1,
+      axis2,
+      photoFileName,
+      comment,
+      wpServiceId,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ImageSource source)? photoPickerRequested,
+    TResult? Function(ImageSource source)? onPhotoSelected,
+    TResult? Function()? permissionsRequested,
+    TResult? Function()? cleared,
+    TResult? Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
+  }) {
+    return sendRepairRequest?.call(
+      carNumber,
+      takeCarAccount,
+      services,
+      parts,
+      axis1,
+      axis2,
+      photoFileName,
+      comment,
+      wpServiceId,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ImageSource source)? photoPickerRequested,
+    TResult Function(ImageSource source)? onPhotoSelected,
+    TResult Function()? permissionsRequested,
+    TResult Function()? cleared,
+    TResult Function(
+      String? carNumber,
+      String takeCarAccount,
+      Set<String> services,
+      List<String> parts,
+      dynamic axis1,
+      dynamic axis2,
+      String? photoFileName,
+      String? comment,
+      String? wpServiceId,
+    )?
+    sendRepairRequest,
+    required TResult orElse(),
+  }) {
+    if (sendRepairRequest != null) {
+      return sendRepairRequest(
+        carNumber,
+        takeCarAccount,
+        services,
+        parts,
+        axis1,
+        axis2,
+        photoFileName,
+        comment,
+        wpServiceId,
+      );
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotoPickerRequested value) photoPickerRequested,
+    required TResult Function(_OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(_PermissionsRequested value) permissionsRequested,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SendRepairRequest value) sendRepairRequest,
+  }) {
+    return sendRepairRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotoPickerRequested value)? photoPickerRequested,
+    TResult? Function(_OnPhotoSelected value)? onPhotoSelected,
+    TResult? Function(_PermissionsRequested value)? permissionsRequested,
+    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SendRepairRequest value)? sendRepairRequest,
+  }) {
+    return sendRepairRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotoPickerRequested value)? photoPickerRequested,
+    TResult Function(_OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(_PermissionsRequested value)? permissionsRequested,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SendRepairRequest value)? sendRepairRequest,
+    required TResult orElse(),
+  }) {
+    if (sendRepairRequest != null) {
+      return sendRepairRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendRepairRequest implements RepairSelectionEvent {
+  const factory _SendRepairRequest(
+    final String? carNumber,
+    final String takeCarAccount,
+    final Set<String> services,
+    final List<String> parts,
+    final dynamic axis1,
+    final dynamic axis2,
+    final String? photoFileName,
+    final String? comment,
+    final String? wpServiceId,
+  ) = _$SendRepairRequestImpl;
+
+  String? get carNumber;
+  String get takeCarAccount;
+  Set<String> get services;
+  List<String> get parts;
+  dynamic get axis1;
+  dynamic get axis2;
+  String? get photoFileName;
+  String? get comment;
+  String? get wpServiceId;
+
+  /// Create a copy of RepairSelectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SendRepairRequestImplCopyWith<_$SendRepairRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

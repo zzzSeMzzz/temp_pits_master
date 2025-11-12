@@ -25,7 +25,7 @@ mixin _$RepairSelectionState {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -35,7 +35,7 @@ mixin _$RepairSelectionState {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -45,7 +45,7 @@ mixin _$RepairSelectionState {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,7 +56,7 @@ mixin _$RepairSelectionState {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -66,7 +66,7 @@ mixin _$RepairSelectionState {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -76,7 +76,7 @@ mixin _$RepairSelectionState {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -155,7 +155,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
     return initial();
   }
@@ -169,7 +169,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
     return initial?.call();
   }
@@ -183,7 +183,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -201,7 +201,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
     return initial(this);
   }
@@ -215,7 +215,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
     return initial?.call(this);
   }
@@ -229,7 +229,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -292,7 +292,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
     return loading();
   }
@@ -306,7 +306,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
     return loading?.call();
   }
@@ -320,7 +320,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -338,7 +338,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
     return loading(this);
   }
@@ -352,7 +352,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
     return loading?.call(this);
   }
@@ -366,7 +366,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -457,7 +457,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
     return success(selectedPhoto);
   }
@@ -471,7 +471,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
     return success?.call(selectedPhoto);
   }
@@ -485,7 +485,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -503,7 +503,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
     return success(this);
   }
@@ -517,7 +517,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
     return success?.call(this);
   }
@@ -531,7 +531,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -629,7 +629,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
     return error(message);
   }
@@ -643,7 +643,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
     return error?.call(message);
   }
@@ -657,7 +657,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -675,7 +675,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
     return error(this);
   }
@@ -689,7 +689,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
     return error?.call(this);
   }
@@ -703,7 +703,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -774,7 +774,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
     return permissionsGranted();
   }
@@ -788,7 +788,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
     return permissionsGranted?.call();
   }
@@ -802,7 +802,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
     if (permissionsGranted != null) {
@@ -820,7 +820,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
     return permissionsGranted(this);
   }
@@ -834,7 +834,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
     return permissionsGranted?.call(this);
   }
@@ -848,7 +848,7 @@ class _$PermissionsGrantedImpl implements _PermissionsGranted {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
     if (permissionsGranted != null) {
@@ -941,7 +941,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
     return permissionsDenied(message);
   }
@@ -955,7 +955,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
     return permissionsDenied?.call(message);
   }
@@ -969,7 +969,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
     if (permissionsDenied != null) {
@@ -987,7 +987,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
     return permissionsDenied(this);
   }
@@ -1001,7 +1001,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
     return permissionsDenied?.call(this);
   }
@@ -1015,7 +1015,7 @@ class _$PermissionsDeniedImpl implements _PermissionsDenied {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
     if (permissionsDenied != null) {
@@ -1039,20 +1039,20 @@ abstract class _PermissionsDenied implements RepairSelectionState {
 }
 
 /// @nodoc
-abstract class _$$ClearedImplCopyWith<$Res> {
-  factory _$$ClearedImplCopyWith(
-    _$ClearedImpl value,
-    $Res Function(_$ClearedImpl) then,
-  ) = __$$ClearedImplCopyWithImpl<$Res>;
+abstract class _$$SuccessSendRequestImplCopyWith<$Res> {
+  factory _$$SuccessSendRequestImplCopyWith(
+    _$SuccessSendRequestImpl value,
+    $Res Function(_$SuccessSendRequestImpl) then,
+  ) = __$$SuccessSendRequestImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ClearedImplCopyWithImpl<$Res>
-    extends _$RepairSelectionStateCopyWithImpl<$Res, _$ClearedImpl>
-    implements _$$ClearedImplCopyWith<$Res> {
-  __$$ClearedImplCopyWithImpl(
-    _$ClearedImpl _value,
-    $Res Function(_$ClearedImpl) _then,
+class __$$SuccessSendRequestImplCopyWithImpl<$Res>
+    extends _$RepairSelectionStateCopyWithImpl<$Res, _$SuccessSendRequestImpl>
+    implements _$$SuccessSendRequestImplCopyWith<$Res> {
+  __$$SuccessSendRequestImplCopyWithImpl(
+    _$SuccessSendRequestImpl _value,
+    $Res Function(_$SuccessSendRequestImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of RepairSelectionState
@@ -1061,18 +1061,18 @@ class __$$ClearedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ClearedImpl implements _Cleared {
-  const _$ClearedImpl();
+class _$SuccessSendRequestImpl implements _SuccessSendRequest {
+  const _$SuccessSendRequestImpl();
 
   @override
   String toString() {
-    return 'RepairSelectionState.cleared()';
+    return 'RepairSelectionState.successSendRequest()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClearedImpl);
+        (other.runtimeType == runtimeType && other is _$SuccessSendRequestImpl);
   }
 
   @override
@@ -1087,9 +1087,9 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(String message) error,
     required TResult Function() permissionsGranted,
     required TResult Function(String message) permissionsDenied,
-    required TResult Function() cleared,
+    required TResult Function() successSendRequest,
   }) {
-    return cleared();
+    return successSendRequest();
   }
 
   @override
@@ -1101,9 +1101,9 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(String message)? error,
     TResult? Function()? permissionsGranted,
     TResult? Function(String message)? permissionsDenied,
-    TResult? Function()? cleared,
+    TResult? Function()? successSendRequest,
   }) {
-    return cleared?.call();
+    return successSendRequest?.call();
   }
 
   @override
@@ -1115,11 +1115,11 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(String message)? error,
     TResult Function()? permissionsGranted,
     TResult Function(String message)? permissionsDenied,
-    TResult Function()? cleared,
+    TResult Function()? successSendRequest,
     required TResult orElse(),
   }) {
-    if (cleared != null) {
-      return cleared();
+    if (successSendRequest != null) {
+      return successSendRequest();
     }
     return orElse();
   }
@@ -1133,9 +1133,9 @@ class _$ClearedImpl implements _Cleared {
     required TResult Function(_Error value) error,
     required TResult Function(_PermissionsGranted value) permissionsGranted,
     required TResult Function(_PermissionsDenied value) permissionsDenied,
-    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_SuccessSendRequest value) successSendRequest,
   }) {
-    return cleared(this);
+    return successSendRequest(this);
   }
 
   @override
@@ -1147,9 +1147,9 @@ class _$ClearedImpl implements _Cleared {
     TResult? Function(_Error value)? error,
     TResult? Function(_PermissionsGranted value)? permissionsGranted,
     TResult? Function(_PermissionsDenied value)? permissionsDenied,
-    TResult? Function(_Cleared value)? cleared,
+    TResult? Function(_SuccessSendRequest value)? successSendRequest,
   }) {
-    return cleared?.call(this);
+    return successSendRequest?.call(this);
   }
 
   @override
@@ -1161,16 +1161,16 @@ class _$ClearedImpl implements _Cleared {
     TResult Function(_Error value)? error,
     TResult Function(_PermissionsGranted value)? permissionsGranted,
     TResult Function(_PermissionsDenied value)? permissionsDenied,
-    TResult Function(_Cleared value)? cleared,
+    TResult Function(_SuccessSendRequest value)? successSendRequest,
     required TResult orElse(),
   }) {
-    if (cleared != null) {
-      return cleared(this);
+    if (successSendRequest != null) {
+      return successSendRequest(this);
     }
     return orElse();
   }
 }
 
-abstract class _Cleared implements RepairSelectionState {
-  const factory _Cleared() = _$ClearedImpl;
+abstract class _SuccessSendRequest implements RepairSelectionState {
+  const factory _SuccessSendRequest() = _$SuccessSendRequestImpl;
 }

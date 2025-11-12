@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:pits_app/core/data/network/api_response.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../../../../car/presentation/sections/add_car/data/model/photo_model.dart';
+import '../data/model/service_repair_response.dart';
 import '../data/repository/repair_repository.dart';
 import 'repair_selection_event.dart';
 import 'repair_selection_state.dart';
@@ -47,7 +48,7 @@ class RepairSelectionBloc extends Bloc<RepairSelectionEvent, RepairSelectionStat
           add(RepairSelectionEvent.photoPickerRequested(event.source));
         },
         cleared: (event) async {
-          emit(const RepairSelectionState.cleared());
+          emit(const RepairSelectionState.initial());
         },
         permissionsRequested: (event) async {
           try {
@@ -72,6 +73,29 @@ class RepairSelectionBloc extends Bloc<RepairSelectionEvent, RepairSelectionStat
             );
           }
         },
+        sendRepairRequest: (event) async {
+          try {
+            emit(const RepairSelectionState.loading());
+            final carInfo = await _repo.sendRepairResponse(
+                event.carNumber,
+                event.takeCarAccount,
+                event.services,
+                event.parts,
+                event.axis1,
+                event.axis2,
+                event.photoFileName,
+                event.comment,
+                event.wpServiceId
+            );
+            if(carInfo is Success<ServiceRepairResponse>) {
+              emit(const RepairSelectionState.successSendRequest());
+            } else if(carInfo is Error<ServiceRepairResponse>) {
+              emit(RepairSelectionState.error(message: carInfo.errorMessage));
+            }
+          } catch (e) {
+            emit(RepairSelectionState.error(message: 'Error send request: $e'));
+          }
+        }
       );
     });
   }

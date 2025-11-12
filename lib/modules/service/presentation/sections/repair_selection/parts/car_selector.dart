@@ -6,7 +6,9 @@ import '../../../../../../assets/constants/app_icons.dart';
 import '../../../../../../assets/constants/app_images.dart';
 
 class CarSelector extends StatefulWidget {
-  const CarSelector({Key? key}) : super(key: key);
+  const CarSelector({Key? key, required this.callbackSeleted}) : super(key: key);
+
+  final Function(List<String>) callbackSeleted;
 
   @override
   State<CarSelector> createState() => _CarSelectorState();
