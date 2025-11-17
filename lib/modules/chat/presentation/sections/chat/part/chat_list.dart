@@ -5,14 +5,12 @@ class ChatList extends StatelessWidget {
   const ChatList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        child: ListView.separated(padding: EdgeInsets.zero,
-            separatorBuilder: (context, index) => SizedBox(
-                  height: 8,
-                ),
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return ChatTile();
-            }),
-      );
+  Widget build(BuildContext context) => ListView.separated(padding: EdgeInsets.zero,
+      separatorBuilder: (context, index) => const SizedBox(
+            height: 8,
+          ),
+      itemCount: 1,
+      itemBuilder: (context, index) {
+        return const ChatTile();
+      });
 }

@@ -6,7 +6,7 @@ import 'package:pits_app/modules/chat/presentation/sections/chat_single/chat_sin
 import 'package:pits_app/modules/navigation/presentation/navigator.dart';
 
 String text =
-    'Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie, massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.';
+    'Mensajes de servicio';
 
 class ChatTile extends StatelessWidget {
   const ChatTile({Key? key}) : super(key: key);
@@ -16,20 +16,31 @@ class ChatTile extends StatelessWidget {
         behavior: HitTestBehavior.translucent,
         onTap: () {
           Navigator.of(context, rootNavigator: true)
-              .push(fade(page: ChatSingleScreen()));
+              .push(fade(page: const ChatSingleScreen()));
         },
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4), color: fieldGrey),
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              Image.asset(
-                AppImages.orderSample,
-                width: 40,
-                height: 40,
+              Container(
+                width: 60,
+                height: 60,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    AppImages.splashLogo,
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.scaleDown,
+                  ),
+                ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
               Expanded(
@@ -37,7 +48,7 @@ class ChatTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Rabbit Lamp',
+                      'Pits',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
@@ -60,7 +71,7 @@ class ChatTile extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
               Column(
@@ -76,7 +87,7 @@ class ChatTile extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Container(
+                  /*Container(
                     decoration:
                         const BoxDecoration(shape: BoxShape.circle, color: red),
                     padding: const EdgeInsets.all(3),
@@ -87,7 +98,7 @@ class ChatTile extends StatelessWidget {
                           .displayMedium!
                           .copyWith(fontWeight: FontWeight.w700, fontSize: 12),
                     ),
-                  )
+                  )*/
                 ],
               )
             ],

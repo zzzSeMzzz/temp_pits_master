@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:pits_app/assets/colors/colors.dart';
 import 'package:pits_app/assets/constants/app_icons.dart';
+import 'package:pits_app/core/data/extensions.dart';
 import 'package:pits_app/modules/chat/presentation/sections/chat_single/parts/chat_field.dart';
 import 'package:pits_app/modules/chat/presentation/sections/chat_single/parts/chat_messages.dart';
 
@@ -9,41 +11,21 @@ class ChatSingleScreen extends StatelessWidget {
   const ChatSingleScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-    child: Scaffold(
-          backgroundColor: white,
-          body: Padding(
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: white,
+
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text("Pits", style: context.textTheme.displayLarge!.copyWith(fontSize: 24),),
+        ),
+        body: SafeArea(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               children: [
-                SizedBox(
-                  height: 10 + MediaQuery.of(context).padding.top,
-                ),
-                Row(
-                  children: [
-                   /* GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: SvgPicture.asset(
-                        AppIcons.iArrowLeft,
-                        width: 24,
-                        height: 24,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),*/
-                    Text(
-                      'Mecánico On-line',
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(fontWeight: FontWeight.w700, fontSize: 24),
-                    )
-                  ],
-                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -55,7 +37,7 @@ class ChatSingleScreen extends StatelessWidget {
                           color: fieldGrey),
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Today, Jan 27',
+                        'Today, ${DateFormat('MMM d').format(DateTime.now())}',
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -68,16 +50,25 @@ class ChatSingleScreen extends StatelessWidget {
                   height: 12,
                 ),
                 const Expanded(child: ChatMessages()),
-                const SizedBox(
+                /*const SizedBox(
                   height: 30,
                 ),
-                const ChatField(),
-                SizedBox(
-                  height: 16 + MediaQuery.of(context).padding.bottom,
-                )
+                const ChatField(),*/
+                Row(
+                  children: [
+                    SvgPicture.asset(AppIcons.lock),
+                    const SizedBox(width: 8,),
+                    Expanded(
+                        child: Text("No puedes escribir mensajes en este chat.",
+                          style: context.textTheme.bodyMedium!.copyWith(fontSize: 16),
+                          overflow: TextOverflow.ellipsis,
+                        )),
+                  ],
+                ),
+                const SizedBox(height: 10,)
               ],
             ),
           ),
         ),
-  );
+      );
 }

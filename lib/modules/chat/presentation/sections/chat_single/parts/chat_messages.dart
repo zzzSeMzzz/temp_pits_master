@@ -7,12 +7,12 @@ class ChatMessages extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ListView.separated(
       scrollDirection: Axis.vertical,
-      itemCount: 2,
+      itemCount: 1,
       separatorBuilder: (context, index) => const SizedBox(
             height: 16,
           ),
       itemBuilder: (context, index) => ChatMessage(
-            isMyMessage: index % 2 == 0,
-            message: index % 2 == 0 ? '¡Está en construcción este apartado! Gracias' : '¡Pronto podrás hablar con los mecánicos!',
+            isMyMessage: index % 2 != 0,
+            message: index % 2 != 0 ? 'Aquí aparecerán los mensajes de servicio.' : 'Aquí aparecerán los mensajes de servicio.',
           ));
 }
