@@ -16,7 +16,7 @@ class ChatScreen extends StatelessWidget {
                 height: 10 + MediaQuery.of(context).padding.top,
               ),
               Text(
-                'Messeges',
+                'Messages',
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
@@ -25,8 +25,8 @@ class ChatScreen extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              Expanded(child: ChatList()),
-              SizedBox(height: 16,)
+              const Expanded(child: ChatList()),
+              const SizedBox(height: 16,)
             ],
           ),
         ),
