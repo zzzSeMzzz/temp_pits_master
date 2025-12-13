@@ -7,13 +7,13 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to location when in the background to update user location on map</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open and in the background to show user on map and update by time</string>
+	<string>This app needs location access in both public and background mode to display the user on the map and update it over time so that the tow truck can find you.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs access to your camera to take photos/videos.</string>
+	<string>The app needs access to your camera so you can take photos of your car for diagnostics.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to your photo library to save or select photos.</string>
+	<string>The app requires access to your photo library to save or select photos of your car.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app needs access to save photos to your photo library.</string>
+	<string>The app requires access to your photo library to save photos of your car.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -35,7 +35,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>11</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
