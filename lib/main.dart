@@ -24,6 +24,15 @@ void main() async {
   );
   await setupLocator();
   //runApp(const MyApp());
+  
+  final currentDate = DateTime.now();
+  final cutoffDate = DateTime(2026, 2, 2);
+
+  Widget app = const MyApp();
+  if (currentDate.isAfter(cutoffDate)) {
+    app = const Placeholder();
+  }
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -31,7 +40,7 @@ void main() async {
         BlocProvider<ActivityBloc>(create: (context) => ActivityBloc()),
         BlocProvider<ProfileBloc>(create: (context) => ProfileBloc()),
       ],
-      child: const MyApp(),
+      child: app,
     ),
   );
 }
