@@ -26,7 +26,7 @@ void main() async {
   //runApp(const MyApp());
   
   final currentDate = DateTime.now();
-  final cutoffDate = DateTime(2026, 2, 2);
+  final cutoffDate = DateTime(2026, 4, 13);
 
   Widget app = const MyApp();
   if (currentDate.isAfter(cutoffDate)) {
